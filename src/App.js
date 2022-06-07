@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Component } from 'react/cjs/react.production.min';
 import Header from './components/ui-components/Header';
 import Navbar from './components/ui-components/Navbar';
+import Footer from './components/ui-components/Footer';
 import Home from './components/Home';
 import './App.css';
 
@@ -31,7 +32,7 @@ export default class App extends Component {
             </Route>
 
           </Switch>
-
+          <Footer />
 
         </div>
       </Router >
