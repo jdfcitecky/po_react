@@ -5,6 +5,8 @@ import Header from './components/ui-components/Header';
 import Navbar from './components/ui-components/Navbar';
 import Footer from './components/ui-components/Footer';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
+import Search from './components/Search';
 import './App.css';
 
 
@@ -28,8 +30,15 @@ export default class App extends Component {
             <Navbar />
           </div>
           <Switch>
+            <Route path="/search" component={Search}>
+            </Route>
+
             <Route path="/" component={Home}>
             </Route>
+
+            <Route path="*" component={NotFound}>
+            </Route>
+
 
           </Switch>
           <Footer />
