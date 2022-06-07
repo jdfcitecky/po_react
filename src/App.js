@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Component } from 'react/cjs/react.production.min';
+import Header from './components/ui-components/Header';
+import Navbar from './components/ui-components/Navbar';
+import Home from './components/Home';
 import './App.css';
 
 
@@ -13,11 +16,25 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>Test</p>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+            integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+            crossorigin="anonymous"></link>
+          <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"></link>
+          <div className='container'>
+            <Header />
+            <Navbar />
+            <Switch>
+              <Route path="/" component={Home}>
+              </Route>
+
+            </Switch>
+          </div>
+
+        </div>
+      </Router>
+
     )
   }
 }
