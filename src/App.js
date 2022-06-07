@@ -25,15 +25,16 @@ export default class App extends Component {
           <div className='container'>
             <Header />
             <Navbar />
-            <Switch>
-              <Route path="/" component={Home}>
-              </Route>
-
-            </Switch>
           </div>
+          <Switch>
+            <Route path="/" component={Home}>
+            </Route>
+
+          </Switch>
+
 
         </div>
-      </Router>
+      </Router >
 
     )
   }
