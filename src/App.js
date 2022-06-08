@@ -31,9 +31,6 @@ export default class App extends Component {
           </div>
           <Switch>
 
-            <Route path="/search" component={Search}>
-            </Route>
-
             <Route path="/search/:value" component={Search}>
             </Route>
 
