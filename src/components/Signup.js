@@ -3,7 +3,7 @@ import Jumbotron from './ui-components/Jumbotron';
 import Card from './ui-components/Card';
 import Timeline from './ui-components/Timeline';
 import "./Signin.css"
-export default class Signin extends Component {
+export default class Signup extends Component {
     render() {
         return (
             <div>
@@ -20,12 +20,13 @@ export default class Signin extends Component {
                                 <form>
                                     <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" />
                                     <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" />
-                                    <input type="submit" className="fadeIn fourth mt-3" value="Log In" />
+                                    <input type="submit" className="fadeIn fourth mt-3" value="Sign up" />
                                 </form>
 
+
+
                                 <div id="formFooter">
-                                    <p>If you don't have an account please </p>
-                                    <a class="underlineHover" href="/signup">sign up</a>
+                                    <a class="underlineHover" href="/">Back to home</a>
                                 </div>
 
                             </div>

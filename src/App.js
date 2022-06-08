@@ -9,6 +9,8 @@ import NotFound from './components/NotFound';
 import Search from './components/Search';
 import './App.css';
 import Signin from './components/Signin';
+import Work from './components/Work';
+import Signup from './components/Signup';
 
 
 export default class App extends Component {
@@ -32,6 +34,9 @@ export default class App extends Component {
           </div>
           <Switch>
 
+            <Route path="/work/:id" component={Work}>
+            </Route>
+
             <Route path="/search/:value" component={Search}>
             </Route>
 
@@ -39,6 +44,9 @@ export default class App extends Component {
             </Route>
 
             <Route path="/signin" component={Signin}>
+            </Route>
+
+            <Route path="/signup" component={Signup}>
             </Route>
 
             <Route path="/" component={Home}>
