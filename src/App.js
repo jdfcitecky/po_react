@@ -8,6 +8,7 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Search from './components/Search';
 import './App.css';
+import Signin from './components/Signin';
 
 
 export default class App extends Component {
@@ -32,6 +33,12 @@ export default class App extends Component {
           <Switch>
 
             <Route path="/search/:value" component={Search}>
+            </Route>
+
+            <Route path="/search" component={Search}>
+            </Route>
+
+            <Route path="/signin" component={Signin}>
             </Route>
 
             <Route path="/" component={Home}>
