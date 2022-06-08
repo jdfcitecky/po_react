@@ -30,7 +30,11 @@ export default class App extends Component {
             <Navbar />
           </div>
           <Switch>
+
             <Route path="/search" component={Search}>
+            </Route>
+
+            <Route path="/search/:value" component={Search}>
             </Route>
 
             <Route path="/" component={Home}>
