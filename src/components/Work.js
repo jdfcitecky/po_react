@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import Commentinput from './ui-components/Commentinput';
+import Comment from './ui-components/Comment';
 import Slider from "react-slick";
 import Jumbotron from './ui-components/Jumbotron';
 
@@ -76,6 +76,9 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
+                    <Commentinput />
+                    <Comment />
+                    <Comment />
 
                 </div>
             </div>
