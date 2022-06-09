@@ -23,10 +23,16 @@ export default class Home extends Component {
                             <p className="text-left text-info">{`Search result for : ${this.state.searchValue}`}</p>
                         </div>
                     </div>
+
                 </div>
-                {works.map((w) => (
-                    <CardWork color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
-                ))}
+                <div className='container'>
+                    {works.map((w) => (
+                        <div className='row'>
+                            <CardWork color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
+                        </div>
+
+                    ))}
+                </div>
             </div>
         );
     }

@@ -7,7 +7,7 @@ export default class CardWork extends Component {
     }
     render() {
         return (
-            <div className="col-md-6">
+            <div className="col-md-10">
                 <div className="card flex-md-row mb-4 box-shadow h-md-250">
                     <div className="card-body d-flex flex-column align-items-start">
                         <strong className={`d-inline-block mb-2 text-${this.props.color}`}>{this.props.category}</strong>
