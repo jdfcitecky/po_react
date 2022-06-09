@@ -15,11 +15,13 @@ export default class Work extends Component {
             text: "default text default text default text default text default text default text default text default text",
             tools: "python, mysql, golang, javascript",
             downloadlink: "#",
+            comments: [{ name: "Default", date: "2022-06-09", text: "AAAA" }, { name: "Default2", date: "2022-06-09", text: "AAAA" }],
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
     }
     render() {
+        var comments = this.state.comments
         var settings = {
             dots: true,
             infinite: true,
@@ -77,9 +79,9 @@ export default class Work extends Component {
                         </div>
                     </div>
                     <Commentinput />
-                    <Comment />
-                    <Comment />
-
+                    {comments.map((c) => (
+                        <Comment name={c.name} date={c.date} text={c.text} />
+                    ))}
                 </div>
             </div>
         );
