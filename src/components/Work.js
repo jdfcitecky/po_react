@@ -59,6 +59,9 @@ export default class Work extends Component {
                                 <div className='d-flex justify-content-center'>
                                     <img src="http://placekitten.com/g/1000/400" />
                                 </div>
+                                <div className='d-flex justify-content-center'>
+                                    <img src="http://placekitten.com/g/1000/400" />
+                                </div>
                             </Slider>
                         </div>
                     </div>
