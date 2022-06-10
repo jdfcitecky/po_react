@@ -11,6 +11,7 @@ import './App.css';
 import Signin from './components/Signin';
 import Work from './components/Work';
 import Signup from './components/Signup';
+import Manage from './components/Manage';
 
 
 export default class App extends Component {
@@ -41,6 +42,9 @@ export default class App extends Component {
             </Route>
 
             <Route path="/search" component={Search}>
+            </Route>
+
+            <Route path="/manage" component={Manage}>
             </Route>
 
             <Route path="/signin" component={Signin}>
