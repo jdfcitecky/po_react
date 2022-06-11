@@ -75,7 +75,9 @@ export default class Work extends Component {
                     </div>
                     <div className='row mt-5'>
                         <div className='col-6 text-left'>
-                            <h1 className="display-5">{this.state.work.title}</h1>
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h1 className="display-5">{this.state.work.title}</h1><span class="dot mx-2"></span><span class=" mr-2">{this.state.work.year}</span>
+                            </div>
                             <p>{this.state.work.text}</p>
                             <p><a class="btn btn-secondary" href={this.state.work.downloadlink} role="button">Download &raquo;</a></p>
                         </div>
