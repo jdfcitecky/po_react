@@ -32,6 +32,7 @@ export default class EditArticle extends Component {
             isLoaded: true,
             error: null,
             errors: [],
+            isManager: this.props.isManager,
             alert: {
                 type: "d-done",
                 message: "",
@@ -53,9 +54,15 @@ export default class EditArticle extends Component {
     }
 
     render() {
-        let { work, isLoaded, error } = this.state
+        let { work, isLoaded, error, isManager } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
+        } else if (!isManager) {
+            console.log("push to index")
+            this.props.history.push({
+                pathname: "/",
+            })
+
         } else if (!isLoaded) {
             return <p>Loading...</p>
         }
@@ -142,10 +149,10 @@ export default class EditArticle extends Component {
                                     <textarea type='text' className='form-control text-left mx-1' style={{ width: '85%', height: '200px' }} id="text" name='text' value={this.state.work.text} onChange={this.handleChange} />
                                 </div>
                                 <hr />
-                                <a className='btn btn-primary'>Save</a>
-                                <a href="/manage/articles" className="btn btn-warning ms-1 ml-1">Cancel</a>
+                                <a className='btn btn-primary' style={{ color: 'white' }}>Save</a>
+                                <a href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</a>
                                 {work.id > 0 && (
-                                    <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1'>
+                                    <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
                                         Delete
                                     </a>
                                 )}

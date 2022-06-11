@@ -9,10 +9,29 @@ export default class ManageComments extends Component {
         super(props)
         this.state = {
             comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false" }],
+            isLoaded: true,
+            error: null,
+            errors: [],
+            isManager: this.props.isManager,
+            alert: {
+                type: "d-done",
+                message: "",
+            }
         }
     }
     render() {
-        var comments = this.state.comments
+        let { comments, isLoaded, error, isManager } = this.state
+        if (error) {
+            return <p>Error: {error.message}</p>
+        } else if (!isManager) {
+            console.log("push to index")
+            this.props.history.push({
+                pathname: "/",
+            })
+
+        } else if (!isLoaded) {
+            return <p>Loading...</p>
+        }
         return (
 
             <div>

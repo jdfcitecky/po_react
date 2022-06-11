@@ -9,10 +9,29 @@ export default class ManageArticles extends Component {
         super(props)
         this.state = {
             works: [{ color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "1" }, { color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "2" }],
+            isLoaded: true,
+            error: null,
+            errors: [],
+            isManager: this.props.isManager,
+            alert: {
+                type: "d-done",
+                message: "",
+            }
         }
     }
     render() {
-        var works = this.state.works
+        let { works, isLoaded, error, isManager } = this.state
+        if (error) {
+            return <p>Error: {error.message}</p>
+        } else if (!isManager) {
+            console.log("push to index")
+            this.props.history.push({
+                pathname: "/",
+            })
+
+        } else if (!isLoaded) {
+            return <p>Loading...</p>
+        }
         return (
 
             <div>

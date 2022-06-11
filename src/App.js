@@ -65,7 +65,7 @@ export default class App extends Component {
 
             <Route path="/search" component={Search}>
             </Route>
-
+            {/* 
             <Route path="/edit/article/:id" component={EditArticle}>
             </Route>
 
@@ -79,6 +79,21 @@ export default class App extends Component {
             </Route>
 
             <Route path="/manage" component={ManageArticles}>
+            </Route> */}
+
+            <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} />}>
+            </Route>
+
+            <Route path="/edit/article" component={(props) => <EditArticle {...props} isManager={this.state.isManager} />}>
+            </Route>
+
+            <Route path="/manage/comments" component={(props) => <ManageComments {...props} isManager={this.state.isManager} />}>
+            </Route>
+
+            <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} />}>
+            </Route>
+
+            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} />}>
             </Route>
 
             <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} />}>
