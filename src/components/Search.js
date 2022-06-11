@@ -7,7 +7,7 @@ export default class Home extends Component {
         super(props)
         this.state = {
             searchValue: this.props.match.params.value,
-            works: [{ color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "1" }, { color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "2" }],
+            works: [{ color: "primary", category: "Backend", title: "Default", year: "2022", text: "AAAA", id: "1" }, { color: "primary", category: "Backend", title: "Default", year: "2022", text: "AAAA", id: "2" }],
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,7 +28,7 @@ export default class Home extends Component {
                 <div className='container'>
                     {works.map((w) => (
                         <div className='row'>
-                            <CardWork color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
+                            <CardWork color={w.color} category={w.category} title={w.title} date={w.year} text={w.text} id={w.id} />
                         </div>
 
                     ))}
