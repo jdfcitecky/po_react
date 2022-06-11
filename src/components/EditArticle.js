@@ -73,7 +73,7 @@ export default class EditArticle extends Component {
 
 
 
-                            <form onSubmit={this.handleSubmit} className='text-left'>
+                            <form onSubmit={this.handleSubmit} className='text-left mb-10'>
                                 <input
                                     type="hidden"
                                     name="id"
@@ -150,18 +150,17 @@ export default class EditArticle extends Component {
                                     </a>
                                 )}
                             </form>
-                            <div className='mt-3'>
-                                <pre>{JSON.stringify(this.state, null, 3)}</pre>
+                            {/* <div className='mt-3' >
+                                <pre style={{ color: 'white' }} /> {JSON.stringify(this.state, null, 3)}</pre>
+                            </div> */}
+                            <div className='mt-3' >
+                                <pre style={{ color: 'white', height: "200px" }} >  </pre>
                             </div>
-
-
-
-
                         </main>
                     </div>
+                </div >
 
-                </div>
-            </div>
+            </div >
 
         );
     }
