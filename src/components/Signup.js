@@ -18,8 +18,8 @@ export default class Signup extends Component {
                                 </div>
 
                                 <form>
-                                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" />
-                                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" />
+                                    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Name" />
+                                    <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" />
                                     <input type="submit" className="fadeIn fourth mt-3" value="Sign up" />
                                 </form>
 
