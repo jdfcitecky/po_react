@@ -4,6 +4,72 @@ import Card from './ui-components/Card';
 import Timeline from './ui-components/Timeline';
 import "./Signin.css"
 export default class Signup extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: "",
+            password: "",
+            error: null,
+            errors: [],
+            alert: {
+                type: "d-done",
+                message: "",
+            }
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange = (evt) => {
+        let value = evt.target.value
+        let name = evt.target.name
+        this.setState((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }))
+    }
+
+    handleSubmit = (evt) => {
+        // evt.preventDefault()
+        // let errors = []
+        // if (this.state.email === "") {
+        //     errors.push("email")
+        // }
+        // if (this.state.email === "") {
+        //     errors.push("password")
+        // }
+        // this.setState({ errors: errors })
+        // if (errors.length > 0) {
+        //     return false
+        // }
+        // const data = new FormData(evt.target)
+        // const payload = Object.fromEntries(data.entries())
+
+        // const requestOptions = {
+        //     method: "POST",
+        //     body: JSON.stringify(payload),
+        // }
+        // fetch("http://localhost:4000/v1/signin", requestOptions)
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         if (data.error) {
+        //             this.setState({
+        //                 alert: {
+        //                     type: "alert-danger",
+        //                     message: data.error.message,
+        //                 }
+        //             })
+        //         } else {
+        //             console.log(data)
+        //             this.handleJWTChange(Object.values(data)[0])
+        //             window.localStorage.setItem("jwt", JSON.stringify(Object.values(data)[0]))
+        //             this.props.history.push({
+        //                 pathname: "/admin"
+        //             })
+        //         }
+        //     })
+
+    }
     render() {
         return (
             <div>
@@ -17,16 +83,15 @@ export default class Signup extends Component {
                                     <p>Enter your information</p>
                                 </div>
 
-                                <form>
-                                    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Name" />
-                                    <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" />
-                                    <input type="submit" className="fadeIn fourth mt-3" value="Sign up" />
+                                <form onSubmit={this.handleSubmit}>
+                                    <input type="email" id="email" class="fadeIn second" name="email" placeholder='email' value={this.state.email} onChange={this.handleChange} />
+                                    <input type="text" id="password" class="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
+                                    <input type="submit" className="fadeIn fourth mt-3" value="Log In" />
                                 </form>
 
-
-
                                 <div id="formFooter">
-                                    <a class="underlineHover" href="/">Back to home</a>
+                                    <p>If you don't have an account please </p>
+                                    <a class="underlineHover" href="/signup">sign up</a>
                                 </div>
 
                             </div>
@@ -37,3 +102,4 @@ export default class Signup extends Component {
         );
     }
 }
+

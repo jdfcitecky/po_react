@@ -20,8 +20,28 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      jwt: "",
+      isManager: true,
     }
+    this.handleJWTChange(this.handleJWTChange.bind(this))
+    this.handleIsManagerChange(this.handleIsManagerChange.bind(this))
+    this.logout(this.logout.bind(this))
   }
+
+  handleJWTChange = (jwt) => {
+    this.setState({ jwt: jwt })
+  }
+
+  handleIsManagerChange = (isManager) => {
+    this.setState({ isManager: isManager })
+  }
+
+  logout = () => {
+    console.log("do log out from header")
+    this.setState({ jwt: "" })
+    window.localStorage.removeItem("jwt")
+  }
+
 
   render() {
     return (
@@ -29,10 +49,10 @@ export default class App extends Component {
         <div className="App">
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
             integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-            crossorigin="anonymous"></link>
+            crossOrigin="anonymous"></link>
           <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"></link>
           <div className='container'>
-            <Header />
+            <Header isManager={this.state.isManager} jwt={this.state.jwt} logout={this.logout} />
             <Navbar />
           </div>
           <Switch>
@@ -61,7 +81,7 @@ export default class App extends Component {
             <Route path="/manage" component={ManageArticles}>
             </Route>
 
-            <Route path="/signin" component={Signin}>
+            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} />}>
             </Route>
 
             <Route path="/signup" component={Signup}>
