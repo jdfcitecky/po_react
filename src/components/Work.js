@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Commentinput from './ui-components/Commentinput';
 import Comment from './ui-components/Comment';
 import Slider from "react-slick";
@@ -23,7 +24,7 @@ export default class Work extends Component {
                 comments: [{ name: "Default", date: "2022-06-09", text: "AAAA" }, { name: "Default2", date: "2022-06-09", text: "AAAA" }],
             },
             isLoaded: true,
-            memberID: "",
+            memberID: this.props.memberID,
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
@@ -94,7 +95,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput />
+                    <Commentinput memberID={this.state.memberID} />
                     <div className="align-items-center text-center row d-flex justify-content-center mt-5">
                         <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
                     </div>
@@ -158,7 +159,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput />
+                    <Commentinput memberID={this.state.memberID} />
                     {comments.map((c) => (
                         <Comment name={c.name} date={c.date} text={c.text} />
                     ))}

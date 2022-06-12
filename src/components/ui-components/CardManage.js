@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 export default class CardManage extends Component {
 
     constructor(props) {
@@ -16,7 +17,7 @@ export default class CardManage extends Component {
                         </h3>
                         <div className="mb-1 text-muted">{this.props.date}</div>
                         <p className="card-text mb-auto">{this.props.text}</p>
-                        <a class="btn btn-primary" href={`/edit/article/${this.props.id}`} role="button">Edit</a>
+                        <Link className="btn btn-primary" to={`/edit/article/${this.props.id}`} role="button">Edit</Link>
 
                     </div>
                     <img className="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap" />

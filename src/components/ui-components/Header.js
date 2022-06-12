@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalLogin from './ModalLogin';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 export default class Header extends Component {
     constructor(props) {
         super(props)
@@ -28,41 +28,41 @@ export default class Header extends Component {
     }
 
 
+
     render() {
+        // console.log(this.state.isManager)
         let loginLink
         if (this.props.jwt === "") {
-            loginLink = <a className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" href="/signin">Sign in</a>
+            loginLink = <Link className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" to="/signin">Sign in</Link>
         } else {
-            loginLink = <a className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" href="/" onClick={this.logout}>Sign out</a>
+            loginLink = <Link className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" to="/" onClick={this.logout}>Sign out</Link>
+        }
+        let manageBtn
+        if (this.props.isManager === true) {
+            manageBtn = <div className="col-4 pt-1">
+                <Link className="text-muted" to="/manage">Manage</Link>
+            </div>
+        } else {
+            manageBtn = <div className="col-4 pt-1">
+                <Link className="text-muted" to="/"></Link>
+            </div>
         }
         return (
             <div>
                 <header className="blog-header py-3">
                     <div className="row flex-nowrap justify-content-between align-items-center">
-                        {this.state.isManager && (
-                            <div className="col-4 pt-1">
-                                <a className="text-muted" href="/manage">Manage</a>
-                            </div>
-                        )}
-                        {!this.state.isManager && (
-                            <div className="col-4 pt-1">
-                                <a className="text-muted" href="/"></a>
-                            </div>
-                        )}
-                        {/* <div className="col-4 pt-1">
-                            <a className="text-muted" href="/manage">Manage</a>
-                        </div> */}
+                        {manageBtn}
                         <div className="col-4 text-center">
-                            <a className="blog-header-logo text-dark" href="/">Hsin's Portfilio</a>
+                            <Link className="blog-header-logo text-dark" to="/">Hsin's Portfilio</Link>
                         </div>
                         <div className="col-4 d-flex justify-content-end align-items-center">
                             <div class="input-group input-group-sm">
 
                                 <input id="searchBar" value={this.state.searchValue} onChange={(event) => this.setState({ searchValue: event.target.value })} type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                             </div>
-                            <a className="text-muted" href={`/search/${this.state.searchValue}`}>
+                            <Link className="text-muted" to={`/search/${this.state.searchValue}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-                            </a>
+                            </Link>
 
                             {loginLink}
                         </div>

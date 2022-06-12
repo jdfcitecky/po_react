@@ -32,6 +32,14 @@ export default class Signin extends Component {
 
     handleSubmit = (evt) => {
         this.handleJWTChange("aaa")
+        this.handleMemberID("10")
+        this.handleIsManagerChange(true)
+        window.localStorage.setItem("jwt", "aaa")
+        window.localStorage.setItem("memberID", "10")
+        window.localStorage.setItem("isManager", true)
+        this.props.history.push({
+            pathname: "/"
+        })
         // evt.preventDefault()
         // let errors = []
         // if (this.state.email === "") {

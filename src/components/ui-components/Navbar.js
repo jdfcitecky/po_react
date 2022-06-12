@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
     render() {
         return (
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-between">
-                    <a className="p-2 text-muted" href="/">Home</a>
-                    <a className="p-2 text-muted" href="/search/frontend">Forntend</a>
-                    <a className="p-2 text-muted" href="/search/backend">Backend</a>
-                    <a className="p-2 text-muted" href="/search/msproject">M.S.Project</a>
-                    <a className="p-2 text-muted" href="/search/design">Design</a>
-                    <a className="p-2 text-muted" href="/">Contact</a>
+                    <Link className="p-2 text-muted" to="/">Home</Link>
+                    <Link className="p-2 text-muted" to="/search/frontend">Forntend</Link>
+                    <Link className="p-2 text-muted" to="/search/backend">Backend</Link>
+                    <Link className="p-2 text-muted" to="/search/msproject">M.S.Project</Link>
+                    <Link className="p-2 text-muted" to="/search/design">Design</Link>
+                    <Link className="p-2 text-muted" to="/">Contact</Link>
                 </nav>
             </div>
         );

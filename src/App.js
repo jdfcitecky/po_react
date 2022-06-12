@@ -22,12 +22,33 @@ export default class App extends Component {
     this.state = {
       jwt: "",
       memberID: "",
-      isManager: true,
+      isManager: false,
     }
     this.handleJWTChange(this.handleJWTChange.bind(this))
     this.handleIsManagerChange(this.handleIsManagerChange.bind(this))
     this.handleMemberID(this.handleMemberID.bind(this))
     this.logout(this.logout.bind(this))
+  }
+
+  componentDidMount() {
+    let t = window.localStorage.getItem("jwt")
+    if (t) {
+      if (this.state.jwt === "") {
+        this.setState({ jwt: JSON.parse(t) })
+      }
+    }
+    let i = window.localStorage.getItem("memberID")
+    if (i) {
+      if (this.state.memberID === "") {
+        this.setState({ memberID: JSON.parse(i) })
+      }
+    }
+    let is = window.localStorage.getItem("isManager")
+    if (is) {
+      if (JSON.parse(is) === true) {
+        this.setState({ isManager: true })
+      }
+    }
   }
 
   handleJWTChange = (jwt) => {
@@ -50,10 +71,14 @@ export default class App extends Component {
     window.localStorage.removeItem("jwt")
     window.localStorage.removeItem("memberID")
     window.localStorage.removeItem("isManager")
+
   }
 
 
   render() {
+    console.log(this.state.isManager)
+    console.log(this.state.memberID)
+    console.log(this.state.jwt)
     return (
       <Router>
         <div className="App">
@@ -67,7 +92,10 @@ export default class App extends Component {
           </div>
           <Switch>
 
-            <Route path="/work/:id" component={Work}>
+            {/* <Route path="/work/:id" component={Work}>
+            </Route> */}
+
+            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} />}>
             </Route>
 
             <Route path="/search/:value" component={Search}>

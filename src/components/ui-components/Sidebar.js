@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Sidebar.css'
 import { FilePlus, MessageCircle, File } from 'react-feather';
 export default class Card extends Component {
@@ -22,16 +23,16 @@ export default class Card extends Component {
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-left" href="/manage/articles">
+                            <Link class="nav-link text-left" to="/manage/articles">
                                 <File size={24} className="mb-1 feather feather-file-text" />
                                 Articles
-                            </a>
+                            </Link>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="/manage/comments">
+                            <Link class="nav-link" to="/manage/comments">
                                 <MessageCircle size={24} className="mb-1 feather feather-file-text" />
                                 Comments
-                            </a>
+                            </Link>
                         </li>
                         <li class="nav-item">
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -43,10 +44,10 @@ export default class Card extends Component {
                         </li>
                         <li class="nav-item">
 
-                            <a class="nav-link text-left" href="/edit/article">
+                            <Link class="nav-link text-left" to="/edit/article">
                                 <FilePlus size={24} className="mb-1 feather feather-file-text" />
                                 Article
-                            </a>
+                            </Link>
 
                         </li>
                     </ul>
