@@ -21,10 +21,12 @@ export default class App extends Component {
     super(props)
     this.state = {
       jwt: "",
+      memberID: "",
       isManager: true,
     }
     this.handleJWTChange(this.handleJWTChange.bind(this))
     this.handleIsManagerChange(this.handleIsManagerChange.bind(this))
+    this.handleMemberID(this.handleMemberID.bind(this))
     this.logout(this.logout.bind(this))
   }
 
@@ -36,10 +38,18 @@ export default class App extends Component {
     this.setState({ isManager: isManager })
   }
 
+  handleMemberID = (memberID) => {
+    this.setState({ memberID: memberID })
+  }
+
   logout = () => {
     console.log("do log out from header")
     this.setState({ jwt: "" })
+    this.setState({ memberID: "" })
+    this.setState({ isManager: false })
     window.localStorage.removeItem("jwt")
+    window.localStorage.removeItem("memberID")
+    window.localStorage.removeItem("isManager")
   }
 
 
@@ -96,7 +106,7 @@ export default class App extends Component {
             <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} />}>
             </Route>
 
-            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} />}>
+            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} />}>
             </Route>
 
             <Route path="/signup" component={Signup}>

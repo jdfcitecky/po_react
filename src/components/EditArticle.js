@@ -8,6 +8,7 @@ export default class EditArticle extends Component {
     state = {
         work: {},
         isLoaded: false,
+        isManager: false,
         error: null,
     }
 

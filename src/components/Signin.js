@@ -18,6 +18,7 @@ export default class Signin extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleMemberID = this.handleMemberID.bind(this)
     }
 
     handleChange = (evt) => {
@@ -78,6 +79,11 @@ export default class Signin extends Component {
 
     handleIsManagerChange(isManager) {
         this.props.handleIsManagerChange(isManager)
+    }
+
+
+    handleMemberID(memberID) {
+        this.props.handleMemberID(memberID)
     }
 
     render() {
