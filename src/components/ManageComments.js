@@ -7,11 +7,12 @@ export default class ManageComments extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false" }],
+            comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }, { name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "3" }],
             isLoaded: true,
             error: null,
             errors: [],
             isManager: this.props.isManager,
+            jwt: this.props.jwt,
             alert: {
                 type: "d-done",
                 message: "",
@@ -64,7 +65,7 @@ export default class ManageComments extends Component {
                             </div>
 
                             {comments.map((c) => (
-                                <CommentManage name={c.name} date={c.date} text={c.text} isnew={c.isnew} />
+                                <CommentManage name={c.name} date={c.date} text={c.text} isnew={c.isnew} jwt={this.state.jwt} id={c.id} />
                             ))}
 
 

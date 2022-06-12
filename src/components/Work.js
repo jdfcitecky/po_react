@@ -21,7 +21,7 @@ export default class Work extends Component {
                 picturethree: "http://placekitten.com/g/1000/400",
                 picturefour: "http://placekitten.com/g/1000/400",
                 picturefive: "http://placekitten.com/g/1000/400",
-                comments: [{ name: "Default", date: "2022-06-09", text: "AAAA" }, { name: "Default2", date: "2022-06-09", text: "AAAA" }],
+                comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }],
             },
             isLoaded: true,
             memberID: this.props.memberID,

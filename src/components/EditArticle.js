@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import Sidebar from './ui-components/Sidebar';
 import ReactLoading from 'react-loading';
 import './Manage.css'
@@ -17,7 +19,7 @@ export default class EditArticle extends Component {
         super(props)
         this.state = {
             work: {
-                id: 0,
+                id: 1,
                 title: "",
                 text: "",
                 tools: "",
@@ -122,6 +124,42 @@ export default class EditArticle extends Component {
         //         }
         //     })
 
+    }
+
+
+    confirmDelete = (e) => {
+        console.log("would delete movie id", this.state.work.id)
+        confirmAlert({
+            title: "Delete Article",
+            message: "Are you sure?",
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        const myHeaders = new Headers()
+                        myHeaders.append("Content-Type", "application/json")
+                        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+                        // fetch("http://localhost:4000/v1/admin/deletemovie/" + this.state.work.id, { method: "GET", headers: myHeaders, })
+                        //     .then(response => response.json)
+                        //     .then(data => {
+                        //         if (data.error) {
+                        //             this.setState({
+                        //                 alert: { type: "alert-danger", message: data.error.message }
+                        //             })
+                        //         } else {
+                        //             this.props.history.push({
+                        //                 pathname: "/admin",
+                        //             })
+                        //         }
+                        //     })
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => { }
+                }
+            ]
+        })
     }
 
     render() {

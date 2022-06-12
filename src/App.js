@@ -95,7 +95,7 @@ export default class App extends Component {
             {/* <Route path="/work/:id" component={Work}>
             </Route> */}
 
-            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} />}>
+            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} jwt={this.state.jwt} />}>
             </Route>
 
             <Route path="/search/:value" component={Search}>
@@ -119,19 +119,19 @@ export default class App extends Component {
             <Route path="/manage" component={ManageArticles}>
             </Route> */}
 
-            <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} />}>
+            <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
             </Route>
 
-            <Route path="/edit/article" component={(props) => <EditArticle {...props} isManager={this.state.isManager} />}>
+            <Route path="/edit/article" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
             </Route>
 
-            <Route path="/manage/comments" component={(props) => <ManageComments {...props} isManager={this.state.isManager} />}>
+            <Route path="/manage/comments" component={(props) => <ManageComments {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
             </Route>
 
-            <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} />}>
+            <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
             </Route>
 
-            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} />}>
+            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
             </Route>
 
             <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} />}>
