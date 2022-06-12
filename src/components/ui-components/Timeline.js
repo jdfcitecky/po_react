@@ -8,11 +8,11 @@ export default class Card extends Component {
     }
     render() {
         return (
-            <div className="">
+            <div className="fadeIn">
                 <section id={"timeline"}>
                     <h1>A Flexbox Timeline</h1>
                     <p class="leader">All cards must be the same height and width for space calculations on large screens.</p>
-                    <div class="demo-card-wrapper">
+                    <div class="demo-card-wrapper fadeIn first">
                         <div class="demo-card demo-card--step1">
                             <div class="head">
                                 <div class="number-box">
@@ -26,7 +26,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div class="demo-card demo-card--step2">
+                        <div class="demo-card demo-card--step2 fadeIn second">
                             <div class="head">
                                 <div class="number-box">
                                     <span>02</span>
@@ -39,7 +39,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div class="demo-card demo-card--step3">
+                        <div class="demo-card demo-card--step3 fadeIn third">
                             <div class="head">
                                 <div class="number-box">
                                     <span>03</span>
@@ -52,7 +52,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div class="demo-card demo-card--step4">
+                        <div class="demo-card demo-card--step4 fadeIn four">
                             <div class="head">
                                 <div class="number-box">
                                     <span>04</span>
@@ -65,7 +65,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div class="demo-card demo-card--step5">
+                        <div class="demo-card demo-card--step5 fadeIn fifth">
                             <div class="head">
                                 <div class="number-box">
                                     <span>05</span>

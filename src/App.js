@@ -13,6 +13,7 @@ import Work from './components/Work';
 import Signup from './components/Signup';
 import ManageArticles from './components/ManageArticles';
 import ManageComments from './components/ManageComments';
+import TimelinePage from './components/TimelinePage';
 import EditArticle from './components/EditArticle';
 
 
@@ -138,6 +139,9 @@ export default class App extends Component {
             </Route>
 
             <Route path="/signup" component={Signup}>
+            </Route>
+
+            <Route path="/timeline" component={TimelinePage}>
             </Route>
 
             <Route path="/" component={Home}>
