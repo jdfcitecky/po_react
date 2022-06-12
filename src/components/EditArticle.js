@@ -183,7 +183,7 @@ export default class EditArticle extends Component {
                 <div className='container'>
                     <div className='row'>
                         <Sidebar />
-                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 className="h2">Comments</h1>
                             </div>
@@ -207,7 +207,7 @@ export default class EditArticle extends Component {
                 <div className='container'>
                     <div className='row'>
                         <Sidebar />
-                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 className="h2">Edit Article</h1>
                             </div>
@@ -284,7 +284,7 @@ export default class EditArticle extends Component {
                                     <textarea type='text' className='form-control text-left mx-1' style={{ width: '85%', height: '200px' }} id="text" name='text' value={this.state.work.text} onChange={this.handleChange} />
                                 </div>
                                 <hr />
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button className="btn btn-primary" type="submit">Save</button>
                                 {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
                                 <Link href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</Link>
                                 {work.id > 0 && (

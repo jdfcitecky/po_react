@@ -78,20 +78,20 @@ export default class Signup extends Component {
                         <div className="wrapper fadeInDown mb-5 mt-5">
                             <div id="formContent">
 
-                                <div class="fadeIn first mt-3">
+                                <div className="fadeIn first mt-3">
 
                                     <p>Enter your information</p>
                                 </div>
 
                                 <form onSubmit={this.handleSubmit}>
-                                    <input type="email" id="email" class="fadeIn second" name="email" placeholder='email' value={this.state.email} onChange={this.handleChange} />
-                                    <input type="text" id="password" class="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
+                                    <input type="email" id="email" className="fadeIn second" name="email" placeholder='email' value={this.state.email} onChange={this.handleChange} />
+                                    <input type="text" id="password" className="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
                                     <input type="submit" className="fadeIn fourth mt-3" value="Log In" />
                                 </form>
 
                                 <div id="formFooter">
                                     <p>If you don't have an account please </p>
-                                    <a class="underlineHover" href="/signup">sign up</a>
+                                    <a className="underlineHover" href="/signup">sign up</a>
                                 </div>
 
                             </div>

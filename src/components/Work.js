@@ -80,10 +80,10 @@ export default class Work extends Component {
                     <div className='row mt-5'>
                         <div className='col-6 text-left'>
                             <div class="d-flex flex-row align-items-center commented-user">
-                                <h1 className="display-5">{this.state.work.title}</h1><span class="dot mx-2"></span><span class=" mr-2">{this.state.work.year}</span>
+                                <h1 className="display-5">{this.state.work.title}</h1><span className="dot mx-2"></span><span className=" mr-2">{this.state.work.year}</span>
                             </div>
                             <p>{this.state.work.text}</p>
-                            <p><a class="btn btn-secondary" href={this.state.work.downloadlink} role="button">Download &raquo;</a></p>
+                            <p><a className="btn btn-secondary" href={this.state.work.downloadlink} role="button">Download &raquo;</a></p>
                         </div>
                         <div className='col-6'>
                             <div className="bg-light mr-md-1 pt-1 px-1 pt-md-1 px-md-1 text-left overflow-hidden">
@@ -144,10 +144,10 @@ export default class Work extends Component {
                     <div className='row mt-5'>
                         <div className='col-6 text-left'>
                             <div class="d-flex flex-row align-items-center commented-user">
-                                <h1 className="display-5">{this.state.work.title}</h1><span class="dot mx-2"></span><span class=" mr-2">{this.state.work.year}</span>
+                                <h1 className="display-5">{this.state.work.title}</h1><span className="dot mx-2"></span><span className=" mr-2">{this.state.work.year}</span>
                             </div>
                             <p>{this.state.work.text}</p>
-                            <p><a class="btn btn-secondary" href={this.state.work.downloadlink} role="button">Download &raquo;</a></p>
+                            <p><a className="btn btn-secondary" href={this.state.work.downloadlink} role="button">Download &raquo;</a></p>
                         </div>
                         <div className='col-6'>
                             <div className="bg-light mr-md-1 pt-1 px-1 pt-md-1 px-md-1 text-left overflow-hidden">

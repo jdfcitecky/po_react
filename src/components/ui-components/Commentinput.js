@@ -77,8 +77,8 @@ export default class Commentinput extends Component {
                 <div className="col-md-12">
                     <div class="coment-bottom bg-white p-2 px-4">
                         <form className='d-flex flex-row add-comment-section mt-4 mb-4'>
-                            <input value='Please sign in to comment.' type="text" class="form-control mr-3" placeholder="Add comment" />
-                            <button class="btn btn-secondary my-2" type="submit">Comment</button>
+                            <input value='Please sign in to comment.' type="text" className="form-control mr-3" placeholder="Add comment" />
+                            <button className="btn btn-secondary my-2" type="submit">Comment</button>
                         </form>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ export default class Commentinput extends Component {
         return (
             <div className='row'>
                 <div className="col-md-12">
-                    <div class="coment-bottom bg-white p-2 px-4">
+                    <div className="coment-bottom bg-white p-2 px-4">
                         {errorMessage}
                         <form onSubmit={this.handleSubmit} className='d-flex flex-row add-comment-section mt-4 mb-4'>
                             <input
@@ -98,8 +98,8 @@ export default class Commentinput extends Component {
                                 value={this.state.memberID}
                                 onChange={(event) => this.setState({ memberID: event.target.value })}
                             />
-                            <input name="textvalue" id="textvalue" value={this.state.textValue} onChange={(event) => this.setState({ textValue: event.target.value })} type="text" class="form-control mr-3" placeholder="Add comment" />
-                            <button class="btn btn-primary my-2" type="submit">Comment</button>
+                            <input name="textvalue" id="textvalue" value={this.state.textValue} onChange={(event) => this.setState({ textValue: event.target.value })} type="text" className="form-control mr-3" placeholder="Add comment" />
+                            <button className="btn btn-primary my-2" type="submit">Comment</button>
                             {/* <a className='btn btn-primary my-2' style={{ color: 'white' }}>Comment</a> */}
                         </form>
                     </div>

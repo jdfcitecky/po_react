@@ -10,41 +10,41 @@ export default class Card extends Component {
     }
     render() {
         return (
-            <div class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div className="col-md-2 d-none d-md-block bg-light sidebar">
 
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <div className="sidebar-sticky">
+                    <ul className="nav flex-column">
+                        <li className="nav-item">
+                            <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Content</span>
-                                <a class="d-flex align-items-center text-muted" href="#">
+                                <a className="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                             </h6>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link text-left" to="/manage/articles">
+                        <li className="nav-item">
+                            <Link className="nav-link text-left" to="/manage/articles">
                                 <File size={24} className="mb-1 feather feather-file-text" />
                                 Articles
                             </Link>
                         </li>
-                        <li class="nav-item text-left">
-                            <Link class="nav-link" to="/manage/comments">
+                        <li className="nav-item text-left">
+                            <Link className="nav-link" to="/manage/comments">
                                 <MessageCircle size={24} className="mb-1 feather feather-file-text" />
                                 Comments
                             </Link>
                         </li>
-                        <li class="nav-item">
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <li className="nav-item">
+                            <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Create</span>
-                                <a class="d-flex align-items-center text-muted" href="#">
+                                <a className="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                             </h6>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
 
-                            <Link class="nav-link text-left" to="/edit/article">
+                            <Link className="nav-link text-left" to="/edit/article">
                                 <FilePlus size={24} className="mb-1 feather feather-file-text" />
                                 Article
                             </Link>

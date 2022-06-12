@@ -94,11 +94,11 @@ export default class Comment extends Component {
             return (
                 <div className='row'>
                     <div className="col-md-12">
-                        <div class="commented-section mt-2">
-                            <div class="d-flex flex-row align-items-center commented-user mb-2">
-                                <h5 class="mr-2">{this.props.name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{this.props.date}</span></div>
-                            <div class="comment-text-sm text-left"><span>{this.props.text}</span></div>
-                            <div class="d-flex flex-row mt-3">
+                        <div className="commented-section mt-2">
+                            <div className="d-flex flex-row align-items-center commented-user mb-2">
+                                <h5 className="mr-2">{this.props.name}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{this.props.date}</span></div>
+                            <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
+                            <div className="d-flex flex-row mt-3">
                                 <form onSubmit={this.handleSubmit} className=''>
                                     <input
                                         type="hidden"
@@ -107,7 +107,7 @@ export default class Comment extends Component {
                                         value={this.props.id}
                                     />
 
-                                    <button class="btn btn-success" type="submit">Approve</button>
+                                    <button className="btn btn-success" type="submit">Approve</button>
                                     {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
                                     <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
                                         Delete
@@ -126,11 +126,11 @@ export default class Comment extends Component {
         else {
             return (<div className='row'>
                 <div className="col-md-12">
-                    <div class="commented-section mt-2">
-                        <div class="d-flex flex-row align-items-center commented-user mb-2">
-                            <h5 class="mr-2">{this.props.name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{this.props.date}</span></div>
-                        <div class="comment-text-sm text-left"><span>{this.props.text}</span></div>
-                        <div class="d-flex flex-row mt-3">
+                    <div className="commented-section mt-2">
+                        <div className="d-flex flex-row align-items-center commented-user mb-2">
+                            <h5 className="mr-2">{this.props.name}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{this.props.date}</span></div>
+                        <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
+                        <div className="d-flex flex-row mt-3">
                             <form onSubmit={this.handleSubmit} className=''>
                                 <input
                                     type="hidden"
@@ -156,11 +156,11 @@ export default class Comment extends Component {
         return (
             <div className='row'>
                 <div className="col-md-12">
-                    <div class="commented-section mt-2">
-                        <div class="d-flex flex-row align-items-center commented-user mb-2">
-                            <h5 class="mr-2">{this.props.name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{this.props.date}</span></div>
-                        <div class="comment-text-sm text-left"><span>{this.props.text}</span></div>
-                        <div class="d-flex flex-row mt-3">
+                    <div className="commented-section mt-2">
+                        <div className="d-flex flex-row align-items-center commented-user mb-2">
+                            <h5 className="mr-2">{this.props.name}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{this.props.date}</span></div>
+                        <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
+                        <div className="d-flex flex-row mt-3">
                             <button type="button" className="btn btn-danger">Delete</button>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ export default class Footer extends Component {
     render() {
         return (
             <div>
-                <footer class="navbar-fixed-bottom blog-footer fixed-bottom">
+                <footer className="navbar-fixed-bottom blog-footer fixed-bottom">
 
                     <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
                     <p>
