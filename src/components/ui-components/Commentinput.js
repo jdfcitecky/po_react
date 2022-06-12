@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
+import './Comment.css'
 export default class Commentinput extends Component {
     state = {
         textValue: "",
@@ -75,10 +76,10 @@ export default class Commentinput extends Component {
         } else if (memberID == "") {
             return <div className='row'>
                 <div className="col-md-12">
-                    <div class="coment-bottom bg-white p-2 px-4">
+                    <div className="coment-bottom bg-white p-2 px-4">
                         <form className='d-flex flex-row add-comment-section mt-4 mb-4'>
-                            <input value='Please sign in to comment.' type="text" className="form-control mr-3" placeholder="Add comment" />
-                            <button className="btn btn-secondary my-2" type="submit">Comment</button>
+                            <div type="text" className="input-like mr-3" placeholder="Add comment" >Please sign in to comment.</div>
+                            <button className="btn btn-secondary my-2" type="text" onClick={(e) => { e.preventDefault() }}>Comment</button>
                         </form>
                     </div>
                 </div>

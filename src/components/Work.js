@@ -79,7 +79,7 @@ export default class Work extends Component {
                     </div>
                     <div className='row mt-5'>
                         <div className='col-6 text-left'>
-                            <div class="d-flex flex-row align-items-center commented-user">
+                            <div className="d-flex flex-row align-items-center commented-user">
                                 <h1 className="display-5">{this.state.work.title}</h1><span className="dot mx-2"></span><span className=" mr-2">{this.state.work.year}</span>
                             </div>
                             <p>{this.state.work.text}</p>
@@ -111,7 +111,7 @@ export default class Work extends Component {
                 <link
                     rel="stylesheet"
                     type="text/css"
-                    charset="UTF-8"
+                    charSet="UTF-8"
                     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
                 />
                 <link

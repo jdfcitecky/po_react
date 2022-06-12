@@ -13,7 +13,7 @@ export default class Card extends Component {
                     <div className="card-body d-flex flex-column align-items-start">
                         <strong className={`d-inline-block mb-2 text-${this.props.color}`}>{this.props.category}</strong>
                         <h3 className="mb-0">
-                            <a className="text-dark" href="#">{this.props.title}</a>
+                            <p className="text-dark" href="#">{this.props.title}</p>
                         </h3>
                         <div className="mb-1 text-muted">{this.props.date}</div>
                         <p className="card-text mb-auto">{this.props.text}</p>
