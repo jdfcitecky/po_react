@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Sidebar from './ui-components/Sidebar';
 import ReactLoading from 'react-loading';
 import './Manage.css'
@@ -53,11 +54,39 @@ export default class EditArticle extends Component {
     }
 
     handleSubmit = (evt) => {
+        console.log('submit')
         evt.preventDefault()
         // client side validation
         let errors = []
-        if (this.state.movie.title == "") {
+        if (this.state.work.title == "") {
             errors.push("title")
+        }
+        if (this.state.work.text == "") {
+            errors.push("text")
+        }
+        if (this.state.work.tools == "") {
+            errors.push("tools")
+        }
+        if (this.state.work.year == "") {
+            errors.push("year")
+        }
+        if (this.state.work.downloadlink == "") {
+            errors.push("downloadlink")
+        }
+        if (this.state.work.pictureone == "") {
+            errors.push("pictureone")
+        }
+        if (this.state.work.picturetwo == "") {
+            errors.push("picturetwo")
+        }
+        if (this.state.work.picturethree == "") {
+            errors.push("picturethree")
+        }
+        if (this.state.work.picturefour == "") {
+            errors.push("picturefour")
+        }
+        if (this.state.work.picturefive == "") {
+            errors.push("picturefive")
         }
         this.setState({ errors: errors })
         if (errors.length > 0) {
@@ -96,7 +125,12 @@ export default class EditArticle extends Component {
     }
 
     render() {
-        let { work, isLoaded, error, isManager } = this.state
+        let { work, isLoaded, error, isManager, errors } = this.state
+        let errorMessage
+        if (errors.length > 0) {
+            let errorMessageText = errors.join()
+            errorMessage = <div className='' style={{ color: 'red' }}>{`Error: ${errorMessageText} is blank!`}</div>
+        }
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -136,9 +170,10 @@ export default class EditArticle extends Component {
                     <div className='row'>
                         <Sidebar />
                         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Edit Article</h1>
+                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 className="h2">Edit Article</h1>
                             </div>
+                            {errorMessage}
 
 
 
@@ -211,8 +246,9 @@ export default class EditArticle extends Component {
                                     <textarea type='text' className='form-control text-left mx-1' style={{ width: '85%', height: '200px' }} id="text" name='text' value={this.state.work.text} onChange={this.handleChange} />
                                 </div>
                                 <hr />
-                                <a className='btn btn-primary' style={{ color: 'white' }}>Save</a>
-                                <a href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</a>
+                                <button class="btn btn-primary" type="submit">Save</button>
+                                {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
+                                <Link href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</Link>
                                 {work.id > 0 && (
                                     <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
                                         Delete
