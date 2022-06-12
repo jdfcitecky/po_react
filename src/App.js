@@ -24,6 +24,7 @@ export default class App extends Component {
       jwt: "",
       memberID: "",
       isManager: false,
+      API_IP: process.env.REACT_APP_API_ADDRESS,
     }
     this.handleJWTChange(this.handleJWTChange.bind(this))
     this.handleIsManagerChange(this.handleIsManagerChange.bind(this))
@@ -77,6 +78,13 @@ export default class App extends Component {
 
 
   render() {
+    // let API_Ip = process.env.GO_APP_HOST_IP_ADDRESS
+    // if (API_Ip === undefined) {
+    //   this.setState({ API_IP: 'http://localhost:4000' })
+
+    // }
+    console.log(this.state.API_IP)
+
     console.log(this.state.isManager)
     console.log(this.state.memberID)
     console.log(this.state.jwt)
@@ -88,7 +96,7 @@ export default class App extends Component {
             crossOrigin="anonymous"></link>
           <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"></link>
           <div className='container'>
-            <Header isManager={this.state.isManager} jwt={this.state.jwt} logout={this.logout} />
+            <Header isManager={this.state.isManager} jwt={this.state.jwt} logout={this.logout} API_IP={this.state.API_IP} />
             <Navbar />
           </div>
           <Switch>
@@ -96,13 +104,13 @@ export default class App extends Component {
             {/* <Route path="/work/:id" component={Work}>
             </Route> */}
 
-            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} jwt={this.state.jwt} />}>
+            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/search/:value" component={Search}>
+            <Route path="/search/:value" component={Search} API_IP={this.state.API_IP}>
             </Route>
 
-            <Route path="/search" component={Search}>
+            <Route path="/search" component={Search} API_IP={this.state.API_IP}>
             </Route>
             {/* 
             <Route path="/edit/article/:id" component={EditArticle}>
@@ -120,25 +128,25 @@ export default class App extends Component {
             <Route path="/manage" component={ManageArticles}>
             </Route> */}
 
-            <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
+            <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/edit/article" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
+            <Route path="/edit/article" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/manage/comments" component={(props) => <ManageComments {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
+            <Route path="/manage/comments" component={(props) => <ManageComments {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
+            <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} />}>
+            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} />}>
+            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/signup" component={Signup}>
+            <Route path="/signup" component={Signup} API_IP={this.state.API_IP}>
             </Route>
 
             <Route path="/timeline" component={TimelinePage}>

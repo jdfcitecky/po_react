@@ -30,7 +30,7 @@ export default class Header extends Component {
 
 
     render() {
-        // console.log(this.state.isManager)
+        // console.log('HEADER', this.props.API_IP)
         let loginLink
         if (this.props.jwt === "") {
             loginLink = <Link className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" to="/signin">Sign in</Link>
@@ -56,7 +56,7 @@ export default class Header extends Component {
                             <Link className="blog-header-logo text-dark" to="/">Hsin's Portfilio</Link>
                         </div>
                         <div className="col-4 d-flex justify-content-end align-items-center">
-                            <div class="input-group input-group-sm">
+                            <div className="input-group input-group-sm">
 
                                 <input id="searchBar" value={this.state.searchValue} onChange={(event) => this.setState({ searchValue: event.target.value })} type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                             </div>
