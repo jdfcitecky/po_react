@@ -24,8 +24,7 @@ export default class Commentinput extends Component {
         // client side validation
         let errors = []
         if (this.state.textValue == "") {
-            this.setState({ error: 'Comment is empty!' })
-            errors.push("textValue")
+            errors.push("comment")
         }
         this.setState({ errors: errors })
         if (errors.length > 0) {
@@ -65,7 +64,12 @@ export default class Commentinput extends Component {
 
 
     render() {
-        let { memberID, error } = this.state
+        let { memberID, error, errors } = this.state
+        let errorMessage
+        if (errors.length > 0) {
+            let errorMessageText = errors.join()
+            errorMessage = <div className='' style={{ color: 'red' }}>{`Error: ${errorMessageText} is blank!`}</div>
+        }
         if (error) {
             return <p>Error: {error}</p>
         } else if (memberID == "") {
@@ -85,6 +89,7 @@ export default class Commentinput extends Component {
             <div className='row'>
                 <div className="col-md-12">
                     <div class="coment-bottom bg-white p-2 px-4">
+                        {errorMessage}
                         <form onSubmit={this.handleSubmit} className='d-flex flex-row add-comment-section mt-4 mb-4'>
                             <input
                                 type="hidden"
@@ -93,7 +98,7 @@ export default class Commentinput extends Component {
                                 value={this.state.memberID}
                                 onChange={(event) => this.setState({ memberID: event.target.value })}
                             />
-                            <input value={this.state.textValue} onChange={(event) => this.setState({ textValue: event.target.value })} type="text" class="form-control mr-3" placeholder="Add comment" />
+                            <input name="textvalue" id="textvalue" value={this.state.textValue} onChange={(event) => this.setState({ textValue: event.target.value })} type="text" class="form-control mr-3" placeholder="Add comment" />
                             <button class="btn btn-primary my-2" type="submit">Comment</button>
                             {/* <a className='btn btn-primary my-2' style={{ color: 'white' }}>Comment</a> */}
                         </form>
