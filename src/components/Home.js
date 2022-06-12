@@ -6,7 +6,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <div className='container'>
+                <div className='container fadeIn'>
                     <Jumbotron />
                     <div className='row mb-2'>
                         <Card color='primary' category='Frontend' text='aaaaaa' link='/search/frontend' linkwords='See more' />
@@ -18,7 +18,6 @@ export default class Home extends Component {
                     </div>
 
                 </div>
-                <Timeline />
             </div>
         );
     }
