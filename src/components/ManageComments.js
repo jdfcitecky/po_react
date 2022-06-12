@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Jumbotron from './ui-components/Jumbotron';
-import Card from './ui-components/Card';
 import Sidebar from './ui-components/Sidebar';
 import CommentManage from './ui-components/CommentManage';
+import ReactLoading from 'react-loading';
 import './Manage.css'
 export default class ManageComments extends Component {
     constructor(props) {
@@ -30,7 +29,27 @@ export default class ManageComments extends Component {
             })
 
         } else if (!isLoaded) {
-            return <p>Loading...</p>
+            return <div>
+                <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+                <div className='container'>
+                    <div className='row'>
+                        <Sidebar />
+                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 className="h2">Comments</h1>
+                            </div>
+                            <div className="align-items-center text-center row d-flex justify-content-center mt-5">
+                                <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
+                            </div>
+                            <div className="align-items-center text-center row d-flex justify-content-center">
+                                <p>Loading...</p>
+                            </div>
+                        </main>
+                    </div>
+
+                </div>
+            </div>
+
         }
         return (
 
