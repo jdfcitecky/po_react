@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardWork from './ui-components/CardWork';
 import ReactLoading from 'react-loading';
-export default class Home extends Component {
+class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -13,6 +13,32 @@ export default class Home extends Component {
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount() {
+        console.log("didmounted", this.state.searchValue)
+        // fetch("http://localhost:4000/v1/movie/" + this.props.match.params.id)
+        //     .then((response) => {
+        //         console.log("Status code is", response.status)
+        //         if (response.status != "200") {
+        //             let err = Error
+        //             err.message = "Invalid response code: " + response.status
+        //             this.setState({ error: err })
+        //         }
+        //         return response.json()
+        //     })
+        //     .then((json) => {
+        //         this.setState({
+        //             movie: json.movie,
+        //             isLoaded: true,
+        //         },
+        //             (error) => {
+        //                 this.setState({
+        //                     isLoaded: true,
+        //                     error
+        //                 })
+        //             })
+        //     })
     }
 
     render() {
@@ -62,3 +88,4 @@ export default class Home extends Component {
         );
     }
 }
+export default (props) => <Search {...props} key={props.location.pathname} />
