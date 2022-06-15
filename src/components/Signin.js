@@ -31,53 +31,53 @@ export default class Signin extends Component {
     }
 
     handleSubmit = (evt) => {
-        this.handleJWTChange("aaa")
-        this.handleMemberID("10")
-        this.handleIsManagerChange(true)
-        window.localStorage.setItem("jwt", "aaa")
-        window.localStorage.setItem("memberID", "10")
-        window.localStorage.setItem("isManager", true)
-        this.props.history.push({
-            pathname: "/"
-        })
-        // evt.preventDefault()
-        // let errors = []
-        // if (this.state.email === "") {
-        //     errors.push("email")
-        // }
-        // if (this.state.email === "") {
-        //     errors.push("password")
-        // }
-        // this.setState({ errors: errors })
-        // if (errors.length > 0) {
-        //     return false
-        // }
-        // const data = new FormData(evt.target)
-        // const payload = Object.fromEntries(data.entries())
+        // this.handleJWTChange("aaa")
+        // this.handleMemberID("10")
+        // this.handleIsManagerChange(true)
+        // window.localStorage.setItem("jwt", "aaa")
+        // window.localStorage.setItem("memberID", "10")
+        // window.localStorage.setItem("isManager", true)
+        // this.props.history.push({
+        //     pathname: "/"
+        // })
+        evt.preventDefault()
+        let errors = []
+        if (this.state.email === "") {
+            errors.push("email")
+        }
+        if (this.state.email === "") {
+            errors.push("password")
+        }
+        this.setState({ errors: errors })
+        if (errors.length > 0) {
+            return false
+        }
+        const data = new FormData(evt.target)
+        const payload = Object.fromEntries(data.entries())
 
-        // const requestOptions = {
-        //     method: "POST",
-        //     body: JSON.stringify(payload),
-        // }
-        // fetch("http://localhost:4000/v1/signin", requestOptions)
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         if (data.error) {
-        //             this.setState({
-        //                 alert: {
-        //                     type: "alert-danger",
-        //                     message: data.error.message,
-        //                 }
-        //             })
-        //         } else {
-        //             console.log(data)
-        //             this.handleJWTChange(Object.values(data)[0])
-        //             window.localStorage.setItem("jwt", JSON.stringify(Object.values(data)[0]))
-        //             this.props.history.push({
-        //                 pathname: "/admin"
-        //             })
-        //         }
-        //     })
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/login`, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    this.setState({
+                        alert: {
+                            type: "alert-danger",
+                            message: data.error.message,
+                        }
+                    })
+                } else {
+                    console.log(data)
+                    this.handleJWTChange(Object.values(data)[0])
+                    window.localStorage.setItem("jwt", JSON.stringify(Object.values(data)[0]))
+                    this.props.history.push({
+                        pathname: "/admin"
+                    })
+                }
+            })
 
     }
 
