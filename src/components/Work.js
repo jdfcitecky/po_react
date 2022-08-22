@@ -24,7 +24,7 @@ export default class Work extends Component {
                 comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }],
             },
             isLoaded: true,
-            memberID: this.props.memberID,
+            email: this.props.email,
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
@@ -95,7 +95,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput memberID={this.state.memberID} />
+                    <Commentinput email={this.props.email} />
                     <div className="align-items-center text-center row d-flex justify-content-center mt-5">
                         <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
                     </div>
@@ -159,7 +159,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput memberID={this.state.memberID} />
+                    <Commentinput email={this.state.email} />
                     {comments.map((c) => (
                         <Comment name={c.name} date={c.date} text={c.text} />
                     ))}

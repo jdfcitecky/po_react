@@ -132,7 +132,7 @@ export default class App extends Component {
             {/* <Route path="/work/:id" component={Work}>
             </Route> */}
 
-            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
+            <Route path="/work/:id" component={(props) => <Work {...props} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
             <Route path="/search/:value" component={Search} key={this.state.current} API_IP={this.state.API_IP}>

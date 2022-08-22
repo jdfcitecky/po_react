@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import Comment from './Comment';
 import './Comment.css'
 export default class Commentinput extends Component {
-    state = {
-        textValue: "",
-        memberID: "",
-        error: null,
-        errors: [],
-    }
+    // state = {
+    //     textValue: "",
+    //     email: "",
+    //     error: null,
+    //     errors: [],
+    // }
 
     constructor(props) {
         super(props)
         this.state = {
             textValue: "",
-            memberID: this.props.memberID,
+            email: this.props.email,
             error: null,
             errors: [],
         }
@@ -65,7 +65,7 @@ export default class Commentinput extends Component {
 
 
     render() {
-        let { memberID, error, errors } = this.state
+        let { email, error, errors } = this.state
         let errorMessage
         if (errors.length > 0) {
             let errorMessageText = errors.join()
@@ -73,7 +73,7 @@ export default class Commentinput extends Component {
         }
         if (error) {
             return <p>Error: {error}</p>
-        } else if (memberID == "") {
+        } else if (email == "") {
             return <div className='row'>
                 <div className="col-md-12">
                     <div className="coment-bottom bg-white p-2 px-4">
