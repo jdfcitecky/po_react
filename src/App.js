@@ -80,27 +80,6 @@ export default class App extends Component {
     this.setState({ email: email })
   }
 
-  // updateItemFromLocalStroage = () => {
-  //   let t = window.localStorage.getItem("jwt")
-  //   if (t) {
-  //     if (this.state.jwt === "") {
-  //       this.setState({ jwt: JSON.parse(t) })
-  //     }
-  //   }
-  //   let i = window.localStorage.getItem("email")
-  //   if (i) {
-  //     if (this.state.email === "") {
-  //       this.setState({ email: JSON.parse(i) })
-  //     }
-  //   }
-  //   let is = window.localStorage.getItem("isManager")
-  //   if (is) {
-  //     console.log("manager")
-  //     if (JSON.parse(is) == 1) {
-  //       this.setState({ isManager: 1 })
-  //     }
-  //   }
-  // }
 
   logout = () => {
     console.log("do log out from header")
@@ -143,7 +122,7 @@ export default class App extends Component {
             {/* <Route path="/work/:id" component={Work}>
             </Route> */}
 
-            <Route path="/work/:id" component={(props) => <Work {...props} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
+            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
             <Route path="/search/:value" component={Search} key={this.state.current} API_IP={this.state.API_IP}>

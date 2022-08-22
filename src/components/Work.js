@@ -25,6 +25,7 @@ export default class Work extends Component {
             },
             isLoaded: true,
             email: this.props.email,
+            memberID: this.props.memberID,
         }
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
@@ -95,7 +96,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput email={this.props.email} />
+                    <Commentinput email={this.state.email} memberID={this.state.memberID} workID={this.state.work.id} />
                     <div className="align-items-center text-center row d-flex justify-content-center mt-5">
                         <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
                     </div>
@@ -159,7 +160,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput email={this.state.email} />
+                    <Commentinput email={this.state.email} memberID={this.state.memberID} workID={this.state.work.id} />
                     {comments.map((c) => (
                         <Comment name={c.name} date={c.date} text={c.text} />
                     ))}
