@@ -12,6 +12,7 @@ export default class Commentinput extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            API_IP: process.env.REACT_APP_API_ADDRESS,
             textValue: "",
             email: this.props.email,
             error: null,
@@ -43,24 +44,23 @@ export default class Commentinput extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        // fetch('http://localhost:4000/v1/admin/editmovie', requestOptions)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         if (data.error) {
-        //             this.setState({
-        //                 alert: { type: "alert-danger", message: data.error.message }
-        //             })
-        //         } else {
-        //             this.setState({
-        //                 alert: { type: "alert-success", message: "Changes saved!" }
-
-        //             })
-        //             this.props.history.push({
-        //                 pathname: "/admin",
-        //             })
-        //         }
-        //     })
-
+        fetch(`http://${this.state.API_IP}/work/comment`, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    this.setState({
+                        alert: {
+                            type: "alert-danger",
+                            message: data.error.message,
+                        }
+                    })
+                } else {
+                    console.log(data)
+                    this.props.history.push({
+                        pathname: "/"
+                    })
+                }
+            })
     }
 
 
