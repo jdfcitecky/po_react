@@ -16,6 +16,7 @@ export default class Commentinput extends Component {
             API_IP: process.env.REACT_APP_API_ADDRESS,
             textValue: "",
             id: 0,
+            workName: this.props.workName,
             email: this.props.email,
             memberID: this.props.memberID,
             workID: this.props.workID,
@@ -45,6 +46,7 @@ export default class Commentinput extends Component {
         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
         payload["member_id"] = this.state.memberID
         payload["member_name"] = this.state.email
+        payload["work_name"] = this.state.workName
         payload["work_id"] = Number(this.state.workID)
         console.log("ppppp", payload)
         const requestOptions = {
@@ -64,7 +66,7 @@ export default class Commentinput extends Component {
                     })
                 } else {
                     console.log(data)
-                    this.setState({ sended: true })
+                    this.setState({ sended: true, textValue: "" })
                     setTimeout(() => {
                         this.setState({
                             sended: false

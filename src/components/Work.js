@@ -160,7 +160,7 @@ export default class Work extends Component {
                             </div>
                         </div>
                     </div>
-                    <Commentinput email={this.state.email} memberID={this.state.memberID} workID={this.state.work.id} />
+                    <Commentinput email={this.state.email} memberID={this.state.memberID} workID={this.state.work.id} workName={this.state.work.title} />
                     {comments.map((c) => (
                         <Comment name={c.name} date={c.date} text={c.text} />
                     ))}
