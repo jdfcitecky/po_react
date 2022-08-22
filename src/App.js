@@ -22,13 +22,14 @@ export default class App extends Component {
     super(props)
     this.state = {
       jwt: "",
-      memberID: "",
+      email: "",
       isManager: false,
       API_IP: process.env.REACT_APP_API_ADDRESS,
     }
     this.handleJWTChange(this.handleJWTChange.bind(this))
     this.handleIsManagerChange(this.handleIsManagerChange.bind(this))
     this.handleMemberID(this.handleMemberID.bind(this))
+    this.updateItemFromLocalStroage(this.updateItemFromLocalStroage.bind(this))
     this.logout(this.logout.bind(this))
   }
 
@@ -39,19 +40,22 @@ export default class App extends Component {
         this.setState({ jwt: JSON.parse(t) })
       }
     }
-    let i = window.localStorage.getItem("memberID")
+    let i = window.localStorage.getItem("email")
     if (i) {
-      if (this.state.memberID === "") {
-        this.setState({ memberID: JSON.parse(i) })
+      if (this.state.email === "") {
+        this.setState({ email: JSON.parse(i) })
       }
     }
     let is = window.localStorage.getItem("isManager")
     if (is) {
-      if (JSON.parse(is) === true) {
-        this.setState({ isManager: true })
+      console.log("manager")
+      if (JSON.parse(is) == 1) {
+        this.setState({ isManager: 1 })
       }
     }
   }
+
+
 
   handleJWTChange = (jwt) => {
     this.setState({ jwt: jwt })
@@ -65,6 +69,28 @@ export default class App extends Component {
     this.setState({ memberID: memberID })
   }
 
+  updateItemFromLocalStroage = () => {
+    let t = window.localStorage.getItem("jwt")
+    if (t) {
+      if (this.state.jwt === "") {
+        this.setState({ jwt: JSON.parse(t) })
+      }
+    }
+    let i = window.localStorage.getItem("email")
+    if (i) {
+      if (this.state.email === "") {
+        this.setState({ email: JSON.parse(i) })
+      }
+    }
+    let is = window.localStorage.getItem("isManager")
+    if (is) {
+      console.log("manager")
+      if (JSON.parse(is) == 1) {
+        this.setState({ isManager: 1 })
+      }
+    }
+  }
+
   logout = () => {
     console.log("do log out from header")
     this.setState({ jwt: "" })
@@ -73,6 +99,7 @@ export default class App extends Component {
     window.localStorage.removeItem("jwt")
     window.localStorage.removeItem("memberID")
     window.localStorage.removeItem("isManager")
+    window.localStorage.removeItem("email")
 
   }
 
@@ -88,6 +115,7 @@ export default class App extends Component {
     console.log(this.state.isManager)
     console.log(this.state.memberID)
     console.log(this.state.jwt)
+    // this.updateItemFromLocalStroage()
     return (
       <Router>
         <div className="App">
@@ -143,7 +171,7 @@ export default class App extends Component {
             <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} API_IP={this.state.API_IP} />}>
+            <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} API_IP={this.state.API_IP} updateItemFromLocalStroage={this.updateItemFromLocalStroage} />}>
             </Route>
 
             <Route path="/signup" component={Signup} API_IP={this.state.API_IP}>

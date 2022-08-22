@@ -10,6 +10,7 @@ export default class Header extends Component {
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
         this.logout = this.logout.bind(this)
+        this.updateItemFromLocalStroage = this.updateItemFromLocalStroage.bind(this)
     }
 
     doSearch() {
@@ -27,6 +28,10 @@ export default class Header extends Component {
         this.props.logout()
     }
 
+    updateItemFromLocalStroage() {
+        this.props.updateItemFromLocalStroage()
+    }
+
 
 
     render() {
@@ -38,7 +43,7 @@ export default class Header extends Component {
             loginLink = <Link className="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login" to="/" onClick={this.logout}>Sign out</Link>
         }
         let manageBtn
-        if (this.props.isManager === true) {
+        if (this.props.isManager == 1) {
             manageBtn = <div className="col-4 pt-1">
                 <Link className="text-muted" to="/manage">Manage</Link>
             </div>

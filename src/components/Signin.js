@@ -19,6 +19,7 @@ export default class Signin extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleMemberID = this.handleMemberID.bind(this)
+        this.updateItemFromLocalStroage = this.updateItemFromLocalStroage.bind(this)
     }
 
     handleChange = (evt) => {
@@ -71,8 +72,17 @@ export default class Signin extends Component {
                     })
                 } else {
                     console.log(data)
+                    console.log(data[0])
+                    console.log(data["data"]["tokenKey"])
                     this.handleJWTChange(Object.values(data)[0])
-                    window.localStorage.setItem("jwt", JSON.stringify(Object.values(data)[0]))
+                    window.localStorage.setItem("jwt", JSON.stringify(data["data"]["tokenKey"]))
+                    window.localStorage.setItem("email", JSON.stringify(data["data"]["email"]))
+                    if (data["data"]["isManager"]) {
+                        window.localStorage.setItem("isManager", 1)
+                    }
+                    this.updateItemFromLocalStroage()
+
+
                     this.props.history.push({
                         pathname: "/admin"
                     })
@@ -92,6 +102,10 @@ export default class Signin extends Component {
 
     handleMemberID(memberID) {
         this.props.handleMemberID(memberID)
+    }
+
+    updateItemFromLocalStroage() {
+        this.props.updateItemFromLocalStroage()
     }
 
     render() {
