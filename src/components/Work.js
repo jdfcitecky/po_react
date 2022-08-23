@@ -21,17 +21,116 @@ export default class Work extends Component {
                 picturethree: "http://placekitten.com/g/1000/400",
                 picturefour: "http://placekitten.com/g/1000/400",
                 picturefive: "http://placekitten.com/g/1000/400",
-                comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }],
+
             },
+            comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }],
             isLoaded: true,
             email: this.props.email,
             memberID: this.props.memberID,
+            pageStart: 0,
+            pageLimit: 10,
+            maxPage: 0,
+            showNextPage: false,
+
         }
-        // this.handleChange = this.handleChange.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.getComments = this.getComments.bind(this)
+        this.handleNextPageClick = this.handleNextPageClick.bind(this)
     }
+
+    componentDidMount() {
+        //To retrive comments
+        console.log("workkkk mounted")
+        this.getComments()
+        // const payload = {
+        //     work_id: this.state.work.id,
+        //     page_start: this.state.pageStart,
+        //     page_Limit: this.state.pageLimit,
+        // }
+
+        // const requestOptions = {
+        //     method: "POST",
+        //     body: JSON.stringify(payload),
+        // }
+        // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
+        //     .then((response) => {
+        //         console.log("Status code is", response.status)
+        //         if (response.status != "200") {
+        //             let err = Error
+        //             err.message = "Invalid response code: " + response.status
+        //             this.setState({ error: err })
+        //         }
+        //         return response.json()
+        //     })
+        //     .then((json) => {
+        //         this.setState({
+        //             movie: json.movie,
+        //             isLoaded: true,
+        //         },
+        //             (error) => {
+        //                 this.setState({
+        //                     isLoaded: true,
+        //                     error
+        //                 })
+        //             })
+        //     })
+    }
+
+    handleNextPageClick = () => {
+        if (this.state.pageStart + this.state.pageLimit > this.state.maxPage) {
+            this.setState({
+                pageStart: this.state.pageStart + 1,
+                showNextPage: false,
+            });
+        } else {
+            this.setState({
+                pageStart: this.state.pageStart + this.state.pageLimit,
+            });
+        }
+        this.GetComments()
+    }
+
+    getComments = () => {
+        const payload = {
+            work_id: this.state.work.id,
+            page_start: this.state.pageStart,
+            page_limit: this.state.pageLimit,
+        }
+
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+        }
+        console.log("Gettttt comments")
+        console.log(payload)
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
+            .then((response) => {
+                console.log("Status code is", response.status)
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log(json)
+                console.log(json["data"])
+                this.setState({
+                    comments: json["data"],
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
+            })
+    }
+
+
     render() {
-        var comments = this.state.work.comments
+        var comments = this.state.comments
         var settings = {
             dots: true,
             infinite: true,
@@ -162,7 +261,7 @@ export default class Work extends Component {
                     </div>
                     <Commentinput email={this.state.email} memberID={this.state.memberID} workID={this.state.work.id} workName={this.state.work.title} />
                     {comments.map((c) => (
-                        <Comment name={c.name} date={c.date} text={c.text} />
+                        <Comment name={c.member_name} date={c.updated_at} text={c.text} />
                     ))}
                 </div>
             </div>

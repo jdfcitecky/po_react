@@ -79,7 +79,6 @@ export default class Commentinput extends Component {
 
     render() {
         let { email, sended, error, errors } = this.state
-        console.log("iputttt", this.state.API_IP)
         let errorMessage
         if (errors.length > 0) {
             let errorMessageText = errors.join()
