@@ -48,7 +48,7 @@ export default class Commentinput extends Component {
         payload["member_name"] = this.state.email
         payload["work_name"] = this.state.workName
         payload["work_id"] = Number(this.state.workID)
-        console.log("ppppp", payload)
+        // console.log("ppppp", payload)
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify(payload),
@@ -65,7 +65,7 @@ export default class Commentinput extends Component {
                         }
                     })
                 } else {
-                    console.log(data)
+                    // console.log(data)
                     this.setState({ sended: true, textValue: "" })
                     setTimeout(() => {
                         this.setState({

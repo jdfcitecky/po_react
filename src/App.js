@@ -81,6 +81,8 @@ export default class App extends Component {
   }
 
 
+
+
   logout = () => {
     console.log("do log out from header")
     this.setState({ jwt: "" })
@@ -122,7 +124,7 @@ export default class App extends Component {
             {/* <Route path="/work/:id" component={Work}>
             </Route> */}
 
-            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
+            <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} refresh={this.state.RefreshDOM} />}>
             </Route>
 
             <Route path="/search/:value" component={Search} key={this.state.current} API_IP={this.state.API_IP}>
@@ -178,7 +180,7 @@ export default class App extends Component {
 
 
           </Switch>
-          <Footer />
+          <Footer refresh={this.state.refresh} />
 
         </div>
       </Router >

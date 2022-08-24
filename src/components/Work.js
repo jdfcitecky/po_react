@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Commentinput from './ui-components/Commentinput';
 import Comment from './ui-components/Comment';
+import CommentLoading from './ui-components/CommentLoading';
 import Slider from "react-slick";
 import ReactLoading from 'react-loading';
 
@@ -23,24 +24,28 @@ export default class Work extends Component {
                 picturefive: "http://placekitten.com/g/1000/400",
 
             },
-            comments: [{ name: "Default", date: "2022-06-09", text: "AAAA", isnew: "true", id: "1" }, { name: "Default2", date: "2022-06-09", text: "AAAA", isnew: "false", id: "2" }],
+            comments: [],
             isLoaded: true,
+            commentsGot: false,
             email: this.props.email,
             memberID: this.props.memberID,
             pageStart: 0,
             pageLimit: 10,
             maxPage: 0,
-            showNextPage: false,
+            showNextPage: true,
 
         }
         this.getComments = this.getComments.bind(this)
         this.handleNextPageClick = this.handleNextPageClick.bind(this)
+        this.handleScroll = this.handleScroll.bind(this)
     }
 
     componentDidMount() {
         //To retrive comments
         console.log("workkkk mounted")
         this.getComments()
+        window.addEventListener('scroll', this.handleScroll)
+
         // const payload = {
         //     work_id: this.state.work.id,
         //     page_start: this.state.pageStart,
@@ -81,51 +86,81 @@ export default class Work extends Component {
                 pageStart: this.state.pageStart + 1,
                 showNextPage: false,
             });
+            window.removeEventListener('scroll', this.handleScroll)
+            setTimeout(() => {
+                this.setState({
+                    commentsGot: true
+                })
+            }, 1000);
+            this.setState({
+                pageStart: this.state.pageStart + 1,
+                showNextPage: false,
+            });
         } else {
             this.setState({
                 pageStart: this.state.pageStart + this.state.pageLimit,
             });
         }
-        this.GetComments()
+        this.getComments()
     }
 
     getComments = () => {
-        const payload = {
-            work_id: this.state.work.id,
-            page_start: this.state.pageStart,
-            page_limit: this.state.pageLimit,
-        }
+        if (this.state.showNextPage) {
+            const payload = {
+                work_id: this.state.work.id,
+                page_start: this.state.pageStart,
+                page_limit: this.state.pageLimit,
+            }
 
-        const requestOptions = {
-            method: "POST",
-            body: JSON.stringify(payload),
-        }
-        console.log("Gettttt comments")
-        console.log(payload)
-        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
-            .then((response) => {
-                console.log("Status code is", response.status)
-                if (response.status != "200") {
-                    let err = Error
-                    err.message = "Invalid response code: " + response.status
-                    this.setState({ error: err })
-                }
-                return response.json()
-            })
-            .then((json) => {
-                console.log(json)
-                console.log(json["data"])
-                this.setState({
-                    comments: json["data"],
-                    isLoaded: true,
-                },
-                    (error) => {
-                        this.setState({
-                            isLoaded: true,
-                            error
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+            }
+            console.log("Gettttt comments")
+            console.log(payload)
+            fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
+                .then((response) => {
+                    console.log("Status code is", response.status)
+                    if (response.status != "200") {
+                        let err = Error
+                        err.message = "Invalid response code: " + response.status
+                        this.setState({ error: err })
+                    }
+                    return response.json()
+                })
+                .then((json) => {
+                    console.log(json["count"])
+                    console.log(json["data"])
+                    this.setState({
+                        comments: this.state.comments.concat(json["data"]),
+                        maxPage: json["count"],
+                        commentsGot: true,
+                    },
+                        (error) => {
+                            this.setState({
+                                commentsGot: true,
+                                error
+                            })
                         })
-                    })
-            })
+                })
+        }
+    }
+
+    handleScroll = () => {
+        console.log("scroll")
+        if (this.state.showNextPage) {
+            let clientHeight = document.documentElement.clientHeight; // height of client window
+            let scrollHeight = document.body.scrollHeight; // height of whole page
+            let scrollTop = document.documentElement.scrollTop;
+            console.log(clientHeight, scrollHeight, scrollTop)
+            if (scrollTop + clientHeight >= scrollHeight - 50) {
+                this.setState({
+                    commentsGot: false,
+                })
+                console.log("ready api")
+                this.handleNextPageClick()
+            }
+        }
     }
 
 
@@ -139,7 +174,7 @@ export default class Work extends Component {
             slidesToScroll: 1,
             adaptiveHeight: false,
         };
-        let { isLoaded, error, isManager } = this.state
+        let { commentsGot, isLoaded, error, isManager } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isLoaded) {
@@ -263,6 +298,7 @@ export default class Work extends Component {
                     {comments.map((c) => (
                         <Comment name={c.member_name} date={c.updated_at} text={c.text} />
                     ))}
+                    <CommentLoading show={this.state.commentsGot} />
                 </div>
             </div>
         );
