@@ -36,6 +36,19 @@ body {
     cursor: pointer;
 }
 
+.break-word {
+    word-wrap: break-word;
+}
+
+.link-style {
+    color: #6c757d;
+}
+
+.link-style:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .input-like {
     background-color: #f6f6f6;
     border: none;

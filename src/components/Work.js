@@ -45,39 +45,6 @@ export default class Work extends Component {
         console.log("workkkk mounted")
         this.getComments()
         window.addEventListener('scroll', this.handleScroll)
-
-        // const payload = {
-        //     work_id: this.state.work.id,
-        //     page_start: this.state.pageStart,
-        //     page_Limit: this.state.pageLimit,
-        // }
-
-        // const requestOptions = {
-        //     method: "POST",
-        //     body: JSON.stringify(payload),
-        // }
-        // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
-        //     .then((response) => {
-        //         console.log("Status code is", response.status)
-        //         if (response.status != "200") {
-        //             let err = Error
-        //             err.message = "Invalid response code: " + response.status
-        //             this.setState({ error: err })
-        //         }
-        //         return response.json()
-        //     })
-        //     .then((json) => {
-        //         this.setState({
-        //             movie: json.movie,
-        //             isLoaded: true,
-        //         },
-        //             (error) => {
-        //                 this.setState({
-        //                     isLoaded: true,
-        //                     error
-        //                 })
-        //             })
-        //     })
     }
 
     handleNextPageClick = () => {
@@ -102,6 +69,8 @@ export default class Work extends Component {
             });
         }
         this.getComments()
+        document.documentElement.scrollTop = document.documentElement.scrollTop - 55
+
     }
 
     getComments = () => {
@@ -147,17 +116,14 @@ export default class Work extends Component {
     }
 
     handleScroll = () => {
-        console.log("scroll")
         if (this.state.showNextPage) {
             let clientHeight = document.documentElement.clientHeight; // height of client window
             let scrollHeight = document.body.scrollHeight; // height of whole page
             let scrollTop = document.documentElement.scrollTop;
-            console.log(clientHeight, scrollHeight, scrollTop)
             if (scrollTop + clientHeight >= scrollHeight - 50) {
                 this.setState({
                     commentsGot: false,
                 })
-                console.log("ready api")
                 this.handleNextPageClick()
             }
         }
