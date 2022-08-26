@@ -19,7 +19,7 @@ export default class EditArticle extends Component {
         super(props)
         this.state = {
             work: {
-                id: 1,
+                id: 0,
                 title: "",
                 text: "",
                 tools: "",
@@ -31,7 +31,10 @@ export default class EditArticle extends Component {
                 picturefour: "",
                 picturefive: "",
             },
+            API_IP: this.props.API_IP,
             isLoaded: true,
+            edited: false,
+            deleted: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -41,7 +44,7 @@ export default class EditArticle extends Component {
             }
         }
         this.handleChange = this.handleChange.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange = (evt) => {
@@ -97,38 +100,37 @@ export default class EditArticle extends Component {
         // we passed, so post info
         const data = new FormData(evt.target)
         const payload = Object.fromEntries(data.entries())
-        const myHeaders = new Headers()
+        var myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        console.log(payload)
+        myHeaders.append("token", this.props.jwt)
+        payload["id"] = this.state.work.id
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        // fetch('http://localhost:4000/v1/admin/editmovie', requestOptions)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         if (data.error) {
-        //             this.setState({
-        //                 alert: { type: "alert-danger", message: data.error.message }
-        //             })
-        //         } else {
-        //             this.setState({
-        //                 alert: { type: "alert-success", message: "Changes saved!" }
+        fetch(`http://${this.state.API_IP}/admin/work/save`, requestOptions)
+            .then((response) => {
+                response.json()
+                this.setState({ edited: true, })
+                setTimeout(() => {
+                    this.setState({
+                        edited: false,
+                    })
+                }, 3000);
+                if (this.state.work.id == 0) {
+                    setTimeout(() => {
+                        window.history.go(-1)
+                    }, 2900);
 
-        //             })
-        //             this.props.history.push({
-        //                 pathname: "/admin",
-        //             })
-        //         }
-        //     })
-
+                }
+            })
     }
 
 
     confirmDelete = (e) => {
-        console.log("would delete movie id", this.state.work.id)
+
         confirmAlert({
             title: "Delete Article",
             message: "Are you sure?",
@@ -139,19 +141,30 @@ export default class EditArticle extends Component {
                         const myHeaders = new Headers()
                         myHeaders.append("Content-Type", "application/json")
                         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-                        // fetch("http://localhost:4000/v1/admin/deletemovie/" + this.state.work.id, { method: "GET", headers: myHeaders, })
-                        //     .then(response => response.json)
-                        //     .then(data => {
-                        //         if (data.error) {
-                        //             this.setState({
-                        //                 alert: { type: "alert-danger", message: data.error.message }
-                        //             })
-                        //         } else {
-                        //             this.props.history.push({
-                        //                 pathname: "/admin",
-                        //             })
-                        //         }
-                        //     })
+                        const requestOptions = {
+                            method: 'POST',
+                            body: "",
+                            headers: myHeaders,
+                        }
+                        fetch(`http://${this.state.API_IP}/admin/work/delete`, requestOptions)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.error) {
+                                    this.setState({
+                                        alert: {
+                                            type: "alert-danger",
+                                            message: data.error.message,
+                                        }
+                                    })
+                                } else {
+                                    console.log(data)
+                                    this.setState({ deleted: true, })
+                                    setTimeout(() => {
+                                        window.location.assign(`/manage/articles`);
+                                    }, 6000);
+                                }
+                            })
+
                     }
                 },
                 {
@@ -163,7 +176,7 @@ export default class EditArticle extends Component {
     }
 
     render() {
-        let { work, isLoaded, error, isManager, errors } = this.state
+        let { work, isLoaded, error, isManager, errors, edited } = this.state
         let errorMessage
         if (errors.length > 0) {
             let errorMessageText = errors.join()
@@ -201,7 +214,6 @@ export default class EditArticle extends Component {
 
         }
         return (
-
             <div>
                 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
                 <div className='container'>
@@ -216,13 +228,6 @@ export default class EditArticle extends Component {
 
 
                             <form onSubmit={this.handleSubmit} className='text-left mb-10'>
-                                <input
-                                    type="hidden"
-                                    name="id"
-                                    id="id"
-                                    value={work.id}
-                                    onChange={this.handleChange}
-                                />
                                 <div className='form-group text-left'>
                                     <label htmlFor='title' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Title
@@ -284,7 +289,12 @@ export default class EditArticle extends Component {
                                     <textarea type='text' className='form-control text-left mx-1' style={{ width: '85%', height: '200px' }} id="text" name='text' value={this.state.work.text} onChange={this.handleChange} />
                                 </div>
                                 <hr />
-                                <button className="btn btn-primary" type="submit">Save</button>
+                                {edited == true && (
+                                    <button className="faded btn btn-primary" type="submit" onClick={(e) => { e.preventDefault() }}>Sent</button>
+                                )}
+                                {edited == false && (
+                                    <button className="btn btn-primary" type="submit">Save</button>
+                                )}
                                 {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
                                 <Link href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</Link>
                                 {work.id > 0 && (
