@@ -7,8 +7,9 @@ export default class ManageArticles extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            works: [{ color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "1" }, { color: "primary", category: "Backend", title: "Default", date: "2022-06-09", text: "AAAA", id: "2" }],
-            isLoaded: true,
+            works: [],
+            worksMain: [],
+            isLoaded: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -17,9 +18,76 @@ export default class ManageArticles extends Component {
                 message: "",
             }
         }
+        this.getWorks = this.getWorks.bind(this)
+        this.colorAssign = this.colorAssign.bind(this)
+    }
+    componentDidMount() {
+        //To retrive works
+        this.getWorks()
+    }
+    getWorks = () => {
+        var myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+        myHeaders.append("token", this.props.jwt)
+        const payload = {
+            work_id: 0,
+        }
+
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: myHeaders,
+        }
+        console.log("Gettttt works")
+        console.log(payload)
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/list`, requestOptions)
+            .then((response) => {
+                console.log("Status code is", response.status)
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                this.setState({
+                    works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
+            })
+    }
+    colorAssign = (work) => {
+        switch (work.category) {
+            case "Backend":
+                work["color"] = "primary"
+                break;
+            case "Frontend":
+                work["color"] = "success"
+                break;
+            case "Design":
+                work["color"] = "warning"
+                break;
+            case "M.S.Project":
+                work["color"] = "info"
+                break;
+            default:
+                work["color"] = "secondary"
+                break;
+        }
+        return work
+
     }
     render() {
         let { works, isLoaded, error, isManager } = this.state
+        console.log(works)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -64,7 +132,7 @@ export default class ManageArticles extends Component {
 
                             {works.map((w) => (
                                 <div className='row'>
-                                    <CardManage color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
+                                    <CardManage key={w.id} color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
                                 </div>
 
                             ))}

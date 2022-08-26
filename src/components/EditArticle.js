@@ -21,6 +21,7 @@ export default class EditArticle extends Component {
             work: {
                 id: 0,
                 title: "",
+                category: "",
                 text: "",
                 tools: "",
                 year: "",
@@ -65,6 +66,9 @@ export default class EditArticle extends Component {
         let errors = []
         if (this.state.work.title == "") {
             errors.push("title")
+        }
+        if (this.state.work.category == "") {
+            errors.push("category")
         }
         if (this.state.work.text == "") {
             errors.push("text")
@@ -233,6 +237,12 @@ export default class EditArticle extends Component {
                                         Title
                                     </label>
                                     <input type='text' className='form-control text-left' id="title" name='title' value={this.state.work.title} onChange={this.handleChange} />
+                                </div>
+                                <div className='form-group text-left'>
+                                    <label htmlFor='category' className='form-label mr-2  ml-2 d-block mb-0'>
+                                        Category
+                                    </label>
+                                    <input type='text' className='form-control text-left' id="category" name='category' value={this.state.work.category} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='tools' className='form-label mr-2  ml-2 d-block mb-0'>
