@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import "./Comment.css"
-export default class Comment extends Component {
+export default class CommentManage extends Component {
 
     constructor(props) {
         super(props)

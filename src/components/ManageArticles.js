@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from './ui-components/Sidebar';
 import CardManage from './ui-components/CardManage';
+import Pagination from './ui-components/Pagination';
 import ReactLoading from 'react-loading';
 import './Manage.css'
 export default class ManageArticles extends Component {
@@ -9,6 +10,7 @@ export default class ManageArticles extends Component {
         this.state = {
             works: [],
             worksMain: [],
+            worksShow: [],
             isLoaded: false,
             error: null,
             errors: [],
@@ -25,6 +27,7 @@ export default class ManageArticles extends Component {
         this.getWorks = this.getWorks.bind(this)
         this.colorAssign = this.colorAssign.bind(this)
         this.handleCategory = this.handleCategory.bind(this)
+        this.handlePageStart = this.handlePageStart.bind(this)
     }
     componentDidMount() {
         //To retrive works
@@ -69,6 +72,7 @@ export default class ManageArticles extends Component {
                             error
                         })
                     })
+                this.handleCategory("All")
             })
     }
     colorAssign = (work) => {
@@ -92,17 +96,44 @@ export default class ManageArticles extends Component {
         return work
 
     }
+    handlePageStart = (page) => {
+        console.log("pwpwpwpw", page, page + this.state.pageLimit, this.state.maxPage)
+        if (page + this.state.pageLimit > this.state.maxPage) {
+            console.log("pwpwpwpw", page, page + this.state.pageLimit, this.state.maxPage)
+            this.setState({
+                pageStart: this.state.maxPage,
+                worksShow: this.state.worksMain.slice(page, this.state.pageLimit - page),
+            })
+        } else {
+            this.setState({
+                pageStart: page,
+                worksShow: this.state.worksMain.slice(page, this.state.pageLimit),
+            })
+        }
+    }
 
     handleCategory = (category) => {
         console.log(category)
-        console.log(this.state.works.filter(w => w.category == category))
-        this.setState({
-            category: category,
-            worksMain: this.state.works.filter(w => w.category == category),
-        })
+        if (category == "All") {
+            this.setState({
+                category: category,
+                worksMain: this.state.works,
+                maxPage: this.state.works.length,
+            })
+        } else {
+            let newWorksMain = this.state.works.filter(w => w.category == category)
+            this.setState({
+                category: category,
+                worksMain: newWorksMain,
+                maxPage: newWorksMain.length,
+            })
+
+        }
+        this.handlePageStart(0)
+
     }
     render() {
-        let { works, isLoaded, error, isManager, pageStart, pageLimit, maxPage, worksMain } = this.state
+        let { works, isLoaded, error, isManager, pageStart, pageLimit, maxPage, worksShow } = this.state
         console.log(maxPage)
         if (error) {
             return <p>Error: {error.message}</p>
@@ -156,20 +187,15 @@ export default class ManageArticles extends Component {
                                         </select>
                                     </div>
 
-                                    <ul className="pagination pt-3 ml-2">
-                                        <li key="pagination-p" className="page-item"><a className="page-link" href="#">Previous</a></li>
-                                        <li key="pagination-1" className="page-item"><a className="page-link" href="#">1</a></li>
-                                        <li key="pagination-2" className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li key="pagination-m" className="page-item"><a className="page-link" href="#">...</a></li>
-                                        <li key="pagination-3" className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li key="pagination-n" className="page-item"><a className="page-link" href="#">Next</a></li>
-                                    </ul>
+                                    <Pagination className="pt-3 ml-2" maxPageNumber={this.state.worksMain.length} numberOfRecordsinPage={this.state.pageLimit} handlePageStart={this.handlePageStart} />
+
+
                                 </div>
 
 
                             </div>
 
-                            {worksMain.map((w) => (
+                            {worksShow.map((w) => (
                                 <div className='row'>
                                     <CardManage key={w.id} color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
                                 </div>

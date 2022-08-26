@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ReactLoading from 'react-loading';
 
-export default class Work extends Component {
+export default class CommentLoading extends Component {
     constructor(props) {
         super(props)
         this.state = {
