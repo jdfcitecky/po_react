@@ -102,11 +102,11 @@ export default class App extends Component {
     //   this.setState({ API_IP: 'http://localhost:4000' })
 
     // }
-    console.log(this.state.API_IP)
+    // console.log(this.state.API_IP)
 
-    console.log(this.state.isManager)
-    console.log(this.state.memberID)
-    console.log(this.state.jwt)
+    // console.log(this.state.isManager)
+    // console.log(this.state.memberID)
+    // console.log(this.state.jwt)
     // this.updateItemFromLocalStroage()
     return (
       <Router>

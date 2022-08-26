@@ -16,10 +16,15 @@ export default class ManageArticles extends Component {
             alert: {
                 type: "d-done",
                 message: "",
-            }
+            },
+            category: "All",
+            pageStart: 0,
+            pageLimit: 5,
+            maxPage: 0,
         }
         this.getWorks = this.getWorks.bind(this)
         this.colorAssign = this.colorAssign.bind(this)
+        this.handleCategory = this.handleCategory.bind(this)
     }
     componentDidMount() {
         //To retrive works
@@ -53,7 +58,9 @@ export default class ManageArticles extends Component {
             })
             .then((json) => {
                 this.setState({
+                    worksMain: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
                     works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
+                    maxPage: json["data"].length,
                     isLoaded: true,
                 },
                     (error) => {
@@ -75,7 +82,7 @@ export default class ManageArticles extends Component {
             case "Design":
                 work["color"] = "warning"
                 break;
-            case "M.S.Project":
+            case "M.S Project":
                 work["color"] = "info"
                 break;
             default:
@@ -85,9 +92,18 @@ export default class ManageArticles extends Component {
         return work
 
     }
+
+    handleCategory = (category) => {
+        console.log(category)
+        console.log(this.state.works.filter(w => w.category == category))
+        this.setState({
+            category: category,
+            worksMain: this.state.works.filter(w => w.category == category),
+        })
+    }
     render() {
-        let { works, isLoaded, error, isManager } = this.state
-        console.log(works)
+        let { works, isLoaded, error, isManager, pageStart, pageLimit, maxPage, worksMain } = this.state
+        console.log(maxPage)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -126,11 +142,34 @@ export default class ManageArticles extends Component {
                     <div className='row'>
                         <Sidebar />
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 className="h2">Articles</h1>
+                                <div className='d-flex justify-content-between'>
+                                    <div className='py-3'>
+                                        <select onChange={(e) => { this.handleCategory(e.target.value) }}>
+                                            <option value="All">All</option>
+                                            <option value="Backend">Backend</option>
+                                            <option value="Frontend">Frontend</option>
+                                            <option value="M.S Project">M.S Project</option>
+                                            <option value="Design">Design</option>
+                                        </select>
+                                    </div>
+
+                                    <ul className="pagination pt-3 ml-2">
+                                        <li key="pagination-p" className="page-item"><a className="page-link" href="#">Previous</a></li>
+                                        <li key="pagination-1" className="page-item"><a className="page-link" href="#">1</a></li>
+                                        <li key="pagination-2" className="page-item"><a className="page-link" href="#">2</a></li>
+                                        <li key="pagination-m" className="page-item"><a className="page-link" href="#">...</a></li>
+                                        <li key="pagination-3" className="page-item"><a className="page-link" href="#">3</a></li>
+                                        <li key="pagination-n" className="page-item"><a className="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </div>
+
+
                             </div>
 
-                            {works.map((w) => (
+                            {worksMain.map((w) => (
                                 <div className='row'>
                                     <CardManage key={w.id} color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
                                 </div>
@@ -141,8 +180,8 @@ export default class ManageArticles extends Component {
                         </main>
                     </div>
 
-                </div>
-            </div>
+                </div >
+            </div >
 
         );
     }
