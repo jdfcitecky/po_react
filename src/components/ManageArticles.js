@@ -61,7 +61,6 @@ export default class ManageArticles extends Component {
             })
             .then((json) => {
                 this.setState({
-                    worksMain: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
                     works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
                     maxPage: json["data"].length,
                     isLoaded: true,
@@ -96,40 +95,42 @@ export default class ManageArticles extends Component {
         return work
 
     }
-    handlePageStart = (page) => {
-        console.log("pwpwpwpw", page, page + this.state.pageLimit, this.state.maxPage)
-        if (page + this.state.pageLimit > this.state.maxPage) {
-            console.log("pwpwpwpw", page, page + this.state.pageLimit, this.state.maxPage)
+    handlePageStart = (pageStart, maxPage, worksWithCategory) => {
+        console.log("pwpwpwpw", pageStart, pageStart + this.state.pageLimit, maxPage)
+        if (pageStart + this.state.pageLimit > maxPage) {
+            console.log("pwpwpwpw1", pageStart, pageStart + this.state.pageLimit, maxPage)
             this.setState({
-                pageStart: this.state.maxPage,
-                worksShow: this.state.worksMain.slice(page, this.state.pageLimit - page),
+                pageStart: maxPage,
+                worksShow: worksWithCategory.slice(pageStart, this.state.pageLimit - pageStart),
             })
         } else {
+            console.log("pwpwpwpw2", pageStart, pageStart + this.state.pageLimit, maxPage)
             this.setState({
-                pageStart: page,
-                worksShow: this.state.worksMain.slice(page, this.state.pageLimit),
+                pageStart: pageStart,
+                worksShow: worksWithCategory.slice(pageStart, this.state.pageLimit),
             })
         }
     }
 
-    handleCategory = (category) => {
-        console.log(category)
-        if (category == "All") {
+    handleCategory = (cate) => {
+        let newWorksMain = []
+
+        if (cate == "All") {
+            newWorksMain = this.state.works
             this.setState({
-                category: category,
-                worksMain: this.state.works,
-                maxPage: this.state.works.length,
-            })
-        } else {
-            let newWorksMain = this.state.works.filter(w => w.category == category)
-            this.setState({
-                category: category,
+                category: cate,
                 worksMain: newWorksMain,
                 maxPage: newWorksMain.length,
             })
-
+        } else {
+            newWorksMain = this.state.works.filter(w => w.category == cate)
+            this.setState({
+                category: cate,
+                worksMain: newWorksMain,
+                maxPage: newWorksMain.length,
+            })
         }
-        this.handlePageStart(0)
+        this.handlePageStart(0, newWorksMain.length, newWorksMain)
 
     }
     render() {

@@ -10,7 +10,6 @@ export default class Pagination extends Component {
         }
     }
     render() {
-        console.log("ppppppppp", this.props.className)
         if (true) {
             return <ul className={`pagination ${this.props.className}`}>
                 <li key="pagination-p" className="page-item"><a className="page-link" href="#">Previous</a></li>
