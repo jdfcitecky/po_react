@@ -10,7 +10,9 @@ export default class ManageArticles extends Component {
         this.state = {
             works: [],
             worksMain: [],
+            worksMainLen: 0,
             worksShow: [],
+            A: [1, 2, 3],
             isLoaded: false,
             error: null,
             errors: [],
@@ -19,15 +21,30 @@ export default class ManageArticles extends Component {
                 type: "d-done",
                 message: "",
             },
+
+            pageTags: [1],
+            maxRecordsNumber: 1,
+            numberOfRecordsInPage: 1,
+            currentPage: 1,
+            maxPageForP: 1,
+
             category: "All",
             pageStart: 0,
-            pageLimit: 5,
+            pageLimit: 1,
             maxPage: 0,
         }
         this.getWorks = this.getWorks.bind(this)
         this.colorAssign = this.colorAssign.bind(this)
         this.handleCategory = this.handleCategory.bind(this)
         this.handlePageStart = this.handlePageStart.bind(this)
+        // For pagination
+        this.transformPageStart = this.transformPageStart.bind(this)
+        this.calculateMaxPage = this.calculateMaxPage.bind(this)
+        this.handlePreviousClick = this.handlePreviousClick.bind(this)
+        this.handleNextClick = this.handleNextClick.bind(this)
+        this.handleTagClick = this.handleTagClick.bind(this)
+        this.handlePageTags = this.handlePageTags.bind(this)
+        this.cleanTagSet = this.cleanTagSet.bind(this)
     }
     componentDidMount() {
         //To retrive works
@@ -114,28 +131,148 @@ export default class ManageArticles extends Component {
 
     handleCategory = (cate) => {
         let newWorksMain = []
-
         if (cate == "All") {
             newWorksMain = this.state.works
             this.setState({
                 category: cate,
                 worksMain: newWorksMain,
-                maxPage: newWorksMain.length,
+                worksMainLen: newWorksMain.length,
+                maxPageForP: this.calculateMaxPage(newWorksMain.length, this.state.pageLimit),
+
             })
         } else {
             newWorksMain = this.state.works.filter(w => w.category == cate)
             this.setState({
                 category: cate,
                 worksMain: newWorksMain,
-                maxPage: newWorksMain.length,
+                worksMainLen: newWorksMain.length,
+                maxPageForP: this.calculateMaxPage(newWorksMain.length, this.state.pageLimit),
             })
         }
         this.handlePageStart(0, newWorksMain.length, newWorksMain)
+        this.handlePageTags(1)
 
     }
+    //For pagination
+    calculateMaxPage = (maxRecordsNumber, numberOfRecordsinPage) => {
+        if (maxRecordsNumber < numberOfRecordsinPage) {
+            return 1
+        }
+
+        if (maxRecordsNumber % numberOfRecordsinPage == 0) {
+            return Math.floor(maxRecordsNumber / numberOfRecordsinPage)
+        }
+
+        return Math.ceil(maxRecordsNumber / numberOfRecordsinPage)
+    }
+
+    transformPageStart = (page) => {
+        if (page > this.state.maxRecordsNumber) {
+            page = this.state.maxRecordsNumber
+        }
+        if (page < 0) {
+            page = 0
+        }
+        this.handlePageStart(page, this.state.worksMain.length, this.state.worksMain)
+    }
+
+    handlePreviousClick = () => {
+        console.log("previous in")
+        let newCurrentPage = this.state.currentPage - 1
+        if (newCurrentPage < 1) {
+            return
+        }
+        this.setState({
+            currentPage: newCurrentPage,
+        })
+        console.log("previous new page", newCurrentPage)
+        this.handlePageTags(newCurrentPage)
+        console.log("previous handle tags", newCurrentPage)
+        this.transformPageStart(0 + this.state.numberOfRecordsInPage * (newCurrentPage - 1))
+        console.log("previous handle page view", newCurrentPage)
+    }
+
+    handleNextClick = () => {
+        let newCurrentPage = this.state.currentPage + 1
+        if (newCurrentPage > this.state.maxPageForP) {
+            return
+        }
+        this.setState({
+            currentPage: newCurrentPage,
+        })
+        this.handlePageTags(newCurrentPage)
+        this.transformPageStart(0 + this.state.numberOfRecordsInPage * (newCurrentPage - 1))
+    }
+
+    handleTagClick = (e) => {
+        let newCurrentPage = e.value
+        if (newCurrentPage > this.state.maxPageForP) {
+            return
+        }
+        if (newCurrentPage < 1) {
+            return
+        }
+        this.setState({
+            currentPage: newCurrentPage,
+        })
+        this.handlePageTags(newCurrentPage)
+        this.transformPageStart(0 + this.state.numberOfRecordsinPage * (newCurrentPage - 1))
+    }
+
+    handlePageTags = (currentPage) => {
+
+        let newTags = []
+        newTags.push(this.state.maxPageForP)
+        newTags.push(1)
+        newTags.push(currentPage)
+        if (currentPage - 1 > 1) {
+            newTags.push(currentPage - 1)
+        }
+        if (currentPage + 1 < this.state.maxPageForP) {
+            newTags.push(currentPage + 1)
+        }
+        newTags.concat(this.state.pageTags)
+        let tagSet = newTags.filter((item, index) => newTags.indexOf(item) === index).sort()
+        if (currentPage - 2 >= 2) {
+
+            var arrf = tagSet.slice(0, 1)
+            console.log(arrf)
+            arrf.push("...")
+            console.log(arrf)
+            var arrb = tagSet.slice(1, tagSet.length)
+            console.log(arrb)
+            tagSet = arrf.concat(arrb)
+        }
+        if (currentPage + 2 < this.state.maxPageForP) {
+            var arrf = tagSet.slice(0, tagSet.length - 1)
+            arrf.push("...")
+            var arrb = tagSet.slice(-1)
+            tagSet = arrf.concat(arrb)
+
+        }
+        this.setState({
+            pageTags: tagSet
+        })
+    }
+
+    cleanTagSet = (arr, value) => {
+        var i = 0;
+        while (i < arr.length) {
+            if (arr[i] === value) {
+                arr.splice(i, 1);
+            } else {
+                ++i;
+            }
+        }
+        return arr;
+    }
+
+
     render() {
-        let { works, isLoaded, error, isManager, pageStart, pageLimit, maxPage, worksShow } = this.state
-        console.log(maxPage)
+        let { works, isLoaded, error, isManager, pageStart, pageLimit, worksShow, worksMain, worksMainLen } = this.state
+        console.log("MMMMMM", this.state.worksMain.length)
+        console.log("MMMMMM current page", this.state.currentPage)
+        console.log("MMMMMM page tags", this.state.pageTags)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -167,7 +304,6 @@ export default class ManageArticles extends Component {
             </div>
         }
         return (
-
             <div>
                 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
                 <div className='container'>
@@ -187,9 +323,16 @@ export default class ManageArticles extends Component {
                                             <option value="Design">Design</option>
                                         </select>
                                     </div>
+                                    <div>
+                                        <ul className="pagination pt-3 ml-2">
 
-                                    <Pagination className="pt-3 ml-2" maxPageNumber={this.state.worksMain.length} numberOfRecordsinPage={this.state.pageLimit} handlePageStart={this.handlePageStart} />
-
+                                            <li key="pagination-p" className="page-item"><a className="page-link" href="#" onClick={this.handlePreviousClick}>Previous</a></li>
+                                            {this.state.pageTags.map((t, index) => (
+                                                <li key={`pagination-${index}`} className="page-item"><a className="page-link" href="#" value={t} onClick={this.handleTagClick}>{t}</a></li>
+                                            ))}
+                                            <li key="pagination-n" className="page-item"><a className="page-link" href="#" onClick={this.handleNextClick}>Next</a></li>
+                                        </ul>
+                                    </div>
 
                                 </div>
 
