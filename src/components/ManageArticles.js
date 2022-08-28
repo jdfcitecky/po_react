@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Sidebar from './ui-components/Sidebar';
 import CardManage from './ui-components/CardManage';
-import Pagination from './ui-components/Pagination';
 import ReactLoading from 'react-loading';
 import './Manage.css'
+import './ManageArticles.css'
 export default class ManageArticles extends Component {
     constructor(props) {
         super(props)
@@ -21,14 +21,14 @@ export default class ManageArticles extends Component {
             },
             category: "All",
             pageStart: 0,
-            pageLimit: 1,
+            pageLimit: 3,
             maxPage: 0,
             // For pagination
             pageTags: [1],
             maxRecordsNumber: 1,
-            numberOfRecordsInPage: 1,
+            numberOfRecordsInPage: 3,
             currentPage: 1,
-            maxPageForP: 1,
+            maxPageForP: 3,
             enableClick: true,
 
 
@@ -51,7 +51,7 @@ export default class ManageArticles extends Component {
         this.getWorks()
     }
     getWorks = () => {
-        var myHeaders = new Headers()
+        let myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
         myHeaders.append("token", this.props.jwt)
@@ -64,11 +64,8 @@ export default class ManageArticles extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        console.log("Gettttt works")
-        console.log(payload)
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/list`, requestOptions)
             .then((response) => {
-                console.log("Status code is", response.status)
                 if (response.status != "200") {
                     let err = Error
                     err.message = "Invalid response code: " + response.status
@@ -170,18 +167,14 @@ export default class ManageArticles extends Component {
         if (page < 0) {
             page = 0
         }
-        let len =
-            console.log("transformPageStart", page, this.state.worksMain.length, this.state.worksMain)
         this.handlePageStart(page, this.state.worksMain.length, this.state.worksMain)
     }
 
     handlePreviousClick = () => {
-        console.log("previous hit")
         if (this.state.enableClick) {
             this.setState({
                 enableClick: false,
             })
-            console.log("previoussss in")
             let newCurrentPage = this.state.currentPage - 1
             if (newCurrentPage < 1) {
                 setTimeout(() => {
@@ -194,11 +187,8 @@ export default class ManageArticles extends Component {
             this.setState({
                 currentPage: newCurrentPage,
             })
-            console.log("previous new page", newCurrentPage)
             this.handlePageTags(newCurrentPage, this.state.maxPageForP)
-            console.log("previous handle tags", newCurrentPage)
             this.transformPageStart(0 + this.state.numberOfRecordsInPage * (newCurrentPage - 1))
-            console.log("previous handle page view", newCurrentPage)
             setTimeout(() => {
                 this.setState({
                     enableClick: true,
@@ -209,14 +199,11 @@ export default class ManageArticles extends Component {
     }
 
     handleNextClick = () => {
-        console.log("Nexxxxxt hit")
         if (this.state.enableClick) {
-            console.log("Nexxxxxt hit in ffffff")
             this.setState({
                 enableClick: false,
             })
             let newCurrentPage = this.state.currentPage + 1
-            console.log("Nexxxxxt hit in ffffff", newCurrentPage)
             if (newCurrentPage > this.state.maxPageForP) {
                 setTimeout(() => {
                     this.setState({
@@ -228,23 +215,18 @@ export default class ManageArticles extends Component {
             this.setState({
                 currentPage: newCurrentPage,
             })
-            console.log("Nexxxxxt hit in ffffff SET STATE", newCurrentPage)
             this.handlePageTags(newCurrentPage, this.state.maxPageForP)
-            console.log("Nexxxxxt hit in ffffff HANDLE TAG", newCurrentPage)
             this.transformPageStart(0 + this.state.numberOfRecordsInPage * (newCurrentPage - 1))
-            console.log("Nexxxxxt hit in ffffff HANDLE PAGE START", newCurrentPage)
             setTimeout(() => {
                 this.setState({
                     enableClick: true,
                 })
             }, 1000);
-            console.log("Nexxxxxt ENNNND", newCurrentPage)
         }
         return
     }
 
     handleTagClick = (e) => {
-        console.log("taggggg hit")
         if (this.state.enableClick) {
             this.setState({
                 enableClick: false,
@@ -290,7 +272,6 @@ export default class ManageArticles extends Component {
     }
 
     handlePageTags = (currentPage, endPage) => {
-        console.log("HHHandle TTTaggggs", currentPage, endPage)
         let newTags = []
         newTags.push(endPage)
         newTags.push(1)
@@ -301,9 +282,9 @@ export default class ManageArticles extends Component {
                 newTags.push(currentPage - 2)
             }
         }
-        if (currentPage + 1 < this.state.maxPageForP) {
+        if (currentPage + 1 < endPage) {
             newTags.push(currentPage + 1)
-            if (currentPage + 2 < this.state.maxPageForP) {
+            if (currentPage + 2 < endPage) {
                 newTags.push(currentPage + 2)
             }
         }
@@ -311,28 +292,35 @@ export default class ManageArticles extends Component {
         let tagSet = newTags.filter((item, index) => newTags.indexOf(item) === index).sort()
         if (currentPage - 2 >= 2) {
 
-            var arrf = tagSet.slice(0, 1)
-            console.log(arrf)
+            let arrf = tagSet.slice(0, 1)
             arrf.push("...")
-            console.log(arrf)
-            var arrb = tagSet.slice(1, tagSet.length)
-            console.log(arrb)
+            let arrb = tagSet.slice(1, tagSet.length)
             tagSet = arrf.concat(arrb)
         }
-        if (currentPage + 2 < this.state.maxPageForP) {
-            var arrf = tagSet.slice(0, tagSet.length - 1)
+        if (currentPage + 2 < endPage) {
+            let arrf = tagSet.slice(0, tagSet.length - 1)
             arrf.push("...")
-            var arrb = tagSet.slice(-1)
+            let arrb = tagSet.slice(-1)
             tagSet = arrf.concat(arrb)
+        }
+        // To show current page => let current page to be an object.
+        let tagSetObj = []
+        for (let i = 0; i < tagSet.length; i++) {
+            if (tagSet[i] === currentPage) {
+                tagSetObj[i] = [currentPage, "currentPageTag"]
+            } else {
+                tagSetObj[i] = [tagSet[i], ""]
+            }
 
         }
         this.setState({
-            pageTags: tagSet
+            pageTags: tagSetObj
         })
+
     }
 
     cleanTagSet = (arr, value) => {
-        var i = 0;
+        let i = 0;
         while (i < arr.length) {
             if (arr[i] === value) {
                 arr.splice(i, 1);
@@ -345,15 +333,10 @@ export default class ManageArticles extends Component {
 
 
     render() {
-        let { works, isLoaded, error, isManager, pageStart, pageLimit, worksShow, worksMain } = this.state
-        console.log("MMMMMM", this.state.worksMain.length)
-        console.log("MMMMMM current page", this.state.currentPage)
-        console.log("MMMMMM page tags", this.state.pageTags)
-
+        let { isLoaded, error, isManager, worksShow } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
-            console.log("push to index")
             this.props.history.push({
                 pathname: "/",
             })
@@ -405,7 +388,7 @@ export default class ManageArticles extends Component {
 
                                         <li key="pagination-p" className="page-item"><div className="page-link" onClick={this.handlePreviousClick}>Previous</div></li>
                                         {this.state.pageTags.map((t, index) => (
-                                            <li key={`pagination-${index}`} className="page-item"><div className={`page-link page-${t}`} value={t} onClick={this.handleTagClick}>{t}</div></li>
+                                            <li key={`pagination-${index}`} className="page-item"><div className={`page-link page-${t[0]} ${t[1]}`} value={t[0]} onClick={this.handleTagClick}>{t[0]}</div></li>
                                         ))}
                                         <li key="pagination-n" className="page-item"><div className="page-link" onClick={this.handleNextClick}>Next</div></li>
                                     </ul>
