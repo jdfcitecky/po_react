@@ -33,7 +33,7 @@ export default class EditArticle extends Component {
                 picturefive: "",
             },
             API_IP: this.props.API_IP,
-            isLoaded: true,
+            isLoaded: false,
             edited: false,
             deleted: false,
             error: null,
@@ -46,6 +46,75 @@ export default class EditArticle extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.getWork = this.getWork.bind(this)
+    }
+
+    componentDidMount() {
+        //To retrive work
+        let id = Number(this.props.match.params.id)
+        if (id != undefined) {
+            this.setState({
+                work: {
+                    id: id,
+                    title: "",
+                    category: "",
+                    text: "",
+                    tools: "",
+                    year: "",
+                    downloadlink: "",
+                    pictureone: "",
+                    picturetwo: "",
+                    picturethree: "",
+                    picturefour: "",
+                    picturefive: "",
+                },
+            })
+            this.getWork(id)
+        }
+        this.setState({
+            isLoaded: true,
+        })
+
+    }
+    getWork = (id) => {
+        let myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+        myHeaders.append("token", this.props.jwt)
+        const payload = {
+            id: id,
+        }
+
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: myHeaders,
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/show`, requestOptions)
+            .then((response) => {
+                console.log("RESPONSE", response)
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log("RESPONSE", json)
+                console.log("RESPONSE", json.data)
+                console.log("RESPONSE", json.data.work)
+                this.setState({
+                    work: json.data.work,
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
+            })
     }
 
     handleChange = (evt) => {
