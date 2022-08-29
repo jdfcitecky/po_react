@@ -90,7 +90,7 @@ export default class CommentManage extends Component {
     }
     render() {
 
-        if (this.props.isnew === "true") {
+        if (this.props.isnew === true) {
             return (
                 <div className='row'>
                     <div className="col-md-12">
