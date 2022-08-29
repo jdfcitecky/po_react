@@ -35,7 +35,7 @@ export default class EditArticle extends Component {
             API_IP: this.props.API_IP,
             isLoaded: false,
             edited: false,
-            deleted: false,
+            deleting: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -193,17 +193,16 @@ export default class EditArticle extends Component {
                     })
                 }, 3000);
                 if (this.state.work.id == 0) {
-                    setTimeout(() => {
-                        window.history.go(-1)
-                    }, 2900);
-
+                    this.createdAlert()
+                } else {
+                    this.savedAlert()
                 }
             })
     }
 
 
     confirmDelete = (e) => {
-
+        e.preventDefault()
         confirmAlert({
             title: "Delete Article",
             message: "Are you sure?",
@@ -211,33 +210,34 @@ export default class EditArticle extends Component {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        const myHeaders = new Headers()
+                        this.setState({ deleting: true, })
+                        let myHeaders = new Headers()
                         myHeaders.append("Content-Type", "application/json")
                         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+                        myHeaders.append("token", this.props.jwt)
+                        const payload = {
+                            id: this.state.work.id,
+                        }
+
                         const requestOptions = {
-                            method: 'POST',
-                            body: "",
+                            method: "POST",
+                            body: JSON.stringify(payload),
                             headers: myHeaders,
                         }
-                        fetch(`http://${this.state.API_IP}/admin/work/delete`, requestOptions)
-                            .then((response) => response.json())
-                            .then((data) => {
-                                if (data.error) {
+                        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/delete`, requestOptions)
+                            .then((response) => {
+                                console.log("RESPONSE", response)
+                                if (response.status != "200") {
+                                    let err = Error
+                                    err.message = "Invalid response code: " + response.status
                                     this.setState({
-                                        alert: {
-                                            type: "alert-danger",
-                                            message: data.error.message,
-                                        }
+                                        error: err,
+                                        deleting: false
                                     })
-                                } else {
-                                    console.log(data)
-                                    this.setState({ deleted: true, })
-                                    setTimeout(() => {
-                                        window.location.assign(`/manage/articles`);
-                                    }, 6000);
+                                    return
                                 }
+                                this.deletedAlert()
                             })
-
                     }
                 },
                 {
@@ -248,8 +248,63 @@ export default class EditArticle extends Component {
         })
     }
 
+    deletedAlert = (e) => {
+
+        confirmAlert({
+            title: "Article deleted",
+            message: "",
+            buttons: [
+                {
+                    label: 'Back to list',
+                    onClick: () => {
+                        console.log("BACK TO LIST")
+                        window.history.go(-1);
+                    }
+                },
+            ]
+        })
+    }
+
+    createdAlert = (e) => {
+
+        confirmAlert({
+            title: "Article created",
+            message: "",
+            buttons: [
+                {
+                    label: 'Back to list',
+                    onClick: () => {
+                        window.history.go(-1);
+                    }
+                },
+            ]
+        })
+    }
+
+    savedAlert = (e) => {
+
+        confirmAlert({
+            title: "Article saved",
+            message: "",
+            buttons: [
+                {
+                    label: 'Back to list',
+                    onClick: () => {
+                        window.history.go(-1);
+                    }
+                },
+                {
+                    label: 'Stay',
+                    onClick: () => {
+
+                    }
+                },
+            ]
+        })
+    }
+
     render() {
-        let { work, isLoaded, error, isManager, errors, edited } = this.state
+        let { work, isLoaded, error, isManager, errors, edited, deleting } = this.state
         let errorMessage
         if (errors.length > 0) {
             let errorMessageText = errors.join()
@@ -376,9 +431,14 @@ export default class EditArticle extends Component {
                                 )}
                                 {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
                                 <Link href="/manage/articles" className="btn btn-warning ms-1 ml-1" style={{ color: 'white' }}>Cancel</Link>
-                                {work.id > 0 && (
-                                    <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                {work.id > 0 && deleting == false && (
+                                    <a href='' onClick={(e) => this.confirmDelete(e)} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
                                         Delete
+                                    </a>
+                                )}
+                                {deleting == true && (
+                                    <a href='' className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                        Deleteing...
                                     </a>
                                 )}
                             </form>

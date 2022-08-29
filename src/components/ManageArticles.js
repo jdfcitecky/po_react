@@ -110,12 +110,24 @@ export default class ManageArticles extends Component {
 
     }
     handlePageStart = (pageStart, maxPage, worksWithCategory) => {
-        if (pageStart + this.state.pageLimit > maxPage) {
+        console.log("HANDLE PAGE START", pageStart, maxPage, worksWithCategory)
+        if (pageStart == maxPage - 1) {
+            console.log("HANDLE PAGE START 1", pageStart, maxPage, worksWithCategory)
+            console.log("HANDLE PAGE START 1", worksWithCategory.slice(pageStart))
+            this.setState({
+                pageStart: maxPage,
+                worksShow: worksWithCategory.slice(pageStart),
+            })
+        } else if (pageStart + this.state.pageLimit > maxPage) {
+            console.log("HANDLE PAGE START 2", pageStart, maxPage, worksWithCategory)
+            console.log("HANDLE PAGE START 2", worksWithCategory.slice(pageStart, maxPage))
             this.setState({
                 pageStart: maxPage,
                 worksShow: worksWithCategory.slice(pageStart, this.state.pageLimit),
             })
         } else {
+            console.log("HANDLE PAGE START 3", pageStart, maxPage, worksWithCategory)
+            console.log("HANDLE PAGE START 3", worksWithCategory.slice(pageStart, pageStart + this.state.pageLimit))
             this.setState({
                 pageStart: pageStart,
                 worksShow: worksWithCategory.slice(pageStart, pageStart + this.state.pageLimit),
