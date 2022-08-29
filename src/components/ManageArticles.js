@@ -118,7 +118,7 @@ export default class ManageArticles extends Component {
         } else if (pageStart + this.state.pageLimit > maxPage) {
             this.setState({
                 pageStart: maxPage,
-                worksShow: worksWithCategory.slice(pageStart, this.state.pageLimit),
+                worksShow: worksWithCategory.slice(pageStart, maxPage),
             })
         } else {
             this.setState({
