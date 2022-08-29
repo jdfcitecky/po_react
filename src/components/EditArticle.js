@@ -226,7 +226,7 @@ export default class EditArticle extends Component {
                         }
                         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/delete`, requestOptions)
                             .then((response) => {
-                                console.log("RESPONSE", response)
+
                                 if (response.status != "200") {
                                     let err = Error
                                     err.message = "Invalid response code: " + response.status

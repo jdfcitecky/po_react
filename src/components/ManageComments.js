@@ -326,8 +326,7 @@ export default class ManageComments extends Component {
 
     render() {
         let { comments, commentsShow, isLoaded, error, isManager } = this.state
-        console.log("RENDER", comments)
-        console.log("RENDER", commentsShow)
+
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -390,7 +389,7 @@ export default class ManageComments extends Component {
                             </div>
 
                             {commentsShow.map((c) => (
-                                <CommentManage name={c.member_name} date={c.updated_at} text={c.text} isnew={c.is_new} jwt={this.state.jwt} id={c.id} />
+                                <CommentManage name={c.member_name} date={c.updated_at} text={c.text} isNew={c.is_new} jwt={this.state.jwt} commentId={c.id} />
                             ))}
 
 

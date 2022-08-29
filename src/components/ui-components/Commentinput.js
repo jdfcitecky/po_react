@@ -104,7 +104,7 @@ export default class Commentinput extends Component {
                     <div className="coment-bottom bg-white p-2 px-4">
                         <form className='d-flex flex-row add-comment-section mt-4 mb-4'>
                             <div type="text" className="input-like mr-3" placeholder="Add comment" >Your comment is waiting review</div>
-                            <button className="faded btn btn-success my-2 " type="text" onClick={(e) => { e.preventDefault() }}>success</button>
+                            <button className="faded btn btn-success my-2 " type="text" onClick={(e) => { e.preventDefault() }}>Success</button>
                         </form>
 
                     </div>

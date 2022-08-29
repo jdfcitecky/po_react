@@ -6,12 +6,20 @@ export default class CommentManage extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            deleting: false,
+            deleted: false,
+            reviewing: false,
+            reviewed: false,
+            isNew: true,
+        }
 
     }
 
     handleSubmit = (evt) => {
         console.log('submit')
         evt.preventDefault()
+        this.setState({ reviewing: true, })
         // client side validation
         let errors = []
         if (this.props.jwt == "") {
@@ -27,35 +35,43 @@ export default class CommentManage extends Component {
         const myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        console.log(payload)
+        myHeaders.append("token", this.props.jwt)
+        payload["id"] = Number(this.props.commentId)
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        // fetch('http://localhost:4000/v1/admin/editmovie', requestOptions)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         if (data.error) {
-        //             this.setState({
-        //                 alert: { type: "alert-danger", message: data.error.message }
-        //             })
-        //         } else {
-        //             this.setState({
-        //                 alert: { type: "alert-success", message: "Changes saved!" }
-
-        //             })
-        //             this.props.history.push({
-        //                 pathname: "/admin",
-        //             })
-        //         }
-        //     })
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/comment/review`, requestOptions)
+            .then((response) => {
+                console.log("REVIEW", response)
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({
+                        error: err,
+                        reviewing: false
+                    })
+                    return
+                }
+                this.setState({
+                    reviewing: false,
+                    reviewed: true,
+                    isNew: false,
+                })
+                setTimeout(() => {
+                    this.setState({
+                        reviewed: false,
+                    })
+                }, 1000);
+            })
 
     }
 
 
     confirmDelete = (e) => {
-        console.log("would delete comment id", this.props.id)
+        e.preventDefault()
+        console.log("would delete comment id", this.props.commentId)
         confirmAlert({
             title: "Delete Comment",
             message: "Are you sure?",
@@ -63,22 +79,35 @@ export default class CommentManage extends Component {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        const myHeaders = new Headers()
+                        this.setState({ deleting: true, })
+                        let myHeaders = new Headers()
                         myHeaders.append("Content-Type", "application/json")
                         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-                        // fetch("http://localhost:4000/v1/admin/deletemovie/" + this.state.work.id, { method: "GET", headers: myHeaders, })
-                        //     .then(response => response.json)
-                        //     .then(data => {
-                        //         if (data.error) {
-                        //             this.setState({
-                        //                 alert: { type: "alert-danger", message: data.error.message }
-                        //             })
-                        //         } else {
-                        //             this.props.history.push({
-                        //                 pathname: "/admin",
-                        //             })
-                        //         }
-                        //     })
+                        myHeaders.append("token", this.props.jwt)
+
+                        const payload = {
+                            id: Number(this.props.commentId),
+                        }
+
+                        const requestOptions = {
+                            method: "POST",
+                            body: JSON.stringify(payload),
+                            headers: myHeaders,
+                        }
+                        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/comment/delete`, requestOptions)
+                            .then((response) => {
+
+                                if (response.status != "200") {
+                                    let err = Error
+                                    err.message = "Invalid response code: " + response.status
+                                    this.setState({
+                                        error: err,
+                                        deleting: false
+                                    })
+                                    return
+                                }
+                                this.setState({ deleted: true })
+                            })
                     }
                 },
                 {
@@ -89,8 +118,65 @@ export default class CommentManage extends Component {
         })
     }
     render() {
+        if (this.state.deleted === true) {
+            return (
+                <div className='row'>
+                    <div className="col-md-12">
+                        <div className="commented-section mt-2">
+                            <div className="d-flex flex-row align-items-center commented-user mb-2">
+                                <h5 className="mr-2">{""}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{""}</span></div>
+                            <div className="comment-text-sm text-left" style={{ color: 'red', }}><span>{"This comment has been deleted"}</span></div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            )
+        }
+        if (this.state.reviewed === true) {
+            return (
+                <div className='row'>
+                    <div className="col-md-12">
+                        <div className="commented-section mt-2">
+                            <div className="d-flex flex-row align-items-center commented-user mb-2">
+                                <h5 className="mr-2">{""}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{""}</span></div>
+                            <div className="comment-text-sm text-left" style={{ color: 'green', }}><span>{"This comment has been reviewed"}</span></div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            )
+        }
+        if (this.state.isNew === false) {
+            return (<div className='row'>
+                <div className="col-md-12">
+                    <div className="commented-section mt-2">
+                        <div className="d-flex flex-row align-items-center commented-user mb-2">
+                            <h5 className="mr-2">{this.props.name}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{this.props.date}</span></div>
+                        <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
+                        <div className="d-flex flex-row mt-3">
+                            <form onSubmit={this.handleSubmit} className=''>
 
-        if (this.props.isnew === true) {
+                                {this.state.deleting == false && (
+                                    <a href='' onClick={(e) => this.confirmDelete(e)} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                        Delete
+                                    </a>
+                                )}
+                                {this.state.deleting == true && (
+                                    <a href='' onClick={(e) => { e.preventDefault() }} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                        Deleting...
+                                    </a>
+                                )}
+                            </form>
+
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            )
+        }
+
+        if (this.props.isNew === true) {
             return (
                 <div className='row'>
                     <div className="col-md-12">
@@ -100,18 +186,25 @@ export default class CommentManage extends Component {
                             <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
                             <div className="d-flex flex-row mt-3">
                                 <form onSubmit={this.handleSubmit} className=''>
-                                    <input
-                                        type="hidden"
-                                        name="id"
-                                        id="id"
-                                        value={this.props.id}
-                                    />
 
-                                    <button className="btn btn-success" type="submit">Approve</button>
+                                    {this.state.reviewing == false && (
+                                        <button className="btn btn-success" type="submit">Approve</button>
+                                    )}
+                                    {this.state.reviewing == true && (
+                                        <button className="btn btn-success" type="">Reviewing...</button>
+                                    )}
                                     {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
-                                    <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
-                                        Delete
-                                    </a>
+                                    {this.state.deleting == false && (
+                                        <a href='' onClick={(e) => this.confirmDelete(e)} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                            Delete
+                                        </a>
+                                    )}
+                                    {this.state.deleting == true && (
+                                        <a href='' onClick={(e) => { e.preventDefault() }} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                            Deleting...
+                                        </a>
+                                    )}
+
                                 </form>
                                 {/* <button type="button" className="btn btn-success mx-2">Approve</button>
                                 <button type="button" className="btn btn-danger">Delete</button> */}
@@ -132,20 +225,19 @@ export default class CommentManage extends Component {
                         <div className="comment-text-sm text-left"><span>{this.props.text}</span></div>
                         <div className="d-flex flex-row mt-3">
                             <form onSubmit={this.handleSubmit} className=''>
-                                <input
-                                    type="hidden"
-                                    name="id"
-                                    id="id"
-                                    value={this.props.id}
-                                />
 
-                                {/* <a className='btn btn-primary' style={{ color: 'white' }}>Save</a> */}
-                                <a href='#!' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
-                                    Delete
-                                </a>
+                                {this.state.deleting == false && (
+                                    <a href='' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                        Delete
+                                    </a>
+                                )}
+                                {this.state.deleting == true && (
+                                    <a href='' onClick={(e) => { e.preventDefault() }} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                        Deleting...
+                                    </a>
+                                )}
                             </form>
-                            {/* <button type="button" className="btn btn-success mx-2">Approve</button>
-                        <button type="button" className="btn btn-danger">Delete</button> */}
+
                         </div>
                     </div>
                     <hr />
