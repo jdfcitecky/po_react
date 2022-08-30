@@ -16,11 +16,16 @@ export default class CommentManage extends Component {
             isNew: true,
         }
         this.deleteFromCommentsArrays = this.deleteFromCommentsArrays.bind(this)
+        this.updateFromCommentsArray = this.updateFromCommentsArray.bind(this)
 
     }
 
     deleteFromCommentsArrays = (id) => {
         this.props.deleteFromCommentsArrays(id)
+    }
+
+    updateFromCommentsArray = (id) => {
+        this.props.updateFromCommentsArray(id)
     }
 
     handleSubmit = (evt) => {
@@ -66,6 +71,7 @@ export default class CommentManage extends Component {
                     reviewed: true,
                     isNew: false,
                 })
+                this.updateFromCommentsArray(Number(this.props.commentId))
                 setTimeout(() => {
                     this.setState({
                         reviewed: false,

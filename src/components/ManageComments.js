@@ -98,6 +98,12 @@ export default class ManageComments extends Component {
         })
     }
     updateFromCommentsArray = (id) => {
+        console.log("Review", id, this.reviewedArray(this.state.comments, id), this.reviewedArray(this.state.commentsMain, id), this.reviewedArray(this.state.commentsShow, id))
+        this.setState({
+            comments: this.reviewedArray(this.state.comments, id),
+            commentsMain: this.reviewedArray(this.state.commentsMain, id),
+            commentsShow: this.reviewedArray(this.state.commentsShow, id),
+        })
 
     }
     removeItemOnce = (arr, value) => {
@@ -105,6 +111,18 @@ export default class ManageComments extends Component {
         while (i < arr.length) {
             if (arr[i].id === value) {
                 arr.splice(i, 1);
+                return arr
+            } else {
+                ++i;
+            }
+        }
+        return arr;
+    }
+    reviewedArray = (arr, value) => {
+        let i = 0
+        while (i < arr.length) {
+            if (arr[i].id === value) {
+                arr[i].is_new = false
                 return arr
             } else {
                 ++i;
@@ -417,7 +435,7 @@ export default class ManageComments extends Component {
                             </div>
 
                             {commentsShow.map((c) => (
-                                <CommentManage key={c.id} name={c.member_name} date={c.updated_at} text={c.text} isNew={c.is_new} jwt={this.state.jwt} commentId={c.id} deleteFromCommentsArrays={this.deleteFromCommentsArrays} />
+                                <CommentManage key={c.id} name={c.member_name} date={c.updated_at} text={c.text} isNew={c.is_new} jwt={this.state.jwt} commentId={c.id} deleteFromCommentsArrays={this.deleteFromCommentsArrays} updateFromCommentsArray={this.updateFromCommentsArray} />
                             ))}
 
 
