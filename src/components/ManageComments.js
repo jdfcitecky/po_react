@@ -34,6 +34,9 @@ export default class ManageComments extends Component {
         this.getComments = this.getComments.bind(this)
         this.handleCategory = this.handleCategory.bind(this)
         this.handlePageStart = this.handlePageStart.bind(this)
+        //Edit comments array
+        this.deleteFromCommentsArrays = this.deleteFromCommentsArrays.bind(this)
+        this.removeItemOnce = this.removeItemOnce.bind(this)
         // For pagination
         this.transformPageStart = this.transformPageStart.bind(this)
         this.calculateMaxPage = this.calculateMaxPage.bind(this)
@@ -86,6 +89,31 @@ export default class ManageComments extends Component {
                 this.handleCategory("All")
             })
     }
+    deleteFromCommentsArrays = (id) => {
+        console.log("DELETE", id, this.removeItemOnce(this.state.comments, id), this.removeItemOnce(this.state.commentsMain, id), this.removeItemOnce(this.state.commentsShow, id))
+        this.setState({
+            comments: this.removeItemOnce(this.state.comments, id),
+            commentsMain: this.removeItemOnce(this.state.commentsMain, id),
+            commentsShow: this.removeItemOnce(this.state.commentsShow, id),
+        })
+    }
+    updateFromCommentsArray = (id) => {
+
+    }
+    removeItemOnce = (arr, value) => {
+        let i = 0
+        while (i < arr.length) {
+            if (arr[i].id === value) {
+                arr.splice(i, 1);
+                return arr
+            } else {
+                ++i;
+            }
+        }
+        return arr;
+    }
+
+
     handlePageStart = (pageStart, maxPage, commentsWithCategory) => {
         if (pageStart == maxPage - 1) {
             this.setState({
@@ -326,7 +354,7 @@ export default class ManageComments extends Component {
 
     render() {
         let { comments, commentsShow, isLoaded, error, isManager } = this.state
-
+        console.log(commentsShow)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -389,7 +417,7 @@ export default class ManageComments extends Component {
                             </div>
 
                             {commentsShow.map((c) => (
-                                <CommentManage name={c.member_name} date={c.updated_at} text={c.text} isNew={c.is_new} jwt={this.state.jwt} commentId={c.id} />
+                                <CommentManage key={c.id} name={c.member_name} date={c.updated_at} text={c.text} isNew={c.is_new} jwt={this.state.jwt} commentId={c.id} deleteFromCommentsArrays={this.deleteFromCommentsArrays} />
                             ))}
 
 

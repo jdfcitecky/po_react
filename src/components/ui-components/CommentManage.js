@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import "./Comment.css"
+import "./CommentManage.css"
 export default class CommentManage extends Component {
 
     constructor(props) {
@@ -9,11 +10,17 @@ export default class CommentManage extends Component {
         this.state = {
             deleting: false,
             deleted: false,
+            displayNone: false,
             reviewing: false,
             reviewed: false,
             isNew: true,
         }
+        this.deleteFromCommentsArrays = this.deleteFromCommentsArrays.bind(this)
 
+    }
+
+    deleteFromCommentsArrays = (id) => {
+        this.props.deleteFromCommentsArrays(id)
     }
 
     handleSubmit = (evt) => {
@@ -107,6 +114,12 @@ export default class CommentManage extends Component {
                                     return
                                 }
                                 this.setState({ deleted: true })
+                                setTimeout(() => {
+                                    this.setState({
+                                        displayNone: true,
+                                    })
+                                }, 1000);
+                                this.deleteFromCommentsArrays(Number(this.props.commentId))
                             })
                     }
                 },
@@ -118,6 +131,20 @@ export default class CommentManage extends Component {
         })
     }
     render() {
+        if (this.state.displayNone === true) {
+            return (
+                <div className='row deleted'>
+                    <div className="col-md-12">
+                        <div className="commented-section mt-2">
+                            <div className="d-flex flex-row align-items-center commented-user mb-2">
+                                <h5 className="mr-2">{""}</h5><span className="dot mb-1"></span><span className="mb-1 ml-2">{""}</span></div>
+                            <div className="comment-text-sm text-left" style={{ color: 'red', }}><span>{"This comment has been deleted"}</span></div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            )
+        }
         if (this.state.deleted === true) {
             return (
                 <div className='row'>
@@ -227,7 +254,7 @@ export default class CommentManage extends Component {
                             <form onSubmit={this.handleSubmit} className=''>
 
                                 {this.state.deleting == false && (
-                                    <a href='' onClick={() => this.confirmDelete()} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
+                                    <a href='' onClick={(e) => this.confirmDelete(e)} className='btn btn-danger ms-1 ml-1' style={{ color: 'white' }}>
                                         Delete
                                     </a>
                                 )}
