@@ -153,7 +153,7 @@ export default class CommentManage extends Component {
         }
         if (this.state.deleted === true) {
             return (
-                <div className='row'>
+                <div className='row commentFade'>
                     <div className="col-md-12">
                         <div className="commented-section mt-2">
                             <div className="d-flex flex-row align-items-center commented-user mb-2">
@@ -167,7 +167,7 @@ export default class CommentManage extends Component {
         }
         if (this.state.reviewed === true) {
             return (
-                <div className='row'>
+                <div className='row commentFade'>
                     <div className="col-md-12">
                         <div className="commented-section mt-2">
                             <div className="d-flex flex-row align-items-center commented-user mb-2">
