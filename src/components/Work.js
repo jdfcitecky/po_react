@@ -42,9 +42,15 @@ export default class Work extends Component {
 
     componentDidMount() {
         //To retrive comments
+        let id = Number(this.props.match.params.id)
         console.log("workkkk mounted")
+        this.getWork(id)
         this.getComments()
         window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     handleNextPageClick = () => {
@@ -71,6 +77,47 @@ export default class Work extends Component {
         this.getComments()
         document.documentElement.scrollTop = document.documentElement.scrollTop - 55
 
+    }
+
+    getWork = (id) => {
+        let myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+        myHeaders.append("token", this.props.jwt)
+        const payload = {
+            id: id,
+        }
+
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: myHeaders,
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/show`, requestOptions)
+            .then((response) => {
+                console.log("RESPONSE", response)
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log("RESPONSE", json)
+                console.log("RESPONSE", json.data)
+                console.log("RESPONSE", json.data.work)
+                this.setState({
+                    work: json.data.work,
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
+            })
     }
 
     getComments = () => {
