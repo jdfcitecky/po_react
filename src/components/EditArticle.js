@@ -178,6 +178,7 @@ export default class EditArticle extends Component {
         myHeaders.append("Authorization", "Bearer " + this.props.jwt)
         myHeaders.append("token", this.props.jwt)
         payload["id"] = this.state.work.id
+        payload["tags"] = (this.state.work.category + " " + this.state.work.tools).toLowerCase()
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify(payload),
