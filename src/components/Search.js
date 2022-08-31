@@ -16,6 +16,7 @@ class Search extends Component {
             pageStart: 0,
             pageLimit: 5,
             maxPage: 0,
+            isEmpty: false,
             // For pagination
             pageTags: [1],
             maxRecordsNumber: 1,
@@ -69,6 +70,11 @@ class Search extends Component {
                 console.log("RESPONSE JSON", json)
                 console.log("RESPONSE JSON Combine", this.makeSetFromArrays(json.data))
                 let workSet = this.makeSetFromArrays(json.data)
+                if (workSet.length === 0) {
+                    this.setState({
+                        isEmpty: true,
+                    })
+                }
                 this.setState({
                     works: workSet.map(work => this.colorAssign(work)),
                     maxPage: json["data"].length,
@@ -345,7 +351,7 @@ class Search extends Component {
     }
 
     render() {
-        let { worksShow, isLoaded, error } = this.state
+        let { worksShow, isLoaded, error, isEmpty } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isLoaded) {
@@ -368,6 +374,36 @@ class Search extends Component {
                 </div>
             </div>
 
+        } else if (isEmpty) {
+            return <div>
+                <div className='container'>
+                    <div className='row align-items-left'>
+                        <div className="col-4 pt-0">
+                            <p className="text-left text-info">{`Search result for : ${this.state.searchValue}`}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div className='container'>
+                    There is no more results.
+                </div>
+                <div className='container'>
+                    <div className='row align-items-center'>
+                        <div className="col-4 pt-0">
+                            <ul className="pagination pt-3 ml-2">
+
+                                <li key="pagination-p" className="page-item"><div className="page-link" onClick={this.handlePreviousClick}>Previous</div></li>
+                                {this.state.pageTags.map((t, index) => (
+                                    <li key={`pagination-${index}`} className="page-item"><div className={`page-link page-${t[0]} ${t[1]}`} value={t[0]} onClick={this.handleTagClick}>{t[0]}</div></li>
+                                ))}
+                                <li key="pagination-n" className="page-item"><div className="page-link" onClick={this.handleNextClick}>Next</div></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         }
         return (
             <div>
