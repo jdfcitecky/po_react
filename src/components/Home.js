@@ -9,8 +9,8 @@ export default class Home extends Component {
                 <div className='container fadeIn'>
                     <Jumbotron />
                     <div className='row mb-2'>
-                        <Card color='primary' category='Frontend' text='aaaaaa' link='/search/frontend' linkwords='See more' />
-                        <Card color='success' category='Backend' text='aaaaaa' link='/search/backend' linkwords='See more' />
+                        <Card color='primary' category='Backend' text='aaaaaa' link='/search/backend' linkwords='See more' />
+                        <Card color='success' category='Frontend' text='aaaaaa' link='/search/frontend' linkwords='See more' />
                     </div>
                     <div className='row mb-2'>
                         <Card color='info' category='M.S Project' text='aaaaaa' link='/search/msproject' linkwords='See more' />
