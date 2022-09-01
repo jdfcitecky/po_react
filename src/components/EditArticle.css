@@ -84,3 +84,44 @@ textarea {
     transition: all 0.5s ease-in-out;
     border-radius: 5px 5px 5px 5px px;
 }
+
+.uploadZone {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 85px 0px 85px 0px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px 5px 5px 5px px;
+    text-align: center;
+}
+
+.uploadZone-highlight {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 85px 0px 85px 0px;
+    cursor: pointer;
+    background-color: #f6f6f6;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px 5px 5px 5px px;
+    text-align: center;
+}
+
+.previewZone {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid #f6f6f6;
+    background-color: #f6f6f6;
+    border-radius: 5px 5px 5px 5px px;
+}
+
+img {
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+}

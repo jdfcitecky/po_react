@@ -37,6 +37,8 @@ export default class EditArticle extends Component {
             isLoaded: false,
             edited: false,
             deleting: false,
+            uploadClass: "uploadZone",
+            uploading: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -324,6 +326,90 @@ export default class EditArticle extends Component {
         })
     }
 
+    //For uplaod
+    handleUploadDragEnter = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("drag enter")
+        this.setState({
+            uploadClass: "uploadZone-highlight"
+        })
+    }
+
+    handleUploadDrop = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("drop")
+        this.setState({
+            uploadClass: "uploadZone"
+        })
+        let dt = e.dataTransfer;
+        console.log(dt)
+        let file = dt.files[0]; // Get file
+        console.log(file)
+        this.uploadFile(file)
+    }
+
+    handleUploadDragOver = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("drag over")
+        this.setState({
+            uploadClass: "uploadZone-highlight"
+        })
+    }
+
+    handleUploadDragLeave = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("drag over")
+        this.setState({
+            uploadClass: "uploadZone"
+        })
+    }
+
+    uploadFile = (file) => {
+        const formData = new FormData()
+        formData.append("file", file)
+        // check file type
+        if (!['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(file.type)) {
+            console.log('Only images are allowed.');
+            return;
+        }
+        // check file size (< 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+            console.log('File must be less than 2MB.');
+            return;
+        }
+        // POST to backend
+        this.setState({ uploading: true, })
+        let myHeaders = new Headers()
+        // myHeaders.append("Content-Type", 'multipart/form-data')
+        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+        myHeaders.append("token", this.props.jwt)
+        const requestOptions = {
+            method: "POST",
+            body: formData,
+            headers: myHeaders,
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/upload`, requestOptions)
+            .then((response) => {
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({
+                        error: err,
+                        deleting: false
+                    })
+                    return
+                }
+                console.log(response)
+                console.log(response.json)
+                this.setState({ uploading: false, })
+            })
+    }
+    // Render
+
     render() {
         let { work, isLoaded, error, isManager, errors, edited, deleting } = this.state
         let errorMessage
@@ -419,6 +505,13 @@ export default class EditArticle extends Component {
                                     <label htmlFor='pictureone' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Picture 1
                                     </label>
+                                    <div className='d-flex flex-row'>
+                                        <div className={this.state.uploadClass} onDragEnter={(e) => { this.handleUploadDragEnter(e) }} onDrop={(e) => { this.handleUploadDrop(e) }} onDragLeave={(e) => { this.handleUploadDragLeave(e) }} onDragOver={(e) => { this.handleUploadDragOver(e) }}>Put image here</div>
+                                        {this.state.work.pictureone != "" && (
+                                            <div className='previewZone'><img src={this.state.work.pictureone} /></div>
+                                        )}
+                                    </div>
+
                                     <input type='text' className='form-control text-left' id="pictureone" name='pictureone' value={this.state.work.pictureone} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
