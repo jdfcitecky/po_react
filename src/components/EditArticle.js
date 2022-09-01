@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import Sidebar from './ui-components/Sidebar';
+import Select from 'react-select'
 import ReactLoading from 'react-loading';
 import './Manage.css'
 import './EditArticle.css'
@@ -52,7 +53,9 @@ export default class EditArticle extends Component {
     componentDidMount() {
         //To retrive work
         let id = Number(this.props.match.params.id)
-        if (id != undefined) {
+        console.log(id)
+        if (id !== NaN) {
+            console.log("set state at mounted")
             this.setState({
                 work: {
                     id: id,
@@ -118,6 +121,8 @@ export default class EditArticle extends Component {
     }
 
     handleChange = (evt) => {
+        console.log("changed")
+        console.log(this.state.work)
         let value = evt.target.value
         let name = evt.target.name
         this.setState((preState) => ({
@@ -135,36 +140,51 @@ export default class EditArticle extends Component {
         let errors = []
         if (this.state.work.title == "") {
             errors.push("title")
+            return
         }
         if (this.state.work.category == "") {
             errors.push("category")
+            return
+        }
+        if (this.state.work.category == "Choose...") {
+            errors.push("category")
+            return
         }
         if (this.state.work.text == "") {
             errors.push("text")
+            return
         }
         if (this.state.work.tools == "") {
             errors.push("tools")
+            return
         }
         if (this.state.work.year == "") {
             errors.push("year")
+            return
         }
         if (this.state.work.downloadlink == "") {
             errors.push("downloadlink")
+            return
         }
         if (this.state.work.pictureone == "") {
             errors.push("pictureone")
+            return
         }
         if (this.state.work.picturetwo == "") {
             errors.push("picturetwo")
+            return
         }
         if (this.state.work.picturethree == "") {
             errors.push("picturethree")
+            return
         }
         if (this.state.work.picturefour == "") {
             errors.push("picturefour")
+            return
         }
         if (this.state.work.picturefive == "") {
             errors.push("picturefive")
+            return
         }
         this.setState({ errors: errors })
         if (errors.length > 0) {
@@ -364,10 +384,18 @@ export default class EditArticle extends Component {
                                     <input type='text' className='form-control text-left' id="title" name='title' value={this.state.work.title} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
-                                    <label htmlFor='category' className='form-label mr-2  ml-2 d-block mb-0'>
+                                    {/* <label htmlFor='category' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Category
                                     </label>
-                                    <input type='text' className='form-control text-left' id="category" name='category' value={this.state.work.category} onChange={this.handleChange} />
+                                    <input type='text' className='form-control text-left' id="category" name='category' value={this.state.work.category} onChange={this.handleChange} /> */}
+                                    <label className="form-label mr-2  ml-2 d-block mb-0" htmlFor="category">Category</label>
+                                    <select className="form-control text-left categorySelect" id="category" name='category' value={this.state.work.category} onChange={this.handleChange}>
+                                        <option value="Choose...">Choose...</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="M.S Project">M.S Project</option>
+                                        <option value="Design">Design</option>
+                                    </select>
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='tools' className='form-label mr-2  ml-2 d-block mb-0'>
