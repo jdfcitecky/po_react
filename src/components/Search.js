@@ -39,7 +39,6 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        console.log("didmounted", this.state.searchValue)
         this.getWorks()
     }
 
@@ -50,7 +49,6 @@ class Search extends Component {
         const payload = {
             keyWord: (this.state.searchValue).toLowerCase(),
         }
-
         const requestOptions = {
             method: "POST",
             body: JSON.stringify(payload),
@@ -58,7 +56,6 @@ class Search extends Component {
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/search`, requestOptions)
             .then((response) => {
-                console.log("RESPONSE", response)
                 if (response.status != "200") {
                     let err = Error
                     err.message = "Invalid response code: " + response.status
@@ -67,8 +64,6 @@ class Search extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log("RESPONSE JSON", json)
-                console.log("RESPONSE JSON Combine", this.makeSetFromArrays(json.data))
                 let workSet = this.makeSetFromArrays(json.data)
                 if (workSet.length === 0) {
                     this.setState({
