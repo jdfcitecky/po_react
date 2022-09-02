@@ -37,8 +37,16 @@ export default class EditArticle extends Component {
             isLoaded: false,
             edited: false,
             deleting: false,
-            uploadClass: "uploadZone",
-            uploading: false,
+            uploadClassOne: "uploadZone",
+            uploadClassTwo: "uploadZone",
+            uploadClassThree: "uploadZone",
+            uploadClassFour: "uploadZone",
+            uploadClassFive: "uploadZone",
+            uploadingOne: false,
+            uploadingTwo: false,
+            uploadingThree: false,
+            uploadingFour: false,
+            uploadingFive: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -55,9 +63,7 @@ export default class EditArticle extends Component {
     componentDidMount() {
         //To retrive work
         let id = Number(this.props.match.params.id)
-        console.log(id)
         if (id !== NaN) {
-            console.log("set state at mounted")
             this.setState({
                 work: {
                     id: id,
@@ -97,7 +103,6 @@ export default class EditArticle extends Component {
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/show`, requestOptions)
             .then((response) => {
-                console.log("RESPONSE", response)
                 if (response.status != "200") {
                     let err = Error
                     err.message = "Invalid response code: " + response.status
@@ -106,9 +111,6 @@ export default class EditArticle extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log("RESPONSE", json)
-                console.log("RESPONSE", json.data)
-                console.log("RESPONSE", json.data.work)
                 this.setState({
                     work: json.data.work,
                     isLoaded: true,
@@ -123,8 +125,6 @@ export default class EditArticle extends Component {
     }
 
     handleChange = (evt) => {
-        console.log("changed")
-        console.log(this.state.work)
         let value = evt.target.value
         let name = evt.target.name
         this.setState((preState) => ({
@@ -136,7 +136,6 @@ export default class EditArticle extends Component {
     }
 
     handleSubmit = (evt) => {
-        console.log('submit')
         evt.preventDefault()
         // client side validation
         let errors = []
@@ -327,86 +326,93 @@ export default class EditArticle extends Component {
     }
 
     //For uplaod
-    handleUploadDragEnter = (e) => {
+    handleUploadDragEnter = (e, uploadClassNumber) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log("drag enter")
         this.setState({
-            uploadClass: "uploadZone-highlight"
+            [uploadClassNumber]: "uploadZone-highlight"
         })
     }
 
-    handleUploadDrop = (e) => {
+    handleUploadDrop = (e, pictureNumber, uploadClassNumber, classWithNumber) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log("drop")
         this.setState({
-            uploadClass: "uploadZone"
+            [uploadClassNumber]: "uploadZone"
         })
         let dt = e.dataTransfer;
-        console.log(dt)
         let file = dt.files[0]; // Get file
-        console.log(file)
-        this.uploadFile(file)
+        this.uploadFile(file, pictureNumber, uploadClassNumber, classWithNumber)
     }
 
-    handleUploadDragOver = (e) => {
+    handleUploadDragOver = (e, uploadClassNumber) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log("drag over")
         this.setState({
-            uploadClass: "uploadZone-highlight"
+            [uploadClassNumber]: "uploadZone-highlight"
         })
     }
 
-    handleUploadDragLeave = (e) => {
+
+    handleUploadDragLeave = (e, uploadClassNumber) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log("drag over")
         this.setState({
-            uploadClass: "uploadZone"
+            [uploadClassNumber]: "uploadZone"
         })
     }
 
-    uploadFile = (file) => {
-        const formData = new FormData()
-        formData.append("file", file)
-        // check file type
-        if (!['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(file.type)) {
-            console.log('Only images are allowed.');
-            return;
-        }
-        // check file size (< 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            console.log('File must be less than 2MB.');
-            return;
-        }
-        // POST to backend
-        this.setState({ uploading: true, })
-        let myHeaders = new Headers()
-        // myHeaders.append("Content-Type", 'multipart/form-data')
-        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        myHeaders.append("token", this.props.jwt)
-        const requestOptions = {
-            method: "POST",
-            body: formData,
-            headers: myHeaders,
-        }
-        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/upload`, requestOptions)
-            .then((response) => {
-                if (response.status != "200") {
-                    let err = Error
-                    err.message = "Invalid response code: " + response.status
+    uploadFile = (file, pictureNumber, uploadClassNumber, classWithNumber) => {
+        if (!this.state.uploading) {
+            const formData = new FormData()
+            formData.append("file", file)
+            // check file type
+            if (!['image/jpeg', 'image/gif', 'image/png', 'image/svg+xml'].includes(file.type)) {
+                return;
+            }
+            // check file size (< 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                return;
+            }
+            // POST to backend
+            this.setState({ [uploadClassNumber]: true, })
+            let myHeaders = new Headers()
+            // myHeaders.append("Content-Type", 'multipart/form-data')
+            myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+            myHeaders.append("token", this.props.jwt)
+            const requestOptions = {
+                method: "POST",
+                body: formData,
+                headers: myHeaders,
+            }
+            fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/upload`, requestOptions)
+                .then((response) => {
+                    if (response.status != "200") {
+                        let err = Error
+                        err.message = "Invalid response code: " + response.status
+                        this.setState({
+                            error: err,
+                            [uploadClassNumber]: false,
+                            [classWithNumber]: "uploadZone",
+                        })
+                    }
                     this.setState({
-                        error: err,
-                        deleting: false
+                        [uploadClassNumber]: false,
+                        [classWithNumber]: "uploadZone",
                     })
-                    return
-                }
-                console.log(response)
-                console.log(response.json)
-                this.setState({ uploading: false, })
-            })
+                    return response.json()
+                })
+                .then((json) => {
+                    this.setState((preState) => ({
+                        work: {
+                            ...preState.work,
+                            [pictureNumber]: `http://${process.env.REACT_APP_API_ADDRESS}` + json.data,
+                        }
+                    }))
+                })
+        }
+        return
+
     }
     // Render
 
@@ -506,37 +512,85 @@ export default class EditArticle extends Component {
                                         Picture 1
                                     </label>
                                     <div className='d-flex flex-row'>
-                                        <div className={this.state.uploadClass} onDragEnter={(e) => { this.handleUploadDragEnter(e) }} onDrop={(e) => { this.handleUploadDrop(e) }} onDragLeave={(e) => { this.handleUploadDragLeave(e) }} onDragOver={(e) => { this.handleUploadDragOver(e) }}>Put image here</div>
+                                        {this.state.uploadingOne === false && (
+                                            <div className={this.state.uploadClassOne} onDragEnter={(e) => { this.handleUploadDragEnter(e, "uploadClassOne") }} onDrop={(e) => { this.handleUploadDrop(e, "pictureone", "uploadingOne", "uploadClassOne") }} onDragLeave={(e) => { this.handleUploadDragLeave(e, "uploadClassOne") }} onDragOver={(e) => { this.handleUploadDragOver(e, "uploadClassOne") }}>Put image here</div>
+                                        )}
+                                        {this.state.uploadingOne === true && (
+                                            <div className={this.state.uploadClassOne}>Uploading...</div>
+                                        )}
                                         {this.state.work.pictureone != "" && (
                                             <div className='previewZone'><img src={this.state.work.pictureone} /></div>
                                         )}
                                     </div>
-
-                                    <input type='text' className='form-control text-left' id="pictureone" name='pictureone' value={this.state.work.pictureone} onChange={this.handleChange} />
+                                    <input type='hidden' className='form-control text-left' id="pictureone" name='pictureone' value={this.state.work.pictureone} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='picturetwo' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Picture 2
                                     </label>
-                                    <input type='text' className='form-control text-left' id="picturetwo" name='picturetwo' value={this.state.work.picturetwo} onChange={this.handleChange} />
+                                    <div className='d-flex flex-row'>
+                                        {this.state.uploadingTwo === false && (
+                                            <div className={this.state.uploadClassTwo} onDragEnter={(e) => { this.handleUploadDragEnter(e, "uploadClassTwo") }} onDrop={(e) => { this.handleUploadDrop(e, "picturetwo", "uploadingTwo", "uploadClassTwo") }} onDragLeave={(e) => { this.handleUploadDragLeave(e, "uploadClassTwo") }} onDragOver={(e) => { this.handleUploadDragOver(e, "uploadClassTwo") }} >Put image here</div>
+                                        )}
+                                        {this.state.uploadingTwo === true && (
+                                            <div className={this.state.uploadClassTwo}>Uploading...</div>
+                                        )}
+                                        {this.state.work.picturetwo != "" && (
+                                            <div className='previewZone'><img src={this.state.work.picturetwo} /></div>
+                                        )}
+                                    </div>
+                                    <input type='hidden' className='form-control text-left' id="picturetwo" name='picturetwo' value={this.state.work.picturetwo} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='picturethree' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Picture 3
                                     </label>
-                                    <input type='text' className='form-control text-left' id="picturethree" name='picturethree' value={this.state.work.picturethree} onChange={this.handleChange} />
+                                    <div className='d-flex flex-row'>
+                                        {this.state.uploadingThree === false && (
+                                            <div className={this.state.uploadClassThree} onDragEnter={(e) => { this.handleUploadDragEnter(e, "uploadClassThree") }} onDrop={(e) => { this.handleUploadDrop(e, "picturethree", "uploadingThree", "uploadClassThree") }} onDragLeave={(e) => { this.handleUploadDragLeave(e, "uploadClassThree") }} onDragOver={(e) => { this.handleUploadDragOver(e, "uploadClassThree") }} >Put image here</div>
+                                        )}
+                                        {this.state.uploadingThree === true && (
+                                            <div className={this.state.uploadClassThree}>Uploading...</div>
+                                        )}
+                                        {this.state.work.picturethree != "" && (
+                                            <div className='previewZone'><img src={this.state.work.picturethree} /></div>
+                                        )}
+                                    </div>
+                                    <input type='hidden' className='form-control text-left' id="picturethree" name='picturethree' value={this.state.work.picturethree} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='picturefour' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Picture 4
                                     </label>
-                                    <input type='text' className='form-control text-left' id="picturefour" name='picturefour' value={this.state.work.picturefour} onChange={this.handleChange} />
+                                    <div className='d-flex flex-row'>
+                                        {this.state.uploadingFour === false && (
+                                            <div className={this.state.uploadClassFour} onDragEnter={(e) => { this.handleUploadDragEnter(e, "uploadClassFour") }} onDrop={(e) => { this.handleUploadDrop(e, "picturefour", "uploadingFour", "uploadClassFour") }} onDragLeave={(e) => { this.handleUploadDragLeave(e, "uploadClassFour") }} onDragOver={(e) => { this.handleUploadDragOver(e, "uploadClassFour") }}>Put image here</div>
+                                        )}
+                                        {this.state.uploadingFour === true && (
+                                            <div className={this.state.uploadClassFour}>Uploading...</div>
+                                        )}
+                                        {this.state.work.picturefour != "" && (
+                                            <div className='previewZone'><img src={this.state.work.picturefour} /></div>
+                                        )}
+                                    </div>
+                                    <input type='hidden' className='form-control text-left' id="picturefour" name='picturefour' value={this.state.work.picturefour} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='picturefive' className='form-label mr-2  ml-2 d-block mb-0'>
                                         Picture 5
                                     </label>
-                                    <input type='text' className='form-control text-left' id="picturefive" name='picturefive' value={this.state.work.picturefive} onChange={this.handleChange} />
+                                    <div className='d-flex flex-row'>
+                                        {this.state.uploadingFive === false && (
+                                            <div className={this.state.uploadClassFive} onDragEnter={(e) => { this.handleUploadDragEnter(e, "uploadClassFive") }} onDrop={(e) => { this.handleUploadDrop(e, "picturefive", "uploadingFive", "uploadClassFive") }} onDragLeave={(e) => { this.handleUploadDragLeave(e, "uploadClassFive") }} onDragOver={(e) => { this.handleUploadDragOver(e, "uploadClassFive") }} >Put image here</div>
+                                        )}
+                                        {this.state.uploadingFive === true && (
+                                            <div className={this.state.uploadClassFive}>Uploading...</div>
+                                        )}
+                                        {this.state.work.picturefive != "" && (
+                                            <div className='previewZone'><img src={this.state.work.picturefive} /></div>
+                                        )}
+                                    </div>
+                                    <input type='hidden' className='form-control text-left' id="picturefive" name='picturefive' value={this.state.work.picturefive} onChange={this.handleChange} />
                                 </div>
                                 <div className='form-group text-left'>
                                     <label htmlFor='text' className='form-label mr-2  ml-2 d-block mb-2'>
