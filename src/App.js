@@ -13,6 +13,7 @@ import Work from './components/Work';
 import Signup from './components/Signup';
 import ManageArticles from './components/ManageArticles';
 import ManageComments from './components/ManageComments';
+import ManagePanel from './components/ManagePanel';
 import TimelinePage from './components/TimelinePage';
 import EditArticle from './components/EditArticle';
 
@@ -160,7 +161,7 @@ export default class App extends Component {
             <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
-            <Route path="/manage" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
+            <Route path="/manage" component={(props) => <ManagePanel {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
             <Route path="/signin" component={(props) => <Signin {...props} handleJWTChange={this.handleJWTChange} handleIsManagerChange={this.handleIsManagerChange} handleMemberID={this.handleMemberID} API_IP={this.state.API_IP} handleEmailChange={this.handleEmailChange} />}>

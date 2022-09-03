@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Sidebar.css'
-import { FilePlus, MessageCircle, File } from 'react-feather';
+import { FilePlus, MessageCircle, File, BarChart } from 'react-feather';
 export default class Card extends Component {
 
     constructor(props) {
@@ -14,6 +14,20 @@ export default class Card extends Component {
 
                 <div className="sidebar-sticky">
                     <ul className="nav flex-column">
+                        <li className="nav-item" key='managepanel'>
+                            <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                <span>Panel</span>
+                                <a className="d-flex align-items-center text-muted" href="#">
+                                    <span data-feather="plus-circle"></span>
+                                </a>
+                            </h6>
+                        </li>
+                        <li className="nav-item" key='panel'>
+                            <Link className="nav-link text-left" to="/manage">
+                                <BarChart size={24} className="mb-1 feather feather-file-text" />
+                                Manage panel
+                            </Link>
+                        </li>
                         <li className="nav-item" key='content'>
                             <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Content</span>
