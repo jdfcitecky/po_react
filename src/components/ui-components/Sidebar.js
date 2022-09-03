@@ -25,7 +25,7 @@ export default class Card extends Component {
                         <li className="nav-item" key='panel'>
                             <Link className="nav-link text-left" to="/manage">
                                 <BarChart size={24} className="mb-1 feather feather-file-text" />
-                                Manage panel
+                                Statistical
                             </Link>
                         </li>
                         <li className="nav-item" key='content'>
