@@ -62,28 +62,29 @@ export default class ManageComments extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/comment/list`, requestOptions)
-        //     .then((response) => {
-        //         if (response.status != "200") {
-        //             let err = Error
-        //             err.message = "Invalid response code: " + response.status
-        //             this.setState({ error: err })
-        //         }
-        //         return response.json()
-        //     })
-        //     .then((json) => {
-        //         this.setState({
-        //             comments: this.state.comments.concat(json["data"]),
-        //             maxPage: json["data"].length,
-        //             isLoaded: true,
-        //         },
-        //             (error) => {
-        //                 this.setState({
-        //                     isLoaded: true,
-        //                     error
-        //                 })
-        //             })
-        //     })
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/statistic/get`, requestOptions)
+            .then((response) => {
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log(json)
+                // this.setState({
+                //     comments: this.state.comments.concat(json["data"]),
+                //     maxPage: json["data"].length,
+                //     isLoaded: true,
+                // },
+                //     (error) => {
+                //         this.setState({
+                //             isLoaded: true,
+                //             error
+                //         })
+                //     })
+            })
     }
 
     renderChart() {
