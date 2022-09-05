@@ -88,11 +88,15 @@ export default class ManageComments extends Component {
                 let dailyCommentAxis = []
                 json.data.daily_browse.forEach(r => {
                     dailyBrowse.push(r.count)
-                    dailyBrowseAxis.push(String(r.date))
+                    let stringDate = String(r.date)
+                    let formatDate = stringDate.slice(0, 4) + "-" + stringDate.slice(4, 6) + "-" + stringDate.slice(-2) //20220905
+                    dailyBrowseAxis.push(String(formatDate))
                 });
                 json.data.daily_comment.forEach(r => {
                     dailyComment.push(r.count)
-                    dailyCommentAxis.push(String(r.date))
+                    let stringDate = String(r.date)
+                    let formatDate = stringDate.slice(0, 4) + "-" + stringDate.slice(4, 6) + "-" + stringDate.slice(-2) //20220905
+                    dailyCommentAxis.push(String(formatDate))
                 });
                 let topBrowseArticle = []
                 let topBrowseArticleAxis = []
@@ -170,10 +174,13 @@ export default class ManageComments extends Component {
 
     renderChart() {
         console.log("RENDER CHART ", [this.state.chartDaily.column1Show, this.state.chartDaily.column2Show])
+        console.log("RENDER CHART ", this.state.chartDaily.axisShow)
         c3.generate({
             bindto: "#chart1",
+
             data: {
-                columns: [this.state.chartDaily.column1Show, this.state.chartDaily.column2Show],
+                x: 'x',
+                columns: [['x'].concat(this.state.chartDaily.axisShow), this.state.chartDaily.column1Show, this.state.chartDaily.column2Show],
             },
             axis: {
                 x: {
@@ -181,8 +188,9 @@ export default class ManageComments extends Component {
                         text: 'Date',
                         position: 'outer-center',
                     },
-
+                    type: 'timeseries',
                     categories: this.state.chartDaily.axisShow,
+
                 },
                 y: {
                     label: {
@@ -325,6 +333,12 @@ export default class ManageComments extends Component {
                                         <div className='card fadeIn box-shadow p-2'>
                                             <p className="text-dark" href="#">Browse and comment table</p>
                                             <div id="chart1"></div>
+                                            <div class="d-flex justify-content-end">
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                            </div>
+
+
                                         </div>
 
                                     </div>
@@ -334,14 +348,24 @@ export default class ManageComments extends Component {
                                         <div className='card fadeIn box-shadow p-2'>
                                             <p className="text-dark" href="#">Most browse articles</p>
                                             <div id="chart2"></div>
+                                            <div class="d-flex justify-content-center">
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                            </div>
                                         </div>
+
 
                                     </div>
                                     <div className='col-6 p-2'>
                                         <div className='card fadeIn box-shadow p-2'>
                                             <p className="text-dark" href="#">Most comment articles</p>
                                             <div id="chart3"></div>
+                                            <div class="d-flex justify-content-center">
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                            </div>
                                         </div>
+
 
                                     </div>
                                 </div>
