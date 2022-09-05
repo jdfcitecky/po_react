@@ -20,17 +20,26 @@ export default class ManageComments extends Component {
                 type: "d-done",
                 message: "",
             },
-            chartOne: {
-                column1: ['data1', 30, 200, 100, 400, 150, 250],
-                column2: ['data2', 50, 20, 10, 40, 15, 25],
+            chartDaily: {
+                column1: [],
+                column1Show: [],
+                column2: [],
+                column2Show: [],
+                axis: [],
+                axisShow: [],
             },
-            chartTwo: {
-                column1: ['data1', 30, 200, 100, 400, 150, 250],
+            chartTopBrowse: {
+                column1: [],
+                column1Show: [],
+                axis: [],
+                axisShow: [],
 
             },
-            chartThree: {
-                column1: ['data1', 30, 200, 100, 400, 150, 250],
-
+            chartTopComment: {
+                column1: [],
+                column1Show: [],
+                axis: [],
+                axisShow: [],
             },
         }
         this.getChartData = this.getChartData.bind(this)
@@ -41,7 +50,7 @@ export default class ManageComments extends Component {
     componentDidMount() {
         //To retrive comments
         this.getChartData()
-        this.renderChart()
+        // this.renderChart()
     }
 
     componentDidUpdate() {
@@ -73,53 +82,146 @@ export default class ManageComments extends Component {
             })
             .then((json) => {
                 console.log(json)
-                // this.setState({
-                //     comments: this.state.comments.concat(json["data"]),
-                //     maxPage: json["data"].length,
-                //     isLoaded: true,
-                // },
-                //     (error) => {
-                //         this.setState({
-                //             isLoaded: true,
-                //             error
-                //         })
-                //     })
+                let dailyBrowse = []
+                let dailyBrowseAxis = []
+                let dailyComment = []
+                let dailyCommentAxis = []
+                json.data.daily_browse.forEach(r => {
+                    dailyBrowse.push(r.count)
+                    dailyBrowseAxis.push(String(r.date))
+                });
+                json.data.daily_comment.forEach(r => {
+                    dailyComment.push(r.count)
+                    dailyCommentAxis.push(String(r.date))
+                });
+                let topBrowseArticle = []
+                let topBrowseArticleAxis = []
+                let topCommentArticle = []
+                let topCommentArticleAxis = []
+                json.data.top_browse_works.forEach(r => {
+                    topBrowseArticle.push(r.count)
+                    topBrowseArticleAxis.push(r.title)
+                });
+                json.data.top_comment_works.forEach(r => {
+                    topCommentArticle.push(r.count)
+                    topCommentArticleAxis.push(r.title)
+                });
+                if (dailyBrowseAxis.length > 7) {
+                    this.setState({
+                        chartDaily: {
+                            column1: dailyBrowse,
+                            column1Show: ["Browse"].concat(dailyBrowse.slice(-7)),
+                            column2: dailyComment,
+                            column2Show: ["Comment"].concat(dailyComment.slice(-7)),
+                            axis: dailyBrowseAxis,
+                            axisShow: dailyBrowseAxis.slice(-7),
+                        },
+                        chartTopBrowse: {
+                            column1: topBrowseArticle,
+                            column1Show: ["Browse"].concat(topBrowseArticle.slice(0, 5)),
+                            axis: topBrowseArticleAxis,
+                            axisShow: topBrowseArticleAxis.slice(0, 5),
+                        },
+                        chartTopComment: {
+                            column1: topCommentArticle,
+                            column1Show: ["Comment"].concat(topCommentArticle.slice(0, 5)),
+                            axis: topCommentArticleAxis,
+                            axisShow: topCommentArticleAxis.slice(0, 5),
+
+                        },
+                        isLoaded: true,
+                    },
+                        () => {
+                            this.renderChart()
+                        })
+
+                } else {
+                    this.setState({
+                        chartDaily: {
+                            column1: dailyBrowse,
+                            column1Show: ["Browse"].concat(dailyBrowse),
+                            column2: dailyComment,
+                            column2Show: ["Comment"].concat(dailyComment),
+                            axis: dailyBrowseAxis,
+                            axisShow: dailyBrowseAxis,
+                        },
+                        chartTopBrowse: {
+                            column1: topBrowseArticle,
+                            column1Show: ["Browse"].concat(topBrowseArticle.slice(0, 5)),
+                            axis: topBrowseArticleAxis,
+                            axisShow: topBrowseArticleAxis.slice(0, 5),
+                        },
+                        chartTopComment: {
+                            column1: topCommentArticle,
+                            column1Show: ["Comment"].concat(topCommentArticle.slice(0, 5)),
+                            axis: topCommentArticleAxis,
+                            axisShow: topCommentArticleAxis.slice(0, 5),
+
+                        },
+                        isLoaded: true,
+                    },
+                        () => {
+                            this.renderChart()
+                        })
+                }
+
             })
     }
 
     renderChart() {
+        console.log("RENDER CHART ", [this.state.chartDaily.column1Show, this.state.chartDaily.column2Show])
         c3.generate({
             bindto: "#chart1",
             data: {
-                columns: [this.state.chartOne.column1, this.state.chartOne.column2],
+                columns: [this.state.chartDaily.column1Show, this.state.chartDaily.column2Show],
+            },
+            axis: {
+                x: {
+                    label: {
+                        text: 'Date',
+                        position: 'outer-center',
+                    },
+
+                    categories: this.state.chartDaily.axisShow,
+                },
+                y: {
+                    label: {
+                        text: 'Times',
+                        position: 'outer-middle'
+                    },
+                    min: 0,
+                    padding: {
+                        top: 0,
+                        bottom: 0
+                    }
+                }
             },
         });
         c3.generate({
             bindto: "#chart2",
             data: {
                 columns: [
-                    ['rainfall', 6, 8, 6, 5, 4]
+                    this.state.chartTopBrowse.column1Show
                 ],
                 type: 'bar'
             },
             axis: {
                 x: {
                     label: {
-                        text: 'States',
+                        text: '',
                         position: 'outer-center',
                     },
                     type: 'category',
-                    categories: ['MA', 'ME', 'NY', 'CN', 'TX'],
+                    categories: this.state.chartTopBrowse.axisShow,
                     tick: {
                         centered: true
                     }
                 },
                 y: {
                     label: {
-                        text: 'Rainfall (inches)',
+                        text: 'Times',
                         position: 'outer-middle'
                     },
-                    max: 10,
                     min: 0,
                     padding: {
                         top: 0,
@@ -136,28 +238,27 @@ export default class ManageComments extends Component {
             bindto: "#chart3",
             data: {
                 columns: [
-                    ['rainfall', 6, 8, 6, 5, 4]
+                    this.state.chartTopComment.column1Show
                 ],
                 type: 'bar'
             },
             axis: {
                 x: {
                     label: {
-                        text: 'States',
+                        text: '',
                         position: 'outer-center',
                     },
                     type: 'category',
-                    categories: ['MA', 'ME', 'NY', 'CN', 'TX'],
+                    categories: this.state.chartTopComment.axisShow,
                     tick: {
                         centered: true
                     }
                 },
                 y: {
                     label: {
-                        text: 'Rainfall (inches)',
+                        text: 'Times',
                         position: 'outer-middle'
                     },
-                    max: 10,
                     min: 0,
                     padding: {
                         top: 0,
@@ -172,6 +273,7 @@ export default class ManageComments extends Component {
     }
 
     render() {
+        console.log(this.state)
         let { chartData, isLoaded, error, isManager } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
@@ -220,7 +322,7 @@ export default class ManageComments extends Component {
                             <div className='container'>
                                 <div className='row'>
                                     <div className='col-12 p-2'>
-                                        <div className='card fadeIn box-shadow'>
+                                        <div className='card fadeIn box-shadow p-2'>
                                             <p className="text-dark" href="#">Browse and comment table</p>
                                             <div id="chart1"></div>
                                         </div>
