@@ -14,7 +14,8 @@ export default class Signin extends Component {
             alert: {
                 type: "d-done",
                 message: "",
-            }
+            },
+            msg: "",
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -33,22 +34,17 @@ export default class Signin extends Component {
     }
 
     handleSubmit = (evt) => {
-        // this.handleJWTChange("aaa")
-        // this.handleMemberID("10")
-        // this.handleIsManagerChange(true)
-        // window.localStorage.setItem("jwt", "aaa")
-        // window.localStorage.setItem("memberID", "10")
-        // window.localStorage.setItem("isManager", true)
-        // this.props.history.push({
-        //     pathname: "/"
-        // })
+        this.setState({
+            errors: [],
+            msg: "",
+        })
         evt.preventDefault()
         let errors = []
         if (this.state.email === "") {
-            errors.push("email")
+            errors.push("Email")
         }
-        if (this.state.email === "") {
-            errors.push("password")
+        if (this.state.password === "") {
+            errors.push("Password")
         }
         this.setState({ errors: errors })
         if (errors.length > 0) {
@@ -64,13 +60,12 @@ export default class Signin extends Component {
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/login`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                if (data.error) {
+                if (data.msg !== "") {
                     this.setState({
-                        alert: {
-                            type: "alert-danger",
-                            message: data.error.message,
-                        }
+                        msg: data.msg + ".",
                     })
+                    return
+
                 } else {
                     console.log(data)
                     console.log(data[0])
@@ -113,6 +108,12 @@ export default class Signin extends Component {
     }
 
     render() {
+        if (this.state.errors.length === 1) {
+            var errorWorld = this.state.errors[0] + " can not be empty!"
+        }
+        if (this.state.errors.length === 2) {
+            var errorWorld = this.state.errors[0] + " and " + this.state.errors[1] + " can not be empty!"
+        }
         return (
             <div>
                 <div className='container'>
@@ -121,13 +122,14 @@ export default class Signin extends Component {
                             <div id="formContent">
 
                                 <div className="fadeIn first mt-3">
-
                                     <p>Enter your information</p>
                                 </div>
+                                <div style={{ color: "red" }}>{errorWorld}</div>
+                                <div style={{ color: "red" }}>{this.state.msg}</div>
 
                                 <form onSubmit={this.handleSubmit}>
                                     <input type="email" id="email" className="fadeIn second" name="email" placeholder='email' value={this.state.email} onChange={this.handleChange} />
-                                    <input type="text" id="password" className="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
+                                    <input type="password" id="password" className="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
                                     <input type="submit" className="fadeIn fourth mt-3" value="Log In" />
                                 </form>
 

@@ -15,7 +15,8 @@ export default class Signup extends Component {
             alert: {
                 type: "d-done",
                 message: "",
-            }
+            },
+            msg: "",
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,14 +32,17 @@ export default class Signup extends Component {
     }
 
     handleSubmit = (evt) => {
-        // console.log("sign up submit")
+        this.setState({
+            errors: [],
+            msg: "",
+        })
         evt.preventDefault()
         let errors = []
         if (this.state.email === "") {
-            errors.push("email")
+            errors.push("Email")
         }
-        if (this.state.email === "") {
-            errors.push("password")
+        if (this.state.password === "") {
+            errors.push("Password")
         }
         this.setState({ errors: errors })
         if (errors.length > 0) {
@@ -56,13 +60,11 @@ export default class Signup extends Component {
         fetch(`http://${this.state.API_IP}/member/update`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                if (data.error) {
+                if (data.msg != "") {
                     this.setState({
-                        alert: {
-                            type: "alert-danger",
-                            message: data.error.message,
-                        }
+                        msg: data.msg + ".",
                     })
+                    return
                 } else {
                     console.log(data)
                     // this.handleJWTChange(Object.values(data)[0])
@@ -75,6 +77,12 @@ export default class Signup extends Component {
 
     }
     render() {
+        if (this.state.errors.length === 1) {
+            var errorWorld = this.state.errors[0] + " can not be empty!"
+        }
+        if (this.state.errors.length === 2) {
+            var errorWorld = this.state.errors[0] + " and " + this.state.errors[1] + " can not be empty!"
+        }
         return (
             <div>
                 <div className='container'>
@@ -83,13 +91,13 @@ export default class Signup extends Component {
                             <div id="formContent">
 
                                 <div className="fadeIn first mt-3">
-
                                     <p>Enter your information</p>
                                 </div>
+                                <div style={{ color: "red" }}>{errorWorld}</div>
 
                                 <form onSubmit={this.handleSubmit}>
                                     <input type="email" id="email" className="fadeIn second" name="email" placeholder='email' value={this.state.email} onChange={this.handleChange} />
-                                    <input type="text" id="password" className="fadeIn third" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
+                                    <input type="password" id="password" className="fadeIn third hiddenText" name="password" placeholder='password' value={this.state.password} onChange={this.handleChange} />
                                     <input type="submit" className="fadeIn fourth mt-3" value="Sign Up" />
                                 </form>
 

@@ -121,6 +121,7 @@ input[type=reset]:active {
 }
 
 input[type=email],
+input[type=password],
 input[type=text] {
     background-color: #f6f6f6;
     border: none;
@@ -142,11 +143,13 @@ input[type=text] {
     border-radius: 5px 5px 5px 5px;
 }
 
+
 input[type=text]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
 }
 
+input[type=password],
 input[type=text]:placeholder {
     color: #cccccc;
 }
