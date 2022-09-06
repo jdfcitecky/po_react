@@ -359,7 +359,7 @@ class Search extends Component {
                     </div>
 
                 </div>
-                <div className='container'>
+                <div style={{ height: document.documentElement.clientHeight - 370 }} className='container'>
                     <div className="align-items-center text-center row d-flex justify-content-center mt-5">
                         <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
                     </div>
@@ -379,7 +379,7 @@ class Search extends Component {
                     </div>
 
                 </div>
-                <div className='container'>
+                <div style={{ height: document.documentElement.clientHeight - 370 }} className='container'>
                     There is no more results.
                 </div>
                 <div className='container'>
@@ -410,7 +410,7 @@ class Search extends Component {
                     </div>
 
                 </div>
-                <div className='container'>
+                <div style={{ height: document.documentElement.clientHeight - 370 }} className='container'>
                     {worksShow.map((w) => (
                         <div className='row'>
                             <CardWork color={w.color} category={w.category} title={w.title} date={w.year} text={w.text} id={w.id} />
@@ -431,7 +431,6 @@ class Search extends Component {
                             </ul>
                         </div>
                     </div>
-
                 </div>
 
             </div>

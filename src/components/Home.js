@@ -6,7 +6,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <div className='container fadeIn'>
+                <div style={{ height: document.documentElement.clientHeight - 275 }} className='container fadeIn'>
                     <Jumbotron />
                     <div className='row mb-2'>
                         <Card color='primary' category='Backend' text='aaaaaa' link='/search/backend' linkwords='See more' />
