@@ -27,12 +27,14 @@ export default class ManageComments extends Component {
                 column2Show: [],
                 axis: [],
                 axisShow: [],
+                currentPage: 0,
             },
             chartTopBrowse: {
                 column1: [],
                 column1Show: [],
                 axis: [],
                 axisShow: [],
+                currentPage: 0,
 
             },
             chartTopComment: {
@@ -40,6 +42,7 @@ export default class ManageComments extends Component {
                 column1Show: [],
                 axis: [],
                 axisShow: [],
+                currentPage: 0,
             },
         }
         this.getChartData = this.getChartData.bind(this)
@@ -81,7 +84,6 @@ export default class ManageComments extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log(json)
                 let dailyBrowse = []
                 let dailyBrowseAxis = []
                 let dailyComment = []
@@ -119,18 +121,21 @@ export default class ManageComments extends Component {
                             column2Show: ["Comment"].concat(dailyComment.slice(-7)),
                             axis: dailyBrowseAxis,
                             axisShow: dailyBrowseAxis.slice(-7),
+                            currentPage: 0,
                         },
                         chartTopBrowse: {
                             column1: topBrowseArticle,
                             column1Show: ["Browse"].concat(topBrowseArticle.slice(0, 5)),
                             axis: topBrowseArticleAxis,
                             axisShow: topBrowseArticleAxis.slice(0, 5),
+                            currentPage: 0,
                         },
                         chartTopComment: {
                             column1: topCommentArticle,
                             column1Show: ["Comment"].concat(topCommentArticle.slice(0, 5)),
                             axis: topCommentArticleAxis,
                             axisShow: topCommentArticleAxis.slice(0, 5),
+                            currentPage: 0,
 
                         },
                         isLoaded: true,
@@ -148,18 +153,21 @@ export default class ManageComments extends Component {
                             column2Show: ["Comment"].concat(dailyComment),
                             axis: dailyBrowseAxis,
                             axisShow: dailyBrowseAxis,
+                            currentPage: 0,
                         },
                         chartTopBrowse: {
                             column1: topBrowseArticle,
                             column1Show: ["Browse"].concat(topBrowseArticle.slice(0, 5)),
                             axis: topBrowseArticleAxis,
                             axisShow: topBrowseArticleAxis.slice(0, 5),
+                            currentPage: 0,
                         },
                         chartTopComment: {
                             column1: topCommentArticle,
                             column1Show: ["Comment"].concat(topCommentArticle.slice(0, 5)),
                             axis: topCommentArticleAxis,
                             axisShow: topCommentArticleAxis.slice(0, 5),
+                            currentPage: 0,
 
                         },
                         isLoaded: true,
@@ -173,8 +181,6 @@ export default class ManageComments extends Component {
     }
 
     renderChart() {
-        console.log("RENDER CHART ", [this.state.chartDaily.column1Show, this.state.chartDaily.column2Show])
-        console.log("RENDER CHART ", this.state.chartDaily.axisShow)
         c3.generate({
             bindto: "#chart1",
 
@@ -280,13 +286,170 @@ export default class ManageComments extends Component {
         });
     }
 
+    handleDailyChartClick(page) {
+        let currentPage = this.state.chartDaily.currentPage
+        let newCurrentPage = currentPage + (page * 7)
+        if (newCurrentPage >= this.state.chartDaily.column1.length) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartDaily: {
+                    ...prevState.chartDaily,
+                    column1Show: this.state.chartDaily.column1.slice(-7),
+                    column2Show: this.state.chartDaily.column1.slice(-7),
+                    axisShow: this.state.chartDaily.axis.slice(-7),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage <= 0) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartDaily: {
+                    ...prevState.chartDaily,
+                    column1Show: this.state.chartDaily.column1.slice(0, 7),
+                    column2Show: this.state.chartDaily.column1.slice(0, 7),
+                    axisShow: this.state.chartDaily.axis.slice(0, 7),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage > currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartDaily: {
+                    ...prevState.chartDaily,
+                    column1Show: this.state.chartDaily.column1.slice(currentPage, newCurrentPage),
+                    column2Show: this.state.chartDaily.column1.slice(currentPage, newCurrentPage),
+                    axisShow: this.state.chartDaily.axis.slice(currentPage, newCurrentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+        if (newCurrentPage < currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartDaily: {
+                    ...prevState.chartDaily,
+                    column1Show: this.state.chartDaily.column1.slice(newCurrentPage, currentPage),
+                    column2Show: this.state.chartDaily.column1.slice(newCurrentPage, currentPage),
+                    axisShow: this.state.chartDaily.axis.slice(newCurrentPage, currentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+    }
+
+    handleTopBrowseChartClick(page) {
+        let currentPage = this.state.chartTopBrowse.currentPage
+        let newCurrentPage = currentPage + (page * 5)
+        if (newCurrentPage >= this.state.chartTopBrowse.column1.length) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopBrowse: {
+                    ...prevState.chartTopBrowse,
+                    column1Show: this.state.chartTopBrowse.column1.slice(-5),
+                    axisShow: this.state.chartTopBrowse.axis.slice(-5),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage <= 0) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopBrowse: {
+                    ...prevState.chartTopBrowse,
+                    column1Show: this.state.chartTopBrowse.column1.slice(0, 5),
+                    axisShow: this.state.chartTopBrowse.axis.slice(0, 5),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage > currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopBrowse: {
+                    ...prevState.chartTopBrowse,
+                    column1Show: this.state.chartTopBrowse.column1.slice(currentPage, newCurrentPage),
+                    axisShow: this.state.chartTopBrowse.axis.slice(currentPage, newCurrentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+        if (newCurrentPage < currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopBrowse: {
+                    ...prevState.chartTopBrowse,
+                    column1Show: this.state.chartTopBrowse.column1.slice(newCurrentPage, currentPage),
+                    axisShow: this.state.chartTopBrowse.axis.slice(newCurrentPage, currentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+    }
+
+    handleTopCommentChartClick(page) {
+        let currentPage = this.state.chartTopComment.currentPage
+        let newCurrentPage = currentPage + (page * 5)
+        if (newCurrentPage >= this.state.chartTopComment.column1.length) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopComment: {
+                    ...prevState.chartTopComment,
+                    column1Show: this.state.chartTopComment.column1.slice(-5),
+                    axisShow: this.state.chartTopComment.axis.slice(-5),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage <= 0) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopComment: {
+                    ...prevState.chartTopComment,
+                    column1Show: this.state.chartTopComment.column1.slice(0, 5),
+                    axisShow: this.state.chartTopComment.axis.slice(0, 5),
+                }
+            }))
+            return
+        }
+        if (newCurrentPage > currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopComment: {
+                    ...prevState.chartTopComment,
+                    column1Show: this.state.chartTopComment.column1.slice(currentPage, newCurrentPage),
+                    axisShow: this.state.chartTopComment.axis.slice(currentPage, newCurrentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+        if (newCurrentPage < currentPage) {
+            this.setState((prevState) => ({
+                ...prevState,
+                chartTopComment: {
+                    ...prevState.chartTopComment,
+                    column1Show: this.state.chartTopComment.column1.slice(newCurrentPage, currentPage),
+                    axisShow: this.state.chartTopComment.axis.slice(newCurrentPage, currentPage),
+                    currentPage: newCurrentPage
+                }
+            }))
+            return
+        }
+    }
+
+
     render() {
-        console.log(this.state)
+
         let { chartData, isLoaded, error, isManager } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
-            console.log("push to index")
             this.props.history.push({
                 pathname: "/",
             })
@@ -334,8 +497,8 @@ export default class ManageComments extends Component {
                                             <p className="text-dark" href="#">Browse and comment table</p>
                                             <div id="chart1"></div>
                                             <div class="d-flex justify-content-end">
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleDailyChartClick(-1) }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleDailyChartClick(1) }}>&#8250;</div>
                                             </div>
 
 
@@ -349,8 +512,8 @@ export default class ManageComments extends Component {
                                             <p className="text-dark" href="#">Most browse articles</p>
                                             <div id="chart2"></div>
                                             <div class="d-flex justify-content-center">
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleTopBrowseChartClick(-1) }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleTopBrowseChartClick(1) }}>&#8250;</div>
                                             </div>
                                         </div>
 
@@ -361,8 +524,8 @@ export default class ManageComments extends Component {
                                             <p className="text-dark" href="#">Most comment articles</p>
                                             <div id="chart3"></div>
                                             <div class="d-flex justify-content-center">
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8249;</div>
-                                                <div className="btn btn-outline-secondary m-1" onClick={() => { }}>&#8250;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleTopCommentChartClick(-1) }}>&#8249;</div>
+                                                <div className="btn btn-outline-secondary m-1" onClick={() => { this.handleTopCommentChartClick(1) }}>&#8250;</div>
                                             </div>
                                         </div>
 
