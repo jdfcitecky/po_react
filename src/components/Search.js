@@ -410,7 +410,7 @@ class Search extends Component {
                     </div>
 
                 </div>
-                <div style={{ height: document.documentElement.clientHeight - 370 }} className='container'>
+                <div style={{ height: document.documentElement.clientHeight + 100 }} className='container'>
                     {worksShow.map((w) => (
                         <div className='row'>
                             <CardWork color={w.color} category={w.category} title={w.title} date={w.year} text={w.text} id={w.id} />
