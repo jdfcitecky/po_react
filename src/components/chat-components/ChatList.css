@@ -1,0 +1,9 @@
+.borderRradius-15 {
+    border-radius: 15px;
+}
+
+.chatList {
+    position: relative;
+    height: 475px;
+    overflow: auto;
+}

@@ -10,6 +10,10 @@
     box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 35%);
 }
 
+.chatDot:hover {
+    background-color: #44abce;
+}
+
 
 .floatButton {
     position: fixed !important;
@@ -24,4 +28,53 @@
     width: 24px;
     height: 24px;
     vertical-align: text-bottom;
+}
+
+.feather-8 {
+    width: 8px;
+    height: 8px;
+    vertical-align: text-bottom;
+}
+
+.closeBtn {
+    border-radius: 50%;
+    background-color: #d35454;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeBtn:hover {
+    background-color: rgb(229, 80, 57);
+}
+
+.floatChatRoom {
+    position: fixed !important;
+    bottom: 100px;
+    right: 30px;
+    margin: 0 auto;
+    width: 900px !important;
+    height: 600px !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    z-index: 9999;
+}
+
+.floatChatRoom-half {
+    position: fixed !important;
+    bottom: 100px;
+    right: 30px;
+    margin: 0 auto;
+    width: 400px !important;
+    height: 600px !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    z-index: 9999;
 }

@@ -1,6 +1,6 @@
 // this will be chat input
 import React, { Component } from 'react';
-export default class Footer extends Component {
+export default class ChatInput extends Component {
     constructor(props) {
         super(props)
         this.state = {
