@@ -16,6 +16,7 @@ import ManageComments from './components/ManageComments';
 import ManagePanel from './components/ManagePanel';
 import TimelinePage from './components/TimelinePage';
 import EditArticle from './components/EditArticle';
+import ChatDot from './components/chat-components/ChatDot';
 
 
 export default class App extends Component {
@@ -111,6 +112,7 @@ export default class App extends Component {
     // this.updateItemFromLocalStroage()
     return (
       <Router>
+        <ChatDot />
         <div className="App">
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
             integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -179,8 +181,9 @@ export default class App extends Component {
             <Route path="*" component={NotFound}>
             </Route>
 
-
+            <ChatDot />
           </Switch>
+
           <Footer refresh={this.state.refresh} />
 
         </div>
