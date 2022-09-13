@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import "./ChatDot.css"
 import ChatList from './ChatList';
+import ChatRoom from './ChatRoom';
 import { MessageCircle, X } from 'react-feather';
 export default class ChatDot extends Component {
     constructor(props) {
@@ -93,7 +94,7 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <h1>CCCCHAT RROMMM</h1>
+                        <ChatRoom chatRoomID={this.state.chatRoomID} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} />
