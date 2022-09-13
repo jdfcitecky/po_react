@@ -14,6 +14,18 @@
     background-color: #44abce;
 }
 
+.chatDot-inactive {
+    border-radius: 50%;
+    background-color: #d3d3d3;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 35%);
+}
+
 
 .floatButton {
     position: fixed !important;

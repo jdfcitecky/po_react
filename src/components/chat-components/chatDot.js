@@ -9,8 +9,16 @@ export default class ChatDot extends Component {
         this.state = {
             collapse: false,
             chatRoomcollapse: false,
+            chatRoomID: -1,
 
         }
+        this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
+    }
+    componentDidMount() {
+        let jwt = window.localStorage.getItem("jwt")
+        this.setState({
+            jwt: jwt,
+        })
     }
 
     handleClick = () => {
@@ -20,15 +28,34 @@ export default class ChatDot extends Component {
         })
     }
 
-    handleChatRoomClick = () => {
-        console.log("click")
+    handleChatRoomClick = (id) => {
+        console.log("click Chatttt", id)
         this.setState({
-            chatRoomcollapse: !this.state.chatRoomcollapse,
+            chatRoomcollapse: true,
+            chatRoomID: id,
+        })
+    }
+
+    handleCloseChatRoom = () => {
+        this.setState({
+            chatRoomcollapse: false,
         })
     }
 
     render() {
         let { collapse, chatRoomcollapse } = this.state
+        let t = window.localStorage.getItem("jwt")
+        console.log("JWT", t)
+        if (t === "" || t === null) {
+            return (
+                <div className="floatButton">
+                    <div className="chatDot-inactive">
+                        <MessageCircle color='#ffffff' size={48} className="feather-24 feather-file-text" />
+                        {/* <i class="fas fa-chevron-down"></i> */}
+                    </div>
+                </div>
+            )
+        }
         if (!collapse) {
             return (
                 <div className="floatButton">
@@ -49,7 +76,7 @@ export default class ChatDot extends Component {
                             </div>
                         </div>
                     </div>
-                    <ChatList />
+                    <ChatList handleChatRoomClick={this.handleChatRoomClick} />
 
                 </div>
             );
@@ -64,8 +91,14 @@ export default class ChatDot extends Component {
                         </div>
                     </div>
                 </div>
-                <ChatList />
-
+                <div className='row'>
+                    <div className='col-6'>
+                        <h1>CCCCHAT RROMMM</h1>
+                    </div>
+                    <div className='col-6'>
+                        <ChatList handleChatRoomClick={this.handleChatRoomClick} />
+                    </div>
+                </div>
             </div>
         );
     }
