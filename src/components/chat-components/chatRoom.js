@@ -125,7 +125,7 @@ export default class ChatRoom extends Component {
         }
         return (
             <div>
-
+                <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1>
                 <div className="col-md-12 col-lg-12 col-xl-12">
 
                     <div className="pt-3 pe-3 chatRoom">

@@ -63,6 +63,21 @@
     background-color: rgb(229, 80, 57);
 }
 
+.miniBtn {
+    border-radius: 10%;
+    background-color: #cecece;
+    cursor: pointer;
+    width: 45px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniBtn:hover {
+    background-color: rgb(224, 224, 224);
+}
+
 .floatChatRoom {
     position: fixed !important;
     bottom: 100px;

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import "./ChatDot.css"
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
-import { MessageCircle, X } from 'react-feather';
+import { MessageCircle, X, ChevronsRight } from 'react-feather';
 export default class ChatDot extends Component {
     constructor(props) {
         super(props)
@@ -38,6 +38,7 @@ export default class ChatDot extends Component {
     }
 
     handleCloseChatRoom = () => {
+        console.log("Click close")
         this.setState({
             chatRoomcollapse: false,
         })
@@ -86,7 +87,10 @@ export default class ChatDot extends Component {
         return (
             <div className="container floatChatRoom">
                 <div className='row'>
-                    <div className='col-12 d-flex flex-row-reverse'>
+                    <div className='col-12 d-flex justify-content-between'>
+                        <div className='miniBtn mt-2'>
+                            <ChevronsRight color='#333333' size={10} className="feather-8 feather-file-text" onClick={this.handleCloseChatRoom} />
+                        </div>
                         <div className='closeBtn mt-2'>
                             <X color='#ffffff' size={8} className="feather-8 feather-file-text" onClick={this.handleClick} />
                         </div>
