@@ -25,9 +25,9 @@ export default class ChatListItem extends Component {
     }
 
     render() {
-        let { name, unReadNumber, profileURL } = this.state
+        let { name, unReadNumber, profileURL, chatRoomID } = this.state
         return (
-            <li className="p-2 border-bottom li-85" onClick={() => this.handleChatRoomClick(this.state.chatRoomID)}>
+            <div className="p-2 border-bottom li-85" onClick={() => this.handleChatRoomClick(this.state.chatRoomID)}>
                 <div className="d-flex justify-content-between">
                     <div className="d-flex flex-row">
                         <div>
@@ -47,7 +47,7 @@ export default class ChatListItem extends Component {
                         </div>
                     </div>
                 </div>
-            </li>
+            </div>
         );
     }
 }
