@@ -7,3 +7,9 @@
     height: 475px;
     overflow: auto;
 }
+
+.chatListFrame {
+    width: 380px;
+    position: fixed;
+    right: 10px;
+}

@@ -78,7 +78,12 @@ export default class ChatDot extends Component {
                             </div>
                         </div>
                     </div>
-                    <ChatList handleChatRoomClick={this.handleChatRoomClick} />
+                    <div className='row'>
+                        <div className='col-6'>
+                            <ChatList handleChatRoomClick={this.handleChatRoomClick} />
+                        </div>
+                    </div>
+
 
                 </div>
             );

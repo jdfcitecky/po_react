@@ -95,7 +95,7 @@ export default class ChatList extends Component {
             )
         }
         return (
-            <div>
+            <div className="chatListFrame">
                 <div className='row m-1'>
                     <div className='col-12'>
                         <div className="row">
