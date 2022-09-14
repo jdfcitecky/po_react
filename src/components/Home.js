@@ -13,7 +13,7 @@ export default class Home extends Component {
                         <Card color='success' category='Frontend' text='aaaaaa' link='/search/frontend' linkwords='See more' />
                     </div>
                     <div className='row mb-2'>
-                        <Card color='info' category='M.S Project' text='aaaaaa' link='/search/msproject' linkwords='See more' />
+                        <Card color='info' category='M.S Project' text='aaaaaa' link='/search/m.s.%20project' linkwords='See more' />
                         <Card color='warning' category='Design' text='aaaaaa' link='/search/design' linkwords='See more' />
                     </div>
 

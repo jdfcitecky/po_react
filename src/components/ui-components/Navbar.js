@@ -10,7 +10,7 @@ export default class Navbar extends Component {
                     <Link className="p-2 text-muted" to="/timeline">Time line</Link>
                     <Link className="p-2 text-muted" to="/search/frontend">Forntend</Link>
                     <Link className="p-2 text-muted" to="/search/backend">Backend</Link>
-                    <Link className="p-2 text-muted" to="/search/msproject">M.S.Project</Link>
+                    <Link className="p-2 text-muted" to="/search/m.s.%20project">M.S.Project</Link>
                     <Link className="p-2 text-muted" to="/search/design">Design</Link>
 
                 </nav>
