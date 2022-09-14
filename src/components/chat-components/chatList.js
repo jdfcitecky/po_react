@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import ChatListItem from './ChatListItem';
 import ReactLoading from 'react-loading';
-import { Search } from 'react-feather';
+import { Search, X } from 'react-feather';
 import './ChatList.css'
 export default class ChatList extends Component {
     constructor(props) {
@@ -12,13 +12,11 @@ export default class ChatList extends Component {
             chatRoomList: [],
             chatRoomListShow: [],
             searchValue: "",
-            showBackListBtn: false,
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
     }
     componentDidMount() {
-        console.log("MOUNT")
         this.getChatRoomList()
     }
 
@@ -26,12 +24,12 @@ export default class ChatList extends Component {
         this.props.handleChatRoomClick(id)
     }
 
-    handleBackListClick = () => {
-        this.setState({
-            chatRoomListShow: this.state.chatRoomList,
-            showBackListBtn: false,
-        })
 
+    handleCancelSearchClick = () => {
+        this.setState({
+            searchValue: "",
+            chatRoomListShow: this.state.chatRoomList,
+        })
     }
 
     handleSearchClick = () => {
@@ -39,17 +37,12 @@ export default class ChatList extends Component {
         let chatRoomAll = this.state.chatRoomList
         let newChatRoomList = []
         chatRoomAll.forEach((c) => {
-            console.log(c)
-            console.log(c.userName.match(searchValue))
             if (c.userName.match(searchValue) != null) {
                 newChatRoomList.push(c)
             }
-            console.log(newChatRoomList)
         })
-        console.log("LAST ", newChatRoomList)
         this.setState({
             chatRoomListShow: newChatRoomList,
-            showBackListBtn: true,
         })
 
     }
@@ -112,8 +105,7 @@ export default class ChatList extends Component {
 
 
     render() {
-        let { isLoaded, chatRoomListShow } = this.state
-        console.log("RENDER ", chatRoomListShow)
+        let { isLoaded, chatRoomListShow, searchValue } = this.state
         if (!isLoaded) {
             return (
                 <div>
@@ -136,7 +128,12 @@ export default class ChatList extends Component {
                     <div className='col-12'>
                         <div className="row">
                             <div className="col-md-12 col-lg-12 col-xl-12">
-                                <div className='d-flex flex-row mb-3'>
+                                <div className='d-flex flex-row mb-3 pos-relative'>
+                                    {searchValue != "" && (
+                                        <div className='searchCancelBtn'>
+                                            <X color='#333333' size={8} className="feather-8 feather-file-text" onClick={this.handleCancelSearchClick} />
+                                        </div>
+                                    )}
                                     <input name="search" id="text" placeholder="Search" value={this.state.searchValue} onChange={(event) => this.setState({ searchValue: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatListSearchInput" />
                                     <div onClick={this.handleSearchClick} className="chatListSearchBtn d-flex justify-content-center" >
                                         <Search color='#333333' className="feather-16 feather-file-text align-self-center" />
@@ -149,6 +146,13 @@ export default class ChatList extends Component {
                             <div className="col-md-12 col-lg-12 col-xl-12">
                                 <div className='chatList'>
                                     <div className="list-unstyled mb-0">
+                                        {chatRoomListShow.length == 0 && (
+                                            <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                                <div className='mt-2'>
+                                                    <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                                </div>
+                                            </div>
+                                        )}
                                         {chatRoomListShow.map((i) => (
 
                                             <div className="p-2 border-bottom li-85" onClick={() => this.handleChatRoomClick(i.chatRoomID)}>

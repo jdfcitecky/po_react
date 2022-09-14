@@ -70,3 +70,28 @@
     height: 80px;
     width: 80px;
 }
+
+.pos-relative {
+    position: relative;
+}
+
+.searchCancelBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+
+    background-color: #e9ecef;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4999;
+}
+
+.searchCancelBtn:hover {
+    border: 1px solid #e9ecef;
+    background-color: #ecf1f5;
+}
