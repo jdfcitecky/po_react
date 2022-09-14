@@ -134,7 +134,7 @@ export default class ChatList extends Component {
                                             <X color='#333333' size={8} className="feather-8 feather-file-text" onClick={this.handleCancelSearchClick} />
                                         </div>
                                     )}
-                                    <input name="search" id="text" placeholder="Search" value={this.state.searchValue} onChange={(event) => this.setState({ searchValue: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatListSearchInput" />
+                                    <input name="search" id="searchvalue" placeholder="Search" value={this.state.searchValue} onChange={(event) => this.setState({ searchValue: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatListSearchInput" />
                                     <div onClick={this.handleSearchClick} className="chatListSearchBtn d-flex justify-content-center" >
                                         <Search color='#333333' className="feather-16 feather-file-text align-self-center" />
                                     </div>

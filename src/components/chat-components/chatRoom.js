@@ -1,6 +1,7 @@
 //this will be chatroom
 import React, { Component } from 'react';
 import ChatRoomMessage from './ChatRoomMessage';
+import { ChevronRight } from 'react-feather';
 import ReactLoading from 'react-loading';
 import './ChatRoom.css'
 export default class ChatRoom extends Component {
@@ -9,11 +10,12 @@ export default class ChatRoom extends Component {
         this.state = {
             chatRoomID: Number(this.props.ChatRoomID),
             isLoaded: false,
-            Messages: [],
-            Message: "",
+            messages: [],
+            message: "",
 
         }
     }
+
 
     componentDidMount() {
         this.getMessages()
@@ -67,7 +69,7 @@ export default class ChatRoom extends Component {
         let messagesWithType = this.addType(messages)
         this.setState({
             isLoaded: true,
-            Messages: messagesWithType,
+            messages: messagesWithType,
         })
         // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/list`, requestOptions)
         //     .then((response) => {
@@ -97,19 +99,58 @@ export default class ChatRoom extends Component {
     addType = (messages) => {
         let id = window.localStorage.getItem("memberID")
         let messagesWithType = []
+        let i = 0
         messages.forEach(m => {
+            m["id"] = "msg" + String(i)
             if (m.senderID == id) {
                 m["type"] = "sender"
             } else {
                 m["type"] = "other"
             }
+            i++
             messagesWithType.push(m)
         })
         return messagesWithType
     }
 
+    handleSendClick = () => {
+        if (this.state.message == "") {
+            return
+        }
+        let time = new Date()
+        let newMsg = {
+            senderID: Number(window.localStorage.getItem("memberID")),
+            text: this.state.message,
+            time: String(time),
+            type: "sender"
+        }
+        // have to send to backend
+        let newMessages = []
+        if (this.state.messages.length != 0) {
+            this.state.messages.forEach((m) => {
+                newMessages.push(m)
+            })
+        }
+        newMessages.push(newMsg)
+        this.setState({
+            messages: newMessages,
+            message: "",
+        })
+
+
+    }
+
+    scrollMsgToBottom = () => {
+        let lastMsgId = "#msg" + String(this.state.messages.length - 1)
+        let lastMsg = document.querySelector(lastMsgId)
+        console.log("LLLLL ", lastMsgId)
+        console.log("LLLLL ", lastMsg)
+        // lastMsg.scrollIntoView()
+    }
+
     render() {
-        let { Messages, isLoaded } = this.state
+        let { messages, isLoaded } = this.state
+        console.log(messages)
         if (!isLoaded) {
             return (
                 <div>
@@ -125,24 +166,27 @@ export default class ChatRoom extends Component {
         }
         return (
             <div >
-                <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1>
+                {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                 <div className="col-md-12 col-lg-12 col-xl-12">
-
                     <div className="pt-3 pe-3 chatRoom">
 
-                        {Messages.map((m) => (
-                            <ChatRoomMessage text={m.text} time={m.time} type={m.type} />
+                        {messages.map((m) => (
+                            <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                         ))}
                     </div>
+                    {/* {this.scrollMsgToBottom()} */}
 
                     <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                            alt="avatar 3" className='chatRoomMessageAvatar' />
-                        <input type="text" className="form-control form-control-lg" id="exampleFormControlInput2"
-                            placeholder="Type message" />
-                        <a className="ms-1 text-muted" href="#!"><i className="fas fa-paperclip"></i></a>
-                        <a className="ms-3 text-muted" href="#!"><i className="fas fa-smile"></i></a>
-                        <a className="ms-3" href="#!"><i className="fas fa-paper-plane"></i></a>
+                        <div className="row">
+                            <div className="col-md-12 col-lg-12 col-xl-12">
+                                <div className='d-flex flex-row mb-3 pos-relative'>
+                                    <input name="message" id="message" placeholder="Type message" value={this.state.message} onChange={(event) => this.setState({ message: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatRoomInput" />
+                                    <div onClick={this.handleSendClick} className="chatListSearchBtn d-flex justify-content-center" >
+                                        <ChevronRight color='#333333' className="feather-16 feather-file-text align-self-center" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

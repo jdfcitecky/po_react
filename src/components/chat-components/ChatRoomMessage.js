@@ -8,6 +8,7 @@ export default class ChatRoomMessage extends Component {
             text: "",
             time: "",
             type: "sender",
+            id: "",
             profileURL: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
         }
     }
@@ -16,14 +17,15 @@ export default class ChatRoomMessage extends Component {
             text: this.props.text,
             time: this.props.time,
             type: this.props.type,
+            id: this.props.id,
         })
     }
 
     render() {
-        let { text, time, type, profileURL } = this.state
+        let { text, time, type, profileURL, id } = this.state
         if (type === "sender") {
             return (
-                <div className="d-flex flex-row justify-content-end">
+                <div className="d-flex flex-row justify-content-end" id={id}>
                     <div>
                         <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">{text}</p>
                         <p className="small me-3 mb-3 rounded-3 text-muted">{time}</p>
@@ -34,7 +36,7 @@ export default class ChatRoomMessage extends Component {
         }
         if (type === "other") {
             return (
-                <div className="d-flex flex-row justify-content-start">
+                <div className="d-flex flex-row justify-content-start" id={id}>
                     <img src={profileURL}
                         alt="avatar receive" className='chatRoomMessageAvatar' />
                     <div>
