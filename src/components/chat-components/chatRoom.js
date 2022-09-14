@@ -19,6 +19,7 @@ export default class ChatRoom extends Component {
 
     componentDidMount() {
         this.getMessages()
+        window.setTimeout(this.scrollMsgToBottom, 700)
     }
 
     getMessages = () => {
@@ -122,7 +123,8 @@ export default class ChatRoom extends Component {
             senderID: Number(window.localStorage.getItem("memberID")),
             text: this.state.message,
             time: String(time),
-            type: "sender"
+            type: "sender",
+            id: "msg" + String(this.state.messages.length)
         }
         // have to send to backend
         let newMessages = []
@@ -136,6 +138,7 @@ export default class ChatRoom extends Component {
             messages: newMessages,
             message: "",
         })
+        window.setTimeout(this.scrollMsgToBottom, 500)
 
 
     }
@@ -143,14 +146,12 @@ export default class ChatRoom extends Component {
     scrollMsgToBottom = () => {
         let lastMsgId = "#msg" + String(this.state.messages.length - 1)
         let lastMsg = document.querySelector(lastMsgId)
-        console.log("LLLLL ", lastMsgId)
-        console.log("LLLLL ", lastMsg)
-        // lastMsg.scrollIntoView()
+        lastMsg.scrollIntoView({ behavior: "smooth" })
     }
 
     render() {
         let { messages, isLoaded } = this.state
-        console.log(messages)
+
         if (!isLoaded) {
             return (
                 <div>
