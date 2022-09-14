@@ -203,7 +203,7 @@ export default class Work extends Component {
                     type="text/css"
                     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
                 />
-                <div className='container fadeIn'>
+                <div className='container fadeIn' >
                     <div className='row'>
                         <div className='col-12'>
                             <Slider {...settings}>
@@ -267,7 +267,7 @@ export default class Work extends Component {
                     type="text/css"
                     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
                 />
-                <div className='container fadeIn'>
+                <div className='container fadeIn' >
                     <div className='row'>
                         <div className='col-12'>
                             <Slider {...settings}>

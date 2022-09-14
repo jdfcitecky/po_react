@@ -25,7 +25,8 @@ export default class Footer extends Component {
         // }
         return (
             <div>
-                <footer className="navbar-fixed-bottom blog-footer ">
+                <div style={{ "height": "150px" }}></div>
+                <footer className="navbar-fixed-bottom blog-footer fixed-bottom">
 
                     <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
                     <p>
