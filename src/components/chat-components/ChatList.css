@@ -9,6 +9,8 @@
 }
 
 .chatListFrame {
+    background-color: rgb(252, 252, 252);
+    border-radius: 15px;
     width: 380px;
     position: fixed;
     right: 10px;

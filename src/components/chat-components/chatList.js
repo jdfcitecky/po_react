@@ -123,12 +123,12 @@ export default class ChatList extends Component {
 
         // }
         return (
-            <div className="chatListFrame">
+            <div className="chatListFrame mt-2">
                 <div className='row m-1'>
                     <div className='col-12'>
                         <div className="row">
                             <div className="col-md-12 col-lg-12 col-xl-12">
-                                <div className='d-flex flex-row mb-3 pos-relative'>
+                                <div className='d-flex flex-row mb-3 pos-relative mt-3'>
                                     {searchValue != "" && (
                                         <div className='searchCancelBtn'>
                                             <X color='#333333' size={8} className="feather-8 feather-file-text" onClick={this.handleCancelSearchClick} />

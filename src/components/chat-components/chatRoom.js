@@ -166,9 +166,9 @@ export default class ChatRoom extends Component {
             )
         }
         return (
-            <div >
+            <div className='chatRoomFrame mt-2'>
                 {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
-                <div className="col-md-12 col-lg-12 col-xl-12">
+                <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
                     <div className="pt-3 pe-3 chatRoom">
 
                         {messages.map((m) => (

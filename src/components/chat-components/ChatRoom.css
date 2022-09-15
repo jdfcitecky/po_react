@@ -23,7 +23,13 @@
 }
 
 .chatRoom {
+
     position: relative;
     height: 475px;
     overflow: auto;
+}
+
+.chatRoomFrame {
+    background-color: rgb(252, 252, 252);
+    border-radius: 15px;
 }
