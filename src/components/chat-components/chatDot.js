@@ -91,11 +91,14 @@ export default class ChatDot extends Component {
 
         return (
             <div className="container floatChatRoom">
+                <div className='dot-pos-relative'>
+                    <div className='miniBtn mt-2'>
+                        <ChevronsRight color='#333333' size={10} className="feather-16 feather-file-text" onClick={this.handleCloseChatRoom} />
+                    </div>
+                </div>
                 <div className='row'>
-                    <div className='col-12 d-flex justify-content-between'>
-                        <div className='miniBtn mt-2'>
-                            <ChevronsRight color='#333333' size={10} className="feather-8 feather-file-text" onClick={this.handleCloseChatRoom} />
-                        </div>
+
+                    <div className='col-12 d-flex justify-content-end'>
                         <div className='closeBtn mt-2'>
                             <X color='#ffffff' size={8} className="feather-8 feather-file-text" onClick={this.handleClick} />
                         </div>
