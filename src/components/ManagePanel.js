@@ -294,8 +294,8 @@ export default class ManageComments extends Component {
                 ...prevState,
                 chartDaily: {
                     ...prevState.chartDaily,
-                    column1Show: this.state.chartDaily.column1.slice(-7),
-                    column2Show: this.state.chartDaily.column1.slice(-7),
+                    column1Show: ["Browse"].concat(this.state.chartDaily.column1.slice(-7)),
+                    column2Show: ["Comment"].concat(this.state.chartDaily.column2.slice(-7)),
                     axisShow: this.state.chartDaily.axis.slice(-7),
                 }
             }))
@@ -306,8 +306,8 @@ export default class ManageComments extends Component {
                 ...prevState,
                 chartDaily: {
                     ...prevState.chartDaily,
-                    column1Show: this.state.chartDaily.column1.slice(0, 7),
-                    column2Show: this.state.chartDaily.column1.slice(0, 7),
+                    column1Show: ["Browse"].concat(this.state.chartDaily.column1.slice(0, 7)),
+                    column2Show: ["Comment"].concat(this.state.chartDaily.column2.slice(0, 7)),
                     axisShow: this.state.chartDaily.axis.slice(0, 7),
                 }
             }))
@@ -318,8 +318,8 @@ export default class ManageComments extends Component {
                 ...prevState,
                 chartDaily: {
                     ...prevState.chartDaily,
-                    column1Show: this.state.chartDaily.column1.slice(currentPage, newCurrentPage),
-                    column2Show: this.state.chartDaily.column1.slice(currentPage, newCurrentPage),
+                    column1Show: ["Browse"].concat(this.state.chartDaily.column1.slice(currentPage, newCurrentPage)),
+                    column2Show: ["Comment"].concat(this.state.chartDaily.column2.slice(currentPage, newCurrentPage)),
                     axisShow: this.state.chartDaily.axis.slice(currentPage, newCurrentPage),
                     currentPage: newCurrentPage
                 }
@@ -331,8 +331,8 @@ export default class ManageComments extends Component {
                 ...prevState,
                 chartDaily: {
                     ...prevState.chartDaily,
-                    column1Show: this.state.chartDaily.column1.slice(newCurrentPage, currentPage),
-                    column2Show: this.state.chartDaily.column1.slice(newCurrentPage, currentPage),
+                    column1Show: ["Browse"].concat(this.state.chartDaily.column1.slice(newCurrentPage, currentPage)),
+                    column2Show: ["Comment"].concat(this.state.chartDaily.column2.slice(newCurrentPage, currentPage)),
                     axisShow: this.state.chartDaily.axis.slice(newCurrentPage, currentPage),
                     currentPage: newCurrentPage
                 }
