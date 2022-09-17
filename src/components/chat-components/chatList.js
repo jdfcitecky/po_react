@@ -48,12 +48,15 @@ export default class ChatList extends Component {
     }
 
     getChatRoomList = () => {
+        let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+        let memberID = Number(window.localStorage.getItem("memberID"))
+        console.log("MEMBER ", memberID)
         let myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
-        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        myHeaders.append("token", this.props.jwt)
+        myHeaders.append("Authorization", "Bearer " + jwt)
+        myHeaders.append("token", jwt)
         const payload = {
-            work_id: 0,
+            member_id: memberID,
         }
 
         const requestOptions = {
@@ -78,29 +81,30 @@ export default class ChatList extends Component {
             { userName: "Fed AAB", chatRoomID: 6, unReadNumber: 44 },
             { userName: "Abby Horwitz", chatRoomID: 7, unReadNumber: 32 },]
         })
-        // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/list`, requestOptions)
-        //     .then((response) => {
-        //         if (response.status != "200") {
-        //             let err = Error
-        //             err.message = "Invalid response code: " + response.status
-        //             this.setState({ error: err })
-        //         }
-        //         return response.json()
-        //     })
-        //     .then((json) => {
-        //         this.setState({
-        //             works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
-        //             maxPage: json["data"].length,
-        //             isLoaded: true,
-        //         },
-        //             (error) => {
-        //                 this.setState({
-        //                     isLoaded: true,
-        //                     error
-        //                 })
-        //             })
-        //         this.handleCategory("All")
-        //     })
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/list`, requestOptions)
+            .then((response) => {
+                console.log("response")
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log("json back ", json)
+                // this.setState({
+                //     works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
+                //     maxPage: json["data"].length,
+                //     isLoaded: true,
+                // },
+                //     (error) => {
+                //         this.setState({
+                //             isLoaded: true,
+                //             error
+                //         })
+                //     })
+            })
     }
 
 

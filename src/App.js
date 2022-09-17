@@ -181,7 +181,7 @@ export default class App extends Component {
             <Route path="*" component={NotFound}>
             </Route>
 
-            <ChatDot jwt={this.state.jwt} />
+            <ChatDot />
           </Switch>
 
           <Footer refresh={this.state.refresh} />

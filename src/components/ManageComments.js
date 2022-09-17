@@ -326,7 +326,14 @@ export default class ManageComments extends Component {
             }
         }
         newTags.concat(this.state.pageTags)
-        let tagSet = newTags.filter((item, index) => newTags.indexOf(item) === index).sort()
+        let tagSet = newTags.filter((item, index) => newTags.indexOf(item) === index).sort(function (a, b) {
+            if (a === Infinity)
+                return 1;
+            else if (isNaN(a))
+                return -1;
+            else
+                return a - b;
+        })
         if (currentPage - 2 >= 2) {
 
             let arrf = tagSet.slice(0, 1)
