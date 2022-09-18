@@ -37,7 +37,7 @@ export default class ChatList extends Component {
         let chatRoomAll = this.state.chatRoomList
         let newChatRoomList = []
         chatRoomAll.forEach((c) => {
-            if (c.userName.match(searchValue) != null) {
+            if (c.alias.match(searchValue) != null) {
                 newChatRoomList.push(c)
             }
         })
@@ -64,23 +64,6 @@ export default class ChatList extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        this.setState({
-            isLoaded: true,
-            chatRoomList: [{ userName: "Marie Horwitz", chatRoomID: 1, unReadNumber: 99 },
-            { userName: "Jack Horwitz", chatRoomID: 2, unReadNumber: 99 },
-            { userName: "Tina Horwitz", chatRoomID: 3, unReadNumber: 2 },
-            { userName: "John Horwitz", chatRoomID: 4, unReadNumber: 0 },
-            { userName: "Carol AAB", chatRoomID: 5, unReadNumber: 0 },
-            { userName: "Fed AAB", chatRoomID: 6, unReadNumber: 44 },
-            { userName: "Abby Horwitz", chatRoomID: 7, unReadNumber: 32 },],
-            chatRoomListShow: [{ userName: "Marie Horwitz", chatRoomID: 1, unReadNumber: 99 },
-            { userName: "Jack Horwitz", chatRoomID: 2, unReadNumber: 99 },
-            { userName: "Tina Horwitz", chatRoomID: 3, unReadNumber: 2 },
-            { userName: "John Horwitz", chatRoomID: 4, unReadNumber: 0 },
-            { userName: "Carol AAB", chatRoomID: 5, unReadNumber: 0 },
-            { userName: "Fed AAB", chatRoomID: 6, unReadNumber: 44 },
-            { userName: "Abby Horwitz", chatRoomID: 7, unReadNumber: 32 },]
-        })
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/list`, requestOptions)
             .then((response) => {
                 console.log("response")
@@ -92,24 +75,36 @@ export default class ChatList extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log("json back ", json)
-                // this.setState({
-                //     works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
-                //     maxPage: json["data"].length,
-                //     isLoaded: true,
-                // },
-                //     (error) => {
-                //         this.setState({
-                //             isLoaded: true,
-                //             error
-                //         })
-                //     })
+                console.log("json back ", json.data)
+                let newChatRoomList = this.addUnreadNumber(json.data)
+                console.log("json back ", newChatRoomList)
+                this.setState({
+                    chatRoomList: newChatRoomList,
+                    chatRoomListShow: newChatRoomList,
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
             })
+    }
+
+    addUnreadNumber = (array) => {
+        let newArray = []
+        for (let i = 0; i < array.length; i++) {
+            array[i]["unread_number"] = 0
+            newArray.push(array[i])
+        }
+        return newArray
     }
 
 
     render() {
         let { isLoaded, chatRoomListShow, searchValue } = this.state
+        console.log(chatRoomListShow)
         if (!isLoaded) {
             return (
                 <div>
@@ -159,7 +154,7 @@ export default class ChatList extends Component {
                                         )}
                                         {chatRoomListShow.map((i) => (
 
-                                            <div className="p-2 border-bottom li-85" onClick={() => this.handleChatRoomClick(i.chatRoomID)}>
+                                            <div className="p-2 border-bottom li-85" onClick={() => this.handleChatRoomClick(i.chat_room_id)}>
                                                 <div className="d-flex justify-content-between">
                                                     <div className="d-flex flex-row li-80">
                                                         <div className='li-80-img'>
@@ -169,12 +164,12 @@ export default class ChatList extends Component {
                                                             <span className="badge bg-success badge-dot"></span>
                                                         </div>
                                                         <div className="pt-1">
-                                                            <p className="fw-bold mb-0">{i.userName}</p>
+                                                            <p className="fw-bold mb-0">{i.alias}</p>
 
                                                         </div>
                                                         <div className="pt-1 ml-2">
-                                                            {i.unReadNumber != 0 && (
-                                                                <span className="badge bg-danger rounded-pill float-end" style={{ color: "white" }}>{i.unReadNumber}</span>
+                                                            {i.unread_number != 0 && (
+                                                                <span className="badge bg-danger rounded-pill float-end" style={{ color: "white" }}>{i.unread_number}</span>
                                                             )}
                                                         </div>
                                                     </div>
