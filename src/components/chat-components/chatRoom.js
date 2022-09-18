@@ -12,6 +12,7 @@ export default class ChatRoom extends Component {
             isLoaded: false,
             messages: [],
             message: "",
+            sended: false,
 
         }
     }
@@ -115,33 +116,92 @@ export default class ChatRoom extends Component {
     }
 
     handleSendClick = () => {
-        if (this.state.message == "") {
-            return
-        }
-        let time = new Date()
-        let newMsg = {
-            senderID: Number(window.localStorage.getItem("memberID")),
-            text: this.state.message,
-            time: String(time),
-            type: "sender",
-            id: "msg" + String(this.state.messages.length)
-        }
-        // have to send to backend
-        let newMessages = []
-        if (this.state.messages.length != 0) {
-            this.state.messages.forEach((m) => {
-                newMessages.push(m)
-            })
-        }
-        newMessages.push(newMsg)
-        this.setState({
-            messages: newMessages,
-            message: "",
-        })
-        window.setTimeout(this.scrollMsgToBottom, 500)
+        if (!this.sended) {
+            if (this.state.message == "") {
+                return
+            }
+            let time = new Date()
+            let newMsg = {
+                senderID: Number(window.localStorage.getItem("memberID")),
+                text: this.state.message,
+                time: String(time),
+                type: "sender",
+                id: "msg" + String(this.state.messages.length)
+            }
+            // have to send to backend
+            let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+            let myHeaders = new Headers()
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + jwt)
+            myHeaders.append("token", jwt)
+            const payload = {
+                id: 0,
+                sender_id: Number(window.localStorage.getItem("memberID")),
+                chat_room_id: Number(this.props.chatRoomID),
+                time: String(time),
+                date: this.generateDateInNumberType(),
+                text: this.state.message,
+                is_read: false,
+                is_hide: false,
 
+            }
+
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+            fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/save`, requestOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.error) {
+                        this.setState({
+                            alert: {
+                                type: "alert-danger",
+                                message: data.error.message,
+                            }
+                        })
+                    } else {
+                        // console.log(data)
+                        this.setState({ sended: true, })
+                        setTimeout(() => {
+                            this.setState({
+                                sended: false
+                            })
+                        }, 500);
+                    }
+                })
+            let newMessages = []
+            if (this.state.messages.length != 0) {
+                this.state.messages.forEach((m) => {
+                    newMessages.push(m)
+                })
+            }
+            newMessages.push(newMsg)
+            this.setState({
+                messages: newMessages,
+                message: "",
+            })
+            window.setTimeout(this.scrollMsgToBottom, 500)
+
+        }
+    }
+
+    generateDateInNumberType = () => {
+        let time = new Date()
+        let year = String(time.getFullYear())
+        let month = String(time.getMonth() + 1)
+        let day = String(time.getDate())
+        if (month.length == 1) {
+            month = "0" + month
+        }
+        if (day.length == 1) {
+            day = "0" + day
+        }
+        return Number(year + month + day)
 
     }
+
 
     scrollMsgToBottom = () => {
         let lastMsgId = "#msg" + String(this.state.messages.length - 1)
