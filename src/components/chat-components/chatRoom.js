@@ -25,11 +25,12 @@ export default class ChatRoom extends Component {
 
     getMessages = () => {
         let myHeaders = new Headers()
+        let jwt = window.localStorage.getItem("jwt").slice(1, -1)
         myHeaders.append("Content-Type", "application/json")
-        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        myHeaders.append("token", this.props.jwt)
+        myHeaders.append("Authorization", "Bearer " + jwt)
+        myHeaders.append("token", jwt)
         const payload = {
-            work_id: 0,
+            chat_room_id: Number(this.props.chatRoomID),
         }
 
         const requestOptions = {
@@ -37,65 +38,29 @@ export default class ChatRoom extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        // here is the testing data
-        let messages = [{
-            senderID: 1,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },
-        {
-            senderID: 2,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },
-        {
-            senderID: 2,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },
-        {
-            senderID: 1,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },
-        {
-            senderID: 2,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },
-        {
-            senderID: 1,
-            text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitaedicta sunt explicabo.",
-            time: "Tue Sep 13 2022 15:17:14 GMT+0800 (GMT+08:00)"
-        },]
-        let messagesWithType = this.addType(messages)
-        this.setState({
-            isLoaded: true,
-            messages: messagesWithType,
-        })
-        // fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/list`, requestOptions)
-        //     .then((response) => {
-        //         if (response.status != "200") {
-        //             let err = Error
-        //             err.message = "Invalid response code: " + response.status
-        //             this.setState({ error: err })
-        //         }
-        //         return response.json()
-        //     })
-        //     .then((json) => {
-        //         this.setState({
-        //             works: this.state.works.concat(json["data"]).map(work => this.colorAssign(work)),
-        //             maxPage: json["data"].length,
-        //             isLoaded: true,
-        //         },
-        //             (error) => {
-        //                 this.setState({
-        //                     isLoaded: true,
-        //                     error
-        //                 })
-        //             })
-        //         this.handleCategory("All")
-        //     })
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
+            .then((response) => {
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                console.log("MESSAGE LIST", json)
+                let messagesWithType = this.addType(json.data)
+                this.setState({
+                    messages: messagesWithType,
+                    isLoaded: true,
+                },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        })
+                    })
+            })
     }
 
     addType = (messages) => {
@@ -104,7 +69,7 @@ export default class ChatRoom extends Component {
         let i = 0
         messages.forEach(m => {
             m["id"] = "msg" + String(i)
-            if (m.senderID == id) {
+            if (m.sender_id == id) {
                 m["type"] = "sender"
             } else {
                 m["type"] = "other"

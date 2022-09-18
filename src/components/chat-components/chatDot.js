@@ -47,7 +47,6 @@ export default class ChatDot extends Component {
     render() {
         let { collapse, chatRoomcollapse } = this.state
         let t = window.localStorage.getItem("jwt")
-        console.log("JWT", t)
         if (t === "" || t === null) {
             return (
                 <div className="floatButton">
