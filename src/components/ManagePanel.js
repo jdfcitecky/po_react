@@ -84,6 +84,7 @@ export default class ManageComments extends Component {
                 return response.json()
             })
             .then((json) => {
+                console.log(json.data)
                 let dailyBrowse = []
                 let dailyBrowseAxis = []
                 let dailyComment = []
@@ -121,7 +122,7 @@ export default class ManageComments extends Component {
                             column2Show: ["Comment"].concat(dailyComment.slice(-7)),
                             axis: dailyBrowseAxis,
                             axisShow: dailyBrowseAxis.slice(-7),
-                            currentPage: 0,
+                            currentPage: dailyBrowse.length - 1,
                         },
                         chartTopBrowse: {
                             column1: topBrowseArticle,
@@ -179,6 +180,7 @@ export default class ManageComments extends Component {
 
             })
     }
+
 
     renderChart() {
         c3.generate({
@@ -289,7 +291,10 @@ export default class ManageComments extends Component {
     handleDailyChartClick(page) {
         let currentPage = this.state.chartDaily.currentPage
         let newCurrentPage = currentPage + (page * 7)
+        console.log(currentPage)
+        console.log(newCurrentPage)
         if (newCurrentPage >= this.state.chartDaily.column1.length) {
+            console.log("case 1")
             this.setState((prevState) => ({
                 ...prevState,
                 chartDaily: {
@@ -302,6 +307,7 @@ export default class ManageComments extends Component {
             return
         }
         if (newCurrentPage <= 0) {
+            console.log("case 2")
             this.setState((prevState) => ({
                 ...prevState,
                 chartDaily: {
@@ -314,6 +320,7 @@ export default class ManageComments extends Component {
             return
         }
         if (newCurrentPage > currentPage) {
+            console.log("case 3")
             this.setState((prevState) => ({
                 ...prevState,
                 chartDaily: {
@@ -327,6 +334,7 @@ export default class ManageComments extends Component {
             return
         }
         if (newCurrentPage < currentPage) {
+            console.log("case 4")
             this.setState((prevState) => ({
                 ...prevState,
                 chartDaily: {
