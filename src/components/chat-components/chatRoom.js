@@ -13,6 +13,7 @@ export default class ChatRoom extends Component {
             messages: [],
             message: "",
             sended: false,
+            ws: "",
 
         }
     }
@@ -20,6 +21,7 @@ export default class ChatRoom extends Component {
 
     componentDidMount() {
         this.getMessages()
+        this.openWebSocket()
         window.setTimeout(this.scrollMsgToBottom, 700)
     }
 
@@ -63,6 +65,30 @@ export default class ChatRoom extends Component {
             })
     }
 
+    openWebSocket = () => {
+        //使用 WebSocket 的網址向 Server 開啟連結
+        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}`)
+        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}`)
+        console.log(ws)
+
+        //開啟後執行的動作，指定一個 function 會在連結 WebSocket 後執行
+        ws.onopen = () => {
+            console.log('open connection')
+            this.setState({
+                ws: ws
+            })
+        }
+
+        //關閉後執行的動作，指定一個 function 會在連結中斷後執行
+        ws.onclose = () => {
+            console.log('close connection')
+        }
+
+        ws.onmessage = event => {
+            console.log(event)
+        }
+    }
+
     addType = (messages) => {
         let id = window.localStorage.getItem("memberID")
         let messagesWithType = []
@@ -78,6 +104,61 @@ export default class ChatRoom extends Component {
             messagesWithType.push(m)
         })
         return messagesWithType
+    }
+
+    handleSendClickWithWS = () => {
+        let ws = this.state.ws
+        if (!this.sended) {
+            if (this.state.message == "") {
+                return
+            }
+            let time = new Date()
+            let newMsg = {
+                senderID: Number(window.localStorage.getItem("memberID")),
+                text: this.state.message,
+                time: String(time),
+                type: "sender",
+                id: "msg" + String(this.state.messages.length)
+            }
+            // have to send to backend
+            let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+            let myHeaders = new Headers()
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + jwt)
+            myHeaders.append("token", jwt)
+            const payload = {
+                id: 0,
+                sender_id: Number(window.localStorage.getItem("memberID")),
+                chat_room_id: Number(this.props.chatRoomID),
+                time: String(time),
+                date: this.generateDateInNumberType(),
+                text: this.state.message,
+                is_read: false,
+                is_hide: false,
+
+            }
+            ws.send(JSON.stringify(payload))
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+
+            let newMessages = []
+            if (this.state.messages.length != 0) {
+                this.state.messages.forEach((m) => {
+                    newMessages.push(m)
+                })
+            }
+            newMessages.push(newMsg)
+            this.setState({
+                messages: newMessages,
+                message: "",
+            })
+            window.setTimeout(this.scrollMsgToBottom, 500)
+
+        }
+
     }
 
     handleSendClick = () => {
@@ -207,7 +288,7 @@ export default class ChatRoom extends Component {
                             <div className="col-md-12 col-lg-12 col-xl-12">
                                 <div className='d-flex flex-row mb-3 pos-relative'>
                                     <input name="message" id="message" placeholder="Type message" value={this.state.message} onChange={(event) => this.setState({ message: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatRoomInput" />
-                                    <div onClick={this.handleSendClick} className="chatListSearchBtn d-flex justify-content-center" >
+                                    <div onClick={this.handleSendClickWithWS} className="chatListSearchBtn d-flex justify-content-center" >
                                         <ChevronRight color='#333333' className="feather-16 feather-file-text align-self-center" />
                                     </div>
                                 </div>

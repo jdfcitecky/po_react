@@ -50,7 +50,6 @@ export default class ChatList extends Component {
     getChatRoomList = () => {
         let jwt = window.localStorage.getItem("jwt").slice(1, -1)
         let memberID = Number(window.localStorage.getItem("memberID"))
-        console.log("MEMBER ", memberID)
         let myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
         myHeaders.append("Authorization", "Bearer " + jwt)
@@ -66,7 +65,6 @@ export default class ChatList extends Component {
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/list`, requestOptions)
             .then((response) => {
-                console.log("response")
                 if (response.status != "200") {
                     let err = Error
                     err.message = "Invalid response code: " + response.status
@@ -75,9 +73,7 @@ export default class ChatList extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log("json back ", json.data)
                 let newChatRoomList = this.addUnreadNumber(json.data)
-                console.log("json back ", newChatRoomList)
                 this.setState({
                     chatRoomList: newChatRoomList,
                     chatRoomListShow: newChatRoomList,
@@ -104,7 +100,6 @@ export default class ChatList extends Component {
 
     render() {
         let { isLoaded, chatRoomListShow, searchValue } = this.state
-        console.log(chatRoomListShow)
         if (!isLoaded) {
             return (
                 <div>
