@@ -67,8 +67,8 @@ export default class ChatRoom extends Component {
 
     openWebSocket = () => {
         //使用 WebSocket 的網址向 Server 開啟連結
-        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}`)
-        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}`)
+        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
+        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
         console.log(ws)
 
         //開啟後執行的動作，指定一個 function 會在連結 WebSocket 後執行
