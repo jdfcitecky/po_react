@@ -66,12 +66,12 @@ export default class ChatRoom extends Component {
     }
 
     openWebSocket = () => {
-        //使用 WebSocket 的網址向 Server 開啟連結
+        //use WebSocket url to Server open link
         let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
         console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
         console.log(ws)
 
-        //開啟後執行的動作，指定一個 function 會在連結 WebSocket 後執行
+        //assign a function that will execute after WebSocket open
         ws.onopen = () => {
             console.log('open connection')
             this.setState({
@@ -79,13 +79,14 @@ export default class ChatRoom extends Component {
             })
         }
 
-        //關閉後執行的動作，指定一個 function 會在連結中斷後執行
+        //assign a function that will execute after WebSocket close
         ws.onclose = () => {
             console.log('close connection')
         }
 
         ws.onmessage = event => {
-            console.log(event)
+            var newMsg = JSON.parse(event.data)
+            this.updateMessages(newMsg)
         }
     }
 
@@ -112,6 +113,9 @@ export default class ChatRoom extends Component {
             if (this.state.message == "") {
                 return
             }
+            this.setState({
+                message: "",
+            })
             let time = new Date()
             let newMsg = {
                 senderID: Number(window.localStorage.getItem("memberID")),
@@ -144,22 +148,27 @@ export default class ChatRoom extends Component {
                 headers: myHeaders,
             }
 
-            let newMessages = []
-            if (this.state.messages.length != 0) {
-                this.state.messages.forEach((m) => {
-                    newMessages.push(m)
-                })
-            }
-            newMessages.push(newMsg)
-            this.setState({
-                messages: newMessages,
-                message: "",
-            })
-            window.setTimeout(this.scrollMsgToBottom, 500)
+            this.updateMessages(newMsg)
 
         }
 
     }
+
+    updateMessages = (newMsg) => {
+        newMsg.id = ("msg" + String(this.state.messages.length))
+        if (newMsg.sender_id == window.localStorage.getItem("memberID")) {
+            newMsg.type = "sender"
+        } else {
+            newMsg.type = "other"
+        }
+        let newMessages = this.state.messages
+        newMessages.push(newMsg)
+        this.setState({
+            messages: newMessages,
+        })
+        window.setTimeout(this.scrollMsgToBottom, 500)
+    }
+
 
     handleSendClick = () => {
         if (!this.sended) {
