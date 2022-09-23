@@ -54,7 +54,6 @@ export default class ChatList extends Component {
 
     render() {
         let { isLoaded, chatRoomListShow, searchValue } = this.state
-        console.log("MSGS", this.state.chatRoomMessages)
         if (!isLoaded) {
             return (
                 <div>

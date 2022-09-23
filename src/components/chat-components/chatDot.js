@@ -126,7 +126,7 @@ export default class ChatDot extends Component {
             })
             .then((json) => {
                 let prechatRoomMessages = this.state.chatRoomMessages
-                prechatRoomMessages[stateName] = json.data
+                prechatRoomMessages[stateName] = this.addType(json.data)
                 this.setState({
                     chatRoomMessages: prechatRoomMessages,
                 },
@@ -136,6 +136,23 @@ export default class ChatDot extends Component {
                         })
                     })
             })
+    }
+
+    addType = (messages) => {
+        let id = window.localStorage.getItem("memberID")
+        let messagesWithType = []
+        let i = 0
+        messages.forEach(m => {
+            m["id"] = "msg" + String(i)
+            if (m.sender_id == id) {
+                m["type"] = "sender"
+            } else {
+                m["type"] = "other"
+            }
+            i++
+            messagesWithType.push(m)
+        })
+        return messagesWithType
     }
 
     handleClick = () => {
@@ -178,7 +195,7 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { collapse, chatRoomcollapse, chatRoomList, chatRoomMessages, webSocketList } = this.state
+        let { collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
         let t = window.localStorage.getItem("jwt")
         console.log(collapse, chatRoomcollapse, chatRoomList, chatRoomMessages, webSocketList)
         if (t === "" || t === null) {
@@ -239,7 +256,7 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom chatRoomID={this.state.chatRoomID} />
+                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />

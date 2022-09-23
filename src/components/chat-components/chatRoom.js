@@ -20,50 +20,53 @@ export default class ChatRoom extends Component {
 
 
     componentDidMount() {
-        this.getMessages()
+        this.setState({
+            isLoaded: true,
+            messages: this.props.chatRoomMessages,
+        })
         this.openWebSocket()
         window.setTimeout(this.scrollMsgToBottom, 700)
     }
 
-    getMessages = () => {
-        let myHeaders = new Headers()
-        let jwt = window.localStorage.getItem("jwt").slice(1, -1)
-        myHeaders.append("Content-Type", "application/json")
-        myHeaders.append("Authorization", "Bearer " + jwt)
-        myHeaders.append("token", jwt)
-        const payload = {
-            chat_room_id: Number(this.props.chatRoomID),
-        }
+    // getMessages = () => {
+    //     let myHeaders = new Headers()
+    //     let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+    //     myHeaders.append("Content-Type", "application/json")
+    //     myHeaders.append("Authorization", "Bearer " + jwt)
+    //     myHeaders.append("token", jwt)
+    //     const payload = {
+    //         chat_room_id: Number(this.props.chatRoomID),
+    //     }
 
-        const requestOptions = {
-            method: "POST",
-            body: JSON.stringify(payload),
-            headers: myHeaders,
-        }
-        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
-            .then((response) => {
-                if (response.status != "200") {
-                    let err = Error
-                    err.message = "Invalid response code: " + response.status
-                    this.setState({ error: err })
-                }
-                return response.json()
-            })
-            .then((json) => {
-                console.log("MESSAGE LIST", json)
-                let messagesWithType = this.addType(json.data)
-                this.setState({
-                    messages: messagesWithType,
-                    isLoaded: true,
-                },
-                    (error) => {
-                        this.setState({
-                            isLoaded: true,
-                            error
-                        })
-                    })
-            })
-    }
+    //     const requestOptions = {
+    //         method: "POST",
+    //         body: JSON.stringify(payload),
+    //         headers: myHeaders,
+    //     }
+    //     fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
+    //         .then((response) => {
+    //             if (response.status != "200") {
+    //                 let err = Error
+    //                 err.message = "Invalid response code: " + response.status
+    //                 this.setState({ error: err })
+    //             }
+    //             return response.json()
+    //         })
+    //         .then((json) => {
+    //             console.log("MESSAGE LIST", json)
+    //             let messagesWithType = this.addType(json.data)
+    //             this.setState({
+    //                 messages: messagesWithType,
+    //                 isLoaded: true,
+    //             },
+    //                 (error) => {
+    //                     this.setState({
+    //                         isLoaded: true,
+    //                         error
+    //                     })
+    //                 })
+    //         })
+    // }
 
     openWebSocket = () => {
         //use WebSocket url to Server open link
@@ -148,25 +151,41 @@ export default class ChatRoom extends Component {
                 headers: myHeaders,
             }
 
-            this.updateMessages(newMsg)
+            this.updateMessagesFrontEnd(newMsg)
 
         }
 
     }
 
-    updateMessages = (newMsg) => {
+    updateMessagesFrontEnd = (newMsg) => {
         newMsg.id = ("msg" + String(this.state.messages.length))
-        if (newMsg.sender_id == window.localStorage.getItem("memberID")) {
-            newMsg.type = "sender"
-        } else {
-            newMsg.type = "other"
-        }
+        newMsg.type = "sender"
         let newMessages = this.state.messages
         newMessages.push(newMsg)
         this.setState({
             messages: newMessages,
         })
         window.setTimeout(this.scrollMsgToBottom, 500)
+    }
+
+
+
+    updateMessages = (newMsg) => {
+        if (newMsg.sender_id != Number(window.localStorage.getItem("memberID"))) {
+            newMsg.id = ("msg" + String(this.state.messages.length))
+            if (newMsg.sender_id == window.localStorage.getItem("memberID")) {
+                newMsg.type = "sender"
+            } else {
+                newMsg.type = "other"
+            }
+            let newMessages = this.state.messages
+            newMessages.push(newMsg)
+            console.log(newMsg)
+            this.setState({
+                messages: newMessages,
+            })
+            window.setTimeout(this.scrollMsgToBottom, 500)
+        }
     }
 
 
