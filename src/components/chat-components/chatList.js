@@ -12,12 +12,32 @@ export default class ChatList extends Component {
             chatRoomList: [],
             chatRoomListShow: [],
             searchValue: "",
+            chatRoomMessages: {},
+            webSocketList: {},
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
     }
     componentDidMount() {
         this.getChatRoomList()
+        window.setTimeout(this.checkInitIsDone, 500)
+    }
+
+    checkInitIsDone = () => {
+        let listLen = this.state.chatRoomList.length
+        let msgLen = Object.keys(this.state.chatRoomMessages).length
+        let wsLen = Object.keys(this.state.webSocketList).length
+        console.log("do init check ", listLen, msgLen, wsLen)
+        if (listLen != 0 && msgLen != 0 && msgLen == listLen) {
+            let newChatRoomList = this.addUnreadNumber(this.state.chatRoomList, this.state.chatRoomMessages)
+            this.setState({
+                chatRoomList: newChatRoomList,
+                chatRoomListShow: newChatRoomList,
+                isLoaded: true
+            })
+            return
+        }
+        window.setTimeout(this.checkInitIsDone, 500)
     }
 
     handleChatRoomClick = (id) => {
@@ -73,26 +93,76 @@ export default class ChatList extends Component {
                 return response.json()
             })
             .then((json) => {
-                let newChatRoomList = this.addUnreadNumber(json.data)
+                let newChatRoomList = json.data
+                console.log(newChatRoomList)
+                newChatRoomList.forEach((chatRoom) => {
+                    this.getChatRoomMessages(chatRoom.chat_room_id)
+                })
                 this.setState({
                     chatRoomList: newChatRoomList,
                     chatRoomListShow: newChatRoomList,
-                    isLoaded: true,
                 },
                     (error) => {
                         this.setState({
-                            isLoaded: true,
                             error
                         })
                     })
             })
     }
 
-    addUnreadNumber = (array) => {
+
+    getChatRoomMessages = (chatRoomId) => {
+        let stateName = String(chatRoomId)
+        let myHeaders = new Headers()
+        let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+        myHeaders.append("Content-Type", "application/json")
+        myHeaders.append("Authorization", "Bearer " + jwt)
+        myHeaders.append("token", jwt)
+        const payload = {
+            chat_room_id: Number(chatRoomId),
+        }
+
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: myHeaders,
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
+            .then((response) => {
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+            .then((json) => {
+                let prechatRoomMessages = this.state.chatRoomMessages
+                prechatRoomMessages[stateName] = json.data
+                this.setState({
+                    chatRoomMessages: prechatRoomMessages,
+                },
+                    (error) => {
+                        this.setState({
+                            error
+                        })
+                    })
+            })
+    }
+
+    addUnreadNumber = (chatRoomList, msgLists) => {
         let newArray = []
-        for (let i = 0; i < array.length; i++) {
-            array[i]["unread_number"] = 0
-            newArray.push(array[i])
+        for (let i = 0; i < chatRoomList.length; i++) {
+            let chatRoomId = chatRoomList[i].chat_room_id
+            let msgList = msgLists[String(chatRoomId)]
+            let unreadNumber = 0
+            msgList.forEach((msg) => {
+                if (msg.is_read == false) {
+                    unreadNumber++
+                }
+            })
+            chatRoomList[i]["unread_number"] = unreadNumber
+            newArray.push(chatRoomList[i])
         }
         return newArray
     }
@@ -100,6 +170,7 @@ export default class ChatList extends Component {
 
     render() {
         let { isLoaded, chatRoomListShow, searchValue } = this.state
+        console.log("MSGS", this.state.chatRoomMessages)
         if (!isLoaded) {
             return (
                 <div>
