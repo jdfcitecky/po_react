@@ -25,7 +25,9 @@ export default class ChatRoom extends Component {
             messages: this.props.chatRoomMessages,
         })
         this.openWebSocket()
-        window.setTimeout(this.scrollMsgToBottom, 700)
+        if (this.props.chatRoomMessages.length > 0) {
+            window.setTimeout(this.scrollMsgToBottom, 700)
+        }
     }
 
     // getMessages = () => {
