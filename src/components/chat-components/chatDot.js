@@ -26,6 +26,31 @@ export default class ChatDot extends Component {
         window.setTimeout(this.detectLogin, 1000)
     }
 
+    openWebSocket = () => {
+        //use WebSocket url to Server open link
+        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
+        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
+        console.log(ws)
+
+        //assign a function that will execute after WebSocket open
+        ws.onopen = () => {
+            console.log('open connection')
+            this.setState({
+                ws: ws
+            })
+        }
+
+        //assign a function that will execute after WebSocket close
+        ws.onclose = () => {
+            console.log('close connection')
+        }
+
+        ws.onmessage = event => {
+            var newMsg = JSON.parse(event.data)
+            this.updateMessages(newMsg)
+        }
+    }
+
     detectLogin = () => {
         let jwt = window.localStorage.getItem("jwt")
         if (jwt != "" && jwt != null) {
