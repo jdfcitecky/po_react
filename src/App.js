@@ -99,17 +99,6 @@ export default class App extends Component {
 
 
   render() {
-    // let API_Ip = process.env.GO_APP_HOST_IP_ADDRESS
-    // if (API_Ip === undefined) {
-    //   this.setState({ API_IP: 'http://localhost:4000' })
-
-    // }
-    // console.log(this.state.API_IP)
-
-    // console.log(this.state.isManager)
-    // console.log(this.state.memberID)
-    // console.log(this.state.jwt)
-    // this.updateItemFromLocalStroage()
     return (
       <Router>
         <ChatDot />
@@ -124,10 +113,10 @@ export default class App extends Component {
           </div>
           <Switch>
 
-            {/* <Route path="/work/:id" component={Work}>
-            </Route> */}
-
             <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} refresh={this.state.RefreshDOM} />}>
+            </Route>
+
+            <Route path="/search/:value/:page" component={Search} key={this.state.current} API_IP={this.state.API_IP}>
             </Route>
 
             <Route path="/search/:value" component={Search} key={this.state.current} API_IP={this.state.API_IP}>
@@ -135,21 +124,6 @@ export default class App extends Component {
 
             <Route path="/search" component={Search} API_IP={this.state.API_IP}>
             </Route>
-            {/* 
-            <Route path="/edit/article/:id" component={EditArticle}>
-            </Route>
-
-            <Route path="/edit/article" component={EditArticle}>
-            </Route>
-
-            <Route path="/manage/comments" component={ManageComments}>
-            </Route>
-
-            <Route path="/manage/articles" component={ManageArticles}>
-            </Route>
-
-            <Route path="/manage" component={ManageArticles}>
-            </Route> */}
 
             <Route path="/edit/article/:id" component={(props) => <EditArticle {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
