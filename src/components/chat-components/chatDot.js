@@ -8,6 +8,7 @@ export default class ChatDot extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            totalUnread: 0,
             collapse: false,
             chatRoomcollapse: false,
             chatRoomID: -1,
@@ -21,7 +22,6 @@ export default class ChatDot extends Component {
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
-        this.updateMessages = this.updateMessages.bind(this)
     }
     componentDidMount() {
         window.setTimeout(this.detectLogin, 1000)
@@ -68,6 +68,19 @@ export default class ChatDot extends Component {
                 chatRoomMessages: newMessages,
             })
         }
+        // update unread number
+        if (!this.state.collapse) {
+            let newChatRoomList = this.state.chatRoomList
+            for (let i = 0; i < newChatRoomList.length; i++) {
+                if (newChatRoomList[i].chat_room_id == newMsg.chat_room_id) {
+                    newChatRoomList[i].unread_number++
+                }
+            }
+            this.setState({
+                chatRoomList: newChatRoomList,
+            })
+            return
+        }
         if (this.state.collapse && !this.state.chatRoomcollapse) {
             let newChatRoomList = this.state.chatRoomList
             for (let i = 0; i < newChatRoomList.length; i++) {
@@ -80,8 +93,20 @@ export default class ChatDot extends Component {
             })
             return
         }
-        if (this.state.chatRoomcollapse) {
-            window.setTimeout(this.scrollMsgToBottom, 500)
+        if (this.state.collapse && this.state.chatRoomcollapse) {
+            let chatRoomID = this.state.chatRoomID
+            let newChatRoomList = this.state.chatRoomList
+            for (let i = 0; i < newChatRoomList.length; i++) {
+                if (newChatRoomList[i].chat_room_id == newMsg.chat_room_id && newChatRoomList[i].chat_room_id != chatRoomID) {
+                    newChatRoomList[i].unread_number++
+                }
+            }
+            this.setState({
+                chatRoomList: newChatRoomList,
+            })
+            if (chatRoomID == newMsg.chat_room_id) {
+                window.setTimeout(this.scrollMsgToBottom, 500)
+            }
             return
         }
     }
@@ -115,6 +140,7 @@ export default class ChatDot extends Component {
                 chatRoomListShow: newChatRoomList,
                 isLoaded: true
             })
+            window.setTimeout(this.updateTotalUnread, 1000)
             return
         }
         window.setTimeout(this.checkInitIsDone, 500)
@@ -223,6 +249,7 @@ export default class ChatDot extends Component {
     handleClick = () => {
         this.setState({
             collapse: !this.state.collapse,
+            chatRoomcollapse: false,
         })
     }
 
@@ -267,16 +294,25 @@ export default class ChatDot extends Component {
         return newArray
     }
 
+    updateTotalUnread = () => {
+        let newTotalUnread = 0
+        this.state.chatRoomList.forEach((c) => {
+            newTotalUnread += c.unread_number
+        })
+        console.log(newTotalUnread)
+        this.setState({
+            totalUnread: newTotalUnread
+        })
+        window.setTimeout(this.updateTotalUnread, 1000)
+    }
+
     render() {
-        let { collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
-        let t = window.localStorage.getItem("jwt")
-        console.log(chatRoomList)
-        if (t === "" || t === null) {
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
+        if (!isLoaded) {
             return (
                 <div className="floatButton">
                     <div className="chatDot-inactive">
                         <MessageCircle color='#ffffff' size={48} className="feather-24 feather-file-text" />
-                        {/* <i class="fas fa-chevron-down"></i> */}
                     </div>
                 </div>
             )
@@ -284,9 +320,12 @@ export default class ChatDot extends Component {
         if (!collapse) {
             return (
                 <div className="floatButton">
+                    {this.state.totalUnread != 0 && (
+                        <div className='unread-dot'></div>
+                    )}
+
                     <div className="chatDot">
                         <MessageCircle color='#ffffff' size={48} className="feather-24 feather-file-text" onClick={this.handleClick} />
-                        {/* <i class="fas fa-chevron-down"></i> */}
                     </div>
                 </div>
             )

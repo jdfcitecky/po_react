@@ -37,6 +37,20 @@
     z-index: 9998;
 }
 
+.unread-dot {
+    position: fixed !important;
+    bottom: 140px;
+    right: 30px;
+    margin: 0 auto;
+    background-color: #ff4747;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    z-index: 12000;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 25%);
+
+}
+
 .feather-24 {
     width: 24px;
     height: 24px;
