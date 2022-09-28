@@ -26,23 +26,23 @@ export default class ChatDot extends Component {
         window.setTimeout(this.detectLogin, 1000)
     }
 
-    openWebSocket = () => {
+    openWebSocket = (chatRoomID, memberID) => {
         //use WebSocket url to Server open link
-        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
-        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
-        console.log(ws)
+        let stateName = String(chatRoomID)
+        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${chatRoomID}/${memberID}`)
 
         //assign a function that will execute after WebSocket open
         ws.onopen = () => {
-            console.log('open connection')
+            let prewebSocketList = this.state.webSocketList
+            prewebSocketList[stateName] = ws
             this.setState({
-                ws: ws
+                webSocketList: prewebSocketList,
             })
         }
 
         //assign a function that will execute after WebSocket close
         ws.onclose = () => {
-            console.log('close connection')
+
         }
 
         ws.onmessage = event => {
@@ -54,7 +54,6 @@ export default class ChatDot extends Component {
     detectLogin = () => {
         let jwt = window.localStorage.getItem("jwt")
         if (jwt != "" && jwt != null) {
-            console.log("Chat room login")
             this.getChatRoomListAndMessagesAndWebSocket()
             window.setTimeout(this.checkInitIsDone, 500)
             return
@@ -67,8 +66,7 @@ export default class ChatDot extends Component {
         let listLen = this.state.chatRoomList.length
         let msgLen = Object.keys(this.state.chatRoomMessages).length
         let wsLen = Object.keys(this.state.webSocketList).length
-        console.log("do init check ", listLen, msgLen, wsLen)
-        if (listLen != 0 && msgLen != 0 && msgLen == listLen) {
+        if (listLen != 0 && msgLen != 0 && wsLen != 0 && msgLen == listLen && wsLen == listLen) {
             let newChatRoomList = this.addUnreadNumber(this.state.chatRoomList, this.state.chatRoomMessages)
             this.setState({
                 chatRoomList: newChatRoomList,
@@ -107,9 +105,9 @@ export default class ChatDot extends Component {
             })
             .then((json) => {
                 let newChatRoomList = json.data
-                console.log(newChatRoomList)
                 newChatRoomList.forEach((chatRoom) => {
                     this.getChatRoomMessages(chatRoom.chat_room_id)
+                    this.openWebSocket(chatRoom.chat_room_id, memberID)
                 })
                 this.setState({
                     chatRoomList: newChatRoomList,
@@ -181,14 +179,12 @@ export default class ChatDot extends Component {
     }
 
     handleClick = () => {
-        console.log("click")
         this.setState({
             collapse: !this.state.collapse,
         })
     }
 
     handleChatRoomClick = (id) => {
-        console.log("click Chatttt", id)
         this.setState({
             chatRoomcollapse: true,
             chatRoomID: id,
@@ -196,7 +192,6 @@ export default class ChatDot extends Component {
     }
 
     handleCloseChatRoom = () => {
-        console.log("Click close")
         this.setState({
             chatRoomcollapse: false,
         })
@@ -222,7 +217,6 @@ export default class ChatDot extends Component {
     render() {
         let { collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
         let t = window.localStorage.getItem("jwt")
-        console.log(collapse, chatRoomcollapse, chatRoomList, chatRoomMessages, webSocketList)
         if (t === "" || t === null) {
             return (
                 <div className="floatButton">
