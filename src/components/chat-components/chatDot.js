@@ -227,9 +227,20 @@ export default class ChatDot extends Component {
     }
 
     handleChatRoomClick = (id) => {
+        let newChatRoomList = this.state.chatRoomList
+        for (let i = 0; i < newChatRoomList.length; i++) {
+            if (newChatRoomList[i].chat_room_id == Number(id)) {
+                newChatRoomList[i].unread_number = 0
+            }
+        }
         this.setState({
-            chatRoomcollapse: true,
-            chatRoomID: id,
+            chatRoomcollapse: false,
+        }, () => {
+            this.setState({
+                chatRoomcollapse: true,
+                chatRoomList: newChatRoomList,
+                chatRoomID: id,
+            })
         })
     }
 
@@ -318,7 +329,7 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} updateMessages={this.updateMessages} />
+                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />
