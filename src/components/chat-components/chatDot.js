@@ -21,6 +21,7 @@ export default class ChatDot extends Component {
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
+        this.updateMessages = this.updateMessages.bind(this)
     }
     componentDidMount() {
         window.setTimeout(this.detectLogin, 1000)
@@ -49,6 +50,47 @@ export default class ChatDot extends Component {
             var newMsg = JSON.parse(event.data)
             this.updateMessages(newMsg)
         }
+    }
+
+    updateMessages = (newMsg) => {
+        let newMessages = this.state.chatRoomMessages
+        let memberID = Number(window.localStorage.getItem("memberID"))
+        let chatRoomID = newMsg.chat_room_id
+        if (newMsg.sender_id != memberID) {
+            newMsg.id = ("msg" + String(newMessages[String(chatRoomID)].length))
+            if (newMsg.sender_id != memberID) {
+                newMsg.type = "other"
+            } else {
+                newMsg.type = "sender"
+            }
+            newMessages[String(chatRoomID)].push(newMsg)
+            this.setState({
+                chatRoomMessages: newMessages,
+            })
+        }
+        if (this.state.collapse && !this.state.chatRoomcollapse) {
+            let newChatRoomList = this.state.chatRoomList
+            for (let i = 0; i < newChatRoomList.length; i++) {
+                if (newChatRoomList[i].chat_room_id == newMsg.chat_room_id) {
+                    newChatRoomList[i].unread_number++
+                }
+            }
+            this.setState({
+                chatRoomList: newChatRoomList,
+            })
+            return
+        }
+        if (this.state.chatRoomcollapse) {
+            window.setTimeout(this.scrollMsgToBottom, 500)
+            return
+        }
+    }
+
+    scrollMsgToBottom = () => {
+        let chatRoomID = this.state.chatRoomID
+        let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
+        let lastMsg = document.querySelector(lastMsgId)
+        lastMsg.scrollIntoView({ behavior: "smooth" })
     }
 
     detectLogin = () => {
@@ -217,6 +259,7 @@ export default class ChatDot extends Component {
     render() {
         let { collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
         let t = window.localStorage.getItem("jwt")
+        console.log(chatRoomList)
         if (t === "" || t === null) {
             return (
                 <div className="floatButton">
@@ -275,7 +318,7 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} />
+                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} updateMessages={this.updateMessages} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />

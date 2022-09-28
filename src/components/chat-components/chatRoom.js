@@ -20,11 +20,13 @@ export default class ChatRoom extends Component {
 
 
     componentDidMount() {
+        console.log("chat room mount")
         this.setState({
             isLoaded: true,
             messages: this.props.chatRoomMessages,
+            ws: this.props.webSocket
         })
-        this.openWebSocket()
+        // this.initWebSocket()
         if (this.props.chatRoomMessages.length > 0) {
             window.setTimeout(this.scrollMsgToBottom, 700)
         }
@@ -70,30 +72,30 @@ export default class ChatRoom extends Component {
     //         })
     // }
 
-    openWebSocket = () => {
-        //use WebSocket url to Server open link
-        let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
-        console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
-        console.log(ws)
+    // openWebSocket = () => {
+    //     //use WebSocket url to Server open link
+    //     let ws = new WebSocket(`ws://${process.env.REACT_APP_API_ADDRESS}/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
+    //     console.log(`ws://${process.env.REACT_APP_API_ADDRESS}/chatroom/ws/${this.props.chatRoomID}/${window.localStorage.getItem("memberID")}`)
+    //     console.log(ws)
 
-        //assign a function that will execute after WebSocket open
-        ws.onopen = () => {
-            console.log('open connection')
-            this.setState({
-                ws: ws
-            })
-        }
+    //     //assign a function that will execute after WebSocket open
+    //     ws.onopen = () => {
+    //         console.log('open connection')
+    //         this.setState({
+    //             ws: ws
+    //         })
+    //     }
 
-        //assign a function that will execute after WebSocket close
-        ws.onclose = () => {
-            console.log('close connection')
-        }
+    //     //assign a function that will execute after WebSocket close
+    //     ws.onclose = () => {
+    //         console.log('close connection')
+    //     }
 
-        ws.onmessage = event => {
-            var newMsg = JSON.parse(event.data)
-            this.updateMessages(newMsg)
-        }
-    }
+    //     ws.onmessage = event => {
+    //         var newMsg = JSON.parse(event.data)
+    //         this.updateMessages(newMsg)
+    //     }
+    // }
 
     addType = (messages) => {
         let id = window.localStorage.getItem("memberID")
@@ -171,24 +173,27 @@ export default class ChatRoom extends Component {
     }
 
 
-
     updateMessages = (newMsg) => {
-        if (newMsg.sender_id != Number(window.localStorage.getItem("memberID"))) {
-            newMsg.id = ("msg" + String(this.state.messages.length))
-            if (newMsg.sender_id == window.localStorage.getItem("memberID")) {
-                newMsg.type = "sender"
-            } else {
-                newMsg.type = "other"
-            }
-            let newMessages = this.state.messages
-            newMessages.push(newMsg)
-            console.log(newMsg)
-            this.setState({
-                messages: newMessages,
-            })
-            window.setTimeout(this.scrollMsgToBottom, 500)
-        }
+        this.props.updateMessages(newMsg)
     }
+
+    // updateMessages = (newMsg) => {
+    //     if (newMsg.sender_id != Number(window.localStorage.getItem("memberID"))) {
+    //         newMsg.id = ("msg" + String(this.state.messages.length))
+    //         if (newMsg.sender_id == window.localStorage.getItem("memberID")) {
+    //             newMsg.type = "sender"
+    //         } else {
+    //             newMsg.type = "other"
+    //         }
+    //         let newMessages = this.state.messages
+    //         newMessages.push(newMsg)
+    //         console.log(newMsg)
+    //         this.setState({
+    //             messages: newMessages,
+    //         })
+    //         window.setTimeout(this.scrollMsgToBottom, 500)
+    //     }
+    // }
 
 
     handleSendClick = () => {
