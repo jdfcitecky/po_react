@@ -27,6 +27,10 @@ export default class ChatDot extends Component {
         window.setTimeout(this.detectLogin, 1000)
     }
 
+    componentWillUnmount() {
+        console.log("unmount")
+    }
+
     openWebSocket = (chatRoomID, memberID) => {
         //use WebSocket url to Server open link
         let stateName = String(chatRoomID)
