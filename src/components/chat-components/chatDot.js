@@ -123,13 +123,48 @@ export default class ChatDot extends Component {
     }
 
     detectLogin = () => {
+        console.log("dectet login")
         let jwt = window.localStorage.getItem("jwt")
         if (jwt != "" && jwt != null) {
             this.getChatRoomListAndMessagesAndWebSocket()
             window.setTimeout(this.checkInitIsDone, 500)
+            window.setTimeout(this.detectLogout, 500)
             return
         }
         window.setTimeout(this.detectLogin, 1000)
+
+    }
+
+    detectLogout = () => {
+        console.log("dectet logout")
+        let jwt = window.localStorage.getItem("jwt")
+        if (jwt == "" || jwt == null) {
+            this.clearChatDot()
+            window.setTimeout(this.detectLogin, 1000)
+            return
+        }
+        window.setTimeout(this.detectLogout, 500)
+
+    }
+
+    clearChatDot = () => {
+        let webSocketList = this.state.webSocketList
+        for (let key in webSocketList) {
+            webSocketList[key].close(1000)
+        }
+        this.setState({
+            totalUnread: 0,
+            collapse: false,
+            chatRoomcollapse: false,
+            chatRoomID: -1,
+            // Below is for manage all data
+            isLoaded: false,
+            chatRoomList: [],
+            chatRoomListShow: [],
+            searchValue: "",
+            chatRoomMessages: {},
+            webSocketList: {},
+        })
 
     }
 
@@ -307,6 +342,10 @@ export default class ChatDot extends Component {
         this.setState({
             totalUnread: newTotalUnread
         })
+        let jwt = window.localStorage.getItem("jwt")
+        if (jwt == "" || jwt == null) {
+            return
+        }
         window.setTimeout(this.updateTotalUnread, 1000)
     }
 
