@@ -43,7 +43,6 @@ export default class Work extends Component {
     componentDidMount() {
         //To retrive comments
         let id = Number(this.props.match.params.id)
-        console.log("workkkk mounted")
         this.getWork(id)
         this.getComments()
         window.addEventListener('scroll', this.handleScroll)
@@ -95,7 +94,6 @@ export default class Work extends Component {
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/show`, requestOptions)
             .then((response) => {
-                console.log("RESPONSE", response)
                 if (response.status != "200") {
                     let err = Error
                     err.message = "Invalid response code: " + response.status
@@ -104,9 +102,6 @@ export default class Work extends Component {
                 return response.json()
             })
             .then((json) => {
-                console.log("RESPONSE", json)
-                console.log("RESPONSE", json.data)
-                console.log("RESPONSE", json.data.work)
                 this.setState({
                     work: json.data.work,
                     isLoaded: true,
@@ -132,11 +127,8 @@ export default class Work extends Component {
                 method: "POST",
                 body: JSON.stringify(payload),
             }
-            console.log("Gettttt comments")
-            console.log(payload)
             fetch(`http://${process.env.REACT_APP_API_ADDRESS}/work/comment/list`, requestOptions)
                 .then((response) => {
-                    console.log("Status code is", response.status)
                     if (response.status != "200") {
                         let err = Error
                         err.message = "Invalid response code: " + response.status
@@ -145,8 +137,6 @@ export default class Work extends Component {
                     return response.json()
                 })
                 .then((json) => {
-                    console.log(json["count"])
-                    console.log(json["data"])
                     this.setState({
                         comments: this.state.comments.concat(json["data"]),
                         maxPage: json["count"],
