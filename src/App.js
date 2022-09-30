@@ -64,6 +64,10 @@ export default class App extends Component {
     }
   }
 
+  componentWillUnmount = () => {
+    window.localStorage.removeItem("searchPage")
+  }
+
 
 
   handleJWTChange = (jwt) => {
@@ -114,9 +118,6 @@ export default class App extends Component {
           <Switch>
 
             <Route path="/work/:id" component={(props) => <Work {...props} memberID={this.state.memberID} email={this.state.email} jwt={this.state.jwt} API_IP={this.state.API_IP} refresh={this.state.RefreshDOM} />}>
-            </Route>
-
-            <Route path="/search/:value/:page" component={Search} key={this.state.current} API_IP={this.state.API_IP}>
             </Route>
 
             <Route path="/search/:value" component={Search} key={this.state.current} API_IP={this.state.API_IP}>

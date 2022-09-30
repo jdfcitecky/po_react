@@ -80,8 +80,8 @@ class Search extends Component {
                             isLoaded: true,
                             error
                         })
+                        this.handleCategory("All")
                     })
-                this.handleCategory("All")
             })
     }
     colorAssign = (work) => {
@@ -138,29 +138,60 @@ class Search extends Component {
     }
 
     handleCategory = (cate) => {
+        let page = this.getPageFromLocalStorage()
         let newWorksMain = []
         if (cate == "All") {
             newWorksMain = this.state.works
+            if (page > this.calculateMaxPage(newWorksMain.length, this.state.pageLimit)) {
+                page = 1
+                this.setPageToLocalStroage(1)
+            }
             this.setState({
                 category: cate,
                 worksMain: newWorksMain,
-                currentPage: 1,
+                currentPage: page,
                 maxPageForP: this.calculateMaxPage(newWorksMain.length, this.state.pageLimit),
 
-            })
+            },
+                () => {
+                    this.transformPageStart(0 + this.state.numberOfRecordsInPage * (page - 1))
+                    this.handlePageTags(page, this.calculateMaxPage(newWorksMain.length, this.state.pageLimit))
+                })
         } else {
             newWorksMain = this.state.works.filter(w => w.category == cate)
+            if (page > this.calculateMaxPage(newWorksMain.length, this.state.pageLimit)) {
+                page = 1
+                this.setPageToLocalStroage(1)
+            }
             this.setState({
                 category: cate,
                 worksMain: newWorksMain,
-                currentPage: 1,
+                currentPage: page,
                 maxPageForP: this.calculateMaxPage(newWorksMain.length, this.state.pageLimit),
-            })
+            },
+                () => {
+                    this.transformPageStart(0 + this.state.numberOfRecordsInPage * (page - 1))
+                    this.handlePageTags(page, this.calculateMaxPage(newWorksMain.length, this.state.pageLimit))
+                })
         }
-        this.handlePageStart(0, newWorksMain.length, newWorksMain)
-        this.handlePageTags(1, this.calculateMaxPage(newWorksMain.length, this.state.pageLimit))
 
     }
+
+    getPageFromLocalStorage = () => {
+        let page = window.localStorage.getItem("searchPage")
+        if (page == "" || page == null || page == undefined) {
+            return 1
+        }
+        else {
+            return Number(page)
+        }
+
+    }
+
+    setPageToLocalStroage = (page) => {
+        window.localStorage.setItem("searchPage", String(page))
+    }
+
     //For pagination
     calculateMaxPage = (maxRecordsNumber, numberOfRecordsinPage) => {
         if (maxRecordsNumber < numberOfRecordsinPage) {
@@ -198,6 +229,7 @@ class Search extends Component {
                 }, 300);
                 return
             }
+            this.setPageToLocalStroage(newCurrentPage)
             this.setState({
                 currentPage: newCurrentPage,
             })
@@ -226,6 +258,7 @@ class Search extends Component {
                 }, 300);
                 return
             }
+            this.setPageToLocalStroage(newCurrentPage)
             this.setState({
                 currentPage: newCurrentPage,
             })
@@ -271,6 +304,7 @@ class Search extends Component {
                 }, 300);
                 return
             }
+            this.setPageToLocalStroage(newCurrentPage)
             this.setState({
                 currentPage: newCurrentPage,
             })
