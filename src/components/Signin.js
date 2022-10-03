@@ -82,9 +82,10 @@ export default class Signin extends Component {
                     this.handleMemberID(data["data"]["memberID"])
                     this.handleEmailChange(data["data"]["email"])
 
-                    this.props.history.push({
-                        pathname: "/admin"
-                    })
+                    window.history.go(-1)
+                    // this.props.history.push({
+                    //     pathname: "/admin"
+                    // })
                 }
             })
 
