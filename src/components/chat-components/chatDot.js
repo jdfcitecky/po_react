@@ -268,6 +268,43 @@ export default class ChatDot extends Component {
             })
     }
 
+
+    updateChatRoomUnread = (chatRoomId) => {
+        console.log("UPDATE UNREAD")
+        let stateName = String(chatRoomId)
+        let myHeaders = new Headers()
+        let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+        let time = new Date()
+        myHeaders.append("Content-Type", "application/json")
+        myHeaders.append("Authorization", "Bearer " + jwt)
+        myHeaders.append("token", jwt)
+        const payload = {
+            id: 0,
+            sender_id: Number(window.localStorage.getItem("memberID")),
+            chat_room_id: Number(chatRoomId),
+            time: String(time),
+            date: 0,
+            text: "",
+            is_read: false,
+            is_hide: false,
+
+        }
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: myHeaders,
+        }
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/update/read`, requestOptions)
+            .then((response) => {
+                if (response.status != "200") {
+                    let err = Error
+                    err.message = "Invalid response code: " + response.status
+                    this.setState({ error: err })
+                }
+                return response.json()
+            })
+    }
+
     addType = (messages) => {
         let id = window.localStorage.getItem("memberID")
         let messagesWithType = []
@@ -293,7 +330,10 @@ export default class ChatDot extends Component {
     }
 
     handleChatRoomClick = (id) => {
+        console.log("CHAT ROOM CLICK")
+        this.updateChatRoomUnread(id)
         let newChatRoomList = this.state.chatRoomList
+
         for (let i = 0; i < newChatRoomList.length; i++) {
             if (newChatRoomList[i].chat_room_id == Number(id)) {
                 newChatRoomList[i].unread_number = 0
