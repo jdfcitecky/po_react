@@ -270,8 +270,6 @@ export default class ChatDot extends Component {
 
 
     updateChatRoomUnread = (chatRoomId) => {
-
-        let stateName = String(chatRoomId)
         let myHeaders = new Headers()
         let jwt = window.localStorage.getItem("jwt").slice(1, -1)
         let time = new Date()
@@ -323,6 +321,10 @@ export default class ChatDot extends Component {
     }
 
     handleClick = () => {
+        let preChatRoomId = this.state.chatRoomID
+        if (preChatRoomId != -1) {
+            this.updateChatRoomUnread(preChatRoomId)
+        }
         this.setState({
             collapse: !this.state.collapse,
             chatRoomcollapse: false,
@@ -331,6 +333,10 @@ export default class ChatDot extends Component {
 
     handleChatRoomClick = (id) => {
         this.updateChatRoomUnread(id)
+        let preChatRoomId = this.state.chatRoomID
+        if (preChatRoomId != id) {
+            this.updateChatRoomUnread(preChatRoomId)
+        }
         let newChatRoomList = this.state.chatRoomList
 
         for (let i = 0; i < newChatRoomList.length; i++) {
@@ -350,19 +356,22 @@ export default class ChatDot extends Component {
     }
 
     handleCloseChatRoom = () => {
+        let preChatRoomId = this.state.chatRoomID
+        this.updateChatRoomUnread(preChatRoomId)
         this.setState({
             chatRoomcollapse: false,
         })
     }
 
     addUnreadNumber = (chatRoomList, msgLists) => {
+        let memberID = window.localStorage.getItem("memberID")
         let newArray = []
         for (let i = 0; i < chatRoomList.length; i++) {
             let chatRoomId = chatRoomList[i].chat_room_id
             let msgList = msgLists[String(chatRoomId)]
             let unreadNumber = 0
             msgList.forEach((msg) => {
-                if (msg.is_read == false) {
+                if (msg.is_read == false && msg.sender_id != memberID) {
                     unreadNumber++
                 }
             })
