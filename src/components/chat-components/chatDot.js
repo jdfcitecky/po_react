@@ -28,7 +28,7 @@ export default class ChatDot extends Component {
     }
 
     componentWillUnmount() {
-        console.log("unmount")
+
     }
 
     openWebSocket = (chatRoomID, memberID) => {
@@ -123,7 +123,7 @@ export default class ChatDot extends Component {
     }
 
     detectLogin = () => {
-        console.log("dectet login")
+
         let jwt = window.localStorage.getItem("jwt")
         if (jwt != "" && jwt != null) {
             this.getChatRoomListAndMessagesAndWebSocket()
@@ -136,7 +136,7 @@ export default class ChatDot extends Component {
     }
 
     detectLogout = () => {
-        console.log("dectet logout")
+
         let jwt = window.localStorage.getItem("jwt")
         if (jwt == "" || jwt == null) {
             this.clearChatDot()
@@ -270,7 +270,7 @@ export default class ChatDot extends Component {
 
 
     updateChatRoomUnread = (chatRoomId) => {
-        console.log("UPDATE UNREAD")
+
         let stateName = String(chatRoomId)
         let myHeaders = new Headers()
         let jwt = window.localStorage.getItem("jwt").slice(1, -1)
@@ -330,7 +330,6 @@ export default class ChatDot extends Component {
     }
 
     handleChatRoomClick = (id) => {
-        console.log("CHAT ROOM CLICK")
         this.updateChatRoomUnread(id)
         let newChatRoomList = this.state.chatRoomList
 
@@ -378,7 +377,6 @@ export default class ChatDot extends Component {
         this.state.chatRoomList.forEach((c) => {
             newTotalUnread += c.unread_number
         })
-        console.log(newTotalUnread)
         this.setState({
             totalUnread: newTotalUnread
         })
