@@ -14,6 +14,11 @@ export default class ChatRoom extends Component {
             message: "",
             sended: false,
             ws: "",
+            // for load more messages
+            pageStart: 0,
+            pageLimit: 10,
+            isLoading: false,
+            hasMoreMessages: true,
 
         }
     }
@@ -28,6 +33,70 @@ export default class ChatRoom extends Component {
         })
         if (this.props.chatRoomMessages.length > 0) {
             window.setTimeout(this.scrollMsgToBottom, 700)
+        }
+    }
+
+    getChatRoomMessages = () => {
+        if (this.state.isLoading == false && this.state.hasMoreMessages) {
+            this.setState({
+                isLoading: true,
+                page_start: this.state.pageStart + this.state.pageLimit
+            })
+            let stateName = String(this.state.chatRoomID)
+            let myHeaders = new Headers()
+            let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + jwt)
+            myHeaders.append("token", jwt)
+            const payload = {
+                chat_room_id: Number(this.state.chatRoomID),
+                page_start: Number(this.state.pageStart + this.state.pageLimit),
+                page_limit: Number(this.state.pageLimit),
+            }
+
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+            fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
+                .then((response) => {
+                    if (response.status != "200") {
+                        let err = Error
+                        err.message = "Invalid response code: " + response.status
+                        this.setState({ error: err })
+                    }
+                    return response.json()
+                })
+                .then((json) => {
+                    //----
+                    console.log("LOAD MORE MESSAFES!!", json.data)
+                    let newMessages = json.data
+                    if (this.state.messages.length != 0) {
+                        this.state.messages.forEach((m) => {
+                            newMessages.push(m)
+                        })
+                    }
+                    this.setState({
+                        messages: newMessages,
+                        isLoading: false,
+                    }, (error) => {
+                        this.setState({
+                            error
+                        })
+                    })
+                    //----
+                    // let prechatRoomMessages = this.state.chatRoomMessages
+                    // prechatRoomMessages[stateName] = this.addType(json.data)
+                    // this.setState({
+                    //     chatRoomMessages: prechatRoomMessages,}
+                    //     ,
+                    //     (error) => {
+                    //         this.setState({
+                    //             error
+                    //         })
+                    //     })
+                })
         }
     }
 
@@ -202,9 +271,12 @@ export default class ChatRoom extends Component {
         lastMsg.scrollIntoView({ behavior: "smooth" })
     }
 
+    scrollLoading = () => {
+
+    }
+
     render() {
         let { messages, isLoaded } = this.state
-
         if (!isLoaded) {
             return (
                 <div>
@@ -218,11 +290,17 @@ export default class ChatRoom extends Component {
 
             )
         }
+        let chatRoom = document.querySelector("#chatRoomMain")
+        if (chatRoom != null) {
+            console.log(chatRoom.scrollTop)
+            console.log(chatRoom.scrollHeight)
+            console.log(chatRoom.clientHeight)
+        }
         return (
             <div className='chatRoomFrame mt-2'>
                 {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                 <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
-                    <div className="pt-3 pe-3 chatRoom">
+                    <div id="chatRoomMain" className="pt-3 pe-3 chatRoom">
 
                         {messages.map((m) => (
                             <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />

@@ -213,7 +213,7 @@ export default class ChatDot extends Component {
             .then((json) => {
                 let newChatRoomList = json.data
                 newChatRoomList.forEach((chatRoom) => {
-                    this.getChatRoomMessages(chatRoom.chat_room_id)
+                    this.getChatRoomMessages(chatRoom.chat_room_id, 0, 10)
                     this.openWebSocket(chatRoom.chat_room_id, memberID)
                 })
                 this.setState({
@@ -229,7 +229,7 @@ export default class ChatDot extends Component {
     }
 
 
-    getChatRoomMessages = (chatRoomId) => {
+    getChatRoomMessages = (chatRoomId, pageStart, pageLimit) => {
         let stateName = String(chatRoomId)
         let myHeaders = new Headers()
         let jwt = window.localStorage.getItem("jwt").slice(1, -1)
@@ -238,6 +238,8 @@ export default class ChatDot extends Component {
         myHeaders.append("token", jwt)
         const payload = {
             chat_room_id: Number(chatRoomId),
+            page_start: Number(pageStart),
+            page_limit: Number(pageLimit),
         }
 
         const requestOptions = {
