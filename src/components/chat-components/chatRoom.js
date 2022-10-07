@@ -8,7 +8,7 @@ export default class ChatRoom extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            chatRoomID: Number(this.props.ChatRoomID),
+            chatRoomID: Number(this.props.chatRoomID),
             isLoaded: false,
             messages: [],
             message: "",
@@ -16,7 +16,7 @@ export default class ChatRoom extends Component {
             ws: "",
             // for load more messages
             pageStart: 0,
-            pageLimit: 10,
+            pageLimit: 2,
             isLoading: false,
             hasMoreMessages: true,
 
@@ -27,6 +27,7 @@ export default class ChatRoom extends Component {
     componentDidMount() {
         console.log("chat room mount")
         this.setState({
+            chatRoomID: Number(this.props.chatRoomID),
             isLoaded: true,
             messages: this.props.chatRoomMessages,
             ws: this.props.webSocket
@@ -34,6 +35,7 @@ export default class ChatRoom extends Component {
         if (this.props.chatRoomMessages.length > 0) {
             window.setTimeout(this.scrollMsgToBottom, 700)
         }
+        // window.setTimeout(this.scrollLoading, 500)
     }
 
     getChatRoomMessages = () => {
@@ -53,7 +55,7 @@ export default class ChatRoom extends Component {
                 page_start: Number(this.state.pageStart + this.state.pageLimit),
                 page_limit: Number(this.state.pageLimit),
             }
-
+            console.log(payload)
             const requestOptions = {
                 method: "POST",
                 body: JSON.stringify(payload),
@@ -71,7 +73,7 @@ export default class ChatRoom extends Component {
                 .then((json) => {
                     //----
                     console.log("LOAD MORE MESSAFES!!", json.data)
-                    let newMessages = json.data
+                    let newMessages = this.addType(json.data)
                     if (this.state.messages.length != 0) {
                         this.state.messages.forEach((m) => {
                             newMessages.push(m)
@@ -272,7 +274,19 @@ export default class ChatRoom extends Component {
     }
 
     scrollLoading = () => {
-
+        let chatRoom = document.querySelector("#chatRoomMain")
+        if (chatRoom != null) {
+            // console.log(chatRoom.scrollTop)
+            // console.log(chatRoom.scrollHeight)
+            // console.log(chatRoom.clientHeight)
+            if (chatRoom.scrollTop < 60) {
+                console.log("fire up")
+                this.getChatRoomMessages()
+            }
+        }
+        // if (this.state.hasMoreMessages) {
+        //     window.setTimeout(this.scrollLoading, 500)
+        // }
     }
 
     render() {
@@ -290,20 +304,11 @@ export default class ChatRoom extends Component {
 
             )
         }
-        let chatRoom = document.querySelector("#chatRoomMain")
-        if (chatRoom != null) {
-            console.log(chatRoom.scrollTop)
-            console.log(chatRoom.scrollHeight)
-            console.log(chatRoom.clientHeight)
-            if (chatRoom.scrollTop < 60) {
-                console.log("fire up")
-                this.getChatRoomMessages()
-            }
-        }
         return (
             <div className='chatRoomFrame mt-2'>
                 {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                 <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
+                    <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button>
                     <div id="chatRoomMain" className="pt-3 pe-3 chatRoom">
                         {isLoading && (
                             <div>
