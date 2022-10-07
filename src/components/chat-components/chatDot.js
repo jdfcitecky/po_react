@@ -119,7 +119,9 @@ export default class ChatDot extends Component {
         let chatRoomID = this.state.chatRoomID
         let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
         let lastMsg = document.querySelector(lastMsgId)
-        lastMsg.scrollIntoView({ behavior: "smooth" })
+        if (this.state.chatRoomMessages[String(chatRoomID)].length > 10) {
+            lastMsg.scrollIntoView({ behavior: "smooth" })
+        }
     }
 
     detectLogin = () => {
