@@ -29,12 +29,14 @@ export default class ChatRoom extends Component {
         this.setState({
             chatRoomID: Number(this.props.chatRoomID),
             isLoaded: true,
-            messages: this.props.chatRoomMessages,
+            messages: this.addType(this.props.chatRoomMessages),
             ws: this.props.webSocket
+        }, () => {
+            if (this.props.chatRoomMessages.length > 0) {
+                this.scrollMsgToBottom()
+            }
         })
-        if (this.props.chatRoomMessages.length > 0) {
-            window.setTimeout(this.scrollMsgToBottom, 100)
-        }
+
     }
 
     getChatRoomMessages = () => {
@@ -263,13 +265,16 @@ export default class ChatRoom extends Component {
     scrollMsgToBottom = () => {
         let lastMsgId = "#msg" + String(this.state.messages.length - 1)
         let lastMsg = document.querySelector(lastMsgId)
-        console.log(lastMsgId)
-        console.log(lastMsg)
-        lastMsg.scrollIntoView({ behavior: "smooth" })
+        if (lastMsg != null) {
+            lastMsg.scrollIntoView({ behavior: "smooth" })
+            return
+        }
+        else {
+            window.setTimeout(this.scrollMsgToBottom, 300)
+        }
     }
 
     scrollLoading = () => {
-        console.log(this.state.hasFirstScrollToBtm)
         let chatRoom = document.querySelector("#chatRoomMain")
         if (chatRoom != null) {
             // prevent scroll load at first scroll to btm
