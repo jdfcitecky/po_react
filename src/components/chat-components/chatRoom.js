@@ -15,7 +15,7 @@ export default class ChatRoom extends Component {
             sended: false,
             ws: "",
             // for load more messages
-            pageStart: 0,
+            pageStart: 10,
             pageLimit: 2,
             isLoading: false,
             hasMoreMessages: true,
@@ -40,10 +40,6 @@ export default class ChatRoom extends Component {
 
     getChatRoomMessages = () => {
         if (this.state.isLoading == false && this.state.hasMoreMessages) {
-            this.setState({
-                isLoading: true,
-                page_start: this.state.pageStart + this.state.pageLimit
-            })
             let stateName = String(this.state.chatRoomID)
             let myHeaders = new Headers()
             let jwt = window.localStorage.getItem("jwt").slice(1, -1)
@@ -52,7 +48,7 @@ export default class ChatRoom extends Component {
             myHeaders.append("token", jwt)
             const payload = {
                 chat_room_id: Number(this.state.chatRoomID),
-                page_start: Number(this.state.pageStart + this.state.pageLimit),
+                page_start: Number(this.state.pageStart),
                 page_limit: Number(this.state.pageLimit),
             }
             console.log(payload)
@@ -61,6 +57,10 @@ export default class ChatRoom extends Component {
                 body: JSON.stringify(payload),
                 headers: myHeaders,
             }
+            this.setState({
+                isLoading: true,
+                pageStart: this.state.pageStart + this.state.pageLimit
+            })
             fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
                 .then((response) => {
                     if (response.status != "200") {
@@ -73,31 +73,30 @@ export default class ChatRoom extends Component {
                 .then((json) => {
                     //----
                     console.log("LOAD MORE MESSAFES!!", json.data)
-                    let newMessages = this.addType(json.data)
+                    if (json.data.length == 0) {
+                        this.setState({
+                            hasMoreMessages: false,
+                            isLoading: false,
+                        })
+                        return
+                    }
+                    let newMessages = json.data
                     if (this.state.messages.length != 0) {
                         this.state.messages.forEach((m) => {
                             newMessages.push(m)
                         })
                     }
+                    newMessages = this.addType(newMessages)
+                    console.log(newMessages)
                     this.setState({
-                        messages: newMessages,
-                        isLoading: false,
-                    }, (error) => {
+                        messages: []
+                    }, () => {
                         this.setState({
-                            error
+                            messages: newMessages,
+                            isLoading: false,
                         })
                     })
-                    //----
-                    // let prechatRoomMessages = this.state.chatRoomMessages
-                    // prechatRoomMessages[stateName] = this.addType(json.data)
-                    // this.setState({
-                    //     chatRoomMessages: prechatRoomMessages,}
-                    //     ,
-                    //     (error) => {
-                    //         this.setState({
-                    //             error
-                    //         })
-                    //     })
+
                 })
         }
     }
@@ -291,6 +290,7 @@ export default class ChatRoom extends Component {
 
     render() {
         let { messages, isLoaded, hasMoreMessages, isLoading } = this.state
+        console.log(messages)
         if (!isLoaded) {
             return (
                 <div>
@@ -312,8 +312,8 @@ export default class ChatRoom extends Component {
                     <div id="chatRoomMain" className="pt-3 pe-3 chatRoom">
                         {isLoading && (
                             <div>
-                                <div className="align-items-center text-center row d-flex justify-content-center mt-5">
-                                    <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
+                                <div className="align-items-center text-center row d-flex justify-content-center my-2">
+                                    <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={50} width={50} />
                                 </div>
                                 <div className="align-items-center text-center row d-flex justify-content-center">
                                     <p>Loading...</p>
