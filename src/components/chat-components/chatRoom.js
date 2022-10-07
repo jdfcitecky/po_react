@@ -16,10 +16,10 @@ export default class ChatRoom extends Component {
             ws: "",
             // for load more messages
             pageStart: 10,
-            pageLimit: 2,
+            pageLimit: 5,
             isLoading: false,
             hasMoreMessages: true,
-
+            hasFirstScrollToBtm: false,
         }
     }
 
@@ -33,9 +33,8 @@ export default class ChatRoom extends Component {
             ws: this.props.webSocket
         })
         if (this.props.chatRoomMessages.length > 0) {
-            window.setTimeout(this.scrollMsgToBottom, 700)
+            window.setTimeout(this.scrollMsgToBottom, 100)
         }
-        // window.setTimeout(this.scrollLoading, 500)
     }
 
     getChatRoomMessages = () => {
@@ -51,7 +50,6 @@ export default class ChatRoom extends Component {
                 page_start: Number(this.state.pageStart),
                 page_limit: Number(this.state.pageLimit),
             }
-            console.log(payload)
             const requestOptions = {
                 method: "POST",
                 body: JSON.stringify(payload),
@@ -71,8 +69,6 @@ export default class ChatRoom extends Component {
                     return response.json()
                 })
                 .then((json) => {
-                    //----
-                    console.log("LOAD MORE MESSAFES!!", json.data)
                     if (json.data.length == 0) {
                         this.setState({
                             hasMoreMessages: false,
@@ -87,7 +83,6 @@ export default class ChatRoom extends Component {
                         })
                     }
                     newMessages = this.addType(newMessages)
-                    console.log(newMessages)
                     this.setState({
                         messages: []
                     }, () => {
@@ -225,7 +220,6 @@ export default class ChatRoom extends Component {
                             }
                         })
                     } else {
-                        // console.log(data)
                         this.setState({ sended: true, })
                         setTimeout(() => {
                             this.setState({
@@ -269,28 +263,33 @@ export default class ChatRoom extends Component {
     scrollMsgToBottom = () => {
         let lastMsgId = "#msg" + String(this.state.messages.length - 1)
         let lastMsg = document.querySelector(lastMsgId)
+        console.log(lastMsgId)
+        console.log(lastMsg)
         lastMsg.scrollIntoView({ behavior: "smooth" })
     }
 
     scrollLoading = () => {
+        console.log(this.state.hasFirstScrollToBtm)
         let chatRoom = document.querySelector("#chatRoomMain")
         if (chatRoom != null) {
-            // console.log(chatRoom.scrollTop)
-            // console.log(chatRoom.scrollHeight)
-            // console.log(chatRoom.clientHeight)
-            if (chatRoom.scrollTop < 60) {
-                console.log("fire up")
+            // prevent scroll load at first scroll to btm
+            if (chatRoom.scrollTop > 100 && !this.state.hasFirstScrollToBtm) {
+                this.setState({
+                    hasFirstScrollToBtm: true
+                })
+            }
+            //below is some property that can used to implement the loading function
+            //(chatRoom.scrollTop)
+            //(chatRoom.scrollHeight)
+            //(chatRoom.clientHeight)
+            if (chatRoom.scrollTop < 5 && this.state.hasFirstScrollToBtm) {
                 this.getChatRoomMessages()
             }
         }
-        // if (this.state.hasMoreMessages) {
-        //     window.setTimeout(this.scrollLoading, 500)
-        // }
     }
 
     render() {
         let { messages, isLoaded, hasMoreMessages, isLoading } = this.state
-        console.log(messages)
         if (!isLoaded) {
             return (
                 <div>
@@ -308,8 +307,8 @@ export default class ChatRoom extends Component {
             <div className='chatRoomFrame mt-2'>
                 {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                 <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
-                    <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button>
-                    <div id="chatRoomMain" className="pt-3 pe-3 chatRoom">
+                    {/* <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button> */}
+                    <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
                         {isLoading && (
                             <div>
                                 <div className="align-items-center text-center row d-flex justify-content-center my-2">
