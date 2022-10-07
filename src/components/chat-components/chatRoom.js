@@ -276,7 +276,7 @@ export default class ChatRoom extends Component {
     }
 
     render() {
-        let { messages, isLoaded } = this.state
+        let { messages, isLoaded, hasMoreMessages, isLoading } = this.state
         if (!isLoaded) {
             return (
                 <div>
@@ -295,19 +295,38 @@ export default class ChatRoom extends Component {
             console.log(chatRoom.scrollTop)
             console.log(chatRoom.scrollHeight)
             console.log(chatRoom.clientHeight)
+            if (chatRoom.scrollTop < 60) {
+                console.log("fire up")
+                this.getChatRoomMessages()
+            }
         }
         return (
             <div className='chatRoomFrame mt-2'>
                 {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                 <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
                     <div id="chatRoomMain" className="pt-3 pe-3 chatRoom">
-
+                        {isLoading && (
+                            <div>
+                                <div className="align-items-center text-center row d-flex justify-content-center mt-5">
+                                    <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
+                                </div>
+                                <div className="align-items-center text-center row d-flex justify-content-center">
+                                    <p>Loading...</p>
+                                </div>
+                            </div>
+                        )}
+                        {!hasMoreMessages && (
+                            <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                <div className='mt-2'>
+                                    <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                </div>
+                            </div>
+                        )
+                        }
                         {messages.map((m) => (
                             <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                         ))}
                     </div>
-                    {/* {this.scrollMsgToBottom()} */}
-
                     <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
                         <div className="row">
                             <div className="col-md-12 col-lg-12 col-xl-12">
