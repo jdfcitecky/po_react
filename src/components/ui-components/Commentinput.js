@@ -78,7 +78,8 @@ export default class Commentinput extends Component {
 
 
     render() {
-        let { email, sended, error, errors } = this.state
+        let { sended, error, errors } = this.state
+        let email = window.localStorage.getItem("email")
         let errorMessage
         if (errors.length > 0) {
             let errorMessageText = errors.join()
@@ -86,7 +87,7 @@ export default class Commentinput extends Component {
         }
         if (error) {
             return <p>Error: {error}</p>
-        } else if (email == "") {
+        } else if (email == "" || email == null || email == undefined) {
             return <div className='row'>
                 <div className="col-md-12">
                     <div className="coment-bottom bg-white p-2 px-4">
