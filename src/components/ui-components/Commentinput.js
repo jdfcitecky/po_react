@@ -93,7 +93,7 @@ export default class Commentinput extends Component {
                     <div className="coment-bottom bg-white p-2 px-4">
                         <form className='d-flex flex-row add-comment-section mt-4 mb-4'>
                             <div type="text" className="input-like mr-3" placeholder="Add comment" >Please sign in to comment.</div>
-                            <button className="btn btn-secondary my-2" type="text" onClick={(e) => { e.preventDefault() }}>Comment</button>
+                            <button className="btn btn-secondary my-2 commentSendBtnWidth" type="text" onClick={(e) => { e.preventDefault() }}>Comment</button>
                         </form>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ export default class Commentinput extends Component {
                     <div className="coment-bottom bg-white p-2 px-4">
                         <form className='d-flex flex-row add-comment-section mt-4 mb-4'>
                             <div type="text" className="input-like mr-3" placeholder="Add comment" >Your comment is waiting review</div>
-                            <button className="faded btn btn-success my-2 " type="text" onClick={(e) => { e.preventDefault() }}>Success</button>
+                            <button className="faded btn btn-success my-2 commentSendBtnWidth" type="text" onClick={(e) => { e.preventDefault() }}>Success</button>
                         </form>
 
                     </div>
@@ -124,7 +124,7 @@ export default class Commentinput extends Component {
 
                             <input name="text" id="text" value={this.state.textValue} onChange={(event) => this.setState({ textValue: event.target.value })} type="text" className="form-control mr-3" placeholder="Add comment" />
 
-                            <button className="btn btn-primary my-2" type="submit">Comment</button>
+                            <button className="btn btn-primary my-2 commentSendBtnWidth" type="submit">Comment</button>
                             {/* <a className='btn btn-primary my-2' style={{ color: 'white' }}>Comment</a> */}
                         </form>
                     </div>
