@@ -140,7 +140,7 @@ export default class BackUpPanel extends Component {
                                             <p className="backup-card-text">{w.text}</p>
                                             <div class="d-flex flex-row">
                                                 {w.toolTags.map((t) => (
-                                                    <span class="badge badge-info my-1">{t}</span>
+                                                    <span class="badge badge-info mx-1">{t}</span>
                                                 ))}
                                             </div>
 

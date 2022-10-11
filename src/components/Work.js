@@ -14,7 +14,7 @@ export default class Work extends Component {
                 id: this.props.match.params.id,
                 title: "Title",
                 text: "default text default text default text default text default text default text default text default text",
-                tools: "python, mysql, golang, javascript",
+                tools: "python mysql golang javascript",
                 year: "2020",
                 downloadlink: "#",
                 pictureone: "http://placekitten.com/g/1000/400",
@@ -102,8 +102,10 @@ export default class Work extends Component {
                 return response.json()
             })
             .then((json) => {
+                let work = json.data.work
+                work.tools = json.data.work.tools.replaceAll(" ", ", ")
                 this.setState({
-                    work: json.data.work,
+                    work: work,
                     isLoaded: true,
                 },
                     (error) => {
