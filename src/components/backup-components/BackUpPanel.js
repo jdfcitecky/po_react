@@ -10,17 +10,19 @@ export default class BackUpPanel extends Component {
             works: [{
                 id: -1,
                 title: "Title",
-                text: "default text default text default text default text default text default text default text default text",
-                tools: "python, mysql, golang, javascript",
+                category: "Backend",
+                text: "Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is row. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).",
+                tools: "python mysql golang javascript",
                 year: "2020",
                 downloadlink: "#",
-                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup`,
-                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup`,
-                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup`,
-                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup`,
-                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup`,
+                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
 
             },],
+            worksShow: [],
             isLoaded: false,
             error: null,
             errors: [],
@@ -36,6 +38,11 @@ export default class BackUpPanel extends Component {
 
     componentDidMount() {
         //To retrive comments
+        let worksWithColor = this.state.works.map(w => this.colorAssign(w))
+        this.setState({
+            worksShow: worksWithColor
+        })
+
         // this.getComments()
     }
     handleSubmit = (evt) => {
@@ -71,11 +78,33 @@ export default class BackUpPanel extends Component {
             })
     }
 
+    colorAssign = (work) => {
+        work["toolTags"] = work.tools.split(' ');
+        switch (work.category) {
+            case "Backend":
+                work["color"] = "primary"
+                break;
+            case "Frontend":
+                work["color"] = "success"
+                break;
+            case "Design":
+                work["color"] = "warning"
+                break;
+            case "M.S Project":
+                work["color"] = "info"
+                break;
+            default:
+                work["color"] = "secondary"
+                break;
+        }
+        return work
+
+    }
 
 
 
     render() {
-        let { works, error, isManager } = this.state
+        let { worksShow, error, isManager } = this.state
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -97,8 +126,29 @@ export default class BackUpPanel extends Component {
                                 <h1 className="h2">Backup</h1>
                             </div>
 
-                            {works.map((w) => (
-                                <div>{w.title}</div>
+                            {worksShow.map((w) => (
+                                <div className="col-md-12 fadeIn">
+                                    <div className="card flex-md-row mb-4 box-shadow h-md-250">
+                                        <div className="card-body d-flex flex-column align-items-start">
+                                            <div class="d-flex flex-row">
+                                                <strong className={`d-inline-block mb-2 text-${w.color}`}>{w.category}</strong>
+                                                <span className="dot mx-2 my-2"></span><span className=" mr-2">{w.year}</span>
+                                            </div>
+                                            <h3 className="mb-0">
+                                                <p className="text-dark">{w.title}</p>
+                                            </h3>
+                                            <p className="backup-card-text">{w.text}</p>
+                                            <div class="d-flex flex-row">
+                                                {w.toolTags.map((t) => (
+                                                    <span class="badge badge-info my-1">{t}</span>
+                                                ))}
+                                            </div>
+
+                                        </div>
+
+                                        <img className="backup-card-img card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap" />
+                                    </div>
+                                </div>
                             ))}
 
 
