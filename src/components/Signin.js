@@ -58,9 +58,7 @@ export default class Signin extends Component {
             body: JSON.stringify(payload),
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/login`, requestOptions)
-            .then((response) => {
-                response.json()
-            })
+            .then((response) => response.json())
             .then((data) => {
                 if (data.msg !== "") {
                     this.setState({
@@ -69,9 +67,6 @@ export default class Signin extends Component {
                     return
 
                 } else {
-                    console.log(data)
-                    console.log(data[0])
-                    console.log(data["data"]["tokenKey"])
                     this.handleJWTChange(Object.values(data)[0])
                     window.localStorage.setItem("jwt", JSON.stringify(data["data"]["tokenKey"]))
                     window.localStorage.setItem("email", JSON.stringify(data["data"]["email"]))
