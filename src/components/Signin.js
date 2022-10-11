@@ -58,7 +58,9 @@ export default class Signin extends Component {
             body: JSON.stringify(payload),
         }
         fetch(`http://${process.env.REACT_APP_API_ADDRESS}/login`, requestOptions)
-            .then((response) => response.json())
+            .then((response) => {
+                response.json()
+            })
             .then((data) => {
                 if (data.msg !== "") {
                     this.setState({
@@ -87,6 +89,9 @@ export default class Signin extends Component {
                     //     pathname: "/admin"
                     // })
                 }
+            })
+            .catch((error) => {
+
             })
 
     }

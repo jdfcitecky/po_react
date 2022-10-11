@@ -74,6 +74,9 @@ export default class Signup extends Component {
                     })
                 }
             })
+            .catch((error) => {
+
+            })
 
     }
     render() {
