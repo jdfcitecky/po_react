@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Sidebar.css'
-import { FilePlus, MessageCircle, File, BarChart } from 'react-feather';
+import { FilePlus, MessageCircle, File, BarChart, Archive } from 'react-feather';
 export default class Card extends Component {
 
     constructor(props) {
@@ -61,6 +61,10 @@ export default class Card extends Component {
                             <Link className="nav-link text-left" to="/edit/article">
                                 <FilePlus size={24} className="mb-1 feather feather-file-text" />
                                 Article
+                            </Link>
+                            <Link className="nav-link text-left" to="/manage/backup">
+                                <Archive size={24} className="mb-1 feather feather-file-text" />
+                                Backup
                             </Link>
 
                         </li>

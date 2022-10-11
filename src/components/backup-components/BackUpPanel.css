@@ -1,0 +1,140 @@
+.chatDot {
+    border-radius: 50%;
+    background-color: #54b4d3;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 35%);
+}
+
+.chatDot:hover {
+    background-color: #44abce;
+}
+
+.chatDot-inactive {
+    border-radius: 50%;
+    background-color: #d3d3d3;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 35%);
+}
+
+
+.floatButton {
+    position: fixed !important;
+    bottom: 100px;
+    right: 30px;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    z-index: 9998;
+}
+
+.unread-dot {
+    position: fixed !important;
+    bottom: 140px;
+    right: 30px;
+    margin: 0 auto;
+    background-color: #ff4747;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    z-index: 12000;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 25%);
+
+}
+
+.feather-24 {
+    width: 24px;
+    height: 24px;
+    vertical-align: text-bottom;
+}
+
+.feather-16 {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+.feather-8 {
+    width: 8px;
+    height: 8px;
+    vertical-align: text-bottom;
+}
+
+.closeBtn {
+    border-radius: 50%;
+    background-color: #d35454;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeBtn:hover {
+    background-color: rgb(229, 80, 57);
+}
+
+
+.miniBtn {
+    position: absolute;
+    top: 50px;
+    left: -38px;
+    border-radius: 10%;
+    background-color: #f4f6f8;
+    cursor: pointer;
+    width: 45px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8888;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 25%);
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+
+.miniBtn:hover {
+    background-color: #fcfdfe;
+}
+
+.dot-pos-relative {
+    position: relative;
+}
+
+.floatChatRoom {
+    position: fixed !important;
+    bottom: 100px;
+    right: 30px;
+    margin: 0 auto;
+    width: 900px !important;
+    height: 600px !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    z-index: 9999;
+}
+
+.floatChatRoom-half {
+    position: fixed !important;
+    bottom: 100px;
+    right: 30px;
+    margin: 0 auto;
+    width: 400px !important;
+    height: 600px !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    z-index: 9999;
+}

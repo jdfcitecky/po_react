@@ -17,6 +17,8 @@ import ManagePanel from './components/ManagePanel';
 import TimelinePage from './components/TimelinePage';
 import EditArticle from './components/EditArticle';
 import ChatDot from './components/chat-components/ChatDot';
+import BackUpPanel from './components/backup-components/BackUpPanel';
+
 
 
 export default class App extends Component {
@@ -136,6 +138,9 @@ export default class App extends Component {
             </Route>
 
             <Route path="/manage/articles" component={(props) => <ManageArticles {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
+            </Route>
+
+            <Route path="/manage/backup" component={(props) => <BackUpPanel {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
             </Route>
 
             <Route path="/manage" component={(props) => <ManagePanel {...props} isManager={this.state.isManager} jwt={this.state.jwt} API_IP={this.state.API_IP} />}>
