@@ -37,7 +37,10 @@ export default class BackUpPanel extends Component {
 
             },],
             worksShow: [],
-            isLoaded: true,
+            isInitialzing: false,
+            isInitialzingArray: [],
+            currentUploadId: 0,
+            uploading: false,
             error: null,
             errors: [],
             isManager: this.props.isManager,
@@ -59,37 +62,65 @@ export default class BackUpPanel extends Component {
 
         // this.getComments()
     }
-    handleSubmit = (evt) => {
-        evt.preventDefault()
-        // we passed, so post info
-        const data = new FormData(evt.target)
-        const payload = Object.fromEntries(data.entries())
-        var myHeaders = new Headers()
-        myHeaders.append("Content-Type", "application/json")
-        myHeaders.append("Authorization", "Bearer " + this.props.jwt)
-        myHeaders.append("token", this.props.jwt)
-        payload["id"] = this.state.work.id
-        payload["tags"] = (this.state.work.category + " " + this.state.work.tools).toLowerCase()
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: myHeaders,
-        }
-        fetch(`http://${this.state.API_IP}/admin/work/save`, requestOptions)
-            .then((response) => {
-                response.json()
-                this.setState({ edited: true, })
-                setTimeout(() => {
-                    this.setState({
-                        edited: false,
-                    })
-                }, 3000);
-                if (this.state.work.id == 0) {
-                    this.createdAlert()
-                } else {
-                    this.savedAlert()
-                }
+
+    handleInitClick = (e) => {
+        e.preventdefault()
+        this.setState({
+            isInitialzing: true,
+        })
+        this.saveWorkStep()
+    }
+
+    saveWorkStep = () => {
+        let works = this.state.works
+        let worksLen = this.state.works.length
+        let numberOfSuccessUpload = this.state.isInitialzingArray.length
+        if (worksLen == numberOfSuccessUpload) {
+            this.setState({
+                isInitialzing: false,
             })
+            return
+        }
+        else {
+            if (!this.state.uploading) {
+                this.saveWork(works[numberOfSuccessUpload])
+            }
+        }
+        window.setTimeout(this.saveWorkStep, 500)
+
+    }
+
+    saveWork = (work) => {
+        // we passed, so post info
+        if (!this.state.uploading) {
+            this.setState({
+                uploading: true
+            })
+            const payload = work
+            var myHeaders = new Headers()
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + this.props.jwt)
+            myHeaders.append("token", this.props.jwt)
+            payload["id"] = work.id
+            payload["tags"] = (work.category + " " + work.tools).toLowerCase()
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+            fetch(`http://${this.state.API_IP}/admin/work/save`, requestOptions)
+                .then((response) => {
+                    if (response.status == "200") {
+                        let array = this.state.isInitialzingArray
+                        array.push(true)
+                        this.setState({
+                            isInitialzingArray: array,
+                            uploading: false
+                        })
+                    }
+                    return response.json()
+                })
+        }
     }
 
     colorAssign = (work) => {
