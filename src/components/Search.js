@@ -5,7 +5,7 @@ class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchValue: this.props.match.params.value,
+            searchValue: "",
             works: [{ color: "primary", category: "Backend", title: "Default", year: "2022", text: "AAAA", id: "1" }, { color: "primary", category: "Backend", title: "Default", year: "2022", text: "AAAA", id: "2" }],
             worksMain: [],
             worksShow: [],
@@ -39,7 +39,16 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        this.getWorks()
+        let keyword = this.props.match.params.value
+        if (keyword != null || keyword != undefined) {
+            this.setState({
+                searchValue: keyword
+            }, () => {
+                this.getWorks()
+            })
+        } else {
+            this.getWorks()
+        }
     }
 
     getWorks = () => {
