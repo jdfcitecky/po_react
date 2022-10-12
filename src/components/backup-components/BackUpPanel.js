@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import Sidebar from '../ui-components/Sidebar';
 import "./BackUpPanel.css"
-import { MessageCircle, X, ChevronsRight } from 'react-feather';
+import ProgressBar from "@ramonak/react-progress-bar";
+import ReactLoading from 'react-loading';
 export default class BackUpPanel extends Component {
     constructor(props) {
         super(props)
@@ -37,7 +38,7 @@ export default class BackUpPanel extends Component {
 
             },],
             worksShow: [],
-            isInitialzing: false,
+            isInitialzing: true,
             isInitialzingArray: [],
             currentUploadId: 0,
             uploading: false,
@@ -50,7 +51,6 @@ export default class BackUpPanel extends Component {
                 message: "",
             },
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -149,7 +149,9 @@ export default class BackUpPanel extends Component {
 
 
     render() {
-        let { worksShow, error, isManager } = this.state
+        let { worksShow, error, isManager, isInitialzing } = this.state
+        // console.log(this.state.works.length)
+        // console.log(this.state.works.length)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -158,6 +160,46 @@ export default class BackUpPanel extends Component {
                 pathname: "/",
             })
 
+        }
+        if (isInitialzing) {
+            let progressNumber = Number(String(this.state.isInitialzingArray.length / this.state.works.length * 100).slice(0, 3))
+            return (
+                <div>
+                    <link
+                        rel="stylesheet"
+                        type="text/css"
+                        charSet="UTF-8"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                    />
+                    <link
+                        rel="stylesheet"
+                        type="text/css"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                    />
+                    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
+                    <div className='container'>
+                        <div className='row'>
+                            <Sidebar />
+                            <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                    <h1 className="h2">Backup</h1>
+                                </div>
+                                <div className="align-items-center text-center row d-flex justify-content-center mt-5">
+                                    <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={100} width={100} />
+                                </div>
+                                <div className="align-items-center text-center row d-flex justify-content-center">
+                                    <p>Initializing...</p>
+                                </div>
+                                <div className="px-2">
+                                    <ProgressBar completed={progressNumber} bgColor="#17a2b8" />
+                                </div>
+
+                            </main>
+                        </div>
+
+                    </div>
+                </div>
+            )
         }
         return (
 
