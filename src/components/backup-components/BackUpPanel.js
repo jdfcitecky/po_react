@@ -27,7 +27,7 @@ export default class BackUpPanel extends Component {
                 title: "Title",
                 category: "Backend",
                 text: "Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is row. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).",
-                tools: "python mysql golang javascript",
+                tools: "python mysql golang javascript java k8s linux docker c# ruby",
                 year: "2020",
                 downloadlink: "#",
                 pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
@@ -38,7 +38,7 @@ export default class BackUpPanel extends Component {
 
             },],
             worksShow: [],
-            isInitialzing: true,
+            isInitialzing: false,
             isInitialzingArray: [],
             currentUploadId: 0,
             uploading: false,
@@ -150,8 +150,6 @@ export default class BackUpPanel extends Component {
 
     render() {
         let { worksShow, error, isManager, isInitialzing } = this.state
-        // console.log(this.state.works.length)
-        // console.log(this.state.works.length)
         if (error) {
             return <p>Error: {error.message}</p>
         } else if (!isManager) {
@@ -222,7 +220,7 @@ export default class BackUpPanel extends Component {
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 className="h2">Backup</h1>
-                                <div className='btn btn-primary'>Initail</div>
+                                <div className='btn btn-primary' onClick={() => { this.handleInitClick() }}>Initail</div>
                             </div>
 
                             {worksShow.map((w) => (
@@ -243,7 +241,7 @@ export default class BackUpPanel extends Component {
                                         </div>
                                         <div className='col-4 backup-card-tools'>
                                             <div className='d-flex flex-column'>
-                                                <div class="d-flex flex-row">
+                                                <div class="">
                                                     {w.toolTags.map((t) => (
                                                         <span class="badge badge-info mx-1">{t}</span>
                                                     ))}
