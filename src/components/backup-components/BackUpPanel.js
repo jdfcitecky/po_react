@@ -10,31 +10,31 @@ export default class BackUpPanel extends Component {
         this.state = {
             works: [{
                 id: -1,
-                title: "Title",
-                category: "Backend",
-                text: "Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is row. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).",
-                tools: "python mysql golang javascript",
-                year: "2020",
+                title: "Dynamic Architectural Curtain Design Using Python",
+                category: "Design",
+                text: "After many competitions and courses, I found that using the graphics software API interface to manipulate environmental data to generate models will greatly improve work efficiency and design reliability. Since then, I have devoted a lot of energy to learning in the field of information. In the final project of a basic programming language course at National Taiwan University, I showed how to use Python API to operate graphical software to perform plane segmentation on any surface and generate suitable curtain shapes according to the angle of sunlight to show how to use basic programming sytax in practical applications.",
+                tools: "Python Rhino Grasshopper3D",
+                year: "2018",
                 downloadlink: "#",
-                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_1.png`,
+                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_2.png`,
+                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_3.png`,
+                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_4.png`,
+                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_5.png`,
 
             }, {
                 id: -1,
-                title: "Title2",
-                category: "Backend",
-                text: "Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is row. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).",
-                tools: "python mysql golang javascript java k8s linux docker c# ruby",
-                year: "2020",
+                title: "使用Python進行動態建築帷幕設計",
+                category: "Design",
+                text: "經歷了多次競圖與課程的建築設計工作，我發現使用繪圖軟體API接口操作環境數據以生成模型將大幅提升工作效率與設計可靠度，從此我將大量精力投入在資訊領域的學習上。在一堂台大的基礎程式語言課程上的期末專案中，我就展示了如何用Python操作繪圖軟體在任意表面上進行平面分割，並根據太陽光照射的角度產生適合的帷幕造型以展示基礎程式語言的實際應用。",
+                tools: "Python Rhino Grasshopper3D",
+                year: "2018",
                 downloadlink: "#",
-                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
-                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/a.jpg`,
+                pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_1.png`,
+                picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_2.png`,
+                picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_3.png`,
+                picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_4.png`,
+                picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_5.png`,
 
             },],
             worksShow: [],
@@ -233,7 +233,7 @@ export default class BackUpPanel extends Component {
                                                     <span className="dot mx-2 my-2"></span><span className=" mr-2">{w.year}</span>
                                                 </div>
                                                 <h3 className="mb-0">
-                                                    <p className="text-dark">{w.title}</p>
+                                                    <p className="text-dark backup-card-title">{w.title}</p>
                                                 </h3>
                                                 <p className="backup-card-text">{w.text}</p>
 
