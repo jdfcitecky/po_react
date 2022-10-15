@@ -65,6 +65,7 @@ export default class BackUpPanel extends Component {
                 picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_basic/py_basic_5.png`,
 
             },],
+            worksShow: [],
             isInitialzing: false,
             isInitialzingArray: [],
             currentUploadId: 0,
