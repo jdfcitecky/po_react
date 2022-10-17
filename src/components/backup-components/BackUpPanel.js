@@ -42,7 +42,7 @@ export default class BackUpPanel extends Component {
                 //-------
                 {
                     id: -1,
-                    title: "使用Python進行動態建築帷幕設計",
+                    title: "TODO",
                     category: "Frontend",
                     text: "經歷了多次競圖與課程的建築設計工作，我發現使用繪圖軟體API接口操作環境數據以生成模型將大幅提升工作效率與設計可靠度，從此我將大量精力投入在資訊領域的學習上。在一堂台大的基礎程式語言課程上的期末專案中，我就展示了如何用Python操作繪圖軟體在任意表面上進行平面分割，並根據太陽光照射的角度產生適合的帷幕造型以展示基礎程式語言的實際應用。",
                     tools: "Python Rhino Grasshopper3D",
@@ -56,7 +56,7 @@ export default class BackUpPanel extends Component {
 
                 }, {
                     id: -1,
-                    title: "使用Python進行動態建築帷幕設計",
+                    title: "TODO",
                     category: "Frontend",
                     text: "經歷了多次競圖與課程的建築設計工作，我發現使用繪圖軟體API接口操作環境數據以生成模型將大幅提升工作效率與設計可靠度，從此我將大量精力投入在資訊領域的學習上。在一堂台大的基礎程式語言課程上的期末專案中，我就展示了如何用Python操作繪圖軟體在任意表面上進行平面分割，並根據太陽光照射的角度產生適合的帷幕造型以展示基礎程式語言的實際應用。",
                     tools: "Python Rhino Grasshopper3D",
