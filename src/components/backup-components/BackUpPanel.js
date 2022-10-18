@@ -273,9 +273,9 @@ export default class BackUpPanel extends Component {
                                         </div>
                                         <div className='col-4 backup-card-tools'>
                                             <div className='d-flex flex-column'>
-                                                <div class="">
+                                                <div className="align-items-start">
                                                     {w.toolTags.map((t) => (
-                                                        <span class="badge badge-info mx-1">{t}</span>
+                                                        <span class="badge badge-info m-1 float-left">{t}</span>
                                                     ))}
                                                 </div>
                                             </div>
