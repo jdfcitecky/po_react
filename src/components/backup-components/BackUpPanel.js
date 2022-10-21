@@ -103,9 +103,9 @@ export default class BackUpPanel extends Component {
                 {
                     id: -1,
                     title: "Product display webpage based on MVC architecture with Python Flask and Firebase database",
-                    category: "Frontend",
+                    category: "Backend",
                     text: "This project is a very early work when I was learning to make Web Apps. Compared with the Flask, I chose to learn the more complicated Django first. In this project, I used a fairly simple application to demonstrate my understanding of MVC. Architecture. In this project, in order to display news headlines on the homepage, first create the corresponding article model, then define the routing and control function, and use this function to call the data to display in the view template through ORM library. However, due to the lack of knowledge of html and css at that time, the results were extremely simple, which also prompted me to further study the front-end and back-end related knowledge.",
-                    tools: "Python xlwings beautifulsoup Excel LineBOTAPI",
+                    tools: "Python Flask Firebase Boostrap",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1nJOGXLRW2qz5c7s8pdD3oMFPJ9Cv2IVm/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_django/py_django_1.png`,
@@ -117,9 +117,9 @@ export default class BackUpPanel extends Component {
                 }, {
                     id: -1,
                     title: "以Python Flask與Firebase資料庫實現基於MVC架構的商品展示網頁",
-                    category: "Frontend",
+                    category: "Backend",
                     text: "本專案是我在學習製作Web App時相當初期的作品，相較於較為輕量的Flask，我選擇先學習較為複雜的Django，而在這個專案中即用了相當簡單的應用展示了我對於MVC架構的理解。在這個專案中，為了在首頁展示新聞標題，先建立對應的文章模型(Model)，接著定義路由與控制(Control)函數，並藉由這個函數透過ORM的方式調用資料顯示於視圖(View)模板中。但由於當時缺乏html與css的知識，因此在成果上極為簡陋，也促使我想更進一步學習前後端相關知識。",
-                    tools: "Python Django SQLite",
+                    tools: "Python Flask Firebase Boostrap",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1nJOGXLRW2qz5c7s8pdD3oMFPJ9Cv2IVm/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/py_django/py_django_1.png`,
