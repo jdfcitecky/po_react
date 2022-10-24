@@ -133,9 +133,9 @@ export default class BackUpPanel extends Component {
                 {
                     id: -1,
                     title: "TODO",
-                    category: "Frontend",
-                    text: "In this project, I using the lighter and more flexible features of flask compared to django to create a product display website, and integrating the firebase database to realize the common functions such as login, logout, database writing, and database reading.  And use the MVC framework and jinja template language to dynamically control and reuse the html elements according to the user's login status.  Compared with the simple web pages of previous projects, I also used the feature of server side render to introduce Boostrap in this project, using various input, modal, and card components to improve quality of the web pages.",
-                    tools: "html css Boostrap",
+                    category: "Basic CSS and HTML practice page",
+                    text: "This project is the implementation of basic CSS and HTML, using Boostrap as the basic style sheet. In addition, to show the basic knowledge of using the container, row, and col styles, it also shows how to use margin, padding, block, inline, flex, and other styles to present different element arrangements, and use the position style to complete the floating button and the fixed-position navigation bar. In order to experiment with more animation effects, this project also uses :hover and transition styles and wow.js to make the web page more vivid.",
+                    tools: "HTML CSS Boostrap WOW.js",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1brrwl45_xqMtomMGJST8qEbBkDNoJwh1/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`,
@@ -146,10 +146,10 @@ export default class BackUpPanel extends Component {
 
                 }, {
                     id: -1,
-                    title: "TODO",
+                    title: "基礎CSS與HTML練習網頁",
                     category: "Frontend",
-                    text: "在本專案我以製作一個商品展示網站為目標，運用flask相對於django更加輕量靈活的特性，整合firebase資料庫實現了常見的登入登出、資料庫寫入、資料庫讀取的功能。並運用MVC架構和jinja模板語言實現根據使用者登入狀態動態控制畫面元素與html元件重複使用。相較於過往專案的畫面簡陋，我也運用server side render的特性，在本專案中引入Boostrap，使用各種input、modal、card元件提升網頁的質感。",
-                    tools: "html css Boostrap",
+                    text: "本專案為基本CSS與HTML的成果實作，使用了Boostrap作為基礎樣式表，除了展現基本的切版知識外，也展示了如何使用margin、padding、block、inline、flex等樣式呈現不同的元素排列效果，並運用position樣式完成懸浮按鈕與固定位置的導覽列。而為了實驗更多的動畫效果，本專案也大量使用:hover與transition樣式和wow.js讓網頁更加生動。",
+                    tools: "HTML CSS Boostrap WOW.js",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1brrwl45_xqMtomMGJST8qEbBkDNoJwh1/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`,
