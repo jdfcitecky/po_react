@@ -132,8 +132,8 @@ export default class BackUpPanel extends Component {
                 //-------
                 {
                     id: -1,
-                    title: "TODO",
-                    category: "Basic CSS and HTML practice page",
+                    title: "Basic CSS and HTML practice page",
+                    category: "Frontend",
                     text: "This project is the implementation of basic CSS and HTML, using Boostrap as the basic style sheet. In addition, to show the basic knowledge of using the container, row, and col styles, it also shows how to use margin, padding, block, inline, flex, and other styles to present different element arrangements, and use the position style to complete the floating button and the fixed-position navigation bar. In order to experiment with more animation effects, this project also uses :hover and transition styles and wow.js to make the web page more vivid.",
                     tools: "HTML CSS Boostrap WOW.js",
                     year: "2020",
@@ -157,6 +157,66 @@ export default class BackUpPanel extends Component {
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_4.png`,
                     picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_5.png`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "Simple Web Image Editor",
+                    category: "Frontend",
+                    text: "After understanding the basics of CSS and HTML, I turned my attention to learning Javascript. This project is the first small work after learning modern Javascript. This work takes Canvas as the core, and provides users to perform color inversion, lightening, oil painting filters and other operations after uploading pictures. Users can also download the edited pictures. The upload and download functions both use the Javascript functions that generate DOM to dynamically change web page elements. The main filters use the knowledge of Javascript functions and data structure to perform numerical operations on each pixel point in the image.",
+                    tools: "HTML Javascript Canvas",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/1onS0NiQC5356B77KcOtUJ6VNuQT9sdv1/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_5.png`,
+
+                }, {
+                    id: -1,
+                    title: "簡易網頁圖像編輯器",
+                    category: "Frontend",
+                    text: "了解CSS與HTML相關基礎知識後，我將眼光放到了Javascript的學習。而本專案就是在學習了現代Javascript之後的第一個小作品，這個作品以Canvas為核心，提供使用者上傳圖片後進行顏色反轉、變亮、油畫濾鏡等操作並下載編輯後的圖片。其中上傳與下載的功能皆使用了Javascript能產生DOM的函數以動態改變網頁元素。而主要的濾鏡則運用了Javascript的函數與資料結構相關知識，針對圖片中的每一個相素點進行數值操作來實現。",
+                    tools: "HTML Javascript Canvas",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/1onS0NiQC5356B77KcOtUJ6VNuQT9sdv1/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_basic/js_canvas_basic_5.png`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "Web Bullet Curtain Game",
+                    category: "Frontend",
+                    text: "This project is the implementation of basic CSS and HTML, using Boostrap as the basic style sheet. In addition, to show the basic knowledge of using the container, row, and col styles, it also shows how to use margin, padding, block, inline, flex, and other styles to present different element arrangements, and use the position style to complete the floating button and the fixed-position navigation bar. In order to experiment with more animation effects, this project also uses :hover and transition styles and wow.js to make the web page more vivid.",
+                    tools: "HTML Javascript Canvas",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/14GUOAnOVSTT2k1N6p--v2OQ2rvA8B8hI/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_5.png`,
+
+                }, {
+                    id: -1,
+                    title: "網頁彈幕遊戲",
+                    category: "Frontend",
+                    text: "本專案為基本CSS與HTML的成果實作，使用了Boostrap作為基礎樣式表，除了展現基本的切版知識外，也展示了如何使用margin、padding、block、inline、flex等樣式呈現不同的元素排列效果，並運用position樣式完成懸浮按鈕與固定位置的導覽列。而為了實驗更多的動畫效果，本專案也大量使用:hover與transition樣式和wow.js讓網頁更加生動。",
+                    tools: "HTML Javascript Canvas",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/14GUOAnOVSTT2k1N6p--v2OQ2rvA8B8hI/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_5.png`,
 
                 },],
             worksShow: [],
