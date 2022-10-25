@@ -208,7 +208,7 @@ export default class BackUpPanel extends Component {
                     id: -1,
                     title: "網頁彈幕遊戲",
                     category: "Frontend",
-                    text: "本專案為基本CSS與HTML的成果實作，使用了Boostrap作為基礎樣式表，除了展現基本的切版知識外，也展示了如何使用margin、padding、block、inline、flex等樣式呈現不同的元素排列效果，並運用position樣式完成懸浮按鈕與固定位置的導覽列。而為了實驗更多的動畫效果，本專案也大量使用:hover與transition樣式和wow.js讓網頁更加生動。",
+                    text: "理解了基本的Canvas操作之後，本專案則更進一步透過專案架構與程式流程的設計實現了基於Canvas的簡易遊戲引擎，並用這個引擎製作了一個網頁彈幕遊戲。這個簡易遊戲引擎主要分為三個部分，第一個部分為遊戲資料的管理，在這個部分最重要的元素為每一個元件的update函數，所有元素的畫面位置與狀態皆由這個函數改變。第二個部分為遊戲流程的控制，這個部分中最主要的函數為refresh函數，這個函數將清空畫面並執行一些如彈幕飛舞與判定彈幕是否撞擊飛機的背景資料更新後重新繪製畫面。第三個部分則為使用者輸入的管理，監聽每一個按鍵的上下並依照當前的狀態更新資料。有了這三個部分後，藉由setInterval和EventListener將這三部分縫合。最終使用Javascript控制畫面元素區分整個遊戲載入、準備開始、遊戲中、結束遊戲這四個階段完成相對完整的網業遊戲設計流程。",
                     tools: "HTML Javascript Canvas",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/14GUOAnOVSTT2k1N6p--v2OQ2rvA8B8hI/view?usp=sharing",
