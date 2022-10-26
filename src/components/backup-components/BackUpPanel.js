@@ -222,10 +222,10 @@ export default class BackUpPanel extends Component {
                 //-------
                 {
                     id: -1,
-                    title: "Web Bullet Curtain Game",
+                    title: "Product website and API implementation based on Express.js",
                     category: "Backend",
-                    text: "After understanding the basic Canvas operation, this project further implements a simple Canvas-based game engine through the design of the project structure and program flow, and uses this engine to create a web page barrage game. This simple game engine is mainly divided into three parts. The first part is the management of game data. The most important element in this part is the update function of each element. The position on the screen and state of all elements are changed by this function. The second part is the control of the game flow. The most important function in this part is the refresh function. This function will clear the screen and perform some background information such as the bullet moving and determining whether the bullet hits the plane and then redraw the screen. The third part is the management of user input, monitoring the up and down of each key and updating the data according to the current state.This three parts are stitched together by the setInterval function and EventListener function. Finally, Javascript is used to control the elements to distinguish the entire game loading, preparing to start, in-game, and ending the game to complete a relatively complete web game design process.",
-                    tools: "Javascript NodeJS Nodemon Express HTML CSS Boostrap",
+                    text: "Except uses Javascript to create web games and applications, Javascript is also commonly used to create servers to provide web services. In this project, Express.js and Firebase databases are used to create a product display website based on MVC architecture, which implemented database CRUD functions and serverside-based member authentication control functions. In addition, this website also shows the function of making API services with Express.js on a separate page.",
+                    tools: "Javascript NodeJS Nodemon Express.js HTML CSS Boostrap Firebase",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1X-sYHAGubS6EHermZsTmKVXKTAkLTzqJ/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_1.png`,
@@ -236,10 +236,10 @@ export default class BackUpPanel extends Component {
 
                 }, {
                     id: -1,
-                    title: "網頁彈幕遊戲",
+                    title: "基於Express.js的商品網站與API實作",
                     category: "Backend",
-                    text: "理解了基本的Canvas操作之後，本專案則更進一步透過專案架構與程式流程的設計實現了基於Canvas的簡易遊戲引擎，並用這個引擎製作了一個網頁彈幕遊戲。這個簡易遊戲引擎主要分為三個部分，第一個部分為遊戲資料的管理，在這個部分最重要的元素為每一個元件的update函數，所有元素的畫面位置與狀態皆由這個函數改變。第二個部分為遊戲流程的控制，這個部分中最主要的函數為refresh函數，這個函數將清空畫面並執行一些如彈幕飛舞與判定彈幕是否撞擊飛機的背景資料更新後重新繪製畫面。第三個部分則為使用者輸入的管理，監聽每一個按鍵的上下並依照當前的狀態更新資料。有了這三個部分後，藉由setInterval和EventListener將這三部分縫合。最終使用Javascript控制畫面元素區分整個遊戲載入、準備開始、遊戲中、結束遊戲這四個階段完成相對完整的網業遊戲設計流程。",
-                    tools: "Javascript NodeJS Nodemon Express HTML CSS Boostrap",
+                    text: "除了使用Javascript製作網頁遊戲和應用，Javascripy也常用來創建伺服器提供網路服務。在本專案中即使用Express.js和Firebase資料庫製作一個基於MVC架構的商品展示網站，實現資料庫增刪改查與基於伺服器端的會員權限控管功能，充分運用Javascript能同時作為前後端語言的特性以提高開發效率。另外這個網站也以一個單獨的頁面展示了使用Express.js製作API服務的功能。",
+                    tools: "Javascript NodeJS Nodemon Express.js HTML CSS Boostrap Firebase",
                     year: "2020",
                     downloadlink: "https://drive.google.com/file/d/1X-sYHAGubS6EHermZsTmKVXKTAkLTzqJ/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_1.png`,
