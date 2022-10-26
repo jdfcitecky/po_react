@@ -218,6 +218,36 @@ export default class BackUpPanel extends Component {
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_4.png`,
                     picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_canvas_game/js_canvas_game_5.png`,
 
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "Web Bullet Curtain Game",
+                    category: "Backend",
+                    text: "After understanding the basic Canvas operation, this project further implements a simple Canvas-based game engine through the design of the project structure and program flow, and uses this engine to create a web page barrage game. This simple game engine is mainly divided into three parts. The first part is the management of game data. The most important element in this part is the update function of each element. The position on the screen and state of all elements are changed by this function. The second part is the control of the game flow. The most important function in this part is the refresh function. This function will clear the screen and perform some background information such as the bullet moving and determining whether the bullet hits the plane and then redraw the screen. The third part is the management of user input, monitoring the up and down of each key and updating the data according to the current state.This three parts are stitched together by the setInterval function and EventListener function. Finally, Javascript is used to control the elements to distinguish the entire game loading, preparing to start, in-game, and ending the game to complete a relatively complete web game design process.",
+                    tools: "Javascript NodeJS Nodemon Express HTML CSS Boostrap",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/1X-sYHAGubS6EHermZsTmKVXKTAkLTzqJ/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_5.png`,
+
+                }, {
+                    id: -1,
+                    title: "網頁彈幕遊戲",
+                    category: "Backend",
+                    text: "理解了基本的Canvas操作之後，本專案則更進一步透過專案架構與程式流程的設計實現了基於Canvas的簡易遊戲引擎，並用這個引擎製作了一個網頁彈幕遊戲。這個簡易遊戲引擎主要分為三個部分，第一個部分為遊戲資料的管理，在這個部分最重要的元素為每一個元件的update函數，所有元素的畫面位置與狀態皆由這個函數改變。第二個部分為遊戲流程的控制，這個部分中最主要的函數為refresh函數，這個函數將清空畫面並執行一些如彈幕飛舞與判定彈幕是否撞擊飛機的背景資料更新後重新繪製畫面。第三個部分則為使用者輸入的管理，監聽每一個按鍵的上下並依照當前的狀態更新資料。有了這三個部分後，藉由setInterval和EventListener將這三部分縫合。最終使用Javascript控制畫面元素區分整個遊戲載入、準備開始、遊戲中、結束遊戲這四個階段完成相對完整的網業遊戲設計流程。",
+                    tools: "Javascript NodeJS Nodemon Express HTML CSS Boostrap",
+                    year: "2020",
+                    downloadlink: "https://drive.google.com/file/d/1X-sYHAGubS6EHermZsTmKVXKTAkLTzqJ/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_5.png`,
+
                 },],
             worksShow: [],
             isInitialzing: false,
