@@ -253,7 +253,7 @@ export default class BackUpPanel extends Component {
                 {
                     id: -1,
                     title: "TODO",
-                    category: "Backend",
+                    category: "M.S Project",
                     text: "Except uses Javascript to create web games and applications, Javascript is also commonly used to create servers to provide web services. In this project, Express.js and Firebase databases are used to create a product display website based on MVC architecture, which implemented database CRUD functions and serverside-based member authentication control functions. In addition, this website also shows the function of making API services with Express.js on a separate page.",
                     tools: "Javascript NodeJS Nodemon Express.js HTML CSS Boostrap Firebase",
                     year: "2020",
@@ -267,7 +267,7 @@ export default class BackUpPanel extends Component {
                 }, {
                     id: -1,
                     title: "TODO",
-                    category: "Backend",
+                    category: "M.S Project",
                     text: "除了使用Javascript製作網頁遊戲和應用，Javascripy也常用來創建伺服器提供網路服務。在本專案中即使用Express.js和Firebase資料庫製作一個基於MVC架構的商品展示網站，實現資料庫增刪改查與基於伺服器端的會員權限控管功能，充分運用Javascript能同時作為前後端語言的特性以提高開發效率。另外這個網站也以一個單獨的頁面展示了使用Express.js製作API服務的功能。",
                     tools: "Javascript NodeJS Nodemon Express.js HTML CSS Boostrap Firebase",
                     year: "2020",
