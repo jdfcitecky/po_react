@@ -428,6 +428,70 @@ export default class BackUpPanel extends Component {
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/ms_230/ms_230_4.png`,
                     picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/ms_230/ms_230_5.png`,
 
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "Cyanobacteria - 海洋組合式避難所",
+                    category: "Design",
+                    text: "本專案為大學一年級上學期第二次設計課作品，題目要求設想一種必須進行臨時收容大量災民的災難場景並針對這個場景設計對應的組合式避難所。在本專案中，我以2016年的中亞難民潮為背景，考慮了歐洲腹地較小的問題而設計出能夠在水下種植海藻和牡蠣並使用太陽能進行發電與海水淡化的海上避難小屋以保障最基礎的生活需求。另外，每間避難小屋也都能變換成臥室、浴室、客廳、健身房等空間，並藉由纜繩和水管串聯成能抵抗風浪的海上社區。",
+                    tools: "SketchUp Lumion illustrator Pages AutoDesk PhotoShop",
+                    year: "2016",
+                    downloadlink: "https://drive.google.com/file/d/1PQDkWOdXa1GhIhdWHDyhgK0xup2TxDVH/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "山禾居 - 三代同堂共生宅",
+                    category: "Design",
+                    text: "本專案為大學一年級上學期最後一次設計課作品，題目為2016年特力家居盃徵集題目——漸變。為了呼應題目，我將設計背景放到了台東池上山禾間的三代同堂家庭，採用了三個由內而外的漸變進行設計。在外觀上，我採用山的造型進行漸變轉化；在平面配置上，則將傳統三合院的元素抽取並配合當地的陽宮氣候條件轉化；在體驗設計上，則運用動線和大面積的開窗與天窗讓三代人不論在室內外都能在時光的流轉中感受四季的更迭。",
+                    tools: "SketchUp Lumion illustrator Pages AutoDesk PhotoShop",
+                    year: "2016",
+                    downloadlink: "https://drive.google.com/file/d/1AyT7N9O1lxwHCDtC4LKJpjSQrB7hQa-T/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "易逝之物 - 校園光影裝置藝術設計",
+                    category: "Design",
+                    text: "本專案為大學一年級下學期第一次設計課作品中的概念作品，在分析校園中會出現的人群後決定以所有人共同的童年為核心，使用自然光投影一個跳房子圖案在地面上完成使用者與光影的互動，並運用許多燕子造型的遮陽板結合曲面設計打造兼具實用與互動性的教學大樓外層帷幕與聯通廊。",
+                    tools: "SketchUp Lumion illustrator Pages AutoDesk PhotoShop",
+                    year: "2016",
+                    downloadlink: "https://docs.google.com/presentation/d/1lMmW5QhvcnLklLhiho1_UXgHC-q7i-uu/edit?usp=sharing&ouid=115682892065479641575&rtpof=true&sd=true",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "真幕之間 - 校園光影裝置藝術設計",
+                    category: "Design",
+                    text: "本專案為大學一年級下學期第一次設計課作品，這次的主題為校園光影裝置藝術設計，要求我們必須實際考察校園內的環境脈絡與人文分析自行選定基地位置與主題進行創作。在經歷了實地考察後，我最終選定了位於校門口的草坪作為基地位置。這個基地雖然為人車交會的地點且具有水池與木棧道等資源，但由於缺乏更進一步的規劃而成為學生繞開的一塊綠地。因此在本專案中我運用簡單的木材與布幔，融合現地植栽與池塘設計一條由動至靜的藝廊，讓樹影、水波紋路、人影、周遭的燈光都成為藝廊展品的一部分，用自然體驗的方式活絡校園入口意象並縫合行政區與教學區之間的空白。",
+                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop",
+                    year: "2016",
+                    downloadlink: "https://docs.google.com/presentation/d/1lMmW5QhvcnLklLhiho1_UXgHC-q7i-uu/edit?usp=sharing&ouid=115682892065479641575&rtpof=true&sd=true",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_5.pngg`,
+
                 },],
             worksShow: [],
             isInitialzing: false,
