@@ -442,7 +442,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_1/arch_1_5.png`,
 
                 },
                 //-------
@@ -458,7 +458,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_2/arch_2_5.png`,
 
                 },
                 //-------
@@ -474,7 +474,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_3/arch_3_5.png`,
 
                 },
                 //-------
@@ -490,7 +490,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_5.png`,
 
                 },
                 //-------
@@ -506,7 +506,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.png`,
 
                 },
                 //-------
@@ -518,11 +518,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp VRay illustrator AutoDesk PhotoShop",
                     year: "2017",
                     downloadlink: "https://drive.google.com/file/d/159UlQOdpbBW2i4YQxXpVPstfirEAPuOr/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_6/arch_6_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_6/arch_6_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_6/arch_6_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_6/arch_6_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_6/arch_6_5.png`,
 
                 },
                 //-------
@@ -534,11 +534,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp VRay illustrator AutoDesk PhotoShop Rhino Grasshopper",
                     year: "2017",
                     downloadlink: "https://drive.google.com/file/d/1VJaewtWZC5F-wUF8pPfWcdObsTbpRg5W/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_7/arch_7_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_7/arch_7_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_7/arch_7_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_7/arch_7_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_7/arch_7_5.png`,
 
                 },
                 //-------
@@ -550,11 +550,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2017",
                     downloadlink: "https://drive.google.com/file/d/1x0QSzPvF94PCf0778OxJV4CyntC5uogO/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_8/arch_8_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_8/arch_8_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_8/arch_8_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_8/arch_8_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_8/arch_8_5.png`,
 
                 },
                 //-------
@@ -566,11 +566,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp Revit Lumion illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2018",
                     downloadlink: "https://drive.google.com/file/d/1bITsa0VQZkPner2ptKy-p4mIBVwNJBgl/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_9/arch_9_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_9/arch_9_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_9/arch_9_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_9/arch_9_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_9/arch_9_5.png`,
 
                 },
                 //-------
@@ -582,11 +582,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp Lumion illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2018",
                     downloadlink: "https://drive.google.com/file/d/1G_JJce-it9eQYuUEQCeu8Sknn4KzUjhZ/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_10/arch_5_10.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_10/arch_5_10.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_10/arch_5_10.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_10/arch_5_10.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_10/arch_5_10.png`,
 
                 },
                 //-------
@@ -598,11 +598,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2018",
                     downloadlink: "https://drive.google.com/file/d/1FaiJXNqRdBq16aLYQGzOYUWVN7LBRFnU/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_11/arch_11_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_11/arch_11_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_11/arch_11_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_11/arch_11_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_11/arch_11_5.png`,
 
                 },
                 //-------
@@ -614,11 +614,11 @@ export default class BackUpPanel extends Component {
                     tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2018",
                     downloadlink: "https://drive.google.com/file/d/14_-TUpaPDlRHbBOafi3IQaG7VPoIVMnT/view?usp=sharing",
-                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
-                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
-                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
-                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_12/arch_12_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_12/arch_12_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_12/arch_12_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_12/arch_12_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_12/arch_12_5.png`,
 
                 },
                 //-------
@@ -634,7 +634,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_1/arch_ex_1_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_1/arch_ex_1_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_1/arch_ex_1_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_1/arch_ex_1_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_1/arch_ex_1_5.png`,
 
                 },
                 //-------
@@ -650,7 +650,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_2/arch_ex_2_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_2/arch_ex_2_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_2/arch_ex_2_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_2/arch_ex_2_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_2/arch_ex_2_5.png`,
 
                 },
                 //-------
@@ -666,7 +666,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_3/arch_ex_3_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_3/arch_ex_3_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_3/arch_ex_3_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_3/arch_ex_3_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_3/arch_ex_3_5.png`,
 
                 },
                 //-------
@@ -682,7 +682,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_4/arch_ex_4_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_4/arch_ex_4_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_4/arch_ex_4_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_4/arch_ex_4_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_4/arch_ex_4_5.png`,
 
                 },
                 //-------
@@ -698,7 +698,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_5/arch_ex_5_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_5/arch_ex_5_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_5/arch_ex_5_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_5/arch_ex_5_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_5/arch_ex_5_5.png`,
 
                 },
                 //-------
@@ -714,7 +714,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_6/arch_ex_6_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_6/arch_ex_6_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_6/arch_ex_6_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_6/arch_ex_6_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_6/arch_ex_6_5.png`,
 
                 },
                 //-------
@@ -730,7 +730,7 @@ export default class BackUpPanel extends Component {
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_7/arch_ex_7_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_7/arch_ex_7_3.png`,
                     picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_7/arch_ex_7_4.png`,
-                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_7/arch_ex_7_5.pngg`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_ex_7/arch_ex_7_5.png`,
 
                 },],
             worksShow: [],
