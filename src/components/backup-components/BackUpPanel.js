@@ -151,7 +151,7 @@ export default class BackUpPanel extends Component {
                     text: "本專案為基本CSS與HTML的成果實作，使用了Boostrap作為基礎樣式表，除了展現基本的切版知識外，也展示了如何使用margin、padding、block、inline、flex等樣式呈現不同的元素排列效果，並運用position樣式完成懸浮按鈕與固定位置的導覽列。而為了實驗更多的動畫效果，本專案也大量使用:hover與transition樣式和wow.js讓網頁更加生動。",
                     tools: "HTML CSS Boostrap WOW.js",
                     year: "2020",
-                    downloadlink: "https://drive.google.com/file/d/1brrwl45_xqMtomMGJST8qEbBkDNoJwh1/view?usp=sharing",
+                    downloadlink: "https://drive.google.com/file/d/1VJaewtWZC5F-wUF8pPfWcdObsTbpRg5W/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`,
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_3.png`,
@@ -429,7 +429,7 @@ export default class BackUpPanel extends Component {
                     picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/ms_230/ms_230_5.png`,
 
                 },
-                //-------
+                //-------Below is the Architecture projects.
                 {
                     id: -1,
                     title: "Cyanobacteria - 海洋組合式避難所",
@@ -483,7 +483,7 @@ export default class BackUpPanel extends Component {
                     title: "真幕之間 - 校園光影裝置藝術設計",
                     category: "Design",
                     text: "本專案為大學一年級下學期第一次設計課作品，這次的主題為校園光影裝置藝術設計，要求我們必須實際考察校園內的環境脈絡與人文分析自行選定基地位置與主題進行創作。在經歷了實地考察後，我最終選定了位於校門口的草坪作為基地位置。這個基地雖然為人車交會的地點且具有水池與木棧道等資源，但由於缺乏更進一步的規劃而成為學生繞開的一塊綠地。因此在本專案中我運用簡單的木材與布幔，融合現地植栽與池塘設計一條由動至靜的藝廊，讓樹影、水波紋路、人影、周遭的燈光都成為藝廊展品的一部分，用自然體驗的方式活絡校園入口意象並縫合行政區與教學區之間的空白。在技術上，這是我首個使用Vray進行渲染的設計作品，而模型也使用LED進行點綴力圖在發表時呈現最佳的光影效果。",
-                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop",
+                    tools: "SketchUp VRay illustrator AutoDesk PhotoShop",
                     year: "2017",
                     downloadlink: "https://docs.google.com/presentation/d/1s_kelaNCN-LCq7aLQFRDYbJUcVdpfK8L/edit?usp=sharing&ouid=115682892065479641575&rtpof=true&sd=true",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_4/arch_4_1.png`,
@@ -499,9 +499,57 @@ export default class BackUpPanel extends Component {
                     title: "潛共生 - 校園商店設計",
                     category: "Design",
                     text: "本專案為大學一年級下學期第二次設計課作品，這次設計延續上一次設計對於校園環境的考察分析，要求我們必須自己挑選開設的商店種類並根據周遭的環境進行設計。由於台科較缺少輕食與飲料的複合商鋪，又缺少農學園藝相關科系，因此我決定設計一間能採收蔬果的輕食沙拉果汁店提供學生特殊且健康的飲食體驗。基地選擇上我選擇了台科僅有的兩個餐廳之間，且正對於學生宿舍的區域。透過動線分析建立基本的用餐動線和分區規劃，以可攀上的屋頂形塑梯田景觀並保留原先的人流動線，再由原生的植栽和蔬果養殖箱塑造天井以及具有私密性的用餐區，充分滿足學生從早到晚不論是飲食或者休閒的需求。",
-                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop",
+                    tools: "SketchUp VRay illustrator AutoDesk PhotoShop",
                     year: "2017",
                     downloadlink: "https://docs.google.com/presentation/d/1CA7tjFrksjMETb_QFoa7zLSTo_WpAus0/edit?usp=sharing&ouid=115682892065479641575&rtpof=true&sd=true",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "六草巷 - 齊東街住宅設計",
+                    category: "Design",
+                    text: "本專案為大學一年級下學期最後一次設計課作品，這次設計延續上一次設計對於校園環境的考察分析，要求我們必須自己挑選開設的商店種類並根據周遭的環境進行設計。由於台科較缺少輕食與飲料的複合商鋪，又缺少農學園藝相關科系，因此我決定設計一間能採收蔬果的輕食沙拉果汁店提供學生特殊且健康的飲食體驗。基地選擇上我選擇了台科僅有的兩個餐廳之間，且正對於學生宿舍的區域。透過動線分析建立基本的用餐動線和分區規劃，以可攀上的屋頂形塑梯田景觀並保留原先的人流動線，再由原生的植栽和蔬果養殖箱塑造天井以及具有私密性的用餐區，充分滿足學生從早到晚不論是飲食或者休閒的需求。",
+                    tools: "SketchUp VRay illustrator AutoDesk PhotoShop",
+                    year: "2017",
+                    downloadlink: "https://drive.google.com/file/d/159UlQOdpbBW2i4YQxXpVPstfirEAPuOr/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "寶藏巖臨時展場設計",
+                    category: "Design",
+                    text: "本專案為大學一年級下學期最後一次設計課作品，這次設計延續上一次設計對於校園環境的考察分析，要求我們必須自己挑選開設的商店種類並根據周遭的環境進行設計。由於台科較缺少輕食與飲料的複合商鋪，又缺少農學園藝相關科系，因此我決定設計一間能採收蔬果的輕食沙拉果汁店提供學生特殊且健康的飲食體驗。基地選擇上我選擇了台科僅有的兩個餐廳之間，且正對於學生宿舍的區域。透過動線分析建立基本的用餐動線和分區規劃，以可攀上的屋頂形塑梯田景觀並保留原先的人流動線，再由原生的植栽和蔬果養殖箱塑造天井以及具有私密性的用餐區，充分滿足學生從早到晚不論是飲食或者休閒的需求。",
+                    tools: "SketchUp VRay illustrator AutoDesk PhotoShop Rhino Grasshopper",
+                    year: "2017",
+                    downloadlink: "https://drive.google.com/file/d/1VJaewtWZC5F-wUF8pPfWcdObsTbpRg5W/view?usp=sharing",
+                    pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
+                    picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
+                    picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
+                    picturefour: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_4.png`,
+                    picturefive: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_5.pngg`,
+
+                },
+                //-------
+                {
+                    id: -1,
+                    title: "小房子 - 學成里圖書館設計",
+                    category: "Design",
+                    text: "本專案為大學一年級下學期最後一次設計課作品，這次設計延續上一次設計對於校園環境的考察分析，要求我們必須自己挑選開設的商店種類並根據周遭的環境進行設計。由於台科較缺少輕食與飲料的複合商鋪，又缺少農學園藝相關科系，因此我決定設計一間能採收蔬果的輕食沙拉果汁店提供學生特殊且健康的飲食體驗。基地選擇上我選擇了台科僅有的兩個餐廳之間，且正對於學生宿舍的區域。透過動線分析建立基本的用餐動線和分區規劃，以可攀上的屋頂形塑梯田景觀並保留原先的人流動線，再由原生的植栽和蔬果養殖箱塑造天井以及具有私密性的用餐區，充分滿足學生從早到晚不論是飲食或者休閒的需求。",
+                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop",
+                    year: "2017",
+                    downloadlink: "https://drive.google.com/file/d/1VJaewtWZC5F-wUF8pPfWcdObsTbpRg5W/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
                     picturetwo: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_2.png`,
                     picturethree: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_3.png`,
