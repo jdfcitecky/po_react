@@ -547,7 +547,7 @@ export default class BackUpPanel extends Component {
                     title: "小房子 - 學成里圖書館設計",
                     category: "Design",
                     text: "本專案為大學一年級下學期最後一次設計課作品，這次設計延續上一次設計對於校園環境的考察分析，要求我們必須自己挑選開設的商店種類並根據周遭的環境進行設計。由於台科較缺少輕食與飲料的複合商鋪，又缺少農學園藝相關科系，因此我決定設計一間能採收蔬果的輕食沙拉果汁店提供學生特殊且健康的飲食體驗。基地選擇上我選擇了台科僅有的兩個餐廳之間，且正對於學生宿舍的區域。透過動線分析建立基本的用餐動線和分區規劃，以可攀上的屋頂形塑梯田景觀並保留原先的人流動線，再由原生的植栽和蔬果養殖箱塑造天井以及具有私密性的用餐區，充分滿足學生從早到晚不論是飲食或者休閒的需求。",
-                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop",
+                    tools: "SketchUp VRay illustrator Pages AutoDesk PhotoShop Rhino",
                     year: "2017",
                     downloadlink: "https://drive.google.com/file/d/1VJaewtWZC5F-wUF8pPfWcdObsTbpRg5W/view?usp=sharing",
                     pictureone: `http://${process.env.REACT_APP_API_ADDRESS}/static/backup/arch_5/arch_5_1.png`,
