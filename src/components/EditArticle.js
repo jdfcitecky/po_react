@@ -205,7 +205,7 @@ export default class EditArticle extends Component {
             body: JSON.stringify(payload),
             headers: myHeaders,
         }
-        fetch(`http://${this.state.API_IP}/admin/work/save`, requestOptions)
+        fetch(`http://${process.env.REACT_APP_API_ADDRESS}/admin/work/save`, requestOptions)
             .then((response) => {
                 response.json()
                 this.setState({ edited: true, })
