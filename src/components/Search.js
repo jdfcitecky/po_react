@@ -463,7 +463,7 @@ class Search extends Component {
                 <div style={{ height: document.documentElement.clientHeight + 150 }} className='container'>
                     {worksShow.map((w) => (
                         <div className='row'>
-                            <CardWork color={w.color} category={w.category} title={w.title} date={w.year} text={w.text} id={w.id} />
+                            <CardWork color={w.color} category={w.category} title={w.title} date={w.year} text={w.text} id={w.id} pictureone={w.pictureone} />
                         </div>
 
                     ))}
