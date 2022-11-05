@@ -47,7 +47,7 @@ export default class CardManage extends Component {
 
                     </div>
                     <div className='manage-card-imageZone'>
-                        <img className="card-img-right flex-auto d-none d-md-block" src={this.props.pictureone} width="200px" alt="Card image cap" />
+                        <img className="card-img-right flex-auto d-none d-md-block manage-card-imageFit" src={this.props.pictureone} width="200px" alt="Card image cap" />
                     </div>
                 </div>
             </div>

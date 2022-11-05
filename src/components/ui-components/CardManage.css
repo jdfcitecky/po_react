@@ -39,3 +39,8 @@
     width: 540px;
 
 }
+
+.manage-card-imageFit {
+    object-fit: cover;
+    object-position: 25% 0;
+}
