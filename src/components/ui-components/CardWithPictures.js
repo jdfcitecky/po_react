@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import './CardWithPicture.css'
 export default class CardWithPictures extends Component {
 
     constructor(props) {
@@ -26,7 +26,7 @@ export default class CardWithPictures extends Component {
                     <div className='col-4 backup-card-tools'>
                         <div className='d-flex flex-column'>
                             <div className="align-items-start">
-                                {this.props.toolTags.map((t) => (
+                                {this.state.toolTags?.map((t) => (
                                     <span class="badge badge-info m-1 float-left">{t}</span>
                                 ))}
                             </div>

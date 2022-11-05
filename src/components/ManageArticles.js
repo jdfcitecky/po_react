@@ -413,7 +413,7 @@ export default class ManageArticles extends Component {
 
                             {worksShow.map((w) => (
                                 <div className='row'>
-                                    <CardManage key={w.id} color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} />
+                                    <CardManage key={w.id} color={w.color} category={w.category} title={w.title} date={w.date} text={w.text} id={w.id} pictureone={w.pictureone} />
                                 </div>
 
                             ))}
