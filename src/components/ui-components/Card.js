@@ -19,7 +19,7 @@ export default class Card extends Component {
                         <p className="card-text mb-auto">{this.props.text}</p>
                         <Link to={this.props.link}>{this.props.linkwords}</Link>
                     </div>
-                    <img className="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap" />
+                    <img className="card-img-right flex-auto d-none d-md-block" src={this.props.picture} alt="Card image cap" />
                 </div>
             </div>
         );
