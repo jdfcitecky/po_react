@@ -30,7 +30,7 @@ export default class CardWork extends Component {
         return (
             <div className="col-md-10">
                 <div className="card flex-md-row mb-4 box-shadow h-md-250">
-                    <div className="manage-card-textZone card-body d-flex flex-column align-items-start">
+                    <div className="work-card-textZone card-body d-flex flex-column align-items-start">
                         <div class="d-flex flex-row">
                             <strong className={`d-inline-block mb-2 text-${this.props.color}`}>{this.props.category}</strong>
                             <span className="dot mx-2 my-2"></span><span className=" mr-2">{this.props.date}</span>

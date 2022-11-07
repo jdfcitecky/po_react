@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import './Card.css'
 export default class Card extends Component {
 
     constructor(props) {
@@ -8,18 +9,22 @@ export default class Card extends Component {
     }
     render() {
         return (
+
             <div className="col-md-6 fadeIn">
                 <div className="card flex-md-row mb-4 box-shadow h-md-250">
-                    <div className="card-body d-flex flex-column align-items-start">
+                    <div className="home-card-textZone card-body d-flex flex-column align-items-start">
                         <strong className={`d-inline-block mb-2 text-${this.props.color}`}>{this.props.category}</strong>
                         <h3 className="mb-0">
-                            <p className="text-dark" href="#">{this.props.title}</p>
+                            <p className="text-dark  home-card-title" href="#">{this.props.title}</p>
                         </h3>
                         <div className="mb-1 text-muted">{this.props.date}</div>
-                        <p className="card-text mb-auto">{this.props.text}</p>
+                        <p className="card-text mb-2 home-card-text">{this.props.text}</p>
                         <Link to={this.props.link}>{this.props.linkwords}</Link>
                     </div>
-                    <img className="card-img-right flex-auto d-none d-md-block" src={this.props.picture} alt="Card image cap" />
+                    <div className='work-card-imageZone'>
+                        <img className="card-img-right flex-auto d-none d-md-block home-card-imageFit" src={this.props.picture} alt="Card image cap" />
+                    </div>
+
                 </div>
             </div>
         );
