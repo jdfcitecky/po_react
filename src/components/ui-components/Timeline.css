@@ -344,3 +344,9 @@ body {
     -moz-animation-delay: 1.2s;
     animation-delay: 1.2s;
 }
+
+.feather-timeline {
+    width: 35px;
+    height: 35px;
+    vertical-align: text-bottom;
+}

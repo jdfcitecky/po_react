@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Book } from 'react-feather';
 import "./Timeline.css"
 export default class Card extends Component {
 
@@ -11,14 +12,17 @@ export default class Card extends Component {
             <div className="fadeIn">
                 <section id={"timeline"}>
                     <h1>Timeline</h1>
-                    <p className="leader">The timeline below shows my studies, work, projects, etc. after high school graduation. All of these experiences made me want to improve the lives of all people through information technology, and these experiences also gave me both design thinking and technical ability to make every ideal possible from requirement discovery to product delivery.</p>
+                    <div className="">
+                        <p className="leader px-5 mx-5">The timeline below shows my studies, work, projects, etc. after high school graduation. All of these experiences made me want to improve the lives of all people through information technology, and these experiences also gave me both design thinking and technical ability to make every ideal possible from requirement discovery to product delivery.</p>
+                    </div>
+
                     <div className="demo-card-wrapper fadeIn first">
                         <div className="demo-card demo-card--step1">
                             <div className="head">
                                 <div className="number-box">
-                                    <span>01</span>
+                                    <Book className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">Subtitle</span> Technology</h2>
+                                <h2><span className="small">Academic</span> Technology</h2>
                             </div>
                             <div className="body">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
