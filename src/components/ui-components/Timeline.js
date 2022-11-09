@@ -10,8 +10,8 @@ export default class Card extends Component {
         return (
             <div className="fadeIn">
                 <section id={"timeline"}>
-                    <h1>A Flexbox Timeline</h1>
-                    <p className="leader">All cards must be the same height and width for space calculations on large screens.</p>
+                    <h1>Timeline</h1>
+                    <p className="leader">The timeline below shows my studies, work, projects, etc. after high school graduation. All of these experiences made me want to improve the lives of all people through information technology, and these experiences also gave me both design thinking and technical ability to make every ideal possible from requirement discovery to product delivery.</p>
                     <div className="demo-card-wrapper fadeIn first">
                         <div className="demo-card demo-card--step1">
                             <div className="head">
