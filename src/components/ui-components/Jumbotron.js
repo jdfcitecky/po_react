@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
 export default class Jumbotron extends Component {
     constructor(props) {
         super(props)
@@ -11,6 +12,7 @@ export default class Jumbotron extends Component {
                     <h1 className="display-4 font-italic">Hi I'am ChuanHsin Cho</h1>
                     <p className="lead my-3">{this.props.text}</p>
                     <p className="lead mb-0"><a href="#" className="text-white font-weight-bold">Continue reading...</a></p>
+                    <Link className="lead mb-0" to="/timeline">More...</Link>
                 </div>
             </div>
         );
