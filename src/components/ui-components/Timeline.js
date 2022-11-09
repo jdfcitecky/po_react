@@ -26,7 +26,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-                                <img src="http://placehold.it/1000x500" alt="Graphic" />
+                                <img src={`http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`} alt="Graphic" />
                             </div>
                         </div>
 
