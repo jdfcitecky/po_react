@@ -7,7 +7,7 @@ export default class Home extends Component {
         return (
             <div>
                 <div style={{ height: document.documentElement.clientHeight - 200 }} className='container fadeIn'>
-                    <Jumbotron />
+                    <Jumbotron text='UC Davis CS Master, 2019 Red Dot Design Award winner, 3 years experience full stack developer. Product Implementer with Design Thinking and Technology.' />
                     <div className='row mb-2'>
                         <Card color='primary' category='Backend' text='Using Go, Python, NodeJS and the corresponding framework to implement various API micro-services including instant messaging, membership system, mall system, database operation, file server, crawler, chat robot, etc., and deploy on AWS with Docker.' link='/search/backend' linkwords='See more' picture={`http://${process.env.REACT_APP_API_ADDRESS}/static/backup/js_web/js_web_1.png`} />
                         <Card color='success' category='Frontend' text='Using React to create a variety of interactive web pages that are easy to maintain and make good use of CSS to efficiently meet various design needs. Create web games and image processing apps using Javascript Canvas.' link='/search/frontend' linkwords='See more' picture={`http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`} />
