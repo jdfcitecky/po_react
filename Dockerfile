@@ -17,4 +17,5 @@ ENV NODE_ENV production
 EXPOSE 3000
 # Start the app
 CMD [ "npx", "serve", "build" ]
+# docker build . -t dockerized-react
 # docker run -p 3000:3000 -d dockerized-react

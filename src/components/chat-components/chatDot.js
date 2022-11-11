@@ -19,6 +19,7 @@ export default class ChatDot extends Component {
             searchValue: "",
             chatRoomMessages: {},
             webSocketList: {},
+            refreshChatRoom: false,
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
@@ -62,6 +63,7 @@ export default class ChatDot extends Component {
         let chatRoomID = newMsg.chat_room_id
         if (newMsg.sender_id != memberID) {
             newMsg.id = ("msg" + String(newMessages[String(chatRoomID)].length))
+            console.log(newMsg)
             if (newMsg.sender_id != memberID) {
                 newMsg.type = "other"
             } else {
@@ -70,6 +72,7 @@ export default class ChatDot extends Component {
             newMessages[String(chatRoomID)].push(newMsg)
             this.setState({
                 chatRoomMessages: newMessages,
+                refreshChatRoom: !this.state.refreshChatRoom,
             })
         }
         // update unread number
@@ -114,10 +117,11 @@ export default class ChatDot extends Component {
             return
         }
     }
-
+    // TODO here has error , null when message come
     scrollMsgToBottom = () => {
         let chatRoomID = this.state.chatRoomID
         let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
+        console.log(lastMsgId)
         let lastMsg = document.querySelector(lastMsgId)
         if (this.state.chatRoomMessages[String(chatRoomID)].length > 10) {
             lastMsg.scrollIntoView({ behavior: "smooth" })
@@ -401,7 +405,10 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList, refreshChatRoom } = this.state
+        let chatroomMessageWithId = chatRoomMessages[String(chatRoomID)]
+        let refresh = String(new Date())
+        console.log("dot", chatroomMessageWithId)
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -462,7 +469,49 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} />
+                        <div className='chatRoomFrame mt-2'>
+                            {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
+                            <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
+                                {/* <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button> */}
+                                <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
+                                    {isLoading && (
+                                        <div>
+                                            <div className="align-items-center text-center row d-flex justify-content-center my-2">
+                                                <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={50} width={50} />
+                                            </div>
+                                            <div className="align-items-center text-center row d-flex justify-content-center">
+                                                <p>Loading...</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {!hasMoreMessages && (
+                                        <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                            <div className='mt-2'>
+                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                            </div>
+                                        </div>
+                                    )
+                                    }
+                                    {messages.map((m) => (
+                                        <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
+                                    ))}
+                                </div>
+                                <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                                    <div className="row">
+                                        <div className="col-md-12 col-lg-12 col-xl-12">
+                                            <div className='d-flex flex-row mb-3 pos-relative'>
+                                                <input name="message" id="message" placeholder="Type message" value={this.state.message} onChange={(event) => this.setState({ message: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatRoomInput" />
+                                                <div onClick={this.handleSendClickWithWS} className="chatListSearchBtn d-flex justify-content-center" >
+                                                    <ChevronRight color='#333333' className="feather-16 feather-file-text align-self-center" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <ChatRoom id={refresh} chatRoomID={this.state.chatRoomID} chatRoomMessages={chatroomMessageWithId} webSocket={webSocketList[String(chatRoomID)]} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />
