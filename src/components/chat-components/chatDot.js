@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import "./ChatDot.css"
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
-import { MessageCircle, X, ChevronsRight } from 'react-feather';
+import { MessageCircle, X, ChevronsRight, ChevronRight } from 'react-feather';
+import ChatRoomMessage from './ChatRoomMessage';
 export default class ChatDot extends Component {
     constructor(props) {
         super(props)
@@ -112,7 +113,7 @@ export default class ChatDot extends Component {
                 chatRoomList: newChatRoomList,
             })
             if (chatRoomID == newMsg.chat_room_id) {
-                // window.setTimeout(this.scrollMsgToBottom, 500)
+                window.setTimeout(this.scrollMsgToBottom, 500)
             }
             return
         }
@@ -469,8 +470,40 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
+                        <div className='chatRoomFrame mt-2'>
+                            {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
+                            <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
+                                {/* <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button> */}
+                                <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
+                                    {!hasMoreMessages && (
+                                        <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                            <div className='mt-2'>
+                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                            </div>
+                                        </div>
+                                    )
+                                    }
+                                    {chatRoomMessages[String(chatRoomID)].map((m) => (
+                                        <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
+                                    ))}
+                                </div>
+                                <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                                    <div className="row">
+                                        <div className="col-md-12 col-lg-12 col-xl-12">
+                                            <div className='d-flex flex-row mb-3 pos-relative'>
+                                                <input name="message" id="message" placeholder="Type message" value={this.state.message} onChange={(event) => this.setState({ message: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatRoomInput" />
+                                                <div onClick={this.handleSendClickWithWS} className="chatListSearchBtn d-flex justify-content-center" >
+                                                    <ChevronRight color='#333333' className="feather-16 feather-file-text align-self-center" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <ChatRoom key={refreshChatRoom} chatRoomID={this.state.chatRoomID} chatRoomMessages={chatroomMessageWithId} webSocket={webSocketList[String(chatRoomID)]} />
+                            </div>
+                        </div>
+
+                        {/* <ChatRoom key={refreshChatRoom} chatRoomID={this.state.chatRoomID} chatRoomMessages={chatroomMessageWithId} webSocket={webSocketList[String(chatRoomID)]} /> */}
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />
