@@ -471,9 +471,7 @@ export default class ChatDot extends Component {
                 <div className='row'>
                     <div className='col-6'>
                         <div className='chatRoomFrame mt-2'>
-                            {/* <h1>{"ROOM ID iS " + this.props.chatRoomID}</h1> */}
                             <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
-                                {/* <button onClick={(e) => { e.preventDefault(); this.scrollLoading(); }}>load more</button> */}
                                 <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
                                     {!hasMoreMessages && (
                                         <div className="d-flex flex-row justify-content-center border-top mt-2">
