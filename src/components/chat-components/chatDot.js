@@ -19,7 +19,6 @@ export default class ChatDot extends Component {
             searchValue: "",
             chatRoomMessages: {},
             webSocketList: {},
-            refresh: "",
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
@@ -111,9 +110,6 @@ export default class ChatDot extends Component {
             })
             if (chatRoomID == newMsg.chat_room_id) {
                 window.setTimeout(this.scrollMsgToBottom, 500)
-                this.setState({
-                    refresh: String(Date.now()),
-                })
             }
             return
         }
@@ -405,7 +401,7 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList, refresh } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -466,7 +462,7 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom key={`chatroom-${refresh}`} chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} />
+                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} />
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />
