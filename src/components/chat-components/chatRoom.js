@@ -295,7 +295,6 @@ export default class ChatRoom extends Component {
 
     render() {
         let { messages, isLoaded, hasMoreMessages, isLoading } = this.state
-        console.log(messages)
         if (!isLoaded) {
             return (
                 <div>
