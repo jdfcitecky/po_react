@@ -25,6 +25,7 @@ export default class ChatDot extends Component {
             message: "",
             sended: false,
             ws: "",
+            hasOtherMsg: false,
             // for chat room load more messages
             pageStart: 10,
             pageLimit: 5,
@@ -70,21 +71,25 @@ export default class ChatDot extends Component {
     }
 
     updateMessages = (newMsg) => {
+        console.log(newMsg)
         let newMessages = this.state.chatRoomMessages
         let memberID = Number(window.localStorage.getItem("memberID"))
         let chatRoomID = newMsg.chat_room_id
+        newMsg.id = ("msg" + String(newMessages[String(chatRoomID)].length))
+
         if (newMsg.sender_id != memberID) {
-            newMsg.id = ("msg" + String(newMessages[String(chatRoomID)].length))
-            if (newMsg.sender_id != memberID) {
-                newMsg.type = "other"
-            } else {
-                newMsg.type = "sender"
-            }
-            newMessages[String(chatRoomID)].push(newMsg)
-            this.setState({
-                chatRoomMessages: newMessages,
-            })
+            newMsg.type = "other"
+        } else {
+            newMsg.type = "sender"
         }
+        newMessages[String(chatRoomID)].push(newMsg)
+        this.setState({
+            chatRoomMessages: newMessages,
+        })
+        if (newMsg.chat_room_id == this.state.chatRoomID) {
+
+        }
+
         // update unread number
         if (!this.state.collapse) {
             let newChatRoomList = this.state.chatRoomList
@@ -122,7 +127,22 @@ export default class ChatDot extends Component {
                 chatRoomList: newChatRoomList,
             })
             if (chatRoomID == newMsg.chat_room_id) {
-                window.setTimeout(this.scrollMsgToBottom, 500)
+                if (newMsg.sender_id != memberID) {
+                    newMsg.id = ("msg" + String(this.state.messages.length))
+                    newMsg.type = "other"
+                    let newMessages = this.state.messages
+                    newMessages.push(newMsg)
+                    this.setState({
+                        messages: newMessages,
+                        hasOtherMsg: true
+                    })
+                    window.setTimeout(() => {
+                        this.setState({
+                            hasOtherMsg: false,
+                        })
+                    }, 1000)
+                }
+
             }
             return
         }
@@ -372,15 +392,6 @@ export default class ChatDot extends Component {
         if (preChatRoomId != id) {
             this.updateChatRoomUnread(preChatRoomId)
         }
-        // store the messsage back
-        if (this.state.message.length != 0) {
-            let newMessages = this.state.chatRoomMessages
-            newMessages[String(preChatRoomId)] = this.state.messages
-            this.setState({
-                chatRoomMessages: newMessages,
-            })
-
-        }
 
         let newChatRoomList = this.state.chatRoomList
 
@@ -389,6 +400,11 @@ export default class ChatDot extends Component {
                 newChatRoomList[i].unread_number = 0
             }
         }
+        let newMessages = []
+        let preMessages = this.state.chatRoomMessages[String(id)]
+        preMessages.forEach((m) => {
+            newMessages.push(m)
+        })
         this.setState({
             chatRoomcollapse: false,
         }, () => {
@@ -397,22 +413,20 @@ export default class ChatDot extends Component {
                 chatRoomList: newChatRoomList,
                 chatRoomID: id,
                 // chat room
-                ws: newChatRoomList[String(id)],
-                messages: this.state.chatRoomMessages[String(id)],
+                ws: this.state.webSocketList[String(id)],
+                messages: newMessages,
 
             },)
+            console.log("CLICK WS", this.state.webSocketList[String(id)])
         })
         window.setTimeout(this.scrollMsgToBottom, 500)
     }
 
     handleCloseChatRoom = () => {
         let preChatRoomId = this.state.chatRoomID
-        let newMessages = this.state.chatRoomMessages
-        newMessages[String(preChatRoomId)] = this.state.messages
         this.updateChatRoomUnread(preChatRoomId)
         this.setState({
             chatRoomcollapse: false,
-            chatRoomMessages: newMessages,
             // for chat room
             messages: [],
             message: "",
@@ -481,7 +495,7 @@ export default class ChatDot extends Component {
             const payload = {
                 id: 0,
                 sender_id: Number(window.localStorage.getItem("memberID")),
-                chat_room_id: Number(this.props.chatRoomID),
+                chat_room_id: Number(this.state.chatRoomID),
                 time: String(time),
                 date: this.generateDateInNumberType(),
                 text: this.state.message,
@@ -500,6 +514,32 @@ export default class ChatDot extends Component {
 
         }
 
+    }
+
+    generateDateInNumberType = () => {
+        let time = new Date()
+        let year = String(time.getFullYear())
+        let month = String(time.getMonth() + 1)
+        let day = String(time.getDate())
+        if (month.length == 1) {
+            month = "0" + month
+        }
+        if (day.length == 1) {
+            day = "0" + day
+        }
+        return Number(year + month + day)
+
+    }
+
+    updateMessagesFrontEnd = (newMsg) => {
+        newMsg.id = ("msg" + String(this.state.messages.length))
+        newMsg.type = "sender"
+        let newMessages = this.state.messages
+        newMessages.push(newMsg)
+        this.setState({
+            messages: newMessages,
+        })
+        window.setTimeout(this.scrollMsgToBottomAuto, 500)
     }
 
     render() {
