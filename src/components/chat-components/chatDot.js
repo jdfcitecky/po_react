@@ -132,8 +132,17 @@ export default class ChatDot extends Component {
         let chatRoomID = this.state.chatRoomID
         let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
         let lastMsg = document.querySelector(lastMsgId)
-        if (this.state.chatRoomMessages[String(chatRoomID)].length > 10) {
+        if (this.state.chatRoomMessages[String(chatRoomID)].length > 5) {
             lastMsg.scrollIntoView({ behavior: "smooth" })
+        }
+    }
+
+    scrollMsgToBottomAuto = () => {
+        let chatRoomID = this.state.chatRoomID
+        let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
+        let lastMsg = document.querySelector(lastMsgId)
+        if (this.state.chatRoomMessages[String(chatRoomID)].length > 5) {
+            lastMsg.scrollIntoView({ behavior: "auto" })
         }
     }
 
@@ -339,6 +348,15 @@ export default class ChatDot extends Component {
 
     handleClick = () => {
         let preChatRoomId = this.state.chatRoomID
+        // store the messsage back
+        if (this.state.message.length != 0) {
+            let newMessages = this.state.chatRoomMessages
+            newMessages[String(preChatRoomId)] = this.state.messages
+            this.setState({
+                chatRoomMessages: newMessages,
+            })
+
+        }
         if (preChatRoomId != -1) {
             this.updateChatRoomUnread(preChatRoomId)
         }
@@ -354,6 +372,16 @@ export default class ChatDot extends Component {
         if (preChatRoomId != id) {
             this.updateChatRoomUnread(preChatRoomId)
         }
+        // store the messsage back
+        if (this.state.message.length != 0) {
+            let newMessages = this.state.chatRoomMessages
+            newMessages[String(preChatRoomId)] = this.state.messages
+            this.setState({
+                chatRoomMessages: newMessages,
+            })
+
+        }
+
         let newChatRoomList = this.state.chatRoomList
 
         for (let i = 0; i < newChatRoomList.length; i++) {
@@ -368,15 +396,28 @@ export default class ChatDot extends Component {
                 chatRoomcollapse: true,
                 chatRoomList: newChatRoomList,
                 chatRoomID: id,
-            })
+                // chat room
+                ws: newChatRoomList[String(id)],
+                messages: this.state.chatRoomMessages[String(id)],
+
+            },)
         })
+        window.setTimeout(this.scrollMsgToBottom, 500)
     }
 
     handleCloseChatRoom = () => {
         let preChatRoomId = this.state.chatRoomID
+        let newMessages = this.state.chatRoomMessages
+        newMessages[String(preChatRoomId)] = this.state.messages
         this.updateChatRoomUnread(preChatRoomId)
         this.setState({
             chatRoomcollapse: false,
+            chatRoomMessages: newMessages,
+            // for chat room
+            messages: [],
+            message: "",
+            sended: false,
+            ws: "",
         })
     }
 
@@ -413,8 +454,56 @@ export default class ChatDot extends Component {
         window.setTimeout(this.updateTotalUnread, 1000)
     }
 
+    // For chat room
+    handleSendClickWithWS = () => {
+        let ws = this.state.ws
+        if (!this.sended) {
+            if (this.state.message == "") {
+                return
+            }
+            this.setState({
+                message: "",
+            })
+            let time = new Date()
+            let newMsg = {
+                senderID: Number(window.localStorage.getItem("memberID")),
+                text: this.state.message,
+                time: String(time),
+                type: "sender",
+                id: "msg" + String(this.state.messages.length)
+            }
+            // have to send to backend
+            let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+            let myHeaders = new Headers()
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + jwt)
+            myHeaders.append("token", jwt)
+            const payload = {
+                id: 0,
+                sender_id: Number(window.localStorage.getItem("memberID")),
+                chat_room_id: Number(this.props.chatRoomID),
+                time: String(time),
+                date: this.generateDateInNumberType(),
+                text: this.state.message,
+                is_read: false,
+                is_hide: false,
+
+            }
+            ws.send(JSON.stringify(payload))
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+
+            this.updateMessagesFrontEnd(newMsg)
+
+        }
+
+    }
+
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList, messages } = this.state
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -478,8 +567,8 @@ export default class ChatDot extends Component {
                         {/* BELOW IS THE CHAT ROOM */}
                         <div className='chatRoomFrame mt-2'>
                             <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
-                                {/* <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
-                                    {isLoading && (
+                                <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
+                                    {/* {isLoading && (
                                         <div>
                                             <div className="align-items-center text-center row d-flex justify-content-center my-2">
                                                 <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={50} width={50} />
@@ -496,11 +585,11 @@ export default class ChatDot extends Component {
                                             </div>
                                         </div>
                                     )
-                                    }
+                                    } */}
                                     {messages.map((m) => (
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
-                                </div> */}
+                                </div>
                                 <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 col-xl-12">
