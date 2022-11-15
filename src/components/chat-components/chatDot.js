@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import "./ChatDot.css"
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
-import { MessageCircle, X, ChevronsRight } from 'react-feather';
+import { MessageCircle, X, ChevronsRight, ChevronRight } from 'react-feather';
+import ChatRoomMessage from './ChatRoomMessage';
 export default class ChatDot extends Component {
     constructor(props) {
         super(props)
@@ -19,6 +20,18 @@ export default class ChatDot extends Component {
             searchValue: "",
             chatRoomMessages: {},
             webSocketList: {},
+            // Below is for chat room
+            messages: [],
+            message: "",
+            sended: false,
+            ws: "",
+            // for chat room load more messages
+            pageStart: 10,
+            pageLimit: 5,
+            isLoading: false,
+            hasMoreMessages: true,
+            hasFirstScrollToBtm: false,
+
 
         }
         this.handleChatRoomClick = this.handleChatRoomClick.bind(this)
@@ -462,7 +475,48 @@ export default class ChatDot extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-6'>
-                        <ChatRoom chatRoomID={this.state.chatRoomID} chatRoomMessages={chatRoomMessages[String(chatRoomID)]} webSocket={webSocketList[String(chatRoomID)]} />
+                        {/* BELOW IS THE CHAT ROOM */}
+                        <div className='chatRoomFrame mt-2'>
+                            <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
+                                {/* <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
+                                    {isLoading && (
+                                        <div>
+                                            <div className="align-items-center text-center row d-flex justify-content-center my-2">
+                                                <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={50} width={50} />
+                                            </div>
+                                            <div className="align-items-center text-center row d-flex justify-content-center">
+                                                <p>Loading...</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {!hasMoreMessages && (
+                                        <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                            <div className='mt-2'>
+                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                            </div>
+                                        </div>
+                                    )
+                                    }
+                                    {messages.map((m) => (
+                                        <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
+                                    ))}
+                                </div> */}
+                                <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                                    <div className="row">
+                                        <div className="col-md-12 col-lg-12 col-xl-12">
+                                            <div className='d-flex flex-row mb-3 pos-relative'>
+                                                <input name="message" id="message" placeholder="Type message" value={this.state.message} onChange={(event) => this.setState({ message: event.target.value })} type="text" className="form-control mr-2 ml-0 mt-0 chatRoomInput" />
+                                                <div onClick={this.handleSendClickWithWS} className="chatListSearchBtn d-flex justify-content-center" >
+                                                    <ChevronRight color='#333333' className="feather-16 feather-file-text align-self-center" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {/* ABOVE IS THE CHAT ROOM */}
                     </div>
                     <div className='col-6'>
                         <ChatList handleChatRoomClick={this.handleChatRoomClick} chatRoomList={chatRoomList} />
