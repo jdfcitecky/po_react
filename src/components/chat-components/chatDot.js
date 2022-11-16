@@ -35,7 +35,7 @@ export default class ChatDot extends Component {
             hasMoreMessages: true,
             hasFirstScrollToBtm: false,
             // show there is new msg
-            hasNewMessages: true,
+            hasNewMessages: false,
 
 
         }
@@ -150,7 +150,7 @@ export default class ChatDot extends Component {
                                 this.setState({
                                     hasNewMessages: false,
                                 })
-                            }, 1000)
+                            }, 900)
                         }
 
                     }
@@ -646,7 +646,7 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages, hasNewMessages } = this.state
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -739,7 +739,7 @@ export default class ChatDot extends Component {
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
                                 </div>
-                                {hasMoreMessages && (
+                                {hasNewMessages && (
                                     <div className='newMsgNotify'>
                                         <div className="d-flex flex-row justify-content-center mt-2">
                                             <p className="small rounded-3 text-muted">New messages</p>
