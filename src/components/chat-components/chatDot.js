@@ -73,7 +73,6 @@ export default class ChatDot extends Component {
     }
 
     updateMessages = (newMsg) => {
-        console.log(newMsg)
         let newMessages = this.state.chatRoomMessages
         let memberID = Number(window.localStorage.getItem("memberID"))
         let chatRoomID = newMsg.chat_room_id
@@ -425,7 +424,6 @@ export default class ChatDot extends Component {
                     hasFirstScrollToBtm: false,
 
                 },)
-                console.log("CLICK WS", this.state.webSocketList[String(id)])
             })
             window.setTimeout(this.scrollMsgToBottom, 500)
             window.setTimeout(() => { this.setState({ chatRoomListClick: false, }) }, 700)
@@ -633,7 +631,6 @@ export default class ChatDot extends Component {
 
     render() {
         let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages } = this.state
-        console.log("RENDER", messages)
         if (!isLoaded) {
             return (
                 <div className="floatButton">
