@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import "./ChatDot.css"
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
+import ReactLoading from 'react-loading';
 import { MessageCircle, X, ChevronsRight, ChevronRight } from 'react-feather';
 import ChatRoomMessage from './ChatRoomMessage';
 export default class ChatDot extends Component {
@@ -27,7 +28,7 @@ export default class ChatDot extends Component {
             ws: "",
             hasOtherMsg: false,
             // for chat room load more messages
-            pageStart: 10,
+            pageStart: 0,
             pageLimit: 5,
             isLoading: false,
             hasMoreMessages: true,
@@ -542,8 +543,86 @@ export default class ChatDot extends Component {
         window.setTimeout(this.scrollMsgToBottomAuto, 500)
     }
 
+    scrollLoading = () => {
+        let chatRoom = document.querySelector("#chatRoomMain")
+        if (chatRoom != null) {
+            // prevent scroll load at first scroll to btm
+            if (chatRoom.scrollTop > 100 && !this.state.hasFirstScrollToBtm) {
+                this.setState({
+                    hasFirstScrollToBtm: true
+                })
+            }
+            //below is some property that can used to implement the loading function
+            //(chatRoom.scrollTop)
+            //(chatRoom.scrollHeight)
+            //(chatRoom.clientHeight)
+            if (chatRoom.scrollTop < 5 && this.state.hasFirstScrollToBtm) {
+                this.getMoreChatRoomMessages()
+            }
+        }
+    }
+
+    getMoreChatRoomMessages = () => {
+        if (this.state.isLoading == false && this.state.hasMoreMessages) {
+            let stateName = String(this.state.chatRoomID)
+            let myHeaders = new Headers()
+            let jwt = window.localStorage.getItem("jwt").slice(1, -1)
+            myHeaders.append("Content-Type", "application/json")
+            myHeaders.append("Authorization", "Bearer " + jwt)
+            myHeaders.append("token", jwt)
+            const payload = {
+                chat_room_id: Number(this.state.chatRoomID),
+                page_start: Number(this.state.messages.length),
+                page_limit: Number(this.state.pageLimit),
+            }
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: myHeaders,
+            }
+            this.setState({
+                isLoading: true,
+                pageStart: this.state.pageStart + this.state.pageLimit
+            })
+            fetch(`http://${process.env.REACT_APP_API_ADDRESS}/chatroom/message/list`, requestOptions)
+                .then((response) => {
+                    if (response.status != "200") {
+                        let err = Error
+                        err.message = "Invalid response code: " + response.status
+                        this.setState({ error: err })
+                    }
+                    return response.json()
+                })
+                .then((json) => {
+                    if (json.data.length == 0) {
+                        this.setState({
+                            hasMoreMessages: false,
+                            isLoading: false,
+                        })
+                        return
+                    }
+                    let newMessages = json.data
+                    if (this.state.messages.length != 0) {
+                        this.state.messages.forEach((m) => {
+                            newMessages.push(m)
+                        })
+                    }
+                    newMessages = this.addType(newMessages)
+                    this.setState({
+                        messages: []
+                    }, () => {
+                        this.setState({
+                            messages: newMessages,
+                            isLoading: false,
+                        })
+                    })
+
+                })
+        }
+    }
+
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomID, chatRoomList, chatRoomMessages, webSocketList, messages } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages } = this.state
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -608,7 +687,7 @@ export default class ChatDot extends Component {
                         <div className='chatRoomFrame mt-2'>
                             <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
                                 <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
-                                    {/* {isLoading && (
+                                    {isLoading && (
                                         <div>
                                             <div className="align-items-center text-center row d-flex justify-content-center my-2">
                                                 <ReactLoading className="align-items-center" type='spin' color='#BFBFBF' height={50} width={50} />
@@ -625,7 +704,7 @@ export default class ChatDot extends Component {
                                             </div>
                                         </div>
                                     )
-                                    } */}
+                                    }
                                     {messages.map((m) => (
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
