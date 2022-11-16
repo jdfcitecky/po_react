@@ -34,6 +34,8 @@ export default class ChatDot extends Component {
             isLoading: false,
             hasMoreMessages: true,
             hasFirstScrollToBtm: false,
+            // show there is new msg
+            hasNewMessages: true,
 
 
         }
@@ -135,13 +137,30 @@ export default class ChatDot extends Component {
                     newMessages.push(newMsg)
                     this.setState({
                         messages: newMessages,
-                        hasOtherMsg: true
+                        hasFirstScrollToBtm: true
                     })
-                    window.setTimeout(() => {
-                        this.setState({
-                            hasOtherMsg: false,
-                        })
-                    }, 1000)
+                    // show has new msg
+                    let chatRoom = document.querySelector("#chatRoomMain")
+                    console.log(chatRoom.scrollTop, chatRoom.scrollHeight, chatRoom.clientHeight)
+                    if (chatRoom != null) {
+                        if (chatRoom.scrollTop + chatRoom.clientHeight + 100 <= chatRoom.scrollHeight) {
+                            console.log("NEW MSG SHOW")
+                            this.setState({
+                                hasNewMessages: true,
+                            })
+                            window.setTimeout(() => {
+                                console.log("NEW MSG CLEAR")
+                                this.setState({
+                                    hasNewMessages: false,
+                                })
+                            }, 1000)
+                        }
+
+                    }
+                }
+                let chatRoom = document.querySelector("#chatRoomMain")
+                if (chatRoom.scrollTop + chatRoom.clientHeight + 100 >= chatRoom.scrollHeight) {
+                    window.setTimeout(this.scrollMsgToBottomAuto, 500)
                 }
 
             }
