@@ -19,12 +19,16 @@ export default class CardWork extends Component {
             if (this.props.text.length > 130) {
                 let lastIndexOfSpace = this.props.text.slice(0, 130).lastIndexOf(" ")
                 text = this.props.text.slice(0, lastIndexOfSpace)
+            } else {
+                text = this.props.text
             }
 
         }
         else {
             if (this.props.text.length > 90) {
                 text = this.props.text.slice(0, 90)
+            } else {
+                text = this.props.text
             }
         }
         return (

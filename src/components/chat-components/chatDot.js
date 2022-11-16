@@ -36,6 +36,7 @@ export default class ChatDot extends Component {
             hasMoreMessages: true,
             hasFirstScrollToBtm: false,
             // show there is new msg
+            newMessagesText: "",
             hasNewMessages: false,
             hasNewMessagesArray: [],
 
@@ -143,14 +144,38 @@ export default class ChatDot extends Component {
                     })
                     // show has new msg
                     let chatRoom = document.querySelector("#chatRoomMain")
+                    // // shorten the text for preview
+                    let text = this.state.newMessagesText
+                    console.log(newMsg.text)
+                    if (this.isLetter(newMsg.text[0])) {
+                        console.log("ENG")
+                        if (newMsg.text.length > 30) {
+                            let lastIndexOfSpace = newMsg.text.slice(0, 30).lastIndexOf(" ")
+                            text = newMsg.text.slice(0, lastIndexOfSpace) + "..."
+                        } else {
+                            text = newMsg.text
+                        }
+
+                    }
+                    else {
+                        console.log("NOT ENG")
+                        if (newMsg.text.length > 15) {
+                            text = newMsg.text.slice(0, 15) + "..."
+                        } else {
+                            text = newMsg.text
+                        }
+                    }
+                    console.log(text)
                     if (chatRoom != null) {
                         if (chatRoom.scrollTop + chatRoom.clientHeight + 100 <= chatRoom.scrollHeight) {
                             this.setState({
                                 hasNewMessages: true,
+                                newMessagesText: text,
                             })
                             window.setTimeout(() => {
                                 this.setState({
                                     hasNewMessages: false,
+                                    newMessagesText: "",
                                 })
                             }, 900)
                         }
@@ -165,6 +190,10 @@ export default class ChatDot extends Component {
             }
             return
         }
+    }
+
+    isLetter = (c) => {
+        return c.toLowerCase() != c.toUpperCase();
     }
 
     scrollMsgToBottom = () => {
@@ -659,7 +688,14 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages, hasNewMessages } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages, hasNewMessages, newMessagesText } = this.state
+        let otherName = ""
+        chatRoomList.forEach((cr) => {
+            if (cr.chat_room_id == this.state.chatRoomID) {
+                let positionOfAt = cr.alias.indexOf("@")
+                otherName = cr.alias.slice(0, positionOfAt)
+            }
+        })
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -755,17 +791,17 @@ export default class ChatDot extends Component {
                                 {hasNewMessages && (
                                     <div className='newMsgNotify'>
                                         <div className="d-flex flex-row justify-content-center mt-2">
-                                            <p className="small rounded-3 text-muted">New messages</p>
+                                            <p className="small rounded-3 text-muted">{`${otherName}: ${newMessagesText}`}</p>
                                         </div>
                                     </div>
                                 )}
-                                {hasNewMessages && (
+                                {/* {hasNewMessages && (
                                     <div className='newMsgNotify'>
                                         <div className="d-flex flex-row justify-content-center mt-2">
                                             <p className="small rounded-3 text-muted">New messages</p>
                                         </div>
                                     </div>
-                                )}
+                                )} */}
                                 <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 col-xl-12">
