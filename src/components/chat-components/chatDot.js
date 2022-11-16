@@ -18,6 +18,7 @@ export default class ChatDot extends Component {
             isLoaded: false,
             chatRoomList: [],
             chatRoomListShow: [],
+            chatRoomListClick: false,
             searchValue: "",
             chatRoomMessages: {},
             webSocketList: {},
@@ -388,47 +389,48 @@ export default class ChatDot extends Component {
     }
 
     handleChatRoomClick = (id) => {
-        this.updateChatRoomUnread(id)
-        let preChatRoomId = this.state.chatRoomID
-        if (preChatRoomId != id) {
-            this.updateChatRoomUnread(preChatRoomId)
-        }
-
-        let newChatRoomList = this.state.chatRoomList
-
-        for (let i = 0; i < newChatRoomList.length; i++) {
-            if (newChatRoomList[i].chat_room_id == Number(id)) {
-                newChatRoomList[i].unread_number = 0
+        if (!this.state.chatRoomListClick) {
+            this.updateChatRoomUnread(id)
+            let preChatRoomId = this.state.chatRoomID
+            if (preChatRoomId != id) {
+                this.updateChatRoomUnread(preChatRoomId)
             }
-        }
-        let newMessages = []
-        let preMessages = this.state.chatRoomMessages[String(id)]
-        for (let i = 0; i < preMessages.length; i++) {
-            let msg = preMessages[i]
-            msg.id = ("msg" + String(i))
-            newMessages.push(msg)
-        }
-        // preMessages.forEach((m) => {
-        //     m.id = ``
-        //     newMessages.push(m)
-        // })
-        this.setState({
-            chatRoomcollapse: false,
-        }, () => {
-            this.setState({
-                chatRoomcollapse: true,
-                chatRoomList: newChatRoomList,
-                chatRoomID: id,
-                // chat room
-                ws: this.state.webSocketList[String(id)],
-                messages: newMessages,
-                hasMoreMessages: true,
-                hasFirstScrollToBtm: false,
 
-            },)
-            console.log("CLICK WS", this.state.webSocketList[String(id)])
-        })
-        window.setTimeout(this.scrollMsgToBottom, 500)
+            let newChatRoomList = this.state.chatRoomList
+
+            for (let i = 0; i < newChatRoomList.length; i++) {
+                if (newChatRoomList[i].chat_room_id == Number(id)) {
+                    newChatRoomList[i].unread_number = 0
+                }
+            }
+            let newMessages = []
+            let preMessages = this.state.chatRoomMessages[String(id)]
+            for (let i = 0; i < preMessages.length; i++) {
+                let msg = preMessages[i]
+                msg.id = ("msg" + String(i))
+                newMessages.push(msg)
+            }
+            this.setState({
+                chatRoomcollapse: false,
+            }, () => {
+                this.setState({
+                    chatRoomcollapse: true,
+                    chatRoomList: newChatRoomList,
+                    chatRoomID: id,
+                    chatRoomListClick: true,
+                    // chat room
+                    ws: this.state.webSocketList[String(id)],
+                    messages: newMessages,
+                    hasMoreMessages: true,
+                    hasFirstScrollToBtm: false,
+
+                },)
+                console.log("CLICK WS", this.state.webSocketList[String(id)])
+            })
+            window.setTimeout(this.scrollMsgToBottom, 500)
+            window.setTimeout(() => { this.setState({ chatRoomListClick: false, }) }, 700)
+        }
+
     }
 
     handleCloseChatRoom = () => {
@@ -712,8 +714,14 @@ export default class ChatDot extends Component {
                                                 <p className="small me-3 mb-3 rounded-3 text-muted">There is no more message.</p>
                                             </div>
                                         </div>
-                                    )
-                                    }
+                                    )}
+                                    {messages.length == 0 && (
+                                        <div className="d-flex flex-row justify-content-center border-top mt-2">
+                                            <div className='mt-2'>
+                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no more message.</p>
+                                            </div>
+                                        </div>
+                                    )}
                                     {messages.map((m) => (
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
