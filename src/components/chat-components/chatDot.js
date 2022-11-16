@@ -141,15 +141,12 @@ export default class ChatDot extends Component {
                     })
                     // show has new msg
                     let chatRoom = document.querySelector("#chatRoomMain")
-                    console.log(chatRoom.scrollTop, chatRoom.scrollHeight, chatRoom.clientHeight)
                     if (chatRoom != null) {
                         if (chatRoom.scrollTop + chatRoom.clientHeight + 100 <= chatRoom.scrollHeight) {
-                            console.log("NEW MSG SHOW")
                             this.setState({
                                 hasNewMessages: true,
                             })
                             window.setTimeout(() => {
-                                console.log("NEW MSG CLEAR")
                                 this.setState({
                                     hasNewMessages: false,
                                 })
@@ -712,7 +709,7 @@ export default class ChatDot extends Component {
                     <div className='col-6'>
                         {/* BELOW IS THE CHAT ROOM */}
                         <div className='chatRoomFrame mt-2'>
-                            <div className="col-md-12 col-lg-12 col-xl-12 pt-3">
+                            <div className="col-md-12 col-lg-12 col-xl-12 pt-3 chatRoom-pos-relative">
                                 <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
                                     {isLoading && (
                                         <div>
@@ -742,6 +739,13 @@ export default class ChatDot extends Component {
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
                                 </div>
+                                {hasMoreMessages && (
+                                    <div className='newMsgNotify'>
+                                        <div className="d-flex flex-row justify-content-center mt-2">
+                                            <p className="small rounded-3 text-muted">New messages</p>
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 col-xl-12">

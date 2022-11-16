@@ -174,3 +174,37 @@
     background-color: rgb(252, 252, 252);
     border-radius: 15px;
 }
+
+.newMsgNotify {
+    position: absolute !important;
+    width: 370px;
+    bottom: 80px;
+    margin: 0 auto;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    animation: fadein-NewMsg 1s ease;
+}
+
+@keyframes fadein-NewMsg {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.chatRoom-pos-relative {
+    position: relative;
+}
