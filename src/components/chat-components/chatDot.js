@@ -160,7 +160,7 @@ export default class ChatDot extends Component {
 
     scrollMsgToBottomAuto = () => {
         let chatRoomID = this.state.chatRoomID
-        let lastMsgId = "#msg" + String(this.state.chatRoomMessages[String(chatRoomID)].length - 1)
+        let lastMsgId = "#msg" + String(this.state.messages.length - 1)
         let lastMsg = document.querySelector(lastMsgId)
         if (this.state.chatRoomMessages[String(chatRoomID)].length > 5) {
             lastMsg.scrollIntoView({ behavior: "auto" })
@@ -403,9 +403,15 @@ export default class ChatDot extends Component {
         }
         let newMessages = []
         let preMessages = this.state.chatRoomMessages[String(id)]
-        preMessages.forEach((m) => {
-            newMessages.push(m)
-        })
+        for (let i = 0; i < preMessages.length; i++) {
+            let msg = preMessages[i]
+            msg.id = ("msg" + String(i))
+            newMessages.push(msg)
+        }
+        // preMessages.forEach((m) => {
+        //     m.id = ``
+        //     newMessages.push(m)
+        // })
         this.setState({
             chatRoomcollapse: false,
         }, () => {
@@ -416,6 +422,8 @@ export default class ChatDot extends Component {
                 // chat room
                 ws: this.state.webSocketList[String(id)],
                 messages: newMessages,
+                hasMoreMessages: true,
+                hasFirstScrollToBtm: false,
 
             },)
             console.log("CLICK WS", this.state.webSocketList[String(id)])
@@ -623,6 +631,7 @@ export default class ChatDot extends Component {
 
     render() {
         let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages } = this.state
+        console.log("RENDER", messages)
         if (!isLoaded) {
             return (
                 <div className="floatButton">
@@ -700,7 +709,7 @@ export default class ChatDot extends Component {
                                     {!hasMoreMessages && (
                                         <div className="d-flex flex-row justify-content-center border-top mt-2">
                                             <div className='mt-2'>
-                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no result.</p>
+                                                <p className="small me-3 mb-3 rounded-3 text-muted">There is no more message.</p>
                                             </div>
                                         </div>
                                     )
