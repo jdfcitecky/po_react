@@ -790,8 +790,8 @@ export default class ChatDot extends Component {
                                 </div>
                                 {hasNewMessages && (
                                     <div className='newMsgNotify'>
-                                        <div className="d-flex flex-row justify-content-center mt-2">
-                                            <p className="small rounded-3 text-muted">{`${otherName}: ${newMessagesText}`}</p>
+                                        <div className="d-flex flex-row justify-content-start mt-2 px-2">
+                                            <p className="rounded-3 text-muted">{`${otherName}: ${newMessagesText}`}</p>
                                         </div>
                                     </div>
                                 )}
