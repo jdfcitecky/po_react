@@ -28,6 +28,7 @@ export default class ChatDot extends Component {
             sended: false,
             ws: "",
             hasOtherMsg: false,
+            showGoToBtm: false,
             // for chat room load more messages
             pageStart: 0,
             pageLimit: 5,
@@ -36,6 +37,7 @@ export default class ChatDot extends Component {
             hasFirstScrollToBtm: false,
             // show there is new msg
             hasNewMessages: false,
+            hasNewMessagesArray: [],
 
 
         }
@@ -583,6 +585,17 @@ export default class ChatDot extends Component {
             if (chatRoom.scrollTop < 5 && this.state.hasFirstScrollToBtm) {
                 this.getMoreChatRoomMessages()
             }
+            // For Show go to btm
+            if (chatRoom.scrollTop > 100 && !this.state.hasFirstScrollToBtm) {
+                this.setState({
+                    showGoToBtm: true,
+                })
+            } else {
+                this.setState({
+                    showGoToBtm: false,
+                })
+            }
+
         }
     }
 
@@ -739,6 +752,13 @@ export default class ChatDot extends Component {
                                         <ChatRoomMessage text={m.text} time={m.time} type={m.type} id={m.id} />
                                     ))}
                                 </div>
+                                {hasNewMessages && (
+                                    <div className='newMsgNotify'>
+                                        <div className="d-flex flex-row justify-content-center mt-2">
+                                            <p className="small rounded-3 text-muted">New messages</p>
+                                        </div>
+                                    </div>
+                                )}
                                 {hasNewMessages && (
                                     <div className='newMsgNotify'>
                                         <div className="d-flex flex-row justify-content-center mt-2">
