@@ -253,9 +253,27 @@ export default class ChatDot extends Component {
             isLoaded: false,
             chatRoomList: [],
             chatRoomListShow: [],
+            chatRoomListClick: false,
             searchValue: "",
             chatRoomMessages: {},
             webSocketList: {},
+            // Below is for chat room
+            messages: [],
+            message: "",
+            sended: false,
+            ws: "",
+            hasOtherMsg: false,
+            showGoToBtm: false,
+            // for chat room load more messages
+            pageStart: 0,
+            pageLimit: 5,
+            isLoading: false,
+            hasMoreMessages: true,
+            hasFirstScrollToBtm: false,
+            // show there is new msg
+            newMessagesText: "",
+            hasNewMessages: false,
+            hasNewMessagesArray: [],
         })
 
     }
