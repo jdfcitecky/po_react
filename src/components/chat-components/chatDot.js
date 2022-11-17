@@ -46,6 +46,7 @@ export default class ChatDot extends Component {
     }
     componentDidMount() {
         window.setTimeout(this.detectLogin, 1000)
+        window.setTimeout(this.detectUnread, 3000)
     }
 
     componentWillUnmount() {
@@ -133,6 +134,8 @@ export default class ChatDot extends Component {
                 chatRoomList: newChatRoomList,
             })
             if (chatRoomID == newMsg.chat_room_id) {
+                let newHasNewMessagesArray = this.state.hasNewMessagesArray
+                newHasNewMessagesArray.push(true)
                 if (newMsg.sender_id != memberID) {
                     newMsg.id = ("msg" + String(this.state.messages.length))
                     newMsg.type = "other"
@@ -146,9 +149,7 @@ export default class ChatDot extends Component {
                     let chatRoom = document.querySelector("#chatRoomMain")
                     // // shorten the text for preview
                     let text = this.state.newMessagesText
-                    console.log(newMsg.text)
                     if (this.isLetter(newMsg.text[0])) {
-                        console.log("ENG")
                         if (newMsg.text.length > 30) {
                             let lastIndexOfSpace = newMsg.text.slice(0, 30).lastIndexOf(" ")
                             text = newMsg.text.slice(0, lastIndexOfSpace) + "..."
@@ -158,19 +159,18 @@ export default class ChatDot extends Component {
 
                     }
                     else {
-                        console.log("NOT ENG")
                         if (newMsg.text.length > 15) {
                             text = newMsg.text.slice(0, 15) + "..."
                         } else {
                             text = newMsg.text
                         }
                     }
-                    console.log(text)
                     if (chatRoom != null) {
                         if (chatRoom.scrollTop + chatRoom.clientHeight + 100 <= chatRoom.scrollHeight) {
                             this.setState({
                                 hasNewMessages: true,
                                 newMessagesText: text,
+                                hasNewMessagesArray: newHasNewMessagesArray,
                             })
                             window.setTimeout(() => {
                                 this.setState({
@@ -465,11 +465,17 @@ export default class ChatDot extends Component {
                     chatRoomID: id,
                     chatRoomListClick: true,
                     // chat room
-                    ws: this.state.webSocketList[String(id)],
                     messages: newMessages,
+                    message: "",
+                    ws: this.state.webSocketList[String(id)],
+                    hasOtherMsg: false,
+                    showGoToBtm: false,
+                    isLoading: false,
                     hasMoreMessages: true,
                     hasFirstScrollToBtm: false,
-
+                    newMessagesText: "",
+                    hasNewMessages: false,
+                    hasNewMessagesArray: [],
                 },)
             })
             window.setTimeout(this.scrollMsgToBottom, 500)
@@ -699,6 +705,24 @@ export default class ChatDot extends Component {
 
                 })
         }
+    }
+
+    detectUnread = () => {
+        let unreadNumber = this.state.hasNewMessagesArray.length
+        let chatRoomID = this.state.chatRoomID
+        if (unreadNumber !== 0 && chatRoomID !== -1 && this.state.chatRoomcollapse) {
+            let chatRoom = document.querySelector("#chatRoomMain")
+            if (chatRoom.scrollTop + chatRoom.clientHeight + 0.3 * chatRoom.clientHeight > chatRoom.scrollHeight) {
+                this.updateChatRoomUnread(chatRoomID)
+                // clear hasNewMessagesArray
+                this.setState({
+                    hasNewMessagesArray: [],
+                })
+            }
+
+        }
+        window.setTimeout(this.detectUnread, 3000)
+
     }
 
     render() {
