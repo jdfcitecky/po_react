@@ -4,7 +4,7 @@ import "./ChatDot.css"
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
 import ReactLoading from 'react-loading';
-import { MessageCircle, X, ChevronsRight, ChevronRight } from 'react-feather';
+import { MessageCircle, X, ChevronsRight, ChevronRight, ArrowDown } from 'react-feather';
 import ChatRoomMessage from './ChatRoomMessage';
 export default class ChatDot extends Component {
     constructor(props) {
@@ -598,8 +598,7 @@ export default class ChatDot extends Component {
         window.setTimeout(this.scrollMsgToBottomAuto, 500)
     }
 
-    scrollLoading = () => {
-        let chatRoom = document.querySelector("#chatRoomMain")
+    scrollLoading = (chatRoom) => {
         if (chatRoom != null) {
             // prevent scroll load at first scroll to btm
             if (chatRoom.scrollTop > 100 && !this.state.hasFirstScrollToBtm) {
@@ -614,20 +613,28 @@ export default class ChatDot extends Component {
             if (chatRoom.scrollTop < 5 && this.state.hasFirstScrollToBtm) {
                 this.getMoreChatRoomMessages()
             }
-            // For Show go to btm
-            if (chatRoom.scrollTop + chatRoom.clientHeight + 100 > chatRoom.scrollHeight) {
-                console.log("CLOSE_GOTOBTM")
-                this.setState({
-                    showGoToBtm: false,
-                })
-            } else {
-                console.log("SHOW_GOTOBTM")
-                this.setState({
-                    showGoToBtm: true,
-                })
-            }
-
         }
+    }
+
+    detectShowGoToBtm = (chatRoom) => {
+        // For Show go to btm
+        if (chatRoom.scrollTop + chatRoom.clientHeight + 0.3 * chatRoom.clientHeight > chatRoom.scrollHeight && this.state.showGoToBtm === true) {
+            this.setState({
+                showGoToBtm: false,
+            })
+        }
+        if (chatRoom.scrollTop + chatRoom.clientHeight + 0.3 * chatRoom.clientHeight <= chatRoom.scrollHeight && this.state.showGoToBtm === false) {
+            this.setState({
+                showGoToBtm: true,
+            })
+        }
+
+    }
+
+    scrollFunctions = () => {
+        let chatRoom = document.querySelector("#chatRoomMain")
+        this.scrollLoading(chatRoom)
+        this.detectShowGoToBtm(chatRoom)
     }
 
     getMoreChatRoomMessages = () => {
@@ -690,7 +697,7 @@ export default class ChatDot extends Component {
     }
 
     render() {
-        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages, hasNewMessages, newMessagesText } = this.state
+        let { isLoaded, collapse, chatRoomcollapse, chatRoomList, isLoading, hasMoreMessages, messages, hasNewMessages, newMessagesText, showGoToBtm } = this.state
         let otherName = ""
         chatRoomList.forEach((cr) => {
             if (cr.chat_room_id == this.state.chatRoomID) {
@@ -761,7 +768,7 @@ export default class ChatDot extends Component {
                         {/* BELOW IS THE CHAT ROOM */}
                         <div className='chatRoomFrame mt-2'>
                             <div className="col-md-12 col-lg-12 col-xl-12 pt-3 chatRoom-pos-relative">
-                                <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollLoading}>
+                                <div id="chatRoomMain" className="pt-3 pe-3 chatRoom" onScroll={this.scrollFunctions}>
                                     {isLoading && (
                                         <div>
                                             <div className="align-items-center text-center row d-flex justify-content-center my-2">
@@ -797,13 +804,20 @@ export default class ChatDot extends Component {
                                         </div>
                                     </div>
                                 )}
-                                {/* {hasNewMessages && (
-                                    <div className='newMsgNotify'>
-                                        <div className="d-flex flex-row justify-content-center mt-2">
-                                            <p className="small rounded-3 text-muted">New messages</p>
+                                {showGoToBtm && (
+                                    <div className='chatRoom-goToBtm'>
+                                        <div className="d-flex flex-row justify-content-center p-1">
+                                            <ArrowDown color='#333333' className="feather-16 feather-file-text mt-1" />
                                         </div>
                                     </div>
-                                )} */}
+                                )}
+                                {!showGoToBtm && (
+                                    <div className='chatRoom-goToBtm-out'>
+                                        <div className="d-flex flex-row justify-content-center p-1">
+                                            <ArrowDown color='#333333' className="feather-16 feather-file-text mt-1" />
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 col-xl-12">

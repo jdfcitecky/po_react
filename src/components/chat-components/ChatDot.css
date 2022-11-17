@@ -185,6 +185,7 @@
     border-radius: 0.25rem;
     box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
     animation: fadein-NewMsg 1s ease;
+    z-index: 12000;
 }
 
 @keyframes fadein-NewMsg {
@@ -207,4 +208,77 @@
 
 .chatRoom-pos-relative {
     position: relative;
+}
+
+.chatRoom-goToBtm {
+    position: absolute !important;
+    width: 35px;
+    height: 35px;
+    left: 340px;
+    bottom: 80px;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    animation: fadein-chatRoom-goToBtm 1s ease, pop-chatRoom-goToBtm 1s ease;
+    z-index: 11000;
+}
+
+@keyframes fadein-chatRoom-goToBtm {
+    0% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pop-chatRoom-goToBtm {
+    0% {
+        bottom: 70px;
+    }
+
+    100% {
+        bottom: 80px;
+    }
+}
+
+.chatRoom-goToBtm-out {
+    position: absolute !important;
+    width: 35px;
+    height: 35px;
+    left: 340px;
+    bottom: 80px;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    animation: fadein-chatRoom-goToBtm-out 1s ease, pop-chatRoom-goToBtm-out 1s ease;
+    z-index: 11000;
+    opacity: 0;
+}
+
+@keyframes fadein-chatRoom-goToBtm-out {
+    0% {
+        opacity: 1;
+    }
+
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pop-chatRoom-goToBtm-out {
+    0% {
+        bottom: 80px;
+    }
+
+    100% {
+        bottom: 70px;
+    }
 }
