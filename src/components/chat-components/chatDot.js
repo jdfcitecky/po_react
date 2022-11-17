@@ -615,13 +615,15 @@ export default class ChatDot extends Component {
                 this.getMoreChatRoomMessages()
             }
             // For Show go to btm
-            if (chatRoom.scrollTop > 100 && !this.state.hasFirstScrollToBtm) {
-                this.setState({
-                    showGoToBtm: true,
-                })
-            } else {
+            if (chatRoom.scrollTop + chatRoom.clientHeight + 100 > chatRoom.scrollHeight) {
+                console.log("CLOSE_GOTOBTM")
                 this.setState({
                     showGoToBtm: false,
+                })
+            } else {
+                console.log("SHOW_GOTOBTM")
+                this.setState({
+                    showGoToBtm: true,
                 })
             }
 
