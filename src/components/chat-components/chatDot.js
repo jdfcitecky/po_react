@@ -631,6 +631,11 @@ export default class ChatDot extends Component {
 
     }
 
+    goToBtmClick = () => {
+        let chatRoom = document.querySelector("#chatRoomMain")
+        chatRoom.scrollTop = chatRoom.scrollHeight - chatRoom.clientHeight
+    }
+
     scrollFunctions = () => {
         let chatRoom = document.querySelector("#chatRoomMain")
         this.scrollLoading(chatRoom)
@@ -806,7 +811,7 @@ export default class ChatDot extends Component {
                                 )}
                                 {showGoToBtm && (
                                     <div className='chatRoom-goToBtm'>
-                                        <div className="d-flex flex-row justify-content-center p-1">
+                                        <div className="d-flex flex-row justify-content-center p-1" onClick={this.goToBtmClick}>
                                             <ArrowDown color='#333333' className="feather-16 feather-file-text mt-1" />
                                         </div>
                                     </div>
