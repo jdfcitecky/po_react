@@ -27,6 +27,13 @@
     }
 }
 
+.timeline-card-imageFit {
+    height: auto;
+    object-fit: cover;
+    object-position: 20% 0;
+}
+
+
 /* Some Cool Stuff */
 .demo-card:nth-child(1) {
     order: 1;
@@ -60,6 +67,10 @@
 /* Fonts */
 body {
     font-family: Roboto;
+}
+
+.text-align-start {
+    text-align: start !important;
 }
 
 #timeline {
@@ -234,7 +245,8 @@ body {
 
 @media (min-width: 1000px) {
     #timeline .demo-card .body {
-        height: 315px;
+        /* height: 315px; */
+        height: auto;
     }
 }
 

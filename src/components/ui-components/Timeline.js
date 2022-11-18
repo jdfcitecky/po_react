@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Book } from 'react-feather';
+import { Book, Edit3 } from 'react-feather';
 import "./Timeline.css"
 export default class Card extends Component {
 
@@ -22,37 +22,37 @@ export default class Card extends Component {
                                 <div className="number-box">
                                     <Book className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">Academic</span> Technology</h2>
+                                <h2><span className="small">2016</span>Graduation</h2>
                             </div>
                             <div className="body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-                                <img src={`http://${process.env.REACT_APP_API_ADDRESS}/static/backup/html_basic/html_basic_1.png`} alt="Graphic" />
+                                <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                <img src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn second">
+                        <div className="demo-card demo-card--step1 fadeIn second">
                             <div className="head">
                                 <div className="number-box">
-                                    <span>02</span>
+                                    <Book className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">Subtitle</span> Confidence</h2>
+                                <h2><span className="small">2016</span>Admission</h2>
                             </div>
                             <div className="body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-                                <img src="http://placehold.it/1000x500" alt="Graphic" />
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-2.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step3 fadeIn third">
+                        <div className="demo-card demo-card--step2 fadeIn third">
                             <div className="head">
                                 <div className="number-box">
-                                    <span>03</span>
+                                    <Edit3 className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">Subtitle</span> Adaptation</h2>
+                                <h2><span className="small">2016</span>Design Work</h2>
                             </div>
                             <div className="body">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-                                <img src="http://placehold.it/1000x500" alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-2.png`} alt="Graphic" />
                             </div>
                         </div>
 
