@@ -48,11 +48,11 @@ export default class Card extends Component {
                                 <div className="number-box">
                                     <Edit3 className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2016</span>Design Work</h2>
+                                <h2><span className="small">2016</span>Design Work c=TODO</h2>
                             </div>
                             <div className="body">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-2.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-3.png`} alt="Graphic" />
                             </div>
                         </div>
 
