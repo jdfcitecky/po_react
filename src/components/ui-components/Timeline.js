@@ -90,7 +90,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2017</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>The last work received quite good feedback, but I did not stop pursuing the quality of the graphics. Therefore, I used proxy rendering in this work to increase the richness of the environment. In addition, I also used a lot of surface design and 3D printing to make models for the first time.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-4.png`} alt="Graphic" />
                             </div>
                         </div>
