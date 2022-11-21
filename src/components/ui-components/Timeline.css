@@ -33,14 +33,19 @@
     object-position: 20% 0;
 }
 
+.timeline-text-align-start {
+    text-align: start;
+}
 
 /* Some Cool Stuff */
+/* if modify, TODO this */
+/* the right order is 1->1, 3->2, 5->3, 7->4..., and left order is from btm n->n, n-2->n-1, n-4->n-2... */
 .demo-card:nth-child(1) {
     order: 1;
 }
 
 .demo-card:nth-child(2) {
-    order: 4;
+    order: 21;
 }
 
 .demo-card:nth-child(3) {
@@ -48,7 +53,7 @@
 }
 
 .demo-card:nth-child(4) {
-    order: 5;
+    order: 22;
 }
 
 .demo-card:nth-child(5) {
@@ -56,8 +61,145 @@
 }
 
 .demo-card:nth-child(6) {
+    order: 23;
+}
+
+.demo-card:nth-child(7) {
+    order: 4;
+}
+
+.demo-card:nth-child(8) {
+    order: 24;
+}
+
+.demo-card:nth-child(9) {
+    order: 5;
+}
+
+.demo-card:nth-child(10) {
+    order: 25;
+}
+
+.demo-card:nth-child(11) {
     order: 6;
 }
+
+.demo-card:nth-child(12) {
+    order: 26;
+}
+
+.demo-card:nth-child(13) {
+    order: 7;
+}
+
+.demo-card:nth-child(14) {
+    order: 27;
+}
+
+.demo-card:nth-child(15) {
+    order: 8;
+}
+
+.demo-card:nth-child(16) {
+    order: 28;
+}
+
+.demo-card:nth-child(17) {
+    order: 9;
+}
+
+.demo-card:nth-child(18) {
+    order: 29;
+}
+
+.demo-card:nth-child(19) {
+    order: 10;
+}
+
+.demo-card:nth-child(20) {
+    order: 30;
+}
+
+.demo-card:nth-child(21) {
+    order: 11;
+}
+
+.demo-card:nth-child(22) {
+    order: 31;
+}
+
+.demo-card:nth-child(23) {
+    order: 12;
+}
+
+.demo-card:nth-child(24) {
+    order: 32;
+}
+
+.demo-card:nth-child(25) {
+    order: 13;
+}
+
+.demo-card:nth-child(26) {
+    order: 33;
+}
+
+.demo-card:nth-child(27) {
+    order: 14;
+}
+
+.demo-card:nth-child(28) {
+    order: 34;
+}
+
+.demo-card:nth-child(29) {
+    order: 15;
+}
+
+.demo-card:nth-child(30) {
+    order: 35;
+}
+
+.demo-card:nth-child(31) {
+    order: 16;
+}
+
+.demo-card:nth-child(32) {
+    order: 36;
+}
+
+.demo-card:nth-child(33) {
+    order: 17;
+}
+
+.demo-card:nth-child(34) {
+    order: 37;
+}
+
+.demo-card:nth-child(35) {
+    order: 18;
+}
+
+.demo-card:nth-child(36) {
+    order: 38;
+}
+
+.demo-card:nth-child(37) {
+    order: 19;
+}
+
+.demo-card:nth-child(38) {
+    order: 39;
+}
+
+.demo-card:nth-child(39) {
+    order: 20;
+}
+
+.demo-card:nth-child(40) {
+    order: 40;
+}
+
 
 /* Border Box */
 * {
@@ -104,7 +246,9 @@ body {
         display: flex;
         flex-flow: column wrap;
         width: 1170px;
-        height: 1650px;
+        /* if modify, TODO this */
+        /* each card is 275px */
+        height: 10175px;
         margin: 0 auto;
     }
 }
@@ -326,6 +470,8 @@ body {
     animation-duration: 1s;
 }
 
+
+/* if modify, TODO this */
 .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
@@ -356,6 +502,278 @@ body {
     -moz-animation-delay: 1.2s;
     animation-delay: 1.2s;
 }
+
+.fadeIn.sixth {
+    -webkit-animation-delay: 1.4s;
+    -moz-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+}
+
+.fadeIn.seventh {
+    -webkit-animation-delay: 1.6s;
+    -moz-animation-delay: 1.6s;
+    animation-delay: 1.6s;
+}
+
+.fadeIn.eighth {
+    -webkit-animation-delay: 1.8s;
+    -moz-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+}
+
+.fadeIn.ninth {
+    -webkit-animation-delay: 2.0s;
+    -moz-animation-delay: 2.0s;
+    animation-delay: 2.0s;
+}
+
+.fadeIn.tenth {
+    -webkit-animation-delay: 2.2s;
+    -moz-animation-delay: 2.2s;
+    animation-delay: 2.2s;
+}
+
+.fadeIn.eleventh {
+    -webkit-animation-delay: 2.4s;
+    -moz-animation-delay: 2.4s;
+    animation-delay: 2.4s;
+}
+
+.fadeIn.twelveth {
+    -webkit-animation-delay: 2.6s;
+    -moz-animation-delay: 2.6s;
+    animation-delay: 2.6s;
+}
+
+.fadeIn.threeteenth {
+    -webkit-animation-delay: 2.8s;
+    -moz-animation-delay: 2.8s;
+    animation-delay: 2.8s;
+}
+
+.fadeIn.fourteenth {
+    -webkit-animation-delay: 3.0s;
+    -moz-animation-delay: 3.0s;
+    animation-delay: 3.0s;
+}
+
+.fadeIn.fifteenth {
+    -webkit-animation-delay: 3.2s;
+    -moz-animation-delay: 3.2s;
+    animation-delay: 3.2s;
+}
+
+.fadeIn.sixteenth {
+    -webkit-animation-delay: 3.4s;
+    -moz-animation-delay: 3.4s;
+    animation-delay: 3.4s;
+}
+
+.fadeIn.seventeenth {
+    -webkit-animation-delay: 3.6s;
+    -moz-animation-delay: 3.6s;
+    animation-delay: 3.6s;
+}
+
+.fadeIn.eighteenth {
+    -webkit-animation-delay: 3.8s;
+    -moz-animation-delay: 3.8s;
+    animation-delay: 3.8s;
+}
+
+.fadeIn.nineteenth {
+    -webkit-animation-delay: 4.0s;
+    -moz-animation-delay: 4.0s;
+    animation-delay: 4.0s;
+}
+
+.fadeIn.twentyth {
+    -webkit-animation-delay: 4.2s;
+    -moz-animation-delay: 4.2s;
+    animation-delay: 4.2s;
+}
+
+.fadeIn.twentyoneth {
+    -webkit-animation-delay: 4.4s;
+    -moz-animation-delay: 4.4s;
+    animation-delay: 4.4s;
+}
+
+.fadeIn.twentytwoth {
+    -webkit-animation-delay: 4.6s;
+    -moz-animation-delay: 4.6s;
+    animation-delay: 4.6s;
+}
+
+.fadeIn.twentythreeth {
+    -webkit-animation-delay: 4.8s;
+    -moz-animation-delay: 4.8s;
+    animation-delay: 4.8s;
+}
+
+.fadeIn.twentyfourth {
+    -webkit-animation-delay: 5.0s;
+    -moz-animation-delay: 5.0s;
+    animation-delay: 5.0s;
+}
+
+
+.fadeIn.twentyfiveth {
+    -webkit-animation-delay: 5.2s;
+    -moz-animation-delay: 5.2s;
+    animation-delay: 5.2s;
+}
+
+.fadeIn.twentysixth {
+    -webkit-animation-delay: 5.4s;
+    -moz-animation-delay: 5.4s;
+    animation-delay: 5.4s;
+}
+
+.fadeIn.twentyseventh {
+    -webkit-animation-delay: 5.6s;
+    -moz-animation-delay: 5.6s;
+    animation-delay: 5.6s;
+}
+
+.fadeIn.twentyeighth {
+    -webkit-animation-delay: 5.8s;
+    -moz-animation-delay: 5.8s;
+    animation-delay: 5.8s;
+}
+
+.fadeIn.twentyninth {
+    -webkit-animation-delay: 6.0s;
+    -moz-animation-delay: 6.0s;
+    animation-delay: 6.0s;
+}
+
+.fadeIn.thirtyth {
+    -webkit-animation-delay: 6.2s;
+    -moz-animation-delay: 6.2s;
+    animation-delay: 6.2s;
+}
+
+.fadeIn.thirtyoneth {
+    -webkit-animation-delay: 6.4s;
+    -moz-animation-delay: 6.4s;
+    animation-delay: 6.4s;
+}
+
+.fadeIn.thirtytwoth {
+    -webkit-animation-delay: 6.6s;
+    -moz-animation-delay: 6.6s;
+    animation-delay: 6.6s;
+}
+
+.fadeIn.thirtythreeth {
+    -webkit-animation-delay: 6.8s;
+    -moz-animation-delay: 6.8s;
+    animation-delay: 6.8s;
+}
+
+.fadeIn.thirtyfourth {
+    -webkit-animation-delay: 7.0s;
+    -moz-animation-delay: 7.0s;
+    animation-delay: 7.0s;
+}
+
+.fadeIn.thirtyfiveth {
+    -webkit-animation-delay: 7.2s;
+    -moz-animation-delay: 7.2s;
+    animation-delay: 7.2s;
+}
+
+.fadeIn.thirtysixth {
+    -webkit-animation-delay: 7.4s;
+    -moz-animation-delay: 7.4s;
+    animation-delay: 7.4s;
+}
+
+.fadeIn.thirtyseventh {
+    -webkit-animation-delay: 7.6s;
+    -moz-animation-delay: 7.6s;
+    animation-delay: 7.6s;
+}
+
+.fadeIn.thirtyeightth {
+    -webkit-animation-delay: 7.8s;
+    -moz-animation-delay: 7.8s;
+    animation-delay: 7.8s;
+}
+
+.fadeIn.thirtynineth {
+    -webkit-animation-delay: 8.0s;
+    -moz-animation-delay: 8.0s;
+    animation-delay: 8.0s;
+}
+
+.fadeIn.fourtyth {
+    -webkit-animation-delay: 8.2s;
+    -moz-animation-delay: 8.2s;
+    animation-delay: 8.2s;
+}
+
+.fadeIn.fourtyoneth {
+    -webkit-animation-delay: 8.4s;
+    -moz-animation-delay: 8.4s;
+    animation-delay: 8.4s;
+}
+
+.fadeIn.fourtytwoth {
+    -webkit-animation-delay: 8.6s;
+    -moz-animation-delay: 8.6s;
+    animation-delay: 8.6s;
+}
+
+.fadeIn.fourtythreeth {
+    -webkit-animation-delay: 8.8s;
+    -moz-animation-delay: 8.8s;
+    animation-delay: 8.8s;
+}
+
+.fadeIn.fourtyfourth {
+    -webkit-animation-delay: 9.0s;
+    -moz-animation-delay: 9.0s;
+    animation-delay: 9.0s;
+}
+
+.fadeIn.fourtyfiveth {
+    -webkit-animation-delay: 9.2s;
+    -moz-animation-delay: 9.2s;
+    animation-delay: 9.2s;
+}
+
+.fadeIn.fourtysixth {
+    -webkit-animation-delay: 9.4s;
+    -moz-animation-delay: 9.4s;
+    animation-delay: 9.4s;
+}
+
+.fadeIn.fourtyseventh {
+    -webkit-animation-delay: 9.6s;
+    -moz-animation-delay: 9.6s;
+    animation-delay: 9.6s;
+}
+
+.fadeIn.fourtyeightth {
+    -webkit-animation-delay: 9.8s;
+    -moz-animation-delay: 9.8s;
+    animation-delay: 9.8s;
+}
+
+.fadeIn.fourtynineth {
+    -webkit-animation-delay: 10.0s;
+    -moz-animation-delay: 10.0s;
+    animation-delay: 10.0s;
+}
+
+.fadeIn.fiftyth {
+    -webkit-animation-delay: 10.2s;
+    -moz-animation-delay: 10.2s;
+    animation-delay: 10.2s;
+}
+
 
 .feather-timeline {
     width: 35px;
