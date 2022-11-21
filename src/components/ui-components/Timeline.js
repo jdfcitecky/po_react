@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Book, Edit3 } from 'react-feather';
+import { Book, Edit3, Dribbble } from 'react-feather';
 import "./Timeline.css"
 export default class Card extends Component {
 
@@ -103,7 +103,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2017</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>After using 3D printing to make the model, I have more time to modify the design and graphics. In the last work of the freshman year, I put forward a fairly complete design plan for users and the environment, and presented very high-quality graphics and openable models. This is also the first time I have achieved the first grade.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-5.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -116,17 +116,17 @@ export default class Card extends Component {
                                 <h2><span className="small">2017</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>With the design experience in the first year of university, I think that I must adopt a more automated and data-dependent modeling method to show my design thinking, so I learned a lot of Rhino and Grasshopper technology during the summer vacation and made my first work in the second year of university put into use.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-6.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn ninth">
+                        <div className="demo-card demo-card--step3 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Dribbble className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2017</span>Activity</h2>
                             </div>
                             <div className="body">
                                 <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
