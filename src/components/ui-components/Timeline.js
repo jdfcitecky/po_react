@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Book, Edit3, Dribbble } from 'react-feather';
+import { Book, Edit3, Dribbble, Briefcase, Feather } from 'react-feather';
 import "./Timeline.css"
 export default class Card extends Component {
 
@@ -129,8 +129,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2017</span>Activity</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-7.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
@@ -142,45 +142,45 @@ export default class Card extends Component {
                                 <h2><span className="small">2017</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-8.png`} alt="Graphic" />
+                                <p>In the last design work in 2017, with my proficient modeling technology and analysis ability, I designed a library under the park. This library not only meets the needs of the community for green space, but also uses the original underground parking lot. This design also allowed me to win the first place for the second time.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-7.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Feather className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2018</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-9.png`} alt="Graphic" />
+                                <p>A year later, I participated in the 2017 Decor House Awarad again. This time I combine modern ideas with traditional architectural forms, and use realistic renderings and logical design explanations. This time I won the preferred award.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-award-dec-1.png`} alt="Graphic" />
                             </div>
                         </div>
                         <div className="demo-card demo-card--step2 fadeIn twelveth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Briefcase className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2018</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-10.png`} alt="Graphic" />
+                                <p>In addition to training design thinking and software skills, I also learned about environmental control and building materials. In this work, I used Revit for thermal environment analysis and modeling to demonstrate the ability to apply building information models.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-8.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn threeteenth">
+                        <div className="demo-card demo-card--step4 fadeIn threeteenth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Briefcase className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2018</span>Work Experience</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-11.png`} alt="Graphic" />
+                                <p>When I was in high school, I participated in the architectural design experience course offered by the school. In 2018, I was asked by the teacher of this course to return to high school to give lectures. I added more analytical logic teaching to the courses that focused on creativity, so that more students can use analytical methods to solve practical problems.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline//tl-work-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
@@ -189,25 +189,24 @@ export default class Card extends Component {
                                 <div className="number-box">
                                     <Edit3 className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2018</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-1.png`} alt="Graphic" />
+                                <p>After nearly two years of professional training in architecture, I have established my own design workflow. In this work, in addition to completing the exhibition site that integrates local culture and vision, I also completed the design of the external environment, which is enough to demonstrate my extraordinary work ability.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-9.png`} alt="Graphic" />
                             </div>
                         </div>
 
-
-                        <div className="demo-card demo-card--step2 fadeIn fifteenth">
+                        <div className="demo-card demo-card--step3 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Dribbble className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2018</span>Activity</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-2.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-2.png`} alt="Graphic" />
                             </div>
                         </div>
 
