@@ -818,6 +818,126 @@ body {
     animation-delay: 10.2s;
 }
 
+.fadeIn.fiftyoneth {
+    -webkit-animation-delay: 10.4s;
+    -moz-animation-delay: 10.4s;
+    animation-delay: 10.4s;
+}
+
+.fadeIn.fiftytwoth {
+    -webkit-animation-delay: 10.6s;
+    -moz-animation-delay: 10.6s;
+    animation-delay: 10.6s;
+}
+
+.fadeIn.fiftythreeth {
+    -webkit-animation-delay: 10.8s;
+    -moz-animation-delay: 10.8s;
+    animation-delay: 10.8s;
+}
+
+.fadeIn.fiftyfourth {
+    -webkit-animation-delay: 11.0s;
+    -moz-animation-delay: 11.0s;
+    animation-delay: 11.0s;
+}
+
+.fadeIn.fiftyfiveth {
+    -webkit-animation-delay: 11.2s;
+    -moz-animation-delay: 11.2s;
+    animation-delay: 11.2s;
+}
+
+.fadeIn.fiftysixth {
+    -webkit-animation-delay: 11.4s;
+    -moz-animation-delay: 11.4s;
+    animation-delay: 11.4s;
+}
+
+.fadeIn.fiftyseventh {
+    -webkit-animation-delay: 11.6s;
+    -moz-animation-delay: 11.6s;
+    animation-delay: 11.6s;
+}
+
+.fadeIn.fiftyeightth {
+    -webkit-animation-delay: 11.8s;
+    -moz-animation-delay: 11.8s;
+    animation-delay: 11.8s;
+}
+
+.fadeIn.fiftynineth {
+    -webkit-animation-delay: 12.0s;
+    -moz-animation-delay: 12.0s;
+    animation-delay: 12.0s;
+}
+
+.fadeIn.sixtyth {
+    -webkit-animation-delay: 12.2s;
+    -moz-animation-delay: 12.2s;
+    animation-delay: 12.2s;
+}
+
+.fadeIn.sixtyoneth {
+    -webkit-animation-delay: 12.4s;
+    -moz-animation-delay: 12.4s;
+    animation-delay: 12.4s;
+}
+
+.fadeIn.sixtytwoth {
+    -webkit-animation-delay: 12.6s;
+    -moz-animation-delay: 12.6s;
+    animation-delay: 12.6s;
+}
+
+.fadeIn.sixtythreeth {
+    -webkit-animation-delay: 12.8s;
+    -moz-animation-delay: 12.8s;
+    animation-delay: 12.8s;
+}
+
+.fadeIn.sixtyfourth {
+    -webkit-animation-delay: 13.0s;
+    -moz-animation-delay: 13.0s;
+    animation-delay: 13.0s;
+}
+
+.fadeIn.sixtyfiveth {
+    -webkit-animation-delay: 13.2s;
+    -moz-animation-delay: 13.2s;
+    animation-delay: 13.2s;
+}
+
+.fadeIn.sixtysixth {
+    -webkit-animation-delay: 13.4s;
+    -moz-animation-delay: 13.4s;
+    animation-delay: 13.4s;
+}
+
+.fadeIn.sixtyseventh {
+    -webkit-animation-delay: 13.6s;
+    -moz-animation-delay: 13.6s;
+    animation-delay: 13.6s;
+}
+
+.fadeIn.sixtyeightth {
+    -webkit-animation-delay: 13.8s;
+    -moz-animation-delay: 13.8s;
+    animation-delay: 13.8s;
+}
+
+.fadeIn.sixtynineth {
+    -webkit-animation-delay: 14.0s;
+    -moz-animation-delay: 14.0s;
+    animation-delay: 14.0s;
+}
+
+.fadeIn.seventyth {
+    -webkit-animation-delay: 14.2s;
+    -moz-animation-delay: 14.2s;
+    animation-delay: 14.2s;
+}
+
 
 .feather-timeline {
     width: 35px;
