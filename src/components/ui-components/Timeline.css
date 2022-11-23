@@ -27,6 +27,23 @@
     }
 }
 
+.timeline-card-hidden-link {
+    font-size: 50px;
+    z-index: 13489;
+    position: absolute;
+    cursor: default;
+    top: 210px;
+    right: 14px
+}
+
+.timeline-card-hidden-link-div {
+    cursor: default;
+    width: 420px;
+    height: 240px;
+}
+
+
+
 .timeline-card-imageFit {
     height: auto;
     object-fit: cover;

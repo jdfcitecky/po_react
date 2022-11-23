@@ -231,7 +231,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2018</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>I also often use what I have learned in the structure course to design. In this work, I used shell structure, membrane structure and cable structure to show a compact and light appearance in a small base.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-10.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -243,7 +243,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2018</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>A year later, I participated in the 2017 Decor House Awarad again. This time I combine modern ideas with traditional architectural forms, and use realistic renderings and logical design explanations. This time I won the preferred award.</p>
+                                <p>After the third year of college, I was no longer satisfied with doing design assignments in the school classroom. I try to participate in various local and international competitions to exercise my design ability. In this tree house competition held in Taichung City, besides getting an honorable mention, I also learned how to make a budget.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-6.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -256,7 +256,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2018</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>A year later, I participated in the 2017 Decor House Awarad again. This time I combine modern ideas with traditional architectural forms, and use realistic renderings and logical design explanations. This time I won the preferred award.</p>
+                                <p>After completing the tree house design competition, I immediately participated in the competition for the Tainan Riverside Exhibition Hall. In this competition, although I came up with a fairly complete design, in the end I only won a good one. Such a result gave me a good understanding of the dark side of the design industry.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-7.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -270,7 +270,9 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <a className="timeline-card-hidden-link" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/one/YAMINGANDCHOHSIN.jpg`}><div className='timeline-card-hidden-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-11.png`} alt="Graphic" />
+
                             </div>
                         </div>
 
@@ -533,8 +535,8 @@ export default class Card extends Component {
 
 
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
         );
     }
 }
