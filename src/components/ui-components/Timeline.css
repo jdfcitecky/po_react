@@ -455,12 +455,39 @@ body {
 }
 
 #timeline .demo-card--step5 {
-    background-color: #46b8e9;
+    background-color: #46cee9;
 }
 
 #timeline .demo-card--step5 .head::after {
-    border-color: #46b8e9;
+    border-color: #46cee9;
 }
+
+
+#timeline .demo-card--step6 {
+    background-color: #5446e9;
+}
+
+#timeline .demo-card--step6 .head::after {
+    border-color: #5446e9;
+}
+
+#timeline .demo-card--step7 {
+    background-color: #e94661;
+}
+
+#timeline .demo-card--step7 .head::after {
+    border-color: #e94661;
+}
+
+
+#timeline .demo-card--step8 {
+    background-color: #e9b346;
+}
+
+#timeline .demo-card--step8 .head::after {
+    border-color: #e9b346;
+}
+
 
 .fadeInDown {
     -webkit-animation-name: fadeInDown;

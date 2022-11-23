@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Book, Edit3, Dribbble, Briefcase, Feather } from 'react-feather';
+import { Book, Edit3, Dribbble, Briefcase, Feather, Award, BookOpen } from 'react-feather';
 import "./Timeline.css"
 export default class Card extends Component {
 
@@ -150,7 +150,7 @@ export default class Card extends Component {
                         <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Feather className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
                                 <h2><span className="small">2018</span>Award</h2>
                             </div>
@@ -238,7 +238,7 @@ export default class Card extends Component {
                         <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Feather className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
                                 <h2><span className="small">2018</span>Award</h2>
                             </div>
@@ -251,7 +251,7 @@ export default class Card extends Component {
                         <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Feather className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
                                 <h2><span className="small">2018</span>Award</h2>
                             </div>
@@ -260,7 +260,18 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-7.png`} alt="Graphic" />
                             </div>
                         </div>
-
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Award className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2018</span>Award</h2>
+                            </div>
+                            <div className="body">
+                                <p>In addition to design based on real site, I prefer to do conceptual designs. I have realized that the development of information technology will change the way of life of human beings, so I put forward corresponding solutions for shared space and flexible space. Finally, it won two awards of the 2018 Architecture Master Prize for architecture and landscape living space.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
                         <div className="demo-card demo-card--step2 fadeIn twentyth">
                             <div className="head">
                                 <div className="number-box">
@@ -269,103 +280,80 @@ export default class Card extends Component {
                                 <h2><span className="small">2018</span>Design Work</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>After I focused on the competition, the university design assignments became routine instead. I can always analyze the environment and user needs very quickly and give corresponding solutions. But I am still very grateful to the partners who worked with me in this assignment, and perhaps such a relationship is more important than any award.</p>
                                 <a className="timeline-card-hidden-link" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/one/YAMINGANDCHOHSIN.jpg`}><div className='timeline-card-hidden-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-11.png`} alt="Graphic" />
 
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn twentyoneth">
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pybasic.png`} alt="Graphic" />
+                                <p>Although the Tainan Riverside Exhibition Hall competition made me quite worried about the design industry, this work still won the honorary nomination of the 2018 Decor House Awarad for its fairly complete planning and realistic rendering.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-award-dec-2.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentytwoth">
+
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyxl.png`} alt="Graphic" />
+                                <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-3.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentythreeth">
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pydjango.png`} alt="Graphic" />
+                                <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-4.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentyfourth">
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyflask.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentyfiveth">
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_htmlb.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentysixth">
+                        <div className="demo-card demo-card--step7 fadeIn thirtynineth">
                             <div className="head">
                                 <div className="number-box">
                                     <Edit3 className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasb.png`} alt="Graphic" />
-                            </div>
-                        </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentyseventh">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasg.png`} alt="Graphic" />
-                            </div>
-                        </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentyeighth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>Certificate</h2>
                             </div>
                             <div className="body">
                                 <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
@@ -373,162 +361,172 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn twentyninth">
+                        <div className="demo-card demo-card--step5 fadeIn eleventh">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <Award className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
+                                <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-4.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn thirtyth">
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
-
-                        <div className="demo-card demo-card--step2 fadeIn thirtyoneth">
+                        <div className="demo-card demo-card--step8 fadeIn ninth">
                             <div className="head">
                                 <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
+                                    <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
+                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
-
-                        <div className="demo-card demo-card--step2 fadeIn thirtytwoth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
-
-                        <div className="demo-card demo-card--step2 fadeIn thirtythreeth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
-
-                        <div className="demo-card demo-card--step2 fadeIn thirtyfourth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
-
-                        <div className="demo-card demo-card--step2 fadeIn thirtyfiveth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
 
-                        <div className="demo-card demo-card--step2 fadeIn thirtysixth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn thirtyseventh">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn thirtyeightth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn thirtynineth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
 
-                        <div className="demo-card demo-card--step2 fadeIn fourtyth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <Edit3 className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2017</span>Design Work</h2>
-                            </div>
-                            <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
-                            </div>
-                        </div>
+
+
+
 
 
 
