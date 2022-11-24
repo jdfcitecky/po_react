@@ -388,7 +388,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>In addition to the basics of programming languages, I also studied algorithmic problem-solving courses because I deeply understand the importance of efficiency. In this course, I learned about the difference and use of data structures through the actual topics from Leetcode. And I also learned DFS, BFS, divide and conquer, 2pointer, dynamic programming and other algorithm concepts.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythons.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythons.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -400,7 +401,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>The goal of learning information engineering-related knowledge and technologies is still to create actual products. So in order to learn how to obtain data and make web applications, I also took courses on Python Excel and line chatbot. In this course, I learned how to implement crawlers in different ways and save the data in excel, and then present the information to users through linebot.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyxl.png`} alt="Graphic" />
                             </div>
                         </div>
