@@ -269,6 +269,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In addition to design based on real site, I prefer to do conceptual designs. I have realized that the development of information technology will change the way of life of human beings, so I put forward corresponding solutions for shared space and flexible space. Finally, it won two awards of the 2018 Architecture Master Prize for architecture and landscape living space.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/am-1.png`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-1.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -309,6 +310,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ida-gold-2.png`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-3.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -321,6 +323,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ida-gold-1.png`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-4.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -332,7 +335,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Although I have won many international awards, creating in the field of design can no longer satisfy me. So I decided to come to the information system training course offered by National Taiwan University. The first course I took was Python Basics. In the final report of this course, I showed the application of Python language in architectural design.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythonb.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pybasic.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -344,7 +348,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2019</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>In order to fully understand information engineering related knowledge from the basics, besides Python, I learned C and C++ languages. Through this course, in addition to understanding the basics and methods of C and C++, I also have a better understanding of memory operations and input and output.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_c++b.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_c++b.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -356,7 +361,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2019</span>Certificate</h2>
                             </div>
                             <div className="body">
-                                <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
+                                <p>Studying in the information system training course at National Taiwan University is not only for acquiring comprehensive knowledge, but also for applying for a master's degree in computer science. In order to apply for this degree, I also took the TOEFl and GRE exams, and finally got a TOEFL mybest score of 93.</p>
                                 <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-toefl.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-toefl.png`} alt="Graphic" />
                             </div>
@@ -370,7 +375,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2019</span>Award</h2>
                             </div>
                             <div className="body">
-                                <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
+                                <p>In the fall of 2019, I won the 2019 Red Dot Design Award for my wooden structure house inspired by remote working life. At National Taiwan University of Science and Technology, it only takes a few international awards to earn a Master of Architecture degree. However, I already received more awards than this requirement in my senior year.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/reddot.png`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-5.png`} alt="Graphic" />
                             </div>
                         </div>
