@@ -26,7 +26,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
-                                <img src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-1.png`} alt="Graphic" />
                             </div>
                         </div>
 
@@ -197,7 +197,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step3 fadeIn ninth">
+                        <div className="demo-card demo-card--step3 fadeIn fifteenth">
                             <div className="head">
                                 <div className="number-box">
                                     <Dribbble className="feather-timeline" />
@@ -210,7 +210,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step4 fadeIn threeteenth">
+                        <div className="demo-card demo-card--step4 fadeIn sixteenth">
                             <div className="head">
                                 <div className="number-box">
                                     <Briefcase className="feather-timeline" />
@@ -235,7 +235,7 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-10.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn eighteenth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -248,7 +248,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn nineteenth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -260,7 +260,7 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-7.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn twentyth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -272,7 +272,7 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-1.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step2 fadeIn twentyth">
+                        <div className="demo-card demo-card--step2 fadeIn twentyoneth">
                             <div className="head">
                                 <div className="number-box">
                                     <Edit3 className="feather-timeline" />
@@ -281,13 +281,13 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After I focused on the competition, the university design assignments became routine instead. I can always analyze the environment and user needs very quickly and give corresponding solutions. But I am still very grateful to the partners who worked with me in this assignment, and perhaps such a relationship is more important than any award.</p>
-                                <a className="timeline-card-hidden-link" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/one/YAMINGANDCHOHSIN.jpg`}><div className='timeline-card-hidden-link-div'></div></a>
+                                <a className="timeline-card-hidden-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/one/YAMINGANDCHOHSIN.jpg`}><div className='timeline-card-hidden-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-11.png`} alt="Graphic" />
 
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn twentytwoth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -300,7 +300,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn twentythreeth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -312,7 +312,7 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-3.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn twentyfourth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -324,7 +324,7 @@ export default class Card extends Component {
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-4.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn twentyfiveth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
@@ -333,10 +333,10 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pybasic.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn twentysixth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
@@ -345,10 +345,10 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_c++b.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step7 fadeIn thirtynineth">
+                        <div className="demo-card demo-card--step7 fadeIn twentyseventh">
                             <div className="head">
                                 <div className="number-box">
                                     <Edit3 className="feather-timeline" />
@@ -357,11 +357,12 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After failing to participate in the 2016 Decor House Awarad for my previous work, I focused on improving the quality of graphics and design methods. Therefore, in this work, I use Vray and PS for virtual-real integrated rendering and emphasize a more logical design method.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jsweb.png`} alt="Graphic" />
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-toefl.jpg`}><div className='timeline-card-link-div'></div></a>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-toefl.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step5 fadeIn eleventh">
+                        <div className="demo-card demo-card--step5 fadeIn twentyeighth">
                             <div className="head">
                                 <div className="number-box">
                                     <Award className="feather-timeline" />
@@ -370,157 +371,306 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In order to get more awards, I also packaged the homework in the usual courses. I add background issues to these assignments and make more detailed construction and use case diagrams. This also made the two refuge houses originally designed for the architectural structure class win the 2019 International Design Award Gold Award and Silver Award a total of 5 awards.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-4.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-arch-ex-5.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn twentyninth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythons.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyxl.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyoneth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pydjango.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtytwoth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyflask.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtythreeth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_htmlb.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyfourth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasb.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyfiveth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasg.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtysixth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonsadv.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyseventh">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonadv.png`} alt="Graphic" />
                             </div>
                         </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step8 fadeIn thirtyeightth">
                             <div className="head">
                                 <div className="number-box">
                                     <BookOpen className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_mlb.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step8 fadeIn thirtynineth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <BookOpen className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2020</span>NTU CSIE Training</h2>
+                            </div>
+                            <div className="body">
+                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_linux.png`} alt="Graphic" />
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
+                        <div className="demo-card demo-card--step1 fourtyth">
                             <div className="head">
                                 <div className="number-box">
-                                    <BookOpen className="feather-timeline" />
+                                    <Book className="feather-timeline" />
                                 </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
+                                <h2><span className="small">2020</span>Graduation</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
-                            </div>
-                        </div>
-                        <div className="demo-card demo-card--step8 fadeIn ninth">
-                            <div className="head">
-                                <div className="number-box">
-                                    <BookOpen className="feather-timeline" />
-                                </div>
-                                <h2><span className="small">2019</span>NTU CSIE Training</h2>
-                            </div>
-                            <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
-                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-acti-1.png`} alt="Graphic" />
+                                <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-diploma-ntust.png`} alt="Graphic" />
                             </div>
                         </div>
 
+                        <div className="demo-card demo-card--step1 fadeIn fourtyoneth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2020</span>Admission</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-ucdavislogo.png`} alt="Graphic" />
+                            </div>
+                        </div>
+
+                        <div className="demo-card demo-card--step6 fadeIn fourtytwoth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2020</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
+                            </div>
+                        </div>
+
+                        <div className="demo-card demo-card--step6 fadeIn fourtythreeth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2020</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms265.png`} alt="Graphic" />
+                            </div>
+                        </div>
+
+                        <div className="demo-card demo-card--step6 fadeIn fourtyfourth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
+                            </div>
+                        </div>
+
+                        <div className="demo-card demo-card--step6 fadeIn fourtyfiveth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/msos.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step6 fadeIn fourtysixth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms252.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step6 fadeIn fourtyseventh">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step6 fadeIn fourtyeightth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms222a.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step6 fadeIn fourtynineth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms289k.png`} alt="Graphic" />
+                            </div>
+                        </div>
+                        <div className="demo-card demo-card--step6 fadeIn fiftyth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2021</span>M.S Course</h2>
+                            </div>
+                            <div className="body">
+                                <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms230.png`} alt="Graphic" />
+                            </div>
+                        </div>
 
 
+                        <div className="demo-card demo-card--step1 fadeIn fiftyoneth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2022</span>Graduation</h2>
+                            </div>
+                            <div className="body">
+                                <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-diploma-ucdavis.png`} alt="Graphic" />
+                            </div>
+                        </div>
+
+                        <div className="demo-card demo-card--step9 fadeIn fiftytwoth">
+                            <div className="head">
+                                <div className="number-box">
+                                    <Book className="feather-timeline" />
+                                </div>
+                                <h2><span className="small">2022</span>Side project</h2>
+                            </div>
+                            <div className="body">
+                                <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-sideproject-1.png`} alt="Graphic" />
+                            </div>
+                        </div>
 
 
 
