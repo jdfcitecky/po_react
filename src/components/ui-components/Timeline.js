@@ -476,7 +476,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>For me, the best way to learn is to practice repeatedly, so after half a year, I took the problem-solving course again. In this advanced course, in addition to reviewing the basic problem-solving methods, I also learned more about graph theory problem-solving methods.</p>
                                 <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythonsadv.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonsadv.png`} alt="Graphic" />
                             </div>
@@ -489,7 +489,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>In the problem-solving course, I learned the importance of data structure. Due to the different ways of implementing data structures in different languages, I also took advanced programming language courses. These courses let me understand the different methods and logics used by different languages to implement the same data structure or feature.</p>
                                 <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythonadv.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonadv.png`} alt="Graphic" />
                             </div>
@@ -502,7 +502,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Even though I aimed my learning at making web applications, I know that data processing and data science are quite common applications as well. In this course, I learned how to use Pytorch, pandas, matlib and other libraries.</p>
                                 <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_mlb.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_mlb.png`} alt="Graphic" />
                             </div>
@@ -521,7 +521,7 @@ export default class Card extends Component {
                             </div>
                         </div>
 
-                        <div className="demo-card demo-card--step1 fourtyth">
+                        <div className="demo-card demo-card--step1 fadeIn fourtyth">
                             <div className="head">
                                 <div className="number-box">
                                     <Book className="feather-timeline" />
@@ -530,6 +530,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntust_diploma.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-diploma-ntust.png`} alt="Graphic" />
                             </div>
                         </div>
