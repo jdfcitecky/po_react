@@ -437,7 +437,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Although I learned how to use Boostrap to beautify web pages in the flask course, I think it is more important to understand basic css, html and javascript knowledge. Therefore, in this course, in addition to various html tags, I also learned that through the combination of various css features, web page visual effects can be achieved with less code and higher performance.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_htmlb.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_htmlb.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -449,7 +450,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Understanding how to use css and html is only the first step in web design. In order to create a more complete application, I also studied Javascript courses. In this course, I learned how to use Javascript to select, add, and delete DOM elements, as well as the basic React framework. In addition, I also learn how to use canvas to create image editing applications and web games.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_jsc.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasb.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -461,7 +463,8 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Understanding how to use css and html is only the first step in web design. In order to create a more complete application, I also studied Javascript courses. In this course, I learned how to use Javascript to select, add, and delete DOM elements, as well as the basic React framework. In addition, I also learn how to use canvas to create image editing applications and web games.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_jsc.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_jscanvasg.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -474,6 +477,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythonsadv.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonsadv.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -486,6 +490,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_pythonadv.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pythonadv.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -498,6 +503,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_mlb.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_mlb.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -510,6 +516,7 @@ export default class Card extends Component {
                             </div>
                             <div className="body">
                                 <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/ntu_linux.jpg`}><div className='timeline-card-link-div'></div></a>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_linux.png`} alt="Graphic" />
                             </div>
                         </div>
