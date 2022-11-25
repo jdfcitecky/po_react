@@ -27,6 +27,44 @@
     }
 }
 
+.timeline-float-scroll-nav {
+    position: fixed;
+    right: 10px;
+    top: 500px;
+    z-index: 15678;
+
+
+}
+
+.timeline-float-scroll-nav-btm {
+    background-color: #f7f7f7;
+    color: #9f9f9f;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    padding: 5px;
+    transition: 1s;
+    font-weight: lighter;
+    overflow: hidden;
+    border-top: 1px solid #c4c4c4;
+
+
+}
+
+.timeline-float-scroll-nav-btm:hover {
+    background-color: #9f9f9f;
+    color: #f6f6f6;
+
+}
+
+.btm-head {
+    border-top: none !important;
+}
+
+
+
+
+
 .timeline-card-hidden-link {
     font-size: 50px;
     z-index: 13489;
