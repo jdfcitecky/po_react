@@ -413,7 +413,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>Using linebot and excel as the application interface and database gave me a preliminary concept of application programming, but I knew that I needed a more flexible development platform. So I chose to learn django. In this class, I learned about the use of MVC architecture, ORM and basic SQL.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pydjango.png`} alt="Graphic" />
                             </div>
                         </div>
@@ -425,7 +425,7 @@ export default class Card extends Component {
                                 <h2><span className="small">2020</span>NTU CSIE Training</h2>
                             </div>
                             <div className="body">
-                                <p>After having a more comprehensive modeling ability, I started to participate in various activities to focus on various issues and exercise design thinking. The first activity is to provide renovation solutions for the old communities in Taipei. This activity also allowed me to gain experience in collective housing and community environment design one year in advance.</p>
+                                <p>In addition to the more complex libraries like django, I also understand the trend of using lightweight architecture to develop microservices. So I also learned flask. In this class, I learned a lot of knowledge that an actual engineer must know, such as how to connect APIs, how to prevent CSRF attacks, what is CORS, and what is a restful method.</p>
                                 <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ntu_pyflask.png`} alt="Graphic" />
                             </div>
                         </div>
