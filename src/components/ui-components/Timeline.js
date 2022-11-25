@@ -577,7 +577,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2020</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>Programming language</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
@@ -591,7 +591,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2020</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>discrete database</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms265.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -604,7 +604,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>computer architecture</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
@@ -618,7 +618,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>os</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/msos.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -630,7 +630,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>computer network</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms252.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -642,7 +642,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>Thory of computation</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
@@ -655,7 +655,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>Algorithm</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms222a.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -667,7 +667,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>Scientific conputation</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms289k.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -679,7 +679,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>After the winter university entrance examination, because National Taiwan University of Science and Technology has a better geographical location and a more free learning atmosphere, I chose National Taiwan University of Science and Technology to study.</p>
+                                    <p>App of linear albedra</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms230.png`} alt="Graphic" />
                                 </div>
                             </div>
