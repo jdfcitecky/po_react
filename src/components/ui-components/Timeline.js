@@ -655,7 +655,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>Algorithm</p>
+                                    <p>Another class I took in the spring quarter was Algorithm. The goal of this class is mainly to hope that we can learn to optimize various algorithms. However, in fact, we still review the concepts of algorithm complexity, divide and conquer, DFS, BFS, dynamic programming, and the use of data structures.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms222a.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -667,7 +667,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>Scientific conputation</p>
+                                    <p>In the last quarter, I took a Scientific computation class. In this class, we will have to quickly understand many relatively rare microscopic physics knowledge, and simulate the behavior of these molecules or electrons on the remote server through various libraries. And write these experimental results into reports and compare them with actual physical experiments.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms289k.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -679,7 +679,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>App of linear albedra</p>
+                                    <p>Another class I took in my final semester was Application of Linear Algebra. In this class, we first understand the errors or bottlenecks that the computer may cause when performing floating-point operations. Then we used C++ to implement various applications such as matrix decomposition, curve patch and image compression.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms230.png`} alt="Graphic" />
                                 </div>
                             </div>
