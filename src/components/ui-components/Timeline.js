@@ -618,7 +618,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>os</p>
+                                    <p>In addition to the core course Computer Architecture, I also took the equally important course Operating System. In this course, we reviewed concepts such as memory management, program management, multithreading, and input and output. And we also implemented operating system for a RISCV CPU game console in the project.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/msos.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -630,7 +630,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>computer network</p>
+                                    <p>My original goal of learning information technology was to create web applications. So I also took Computer Network class. This class focuses on how to use a probability model to analyze the efficiency of various network protocols from the bottom line multiplexing to the time slot of the network layer and the top layer, especially explaining the design of TCP to ensure packet delivery, and let us understand the possibilities of various network applications Encountered performance bottlenecks.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms252.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -642,7 +642,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>Thory of computation</p>
+                                    <p>In the spring quarter, I also took the Thory of computation class. This class mainly discusses whether P is equal to NP. Since this class is more biased towards theoretical research, it did not inspire me much. The only thing I can say is that I fully understand that I am more suitable for work related to technology and products.</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
