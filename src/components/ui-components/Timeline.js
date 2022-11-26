@@ -577,7 +577,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2020</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>Programming language</p>
+                                    <p>The first class at UC Davis was Programming Language, which mainly discussed how the compiler debugs and optimizes according to the data flow of the program. In this class, we implemented a variety of data flow detection algorithms using C++ based on the paper. This also made me understand the importance of learning graph theory-related problem-solving methods in the past.</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
@@ -591,7 +591,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2020</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>discrete database</p>
+                                    <p>Another class I took in my first semester at UC Davis was Distributed Database. This class mainly discuss the development of blockchain with papers and project implementation. In this class, we spent a lot of time understanding what bottlenecks and trade off for network-based applications and how to solve the Byzantine problem. In addition, we have also implemented a cross-chain trading website through Algorand's API.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/ms265.png`} alt="Graphic" />
                                 </div>
                             </div>
@@ -604,7 +604,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2021</span>M.S Course</h2>
                                 </div>
                                 <div className="body">
-                                    <p>computer architecture</p>
+                                    <p>In the winter quarter, I took a Computer Architecture class. This class mainly explains the cooperative relationship between CPU, register, cache and memory. By understanding the limitations and working methods of the hardware, it provides guidance for the development and optimization of software and system design.</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-transcript-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-transcript-ucdavis.png`} alt="Graphic" />
                                 </div>
