@@ -693,7 +693,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2022</span>Graduation</h2>
                                 </div>
                                 <div className="body">
-                                    <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                    <p>As the fall quarter of 2021 comes to an end, I have completed all core and elective courses. I also gained a systematic understanding of the field of computer science. I then completed my master's degree exams and finally received a master's degree in computer science from UC Davis in the spring of 2022.</p>
                                     <a className="timeline-card-link" target="_blank" href={`http://${process.env.REACT_APP_API_ADDRESS}/static/documents/tl-diploma-ucdavis.jpg`}><div className='timeline-card-link-div'></div></a>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-diploma-ucdavis.png`} alt="Graphic" />
                                 </div>
@@ -707,7 +707,7 @@ export default class Card extends Component {
                                     <h2><span className="small">2022</span>Side project</h2>
                                 </div>
                                 <div className="body">
-                                    <p>In the summer of 2016, I graduated from Taipei City Jianguo High School. During my studies, I had outstanding performance in the field of art and literature, and also maintained stable results in other fields. Finally graduated with grades in about the top ten percent.</p>
+                                    <p>In addition to the master's degree courses, I also learn more network application technologies on the udemy and hiskio platforms. To put these technologies into practice, I aimed to develop a fully functional personal website that supports instant messaging. In this project, I use the gin framework to cooperate with gorm and gorilla to complete the back-end service, and use react to write the front-end. Finally, it is deployed on AWS with Docker.</p>
                                     <img className="timeline-card-imageFit" src={`http://${process.env.REACT_APP_API_ADDRESS}/static/timeline/tl-sideproject-1.png`} alt="Graphic" />
                                 </div>
                             </div>
