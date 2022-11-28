@@ -64,7 +64,7 @@ export default class Header extends Component {
                     <div className="row flex-nowrap justify-content-between align-items-center">
                         {manageBtn}
                         <div className="col-4 text-center">
-                            <Link className="blog-header-logo text-dark" to="/">Hsin's Portfilio</Link>
+                            <Link className="blog-header-logo text-dark" to="/">Hsin's Portfolio</Link>
                         </div>
                         <div className="col-4 d-flex justify-content-end align-items-center">
                             <div className="input-group input-group-sm">
