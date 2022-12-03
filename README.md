@@ -1,5 +1,5 @@
 # Documentation
-This project is a front-end application for personal webpage, it is recommended to be used together with the [back-end application](https://github.com/jdfcitecky/po_go). This project provides the basic mainstream functions of most websites, whether it is the basic database addition, deletion, modification and query system, membership system, display page, introduction page, comment system, background management, data chart, one-click restore, back-end file server , backend caching and even live chat rooms are fully implemented.
+This project is a front-end application for personal website, it is recommended to be used together with the [back-end application](https://github.com/jdfcitecky/po_go). This project provides the basic mainstream functions of most websites, whether it is the basic database addition, deletion, modification and query system, membership system, display page, introduction page, comment system, background management, data chart, one-click restore, back-end file server , backend caching and even live chat rooms are fully implemented.
 
 The website runs at http://www.chuanhsincho.com/ on AWS．
 -----------------------------------------------------
